@@ -2,26 +2,19 @@
 layout: page
 nav: science
 title: "Diffraction and wave optics"
-eyebrow: "The phenomenon"
+eyebrow: "Wave-optics lensing"
 lede: >-
   When the wavelength is comparable to the scale of the lens, geometric optics fails. The lens stops being a magnifying glass and starts writing a frequency-dependent signature into the wave.
 description: >-
   Why geometric optics fails for gravitational waves, what the amplification factor is, and which lenses a wave of a given frequency can feel.
 topic_id: diffraction
-sections:
-  - id: what
-    label: "When optics fails"
-  - id: scales
-    label: "Which lenses"
-  - id: computing
-    label: "Computing it"
 ---
 
-{%- assign t = site.data.topics | where: "id", page.topic_id | first %}
+{%- assign t = site.data.topics.topics | where: "id", page.topic_id | first %}
+
+{% include topicnav.html %}
 
 {% include topic-figure.html topic=t %}
-
-{% include subnav.html %}
 <section class="section" id="what" aria-labelledby="what-heading">
   <h2 id="what-heading">When a lens stops being a magnifying glass</h2>
   <p>

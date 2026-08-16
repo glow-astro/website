@@ -24,6 +24,8 @@ sections:
     label: "What GLOW will deliver"
 ---
 
+{% include topicnav.html %}
+
 {% include subnav.html %}
 
 <section class="section" id="lensing" aria-labelledby="lensing-heading">
@@ -85,19 +87,24 @@ sections:
 <section class="section" id="topics" aria-labelledby="topics-heading">
   <h2 id="topics-heading">Topics</h2>
   <p class="lede">
-    Four strands of the science, each explaining the phenomenon and showing an
-    animation of what it looks like.
+    The science in two parts: how a coherent wave is distorted by a lens, and
+    what those distortions can be used to measure.
   </p>
 
+  {%- for g in site.data.topics.groups %}
+  {%- assign members = site.data.topics.topics | where: "group", g.id %}
+  <h3 id="{{ g.id }}">{{ g.title }}</h3>
+  <p>{{ g.blurb }}</p>
   <div class="grid grid-2">
-    {%- for t in site.data.topics %}
+    {%- for t in members %}
     <a class="card card-link" href="{{ '/' | append: t.id | append: '.html' | relative_url }}">
-      <p class="eyebrow">{{ t.eyebrow }}</p>
       <p class="card-title">{{ t.title }}</p>
       <p>{{ t.blurb }}</p>
+      <p class="card-meta">{{ t.wps | join: " · " }}</p>
     </a>
     {%- endfor %}
   </div>
+  {%- endfor %}
 
   <p>
     Plasma lensing of fast radio bursts is developed in

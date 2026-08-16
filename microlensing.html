@@ -2,26 +2,19 @@
 layout: page
 nav: science
 title: "Microlensing by stellar fields"
-eyebrow: "Realistic lenses"
+eyebrow: "Wave-optics lensing"
 lede: >-
   A real lens is not one object. Stars and remnants in the lensing galaxy each add their own diffraction, on top of the magnification of the galaxy itself. Modelling that population is what makes a search possible.
 description: >-
   Stars and remnants in a lensing galaxy each add their own diffraction. How a stochastic population becomes a search for lensed gravitational waves.
 topic_id: microlensing
-sections:
-  - id: population
-    label: "A population"
-  - id: environment
-    label: "Environment"
-  - id: searching
-    label: "Searching"
 ---
 
-{%- assign t = site.data.topics | where: "id", page.topic_id | first %}
+{%- assign t = site.data.topics.topics | where: "id", page.topic_id | first %}
+
+{% include topicnav.html %}
 
 {% include topic-figure.html topic=t %}
-
-{% include subnav.html %}
 <section class="section" id="population" aria-labelledby="population-heading">
   <h2 id="population-heading">A lens is a population, not an object</h2>
   <p>

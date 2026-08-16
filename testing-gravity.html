@@ -8,20 +8,13 @@ lede: >-
 description: >-
   Lensed gravitational waves as a test of how gravity propagates, and what that says about theories of dark energy.
 topic_id: testing-gravity
-sections:
-  - id: why
-    label: "Gravity as experiment"
-  - id: signatures
-    label: "Signatures"
-  - id: cosmology
-    label: "Dark energy"
 ---
 
-{%- assign t = site.data.topics | where: "id", page.topic_id | first %}
+{%- assign t = site.data.topics.topics | where: "id", page.topic_id | first %}
+
+{% include topicnav.html %}
 
 {% include topic-figure.html topic=t %}
-
-{% include subnav.html %}
 <section class="section" id="why" aria-labelledby="why-heading">
   <h2 id="why-heading">A lens as an experiment on gravity</h2>
   <p>

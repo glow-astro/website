@@ -1,0 +1,31 @@
+{%- comment -%}
+  The science submenu: every topic, grouped, on the hub and on each topic page.
+  A page marks itself current by setting `topic_id` in its front matter; the hub
+  sets none, so nothing is marked there.
+
+  This replaces the per-page section bar on topic pages rather than sitting
+  above it. Three levels of navigation on one short page is more chrome than
+  content, and which topic you are in matters more than which paragraph.
+
+  Plain links, no JavaScript, no disclosure widget: the whole list is six items
+  and fits on one line, so hiding it behind a control would cost a click and
+  gain nothing.
+{%- endcomment -%}
+<nav class="topicnav" aria-label="Science topics">
+  <ul>
+    <li class="topicnav-home">
+      <a href="{{ '/science.html' | relative_url }}"
+         {% if page.url contains 'science' %}aria-current="page"{% endif %}>Overview</a>
+    </li>
+    {%- for g in site.data.topics.groups %}
+    {%- assign members = site.data.topics.topics | where: "group", g.id %}
+    <li class="topicnav-group" aria-hidden="true">{{ g.title }}</li>
+    {%- for t in members %}
+    <li>
+      <a href="{{ '/' | append: t.id | append: '.html' | relative_url }}"
+         {% if page.topic_id == t.id %}aria-current="page"{% endif %}>{{ t.short }}</a>
+    </li>
+    {%- endfor %}
+    {%- endfor %}
+  </ul>
+</nav>
