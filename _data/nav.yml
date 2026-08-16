@@ -12,6 +12,10 @@
   title: "Team"
   url: "/team.html"
 
+- id: publications
+  title: "Publications"
+  url: "/publications.html"
+
 - id: software
   title: "Software & data"
   url: "/software.html"

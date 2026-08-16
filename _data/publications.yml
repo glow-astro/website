@@ -1,0 +1,83 @@
+# Outputs that acknowledge the grant.
+#
+# The test for inclusion is narrow and deliberate: a paper or talk belongs here
+# if it acknowledges grant 101230608. Work by the same people that does not
+# acknowledge GLOW belongs on their own pages, not on this one -- this list is
+# what the project reports as its output.
+#
+# papers
+#   title    as published, in the paper's own spelling
+#   authors  in the paper's order, "Surname" only, joined by the template
+#   arxiv    bare identifier, e.g. "2512.17631"
+#   url      INSPIRE record; arXiv link is built from `arxiv`
+#   date     YYYY-MM-DD, for ordering. Day is only for ties within a month.
+#   status   "preprint" | "accepted" | "published"
+#   journal  optional, only once there is one
+#   wps      work packages the paper belongs to
+#   summary  one sentence: what the paper does, not how well it was received
+#
+# talks
+#   title    as given
+#   venue    the series or meeting
+#   year
+#   url      recording
+#   with     optional co-presenters
+#   summary  optional
+
+papers:
+  - title: "Across the Universe: GW231123 as a magnified and diffracted black hole merger"
+    authors: ["Goyal", "Villarrubia-Rojo", "Zumalacárregui"]
+    arxiv: "2512.17631"
+    url: "https://inspirehep.net/arxiv/2512.17631"
+    date: 2025-12-01
+    status: accepted
+    journal: "The Astrophysical Journal Letters"
+    wps: ["WP2-A"]
+    summary: >-
+      A parameter-estimation analysis of GW231123 under lensed and unlensed
+      models, finding it the first compelling candidate for a magnified and
+      diffracted black-hole merger. The posterior samples behind every model and
+      waveform combination are public.
+
+  - title: "Effective description of lensed gravitational waves diffracted by stellar fields"
+    authors: ["Zumalacárregui", "Shan"]
+    arxiv: "2606.17765"
+    url: "https://inspirehep.net/arxiv/2606.17765"
+    date: 2026-06-01
+    status: preprint
+    wps: ["WP1-A", "WP2-A"]
+    summary: >-
+      Microlensing amplification curves from simulated stellar fields are
+      compressed into an orthonormal basis for the distortion, together with a
+      distribution for its coefficients that serves as a realization-based prior.
+      This is the reduced-order model the microlensing searches are built on.
+
+  - title: "Signatures of 10–10⁴ M☉ dark-matter halos in LISA via stochastic diffraction"
+    authors: ["Choi", "Urrutia", "Zumalacárregui"]
+    arxiv: "2607.11887"
+    url: "https://inspirehep.net/arxiv/2607.11887"
+    date: 2026-07-01
+    status: preprint
+    wps: ["WP3-A"]
+    summary: >-
+      Many low-mass halos along the line of sight leave a collective diffraction
+      imprint whose fluctuations are captured by an orthogonal basis — the "dark
+      timbre". Detectability is forecast for massive black-hole binaries observed
+      by LISA.
+
+talks:
+  - title: "A magnified and diffracted black-hole merger (GW231123)"
+    venue: "Cosmology Talks"
+    year: 2026
+    url: "https://youtu.be/ZGqOpDTL8k4"
+
+  - title: "Probing low-mass dark-matter halos with LISA"
+    venue: "Cosmology Talks"
+    year: 2026
+    with: "Han-Gil Choi and Juan Urrutia"
+    url: "https://www.youtube.com/watch?v=a5lIDTDRo4c"
+
+  - title: "Tests of gravitational-wave propagation"
+    venue: "Dark Energy from Home"
+    year: 2026
+    url: "https://youtu.be/1k0o0QiL288"

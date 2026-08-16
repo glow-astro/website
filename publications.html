@@ -1,0 +1,64 @@
+---
+layout: page
+nav: publications
+title: "Publications and talks"
+eyebrow: "Output"
+lede: >-
+  Papers and recorded talks that acknowledge the grant. Everything here is
+  freely readable, and the data behind the analyses is released with them.
+description: >-
+  Papers and recorded talks produced by the GLOW project, with links to the
+  preprints, the INSPIRE records and the accompanying data releases.
+sections:
+  - id: papers
+    label: "Papers"
+  - id: talks
+    label: "Talks"
+---
+
+{% include subnav.html %}
+
+<section class="section" id="papers" aria-labelledby="papers-heading">
+  <h2 id="papers-heading">Papers</h2>
+  {%- assign papers = site.data.publications.papers | sort: "date" | reverse %}
+  {%- for p in papers %}
+  <div class="card">
+    <p class="card-title">
+      <a href="{{ p.url }}" rel="noopener">{{ p.title }}</a>
+    </p>
+    <p class="card-meta">
+      {{ p.authors | join: ", " }} &middot;
+      {%- if p.status == "published" %} {{ p.journal }}
+      {%- elsif p.status == "accepted" %} accepted in {{ p.journal }}
+      {%- else %} preprint
+      {%- endif %}
+      {%- if p.wps %} &middot; {{ p.wps | join: ", " }}{% endif %}
+    </p>
+    <p>{{ p.summary }}</p>
+    <p><a href="https://arxiv.org/abs/{{ p.arxiv }}" rel="noopener">arXiv:{{ p.arxiv }}</a></p>
+  </div>
+  {%- endfor %}
+  <p>
+    The code and archived data behind these analyses are on the
+    <a href="{{ '/software.html' | relative_url }}">Software and data</a> page.
+    The full publication record of the Principal Investigator, including work
+    outside the project, is on
+    <a href="{{ site.pi.inspire }}" rel="noopener">INSPIRE-HEP</a>.
+  </p>
+</section>
+
+<section class="section" id="talks" aria-labelledby="talks-heading">
+  <h2 id="talks-heading">Recorded talks</h2>
+  <p>
+    Talks on the project's results, aimed at researchers rather than at a
+    general audience.
+  </p>
+  <ul class="arrow-list">
+    {%- for t in site.data.publications.talks %}
+    <li>
+      <a href="{{ t.url }}" rel="noopener">{{ t.title }}</a>
+      — {{ t.venue }} ({{ t.year }}{% if t.with %}, with {{ t.with }}{% endif %})
+    </li>
+    {%- endfor %}
+  </ul>
+</section>
