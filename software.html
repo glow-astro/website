@@ -12,6 +12,8 @@ description: >-
 sections:
   - id: tools
     label: "Tools"
+  - id: releases
+    label: "Data releases"
   - id: policy
     label: "Release policy"
   - id: naming
@@ -49,6 +51,31 @@ sections:
       {%- if t.repo %}<a href="{{ t.repo }}" rel="noopener">Repository</a>{% endif -%}
       {%- if t.repo and t.docs %} &middot; {% endif -%}
       {%- if t.docs %}<a href="{{ t.docs }}" rel="noopener">Documentation</a>{% endif -%}
+    </p>
+  </div>
+  {%- endfor %}
+</section>
+
+<section class="section" id="releases" aria-labelledby="releases-heading">
+  <h2 id="releases-heading">Data releases and companion code</h2>
+  <p class="lede">
+    Frozen products accompanying individual papers: the code and the archived
+    data needed to reproduce a published result, as distinct from the maintained
+    software above.
+  </p>
+  {%- for r in site.data.software.releases %}
+  <div class="card">
+    <p class="card-title">{{ r.name }}</p>
+    <p class="card-meta">
+      {{ r.subtitle }} &middot;
+      <a href="{{ r.paper.url }}" rel="noopener">{{ r.paper.short }}</a>
+    </p>
+    <p>{{ r.body }}</p>
+    {%- if r.doi %}
+    <p class="card-meta">Cite the version DOI for exact reproducibility: {{ r.doi }}</p>
+    {%- endif %}
+    <p>
+      {%- for l in r.links %}<a href="{{ l.url }}" rel="noopener">{{ l.text }}</a>{% unless forloop.last %} &middot; {% endunless %}{% endfor -%}
     </p>
   </div>
   {%- endfor %}

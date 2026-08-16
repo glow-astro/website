@@ -1,16 +1,27 @@
 # People on the project.
 #
-# Schema
-#   name    full name
-#   role    "Role, Institution" -- see docs/SITE_CONVENTIONS.md section 8 for
-#           how relationships are described. Never the possessive.
-#   wps     list of work-package task codes this person works on
-#   url     optional personal page
-#   orcid   optional
-#   bio     optional short paragraph
+# Copied from the personal site's _data/people.yml, which stays the fuller
+# record: visitors, former members and earlier mentees belong there, not here.
+# This file lists the people working on GLOW now.
 #
-# Groups: `pi`, `current` (hired), `collaborators` (named external partners who
-# are not paid from the grant).
+# Schema
+#   name      full name
+#   url       optional personal or INSPIRE page
+#   stage     postdoc | phd | masters -- groups the cards
+#   role      "Role, Institution (relationship)". The relationship is one of
+#             (co-supervised), (co-supervised with X), (close collaboration);
+#             leave it off when the supervision was simply the PI's. Never the
+#             possessive -- see docs/SITE_CONVENTIONS.md section 8.
+#   location  optional, when the person is not based with the rest of the team
+#   years     e.g. "2026–"
+#   topic     one sentence on what the person works on
+#   incoming  true -> the card shows a "starts <starts>" badge
+#   starts    e.g. "October 2026"
+#   wps       optional work-package task codes.
+#
+# TODO: `wps` is deliberately empty. Which task each person leads is a fact
+# about the grant, not something to infer from a topic sentence -- fill it in
+# rather than guessing, and the cards will show it.
 
 pi:
   - name: "Miguel Zumalacárregui"
@@ -24,13 +35,86 @@ pi:
       and closely involved in the wave-optics frameworks and the student
       projects.
 
-# Filled as people are recruited. Until then the site says so rather than
-# showing an empty section.
-current: []
+current:
+  - name: "Han-Gil Choi"
+    url: "https://inspirehep.net/authors/1852430"
+    stage: postdoc
+    role: "Postdoctoral researcher"
+    years: "2026–"
+    topic: "Signatures of low-mass dark-matter halos in LISA through stochastic diffraction."
+
+  - name: "Xikai Shan"
+    url: "https://inspirehep.net/authors/1837042"
+    stage: postdoc
+    role: "Affiliated postdoctoral researcher"
+    location: "based at the AEI, Potsdam"
+    years: "2026–"
+    topic: "Lensing of gravitational waves by stellar fields and effective descriptions of diffraction."
+
+  - name: "Juan Urrutia"
+    url: "https://inspirehep.net/authors/2049477"
+    stage: postdoc
+    role: "Postdoctoral researcher"
+    years: "2026–"
+    incoming: true
+    starts: "October 2026"
+    topic: "Dark-matter halos and diffraction signatures in space-based gravitational-wave data."
+
+  - name: "Héctor Villarrubia-Rojo"
+    url: "https://inspirehep.net/authors/1897475"
+    stage: postdoc
+    role: "Postdoctoral researcher"
+    years: "2026–"
+    incoming: true
+    starts: "October 2026"
+    topic: "Lead developer of the GLoW code; wave-optics methods for gravitational lensing. Previously a Margarita Salas Fellow in the group (2022–2024)."
+
+  - name: "Daniel Ballard"
+    url: "https://inspirehep.net/authors/2648800"
+    stage: postdoc
+    role: "Postdoctoral researcher"
+    years: "2026–"
+    incoming: true
+    starts: "October 2026"
+    topic: "Lens modeling and analysis."
+
+  - name: "Manon van Zyl"
+    stage: phd
+    role: "PhD student"
+    years: "2026–"
+    incoming: true
+    starts: "October 2026"
+    topic: "Tests of gravitational-wave propagation."
+
+  - name: "Emanuela Alberici"
+    stage: phd
+    role: "PhD student"
+    years: "2026–"
+    incoming: true
+    starts: "October 2026"
+    topic: "Searches for lensed gravitational waves, and the data analysis behind them."
+
+  - name: "Pablo Vega del Castillo"
+    stage: masters
+    role: "Master's student, LMU"
+    years: "2026"
+    topic: "Quasi-periodic lensed starlight from supermassive black-hole binaries."
+
+  - name: "Matteo Pagani"
+    stage: masters
+    role: "Master's student, U. Bologna (co-supervised)"
+    years: "2026"
+    topic: "Weak lensing of gravitational waves, and the connection to Euclid."
+
+  - name: "Louis Salimbeni"
+    stage: masters
+    role: "Master's student, ETH Zürich (co-supervised)"
+    years: "2026"
+    topic: "Gravitational-wave propagation beyond general relativity."
 
 collaborators:
   - name: "Dylan Jow"
-    role: "Stanford University"
+    role: "Postdoc, Stanford University"
     wps: ["WP1-B"]
   - name: "Ue-Li Pen"
     role: "CITA and Academia Sinica; PI of BURSTT"

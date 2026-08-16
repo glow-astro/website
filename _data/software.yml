@@ -46,6 +46,60 @@ tools:
       the LIGO–Virgo–KAGRA collaboration.
     repo: "https://github.com/dingo-gw/dingo"
 
+# Companion code and archived data behind individual papers. Distinct from
+# `tools` above: these are frozen products tied to one result, not maintained
+# software.
+#
+# Schema
+#   name     the release, as a reader would search for it
+#   subtitle one line on what it is
+#   paper    {short, url} -- the paper it accompanies
+#   body     what the release contains, and what it does not
+#   links    [{text, url}] -- repository, archive, DOI
+#   doi      optional, the version DOI to cite
+#
+# Only list what is actually public. A repository that is still private, or a
+# Zenodo deposition that is still a draft, does not go here.
+releases:
+  - name: "GW231123 lensing analysis"
+    subtitle: "Companion code and posterior samples"
+    paper:
+      short: "Goyal, Villarrubia-Rojo & Zumalacárregui, arXiv:2512.17631"
+      url: "https://arxiv.org/abs/2512.17631"
+    body: >-
+      The parameter-estimation results behind the analysis of GW231123 as a
+      magnified and diffracted black-hole merger: eleven bilby posterior sets
+      covering every model and waveform combination in the paper — unlensed,
+      isolated point lens, and point lens with external shear closed by an
+      isothermal-sphere macromodel, each for NRSur7dq4, IMRPhenomXPHM and
+      SEOBNRv5PHM. The companion code reproduces the paper's tables and its
+      waveform-systematics figure from the archived record alone. The GW231123
+      strain and power spectral densities are not redistributed; they come from
+      GWOSC.
+    doi: "10.5281/zenodo.21725667"
+    links:
+      - text: "Companion code"
+        url: "https://github.com/miguelzuma/GW231123_lensing_PLS"
+      - text: "Posterior samples on Zenodo"
+        url: "https://doi.org/10.5281/zenodo.21725667"
+
+  - name: "Lens Stochastic Diffraction"
+    subtitle: "Notebooks and forecasts"
+    paper:
+      short: "Zumalacárregui, arXiv:2404.17405"
+      url: "https://arxiv.org/abs/2404.17405"
+    body: >-
+      Lens stochastic diffraction is the Poisson-distributed series of faint
+      repetitions that follows a gravitational-wave event when compact objects
+      along the line of sight produce additional images; the amplitude and
+      time-delay distribution encode the mass and abundance of the lenses. The
+      notebooks compute the time-delay density, draw realizations, and forecast
+      constraints on the compact dark-matter fraction for LVK O4 and O5, the
+      Einstein Telescope and Cosmic Explorer.
+    links:
+      - text: "Notebooks"
+        url: "https://github.com/miguelzuma/lsd-gw-notebooks"
+
 # Commitments about what gets released and when. These are obligations, not
 # aspirations: state only what the project will actually do.
 policy:
