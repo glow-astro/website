@@ -1,7 +1,7 @@
 ---
 layout: page
 nav: science
-title: "The scientific case"
+title: "The science case"
 eyebrow: "Science"
 lede: >-
   Gravitational waves and fast radio bursts are coherent sources. That single
@@ -16,8 +16,6 @@ sections:
     label: "Lensing, again"
   - id: coherence
     label: "Why coherence changes things"
-  - id: topics
-    label: "Topics"
   - id: timing
     label: "Why now"
   - id: goals
@@ -25,6 +23,31 @@ sections:
 ---
 
 {% include topicnav.html %}
+
+{%- comment -%}
+  The diagram sits above the section bar rather than inside a section of its
+  own, so it is the first thing on the page: it is the map of the six topics,
+  and a reader who wants one of them should not have to scroll past the
+  argument to find it. The prose that used to introduce a "Topics" section
+  wraps it here instead, and that section is gone from `sections:` above.
+{%- endcomment -%}
+
+<p>
+  Six topics, each with its own page. The picture places them: along the bottom,
+  what a lensed wave measures at each stage of its journey — the source it came
+  from, the matter it passed, the gravity that carried it. Along the top, what
+  the project builds in order to measure any of it.
+</p>
+
+{% include skymap.html %}
+
+<p>
+  They overlap, and the diagram is arranged to show it rather than to sort it
+  out. Microlensing and dark matter both sit at the lens because both are things
+  the lens is made of; wave optics is the language all three of the bottom-row
+  topics are written in. Where a topic acts is a more useful question than what
+  kind of topic it is.
+</p>
 
 {% include subnav.html %}
 
@@ -82,26 +105,6 @@ sections:
     lensing cannot resolve. This is what makes them a probe of dark matter on
     sub-galactic scales, and of objects too small and too dark to find any other
     way.
-  </p>
-</section>
-
-<section class="section" id="topics" aria-labelledby="topics-heading">
-  <h2 id="topics-heading">Topics</h2>
-  <p class="lede">
-    Six topics, each with its own page. The picture places them: along the
-    bottom, what a lensed wave measures at each stage of its journey — the
-    source it came from, the matter it passed, the gravity that carried it.
-    Along the top, what the project builds in order to measure any of it.
-  </p>
-
-  {% include skymap.html %}
-
-  <p>
-    They overlap, and the diagram is arranged to show it rather than to sort it
-    out. Microlensing and dark matter both sit at the lens because both are
-    things the lens is made of; wave optics is the language all three of the
-    bottom-row topics are written in. Where a topic acts is a more useful
-    question than what kind of topic it is.
   </p>
 </section>
 
