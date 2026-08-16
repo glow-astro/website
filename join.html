@@ -29,8 +29,8 @@ sections:
   <div class="grid grid-2">
     {%- for p in open_positions %}
     <div class="card">
-      <p class="card-title">{{ p.kind }} — {{ p.focus }}</p>
-      <p class="card-meta">{{ p.term }}{% if p.deadline %} · deadline {{ p.deadline }}{% endif %}</p>
+      <p class="card-title">{{ p.title }}</p>
+      <p class="card-meta">{{ p.kind }} · {{ p.term }} · {{ p.focus }}{% if p.deadline %} · deadline {{ p.deadline }}{% endif %}</p>
       <p>{{ p.profile }}</p>
       {%- if p.apply_url %}<p><a href="{{ p.apply_url }}" rel="noopener">Application details</a></p>{% endif %}
     </div>
@@ -58,7 +58,8 @@ sections:
     {%- if p.kind contains "Postdoctoral" %}
     <div class="card" id="{{ p.id }}">
       <p class="eyebrow">{{ p.focus }}</p>
-      <p class="card-title">{{ p.term }}</p>
+      <p class="card-title">{{ p.title }}</p>
+      <p class="card-meta">{{ p.term }}</p>
       <p>{{ p.profile }}</p>
     </div>
     {%- endif %}
@@ -71,7 +72,8 @@ sections:
     {%- if p.kind contains "PhD" %}
     <div class="card" id="{{ p.id }}">
       <p class="eyebrow">{{ p.focus }}</p>
-      <p class="card-title">{{ p.term }}</p>
+      <p class="card-title">{{ p.title }}</p>
+      <p class="card-meta">{{ p.term }}</p>
       <p>{{ p.profile }}</p>
     </div>
     {%- endif %}

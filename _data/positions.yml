@@ -3,6 +3,9 @@
 # Schema
 #   id        anchor
 #   kind      "Postdoctoral researcher" | "PhD student"
+#   title     what the position is about, in three or four words. This is what a
+#             reader scanning the page actually reads, so it carries the subject
+#             -- not the contract length.
 #   term      contract length as written in the Description of Action
 #   focus     the work-package task this position leads
 #   profile   what the person will work on and the background it calls for
@@ -14,6 +17,7 @@
 # "open" before there is something to apply to.
 
 - id: postdoc-microlensing
+  title: "Microlensing methods"
   kind: "Postdoctoral researcher"
   term: "5 years"
   focus: "WP1-A"
@@ -24,6 +28,7 @@
     background and experience in lensing.
 
 - id: postdoc-data-analysis
+  title: "Gravitational-wave data analysis"
   kind: "Postdoctoral researcher"
   term: "4 years"
   focus: "WP2-A"
@@ -34,6 +39,7 @@
     estimation.
 
 - id: postdoc-populations
+  title: "Astrophysics and population modeling"
   kind: "Postdoctoral researcher"
   term: "3 years"
   focus: "WP1-A"
@@ -43,6 +49,7 @@
     Bayesian analysis, and supports the other data-related tasks.
 
 - id: postdoc-dark-matter
+  title: "Dark-matter signatures"
   kind: "Postdoctoral researcher"
   term: "3 years"
   focus: "WP3-A"
@@ -52,6 +59,7 @@
     LISA, and contributes to the gravitational-wave searches.
 
 - id: phd-inference
+  title: "Accelerated inference"
   kind: "PhD student"
   term: "4 years"
   focus: "WP2-B"
@@ -62,6 +70,7 @@
     numerical background.
 
 - id: phd-plasma
+  title: "Plasma lensing"
   kind: "PhD student"
   term: "4 years"
   focus: "WP1-B"
@@ -71,6 +80,7 @@
     propagation. Calls for strong theoretical and analytical skills.
 
 - id: phd-propagation
+  title: "Tests of gravitational-wave propagation"
   kind: "PhD student"
   term: "4 years"
   focus: "WP3-B"
