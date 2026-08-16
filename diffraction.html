@@ -1,0 +1,116 @@
+---
+layout: page
+nav: science
+title: "Diffraction and wave optics"
+eyebrow: "The phenomenon"
+lede: >-
+  When the wavelength is comparable to the scale of the lens, geometric optics fails. The lens stops being a magnifying glass and starts writing a frequency-dependent signature into the wave.
+description: >-
+  Why geometric optics fails for gravitational waves, what the amplification factor is, and which lenses a wave of a given frequency can feel.
+topic_id: diffraction
+sections:
+  - id: what
+    label: "When optics fails"
+  - id: scales
+    label: "Which lenses"
+  - id: computing
+    label: "Computing it"
+---
+
+{%- assign t = site.data.topics | where: "id", page.topic_id | first %}
+
+{% include topic-figure.html topic=t %}
+
+{% include subnav.html %}
+<section class="section" id="what" aria-labelledby="what-heading">
+  <h2 id="what-heading">When a lens stops being a magnifying glass</h2>
+  <p>
+    Light from a distant galaxy reaches us as an incoherent sum of countless
+    independent emissions. A lens in the way can bend it, brighten it, and split
+    it into separate images, but each image is still just a picture: the lens
+    acts like a piece of glass, and the description that works is geometric
+    optics — rays, paths, magnifications.
+  </p>
+  <p>
+    That description holds only while the wavelength is very small compared with
+    everything the lens is made of. Gravitational waves from merging black holes
+    have wavelengths of hundreds to thousands of kilometres, and the waves LISA
+    will observe are larger still. Once the wavelength approaches the scale of
+    the lens, the separate images stop being separate: their wavefronts overlap
+    and interfere, and the result depends on frequency.
+  </p>
+  <p>
+    What the detector records is then the unlensed signal multiplied by an
+    <strong>amplification factor</strong> — a complex, frequency-dependent
+    function that encodes the lens. Its oscillations are the interference
+    between paths; their spacing measures time delays, and their envelope
+    measures how the mass is distributed. This is the quantity everything on
+    this site is ultimately about.
+  </p>
+</section>
+
+<section class="section" id="scales" aria-labelledby="scales-heading">
+  <h2 id="scales-heading">Which lenses a wave can feel</h2>
+  <p>
+    Diffraction sets its own scale. A wave of a given frequency is sensitive to
+    structure within a region around the line of sight — the Fresnel scale —
+    that shrinks as the frequency rises. Mass outside it barely matters; mass
+    inside it contributes coherently.
+  </p>
+  <p>
+    Two consequences follow, and both are why coherent sources are worth the
+    trouble. A single signal probes a <em>range</em> of scales at once, because
+    it spans a range of frequencies. And the scales it reaches are set by the
+    wavelength rather than by any telescope's resolution, which is how a
+    gravitational wave can be sensitive to objects far too small and too dark to
+    image — the subject of
+    <a href="{{ '/dark-matter.html' | relative_url }}">dark matter</a>.
+  </p>
+</section>
+
+<section class="section" id="computing" aria-labelledby="computing-heading">
+  <h2 id="computing-heading">Computing it for a real lens</h2>
+  <p>
+    For a handful of idealized lenses — a point mass, a perfectly symmetric halo
+    — the amplification factor can be written down. Real lenses are neither. A
+    galaxy contains stars, remnants and dark substructure; the integral that
+    gives the amplification factor runs over a potential with singularities in
+    it, and has to be evaluated fast enough to sit inside a parameter-estimation
+    loop that will call it millions of times.
+  </p>
+  <p>
+    Making that tractable for general matter distributions is what the
+    <a href="{{ '/software.html' | relative_url }}">GLoW code</a> does, and
+    extending it to populations of lenses is the central methodological task of
+    the project.
+  </p>
+</section>
+
+<section class="section" id="more" aria-labelledby="more-heading">
+  <h2 id="more-heading">Where this is done</h2>
+  <ul class="roles">
+    <li>
+      <strong>Work packages</strong>
+      <span>
+        {%- for code in t.wps %}
+        <a href="{{ '/work-packages.html#' | append: code | downcase | relative_url }}">{{ code }}</a>
+        {%- unless forloop.last %} &middot; {% endunless %}{% endfor %}
+      </span>
+    </li>
+    {%- if t.papers.size > 0 %}
+    <li>
+      <strong>Papers</strong>
+      <span>
+        {%- for id in t.papers %}
+        {%- assign paper = site.data.publications.papers | where: "arxiv", id | first %}
+        <a href="{{ paper.url }}" rel="noopener">{{ paper.title }}</a>
+        {%- unless forloop.last %} &middot; {% endunless %}{% endfor %}
+      </span>
+    </li>
+    {%- endif %}
+  </ul>
+  <div class="btn-row">
+      <a class="btn" href="{{ '/microlensing.html' | relative_url }}">Microlensing by stellar fields →</a>
+      <a class="btn" href="{{ '/science.html' | relative_url }}">All topics</a>
+  </div>
+</section>

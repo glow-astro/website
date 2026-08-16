@@ -16,13 +16,17 @@ sections:
     label: "Lensing, again"
   - id: coherence
     label: "Why coherence changes things"
+  - id: topics
+    label: "Topics"
   - id: timing
     label: "Why now"
   - id: goals
     label: "What GLOW will deliver"
 ---
 
-<section class="section" aria-labelledby="lensing-heading">
+{% include subnav.html %}
+
+<section class="section" id="lensing" aria-labelledby="lensing-heading">
   <h2 id="lensing-heading">Lensing, again</h2>
   <p>
     Light traveling through the Universe is deflected and magnified by
@@ -40,7 +44,7 @@ sections:
   </p>
 </section>
 
-<section class="section" aria-labelledby="coherence-heading">
+<section class="section" id="coherence" aria-labelledby="coherence-heading">
   <h2 id="coherence-heading">Why coherence changes things</h2>
   <p>
     Gravitational waves and fast radio bursts are phase coherent. Where light
@@ -78,7 +82,31 @@ sections:
   </p>
 </section>
 
-<section class="section" aria-labelledby="timing-heading">
+<section class="section" id="topics" aria-labelledby="topics-heading">
+  <h2 id="topics-heading">Topics</h2>
+  <p class="lede">
+    Four strands of the science, each explaining the phenomenon and showing an
+    animation of what it looks like.
+  </p>
+
+  <div class="grid grid-2">
+    {%- for t in site.data.topics %}
+    <a class="card card-link" href="{{ '/' | append: t.id | append: '.html' | relative_url }}">
+      <p class="eyebrow">{{ t.eyebrow }}</p>
+      <p class="card-title">{{ t.title }}</p>
+      <p>{{ t.blurb }}</p>
+    </a>
+    {%- endfor %}
+  </div>
+
+  <p>
+    Plasma lensing of fast radio bursts is developed in
+    <a href="{{ '/work-packages.html#wp1' | relative_url }}">WP1-B</a>, and will
+    get a topic of its own once there is more to show.
+  </p>
+</section>
+
+<section class="section" id="timing" aria-labelledby="timing-heading">
   <h2 id="timing-heading">Why now</h2>
   <p>
     The observational situation is changing quickly. The LIGO–Virgo–KAGRA
@@ -102,7 +130,7 @@ sections:
   </p>
 </section>
 
-<section class="section" aria-labelledby="goals-heading">
+<section class="section" id="goals" aria-labelledby="goals-heading">
   <h2 id="goals-heading">What GLOW will deliver</h2>
   <p class="lede">
     Three goals, and the methods that have to exist before they can be reached.

@@ -533,6 +533,32 @@ figure.float-left {
 
 .video.embed-4x3 { aspect-ratio: 4 / 3; }
 
+/* Topic-page animation. The renders are not all the same shape -- 3:1 for the
+   sweep families, 16:10 for the birefringence one -- so the ratio comes from
+   each video's own width/height attributes in _data/topics.yml rather than
+   from a rule here. The attributes are what reserves the space before the
+   video loads, which is what keeps the caption from jumping. */
+.topic-figure {
+	margin: 1.6rem 0 2rem;
+}
+
+.topic-figure video {
+	display: block;
+	width: 100%;
+	height: auto;
+	border-radius: var(--radius);
+	border: 1px solid var(--border);
+	background: var(--bg-card);
+}
+
+.topic-figure figcaption {
+	margin-top: 0.7rem;
+	font-size: 0.88rem;
+	line-height: 1.6;
+	color: var(--text-mute);
+	max-width: 68ch;
+}
+
 .audio-embed {
 	width: 100%;
 	height: 200px;

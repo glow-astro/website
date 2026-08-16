@@ -1,0 +1,113 @@
+# Science topics. Drives the cards on science.html and the header of each topic
+# page, so the two can never describe a topic differently.
+#
+# The split this file sits on: a topic page explains the physics -- what the
+# phenomenon is and what it can measure. The work-packages page says what this
+# grant will build and who leads it. Cross-link; do not repeat.
+#
+# Schema
+#   id       slug; the page is <id>.html and the media is media/<id>.{webm,mp4}
+#            plus media/<id>_still.png
+#   title    page title and card title
+#   eyebrow  short kicker
+#   blurb    one or two sentences for the card on the hub
+#   wps      work-package tasks this topic feeds
+#   papers   arXiv ids from publications.yml, for the "read more" line
+#   media    the animation. `width`/`height` are the render's real pixel size,
+#            read off the poster frame -- they are not all the same shape, so
+#            they reserve the right space and stop the caption jumping when the
+#            video loads. `alt` describes it for someone who cannot see it;
+#            `caption` says what it shows and where it came from. `source` is
+#            the repo and family the render came from, so it can be regenerated
+#            -- see ~/code/application_plots/ANIMATIONS.md for the inventory.
+
+- id: diffraction
+  title: "Diffraction and wave optics"
+  eyebrow: "The phenomenon"
+  blurb: >-
+    When the wavelength is comparable to the scale of the lens, geometric optics
+    fails. The lens stops being a magnifying glass and starts writing a
+    frequency-dependent signature into the wave.
+  wps: ["WP1-A"]
+  papers: ["2606.17765"]
+  media:
+    width: 1560
+    height: 520
+    alt: >-
+      Animation: as the source moves closer to a point lens and crosses a
+      caustic, the pattern of images changes and the amplification factor
+      develops oscillations that grow with frequency.
+    caption: >-
+      The impact parameter falls from 2.0 to 0.1 Einstein radii and the source
+      crosses a caustic mid-sweep. As the alignment tightens, the amplification
+      factor acquires the oscillations that are the signature of diffraction.
+    source: "GW231123_independent_analysis, family pls_y"
+
+- id: microlensing
+  title: "Microlensing by stellar fields"
+  eyebrow: "Realistic lenses"
+  blurb: >-
+    A real lens is not one object. Stars and remnants in the lensing galaxy each
+    add their own diffraction, on top of the magnification of the galaxy itself.
+    Modelling that population is what makes a search possible.
+  wps: ["WP1-A", "WP2-A"]
+  papers: ["2606.17765", "2512.17631"]
+  media:
+    width: 1560
+    height: 520
+    alt: >-
+      Animation: as the magnification produced by the host galaxy is increased,
+      the caustic structure around a microlens expands and the distortion it
+      imprints on the signal grows.
+    caption: >-
+      The strength of the external potential increases, taking the macro
+      magnification from 2.5 to 25. A microlens embedded in a more strongly
+      magnified image distorts the signal far more, which is why the environment
+      of the macroimage cannot be separated from the microlensing.
+    source: "GW231123_independent_analysis, family pls_gamma"
+
+- id: dark-matter
+  title: "Dark matter"
+  eyebrow: "What lensing can weigh"
+  blurb: >-
+    Diffraction is sensitive to structure on scales no image can resolve, which
+    makes coherent sources one of the few probes of dark matter below the size
+    of a galaxy.
+  wps: ["WP3-A"]
+  papers: ["2607.11887"]
+  media:
+    width: 1560
+    height: 520
+    alt: >-
+      Animation: as the frequency rises, the Fresnel tube around the line of
+      sight shrinks and the number of dark-matter halos inside it falls from
+      thousands to a handful, while the resulting distortion changes character.
+    caption: >-
+      A frequency sweep from 0.5 mHz to 1 Hz through one realization of 2502
+      dark-matter halos. The Fresnel tube shrinks as the frequency rises, so
+      thousands of halos contribute at low frequency and only a few at high
+      frequency — which is why a single signal probes a range of masses at once.
+    source: "cdm_timbre, family stochastic_diffraction"
+
+- id: testing-gravity
+  title: "Testing gravity and dark energy"
+  eyebrow: "Fundamental physics"
+  blurb: >-
+    A lensed gravitational wave is a controlled experiment in how gravity
+    propagates. Theories that modify it predict distortions no lens made of
+    ordinary matter can produce.
+  wps: ["WP3-B"]
+  papers: []
+  media:
+    width: 1560
+    height: 975
+    alt: >-
+      Animation: a wave passing a screened lens splits into two polarization
+      eigenstates that travel at slightly different speeds, so one pulls ahead
+      of the other and the waveform is scrambled.
+    caption: >-
+      Gravitational-wave birefringence: a screened lens gives two polarization
+      eigenstates slightly different speeds, and one pulls ahead of the other.
+      Over a short enough delay the two copies overlap and the waveform is
+      scrambled rather than repeated.
+    source: "gw_birefringence, family birefringence_scramble"

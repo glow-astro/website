@@ -1,0 +1,112 @@
+---
+layout: page
+nav: science
+title: "Dark matter"
+eyebrow: "What lensing can weigh"
+lede: >-
+  Diffraction is sensitive to structure on scales no image can resolve, which makes coherent sources one of the few probes of dark matter below the size of a galaxy.
+description: >-
+  Diffraction is sensitive to structure no image can resolve, which makes coherent sources a probe of dark matter below the scale of a galaxy.
+topic_id: dark-matter
+sections:
+  - id: problem
+    label: "The problem"
+  - id: probe
+    label: "Why it reaches"
+  - id: targets
+    label: "Targets"
+---
+
+{%- assign t = site.data.topics | where: "id", page.topic_id | first %}
+
+{% include topic-figure.html topic=t %}
+
+{% include subnav.html %}
+<section class="section" id="problem" aria-labelledby="problem-heading">
+  <h2 id="problem-heading">The scales where the problem lives</h2>
+  <p>
+    On large scales, cold dark matter works: the distribution of galaxies and
+    the cosmic microwave background are described by it to remarkable precision.
+    The questions that distinguish between candidates — whether dark matter is a
+    particle, a field, or a population of compact objects — live on much smaller
+    scales, where the predictions of different models diverge and observations
+    run out.
+  </p>
+  <p>
+    The obstacle is that these scales are, by construction, hard to see. Objects
+    below the mass of a dwarf galaxy contain few stars or none at all, and
+    conventional lensing cannot resolve them: an image cannot show structure
+    smaller than the telescope can resolve.
+  </p>
+</section>
+
+<section class="section" id="probe" aria-labelledby="probe-heading">
+  <h2 id="probe-heading">Why diffraction reaches them</h2>
+  <p>
+    Diffraction is not limited by resolution. A wave is sensitive to any mass
+    within the Fresnel scale of its path, and that scale is set by the
+    wavelength, not by an instrument. An object that no telescope could image
+    still leaves a frequency-dependent imprint on a wave that passes it closely
+    enough.
+  </p>
+  <p>
+    The animation shows the mechanism. As the frequency rises, the region around
+    the line of sight that contributes shrinks, and the number of halos inside
+    it falls from thousands to a handful. Low frequencies aggregate the whole
+    population into a collective distortion; high frequencies are shaped by the
+    few objects that remain. One signal therefore carries information about a
+    range of masses, and the way the distortion changes across the band is what
+    distinguishes many light lenses from one heavy one.
+  </p>
+</section>
+
+<section class="section" id="targets" aria-labelledby="targets-heading">
+  <h2 id="targets-heading">What the project is looking for</h2>
+  <p>
+    Two regimes, on different instruments. With ground-based detectors the
+    targets are individual dense objects — the kind predicted by
+    self-interacting and ultra-light dark matter, or by primordial black holes
+    that have accreted a halo — and the immediate task is to distinguish them
+    from stars and stellar remnants, which produce
+    <a href="{{ '/microlensing.html' | relative_url }}">similar signatures</a>
+    and are the dominant astrophysical systematic.
+  </p>
+  <p>
+    With LISA the target is the population itself. Thousands of low-mass halos
+    along the line of sight to a massive black-hole binary leave a collective
+    diffraction imprint whose fluctuations, rather than any individual feature,
+    carry the signal. Making LISA's inference robust to that imprint, and then
+    turning it into a measurement of cold-dark-matter substructure, is one of
+    the project's principal goals.
+  </p>
+</section>
+
+<section class="section" id="more" aria-labelledby="more-heading">
+  <h2 id="more-heading">Where this is done</h2>
+  <ul class="roles">
+    <li>
+      <strong>Work packages</strong>
+      <span>
+        {%- for code in t.wps %}
+        <a href="{{ '/work-packages.html#' | append: code | downcase | relative_url }}">{{ code }}</a>
+        {%- unless forloop.last %} &middot; {% endunless %}{% endfor %}
+      </span>
+    </li>
+    {%- if t.papers.size > 0 %}
+    <li>
+      <strong>Papers</strong>
+      <span>
+        {%- for id in t.papers %}
+        {%- assign paper = site.data.publications.papers | where: "arxiv", id | first %}
+        <a href="{{ paper.url }}" rel="noopener">{{ paper.title }}</a>
+        {%- unless forloop.last %} &middot; {% endunless %}{% endfor %}
+      </span>
+    </li>
+    {%- endif %}
+  </ul>
+  <div class="btn-row">
+      <a class="btn" href="{{ '/microlensing.html' | relative_url }}">← Microlensing by stellar fields</a>
+      <a class="btn" href="{{ '/testing-gravity.html' | relative_url }}">Testing gravity and dark energy →</a>
+      <a class="btn" href="{{ '/science.html' | relative_url }}">All topics</a>
+  </div>
+</section>

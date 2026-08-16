@@ -1,0 +1,110 @@
+---
+layout: page
+nav: science
+title: "Microlensing by stellar fields"
+eyebrow: "Realistic lenses"
+lede: >-
+  A real lens is not one object. Stars and remnants in the lensing galaxy each add their own diffraction, on top of the magnification of the galaxy itself. Modelling that population is what makes a search possible.
+description: >-
+  Stars and remnants in a lensing galaxy each add their own diffraction. How a stochastic population becomes a search for lensed gravitational waves.
+topic_id: microlensing
+sections:
+  - id: population
+    label: "A population"
+  - id: environment
+    label: "Environment"
+  - id: searching
+    label: "Searching"
+---
+
+{%- assign t = site.data.topics | where: "id", page.topic_id | first %}
+
+{% include topic-figure.html topic=t %}
+
+{% include subnav.html %}
+<section class="section" id="population" aria-labelledby="population-heading">
+  <h2 id="population-heading">A lens is a population, not an object</h2>
+  <p>
+    When a gravitational wave is strongly lensed by a galaxy, the galaxy is not
+    the whole story. The image forms somewhere in that galaxy, and that place
+    contains stars, stellar remnants and dark substructure — each one a lens in
+    its own right, each adding its own
+    <a href="{{ '/diffraction.html' | relative_url }}">diffraction</a> to the
+    signal. At the frequencies ground-based detectors observe, the objects that
+    matter most weigh tens to hundreds of solar masses, which makes them rare
+    enough that their number along any given line of sight is a matter of luck.
+  </p>
+  <p>
+    That stochasticity is the defining difficulty. There is no single
+    microlensing waveform to search for, because the answer depends on a
+    particular random arrangement of stars that nobody will ever measure. What
+    can be predicted is the <em>statistics</em>: the distribution of distortions
+    produced by a population of a given density and mass function.
+  </p>
+</section>
+
+<section class="section" id="environment" aria-labelledby="environment-heading">
+  <h2 id="environment-heading">The environment cannot be separated out</h2>
+  <p>
+    A microlens does not act alone either. It sits inside the potential of the
+    host galaxy, which magnifies the image it distorts. The animation above
+    shows why this matters: as the magnification produced by the galaxy rises,
+    the same microlens imprints a far stronger signature. Highly magnified
+    images — the ones most likely to be detected — are also the ones most
+    strongly affected by microlensing.
+  </p>
+  <p>
+    So the macroscopic lens model and the microscopic population have to be
+    fitted together. That is what makes the problem hard, and it is also what
+    makes a detection informative: the distortion measures the environment as
+    well as the objects.
+  </p>
+</section>
+
+<section class="section" id="searching" aria-labelledby="searching-heading">
+  <h2 id="searching-heading">Turning statistics into a search</h2>
+  <p>
+    The route from stochastic physics to a usable search is compression.
+    Simulating many realizations of a stellar field produces many amplification
+    curves; those curves are not arbitrary, and a small number of modes captures
+    almost all of the variation between them. Fitting the coefficients of those
+    modes turns an unpredictable lens into a handful of parameters, and the
+    distribution of coefficients across realizations supplies a physically
+    motivated prior for them.
+  </p>
+  <p>
+    This is the reduced-order model the project's searches are built on. It has
+    already been applied to real data: GW231123 is the first compelling
+    candidate for a magnified and diffracted black-hole merger.
+  </p>
+</section>
+
+<section class="section" id="more" aria-labelledby="more-heading">
+  <h2 id="more-heading">Where this is done</h2>
+  <ul class="roles">
+    <li>
+      <strong>Work packages</strong>
+      <span>
+        {%- for code in t.wps %}
+        <a href="{{ '/work-packages.html#' | append: code | downcase | relative_url }}">{{ code }}</a>
+        {%- unless forloop.last %} &middot; {% endunless %}{% endfor %}
+      </span>
+    </li>
+    {%- if t.papers.size > 0 %}
+    <li>
+      <strong>Papers</strong>
+      <span>
+        {%- for id in t.papers %}
+        {%- assign paper = site.data.publications.papers | where: "arxiv", id | first %}
+        <a href="{{ paper.url }}" rel="noopener">{{ paper.title }}</a>
+        {%- unless forloop.last %} &middot; {% endunless %}{% endfor %}
+      </span>
+    </li>
+    {%- endif %}
+  </ul>
+  <div class="btn-row">
+      <a class="btn" href="{{ '/diffraction.html' | relative_url }}">← Diffraction and wave optics</a>
+      <a class="btn" href="{{ '/dark-matter.html' | relative_url }}">Dark matter →</a>
+      <a class="btn" href="{{ '/science.html' | relative_url }}">All topics</a>
+  </div>
+</section>

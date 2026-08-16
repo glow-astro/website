@@ -1,0 +1,109 @@
+---
+layout: page
+nav: science
+title: "Testing gravity and dark energy"
+eyebrow: "Fundamental physics"
+lede: >-
+  A lensed gravitational wave is a controlled experiment in how gravity propagates. Theories that modify it predict distortions no lens made of ordinary matter can produce.
+description: >-
+  Lensed gravitational waves as a test of how gravity propagates, and what that says about theories of dark energy.
+topic_id: testing-gravity
+sections:
+  - id: why
+    label: "Gravity as experiment"
+  - id: signatures
+    label: "Signatures"
+  - id: cosmology
+    label: "Dark energy"
+---
+
+{%- assign t = site.data.topics | where: "id", page.topic_id | first %}
+
+{% include topic-figure.html topic=t %}
+
+{% include subnav.html %}
+<section class="section" id="why" aria-labelledby="why-heading">
+  <h2 id="why-heading">A lens as an experiment on gravity</h2>
+  <p>
+    Gravitational waves are a direct probe of gravity in a way light is not:
+    they are gravity, propagating. Watching one travel across the Universe and
+    past a lens tests the theory that describes both the propagation and the
+    lensing, in one measurement.
+  </p>
+  <p>
+    The observation that a lensed gravitational wave arrives at all is already
+    weakly informative, but it is not a demanding test — most alternatives to
+    general relativity predict lensing too. The interesting question is whether
+    the wave is distorted in ways that a lens made of ordinary matter cannot
+    produce, obeying general relativity.
+  </p>
+</section>
+
+<section class="section" id="signatures" aria-labelledby="signatures-heading">
+  <h2 id="signatures-heading">Signatures with no conventional counterpart</h2>
+  <p>
+    Theories that modify gravity generally introduce extra fields, and those
+    fields respond to the mass of a lens. A wave passing through the region
+    where a lens has excited such a field need not keep its polarization
+    structure intact.
+  </p>
+  <p>
+    The animation shows one example: <strong>birefringence</strong>. If the two
+    polarization states travel at slightly different speeds, one pulls ahead of
+    the other. When the delay is long, the detector sees an echo; when it is
+    short, the two copies overlap and the waveform is scrambled into something
+    no unlensed source produces. Related effects give the propagation a
+    frequency dependence that ordinary lensing does not.
+  </p>
+  <p>
+    These are qualitatively distinct signatures, not small corrections to a
+    known shape, which is what makes them worth looking for even when the
+    expected effect is small.
+  </p>
+</section>
+
+<section class="section" id="cosmology" aria-labelledby="cosmology-heading">
+  <h2 id="cosmology-heading">Connecting to dark energy</h2>
+  <p>
+    The same extra fields that would modify how a wave propagates past a lens
+    are the ones invoked to explain the accelerating expansion of the Universe.
+    A constraint on gravitational-wave propagation is therefore a constraint on
+    dark-energy theories, and it applies where cosmological observations are
+    weakest — on the scales of individual lenses rather than of the Universe as
+    a whole.
+  </p>
+  <p>
+    The project will release these constraints as likelihoods usable with
+    Einstein–Boltzmann solvers, so that they can be combined with cosmological
+    data rather than quoted beside it.
+  </p>
+</section>
+
+<section class="section" id="more" aria-labelledby="more-heading">
+  <h2 id="more-heading">Where this is done</h2>
+  <ul class="roles">
+    <li>
+      <strong>Work packages</strong>
+      <span>
+        {%- for code in t.wps %}
+        <a href="{{ '/work-packages.html#' | append: code | downcase | relative_url }}">{{ code }}</a>
+        {%- unless forloop.last %} &middot; {% endunless %}{% endfor %}
+      </span>
+    </li>
+    {%- if t.papers.size > 0 %}
+    <li>
+      <strong>Papers</strong>
+      <span>
+        {%- for id in t.papers %}
+        {%- assign paper = site.data.publications.papers | where: "arxiv", id | first %}
+        <a href="{{ paper.url }}" rel="noopener">{{ paper.title }}</a>
+        {%- unless forloop.last %} &middot; {% endunless %}{% endfor %}
+      </span>
+    </li>
+    {%- endif %}
+  </ul>
+  <div class="btn-row">
+      <a class="btn" href="{{ '/dark-matter.html' | relative_url }}">← Dark matter</a>
+      <a class="btn" href="{{ '/science.html' | relative_url }}">All topics</a>
+  </div>
+</section>

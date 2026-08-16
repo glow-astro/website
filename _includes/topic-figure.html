@@ -1,0 +1,28 @@
+{%- comment -%}
+  The animation at the head of a topic page. Pass a topic from _data/topics.yml:
+
+      {% include topic-figure.html topic=t %}
+
+  Autoplay needs `muted` -- browsers block autoplay of anything that could make
+  noise -- and `playsinline` stops iOS Safari hijacking it into fullscreen. The
+  poster is what a reader sees while the video loads, and what they keep if it
+  never does, so it is a real frame rather than a placeholder.
+
+  There are no controls by default: these are short seamless loops, not clips
+  anyone needs to scrub. Readers who ask for reduced motion get controls and a
+  paused first frame instead -- see assets/js/reduced-motion.js.
+
+  `aria-label` describes the motion for someone who cannot see it; the caption
+  below says what it means. The two are different jobs and neither replaces the
+  other.
+{%- endcomment -%}
+{%- assign t = include.topic -%}
+<figure class="topic-figure">
+  <video width="{{ t.media.width }}" height="{{ t.media.height }}" autoplay muted loop playsinline
+         poster="{{ '/media/' | append: t.id | append: '_still.png' | relative_url }}"
+         aria-label="{{ t.media.alt | strip_newlines | strip }}">
+    <source src="{{ '/media/' | append: t.id | append: '.webm' | relative_url }}" type="video/webm">
+    <source src="{{ '/media/' | append: t.id | append: '.mp4' | relative_url }}" type="video/mp4">
+  </video>
+  <figcaption>{{ t.media.caption }}</figcaption>
+</figure>
