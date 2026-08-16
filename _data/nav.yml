@@ -1,0 +1,25 @@
+# Site navigation. Each `id` matches a page's `nav:` front-matter key, which is
+# how the active link is marked with aria-current.
+- id: science
+  title: "Science"
+  url: "/science.html"
+
+- id: work-packages
+  title: "Work packages"
+  url: "/work-packages.html"
+
+- id: team
+  title: "Team"
+  url: "/team.html"
+
+- id: software
+  title: "Software & data"
+  url: "/software.html"
+
+- id: join
+  title: "Join"
+  url: "/join.html"
+
+- id: contact
+  title: "Contact"
+  url: "/contact.html"

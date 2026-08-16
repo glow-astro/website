@@ -1,0 +1,55 @@
+# Software and data products of the project.
+#
+# GLoW, lowercase "o", is the code. GLOW is the project. Keep them apart.
+#
+# Schema
+#   name, subtitle, logo, logo_alt
+#   purpose      what it does, in prose
+#   status       "public" | "in development" | "planned"
+#   wps          work packages that develop or use it
+#   repo, docs   optional URLs
+#   papers       optional [{short, url}]
+#   contributors optional string
+
+tools:
+  - name: "GLoW"
+    subtitle: "Gravitational Lensing of Waves"
+    logo: "/imgs/GLoW_Code_Extended_Logo_Full_Color_for_Dark_Backgrounds_RBG.png"
+    logo_alt: ""
+    status: public
+    wps: ["WP1-A", "WP2-A", "WP3-A"]
+    purpose: >-
+      GLoW computes the amplification factor for gravitational waves propagating
+      through a gravitational lens, in the wave-optics regime where diffraction
+      and interference matter. It handles general matter distributions — not only
+      the handful of symmetric lenses with closed-form solutions — by combining
+      contour-integration and time-domain methods with careful treatment of the
+      singular Fermat potential, and it is fast enough to sit inside a
+      parameter-estimation loop. The project will extend it to populations of
+      microlenses, which is the central methodological development of WP1-A.
+    repo: "https://github.com/miguelzuma/GLoW_public"
+    docs: "https://miguelzuma.github.io/GLoW_public/index.html"
+    papers:
+      - short: "Villarrubia-Rojo et al., arXiv:2409.04606"
+        url: "https://inspirehep.net/literature/2826315"
+    contributors: "Héctor Villarrubia-Rojo (lead developer), Stefano Savastano, Lyla Choi, Srashti Goyal, Liang Dai, Giovanni Tambalo, Miguel Zumalacárregui."
+
+  - name: "DINGO for lensed signals"
+    subtitle: "Machine-learning inference"
+    status: in development
+    wps: ["WP2-B"]
+    purpose: >-
+      Lensing enlarges the parameter space of a gravitational-wave signal at the
+      same time as the number of detections is growing. Simulation-based
+      inference built on DINGO makes joint and low-latency lensing analyses
+      tractable. Validation for low-latency alerts is carried out together with
+      the LIGO–Virgo–KAGRA collaboration.
+    repo: "https://github.com/dingo-gw/dingo"
+
+# Commitments about what gets released and when. These are obligations, not
+# aspirations: state only what the project will actually do.
+policy:
+  - "Software developed by the project is released publicly, under an open licence."
+  - "Analyses are demonstrated on publicly available catalogs, so that they can be reproduced independently."
+  - "Constraints on dark-matter objects are contributed to the community repository of extended-object limits."
+  - "Likelihoods for gravitational-wave propagation are released in a form usable with Einstein–Boltzmann solvers."

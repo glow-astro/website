@@ -1,0 +1,82 @@
+{%- comment -%}
+  Per-page metadata. Pages set `title`, `description` and (optionally)
+  `og_image` in their front matter; sensible site-wide fallbacks apply.
+{%- endcomment -%}
+{%- assign page_title = page.title | default: site.title -%}
+{%- if page.nav == "home" -%}
+  {%- assign full_title = "GLOW | Gravitational Lensing of Waves" -%}
+{%- else -%}
+  {%- assign full_title = page_title | append: " | GLOW" -%}
+{%- endif -%}
+{%- assign page_desc = page.description | default: site.description -%}
+{%- assign canonical = page.url | replace: "index.html", "" | absolute_url -%}
+{%- assign share_image = page.og_image | default: site.og_image | absolute_url -%}
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ full_title }}</title>
+<meta name="description" content="{{ page_desc | strip_newlines | strip }}">
+<link rel="canonical" href="{{ canonical }}">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{{ site.title }} — {{ site.tagline }}">
+<meta property="og:title" content="{{ full_title }}">
+<meta property="og:description" content="{{ page_desc | strip_newlines | strip }}">
+<meta property="og:url" content="{{ canonical }}">
+<meta property="og:image" content="{{ share_image }}">
+<meta property="og:locale" content="en_US">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ full_title }}">
+<meta name="twitter:description" content="{{ page_desc | strip_newlines | strip }}">
+<meta name="twitter:image" content="{{ share_image }}">
+
+<link rel="icon" type="image/svg+xml" href="{{ '/favicon.svg' | relative_url }}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ '/favicon-32.png' | relative_url }}">
+<link rel="apple-touch-icon" href="{{ '/apple-touch-icon.png' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+
+{%- if page.nav == "home" %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "{{ site.url }}/#website",
+      "url": "{{ site.url }}/",
+      "name": {{ site.title | jsonify }},
+      "description": {{ site.description | strip_newlines | strip | jsonify }},
+      "inLanguage": "en"
+    },
+    {
+      "@type": "ResearchProject",
+      "@id": "{{ site.url }}/#project",
+      "name": {{ site.project.title | jsonify }},
+      "alternateName": {{ site.project.acronym | jsonify }},
+      "description": {{ site.description | strip_newlines | strip | jsonify }},
+      "url": "{{ site.url }}/",
+      "identifier": {{ site.project.grant_number | jsonify }},
+      "sameAs": [ {{ site.project.cordis | jsonify }} ],
+      "funding": {
+        "@type": "Grant",
+        "identifier": {{ site.project.grant_number | jsonify }},
+        "name": {{ site.project.scheme | jsonify }},
+        "url": {{ site.project.cordis | jsonify }},
+        "funder": {
+          "@type": "Organization",
+          "name": "European Research Council",
+          "url": "https://erc.europa.eu/"
+        }
+      },
+      "member": {
+        "@type": "Person",
+        "name": {{ site.pi.name | jsonify }},
+        "identifier": "{{ site.pi.orcid_url }}",
+        "url": "{{ site.pi.site }}"
+      }
+    }
+  ]
+}
+</script>
+{%- endif %}

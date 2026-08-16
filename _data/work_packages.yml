@@ -1,0 +1,117 @@
+# The three work packages, as set out in the Description of Action.
+#
+# Schema
+#   id       anchor on work-packages.html; also used by team.yml assignments
+#   code     "WP1" etc., shown as the card eyebrow
+#   title    short title
+#   lede     one or two sentences: what the work package is for
+#   tasks    the lettered tasks. Each has:
+#              code     "WP1-A"
+#              title    short title
+#              body     what the task does. Prose, no markup.
+#              outputs  optional list of concrete deliverables
+#   partners optional list of named external collaborators, as "Name (Institution)"
+
+- id: wp1
+  code: "WP1"
+  title: "Wave-optics theory"
+  lede: >-
+    The theory and numerical methods for wave-optics lensing: diffraction by
+    populations of microlenses, and lensing by ionized plasma. Everything the
+    other two work packages need in order to model a realistic lens.
+  tasks:
+    - code: "WP1-A"
+      title: "Microlensing diffraction"
+      body: >-
+        Quantify how populations of microlenses and the external potential of a
+        host galaxy — magnification, proximity to caustics — shape a lensed
+        signal. Reaching the required performance means substantially extending
+        the public GLoW code: a two-dimensional tree algorithm for the lensing
+        potential and its derivatives, which improves the scaling with the number
+        of microlenses from the number of stars to its logarithm; contour
+        integration combined with adaptive brute-force sampling near the
+        macroimage; and optional GPU support. Semi-analytical approximations,
+        separating the contributions of heavy, intermediate and light microlenses,
+        provide both speed and insight. Results will be cross-validated against
+        independent codes.
+      outputs:
+        - "Public microlensing extension of the GLoW code"
+        - "Cross-validation against independent wave-optics codes"
+    - code: "WP1-B"
+      title: "Plasma lensing"
+      body: >-
+        Extend the framework to lensing by ionized matter, including the
+        multi-plane case. Plasma lensing is chromatic in its own right and is the
+        route by which fast radio bursts probe otherwise elusive baryonic matter,
+        with applications to pulsar timing and the interstellar medium.
+      partners:
+        - "Dylan Jow (Stanford)"
+        - "Ue-Li Pen (CITA, Academia Sinica; PI of BURSTT)"
+
+- id: wp2
+  code: "WP2"
+  title: "Discovery and interpretation of lensed gravitational waves"
+  lede: >-
+    Turning the theory into a search. Waveform models that carry a microlensing
+    signature, population-level analyses, and inference fast enough to keep up
+    with the detectors.
+  tasks:
+    - code: "WP2-A"
+      title: "Microlensing searches"
+      body: >-
+        Search for lensing signatures in gravitational-wave data through
+        microlensed waveforms and through population analyses with astrophysical
+        priors. The waveform models parameterize the amplification factor — the
+        ratio of the diffracted to the unlensed waveform in the frequency domain
+        — in a basis of functions whose coefficients are fitted to data, so that
+        microlensing significance follows from their posteriors. Because
+        microlensing is stochastic, the models target macroscopic quantities: the
+        density and mass function of the lenses and the external potential. The
+        low-density limit, where each lens contributes at least one image or
+        wave-optics feature, admits semi-analytical predictions and can be
+        validated directly against the public GLoW code.
+      outputs:
+        - "Microlensed waveform models tested against public LVK catalogs"
+        - "Analysis of subthreshold triggers, where diffraction can suppress significance"
+    - code: "WP2-B"
+      title: "Accelerated inference"
+      body: >-
+        Lensing analyses multiply the parameter space, and the number of events
+        is growing. Machine-learning inference — building on DINGO — makes joint
+        and low-latency analyses tractable, including validation with the
+        LIGO–Virgo–KAGRA collaboration for low-latency alerts.
+
+- id: wp3
+  code: "WP3"
+  title: "Fundamental physics"
+  lede: >-
+    What lensed coherent sources reveal about the constituents of the Universe:
+    the small-scale distribution of dark matter, and the behaviour of
+    gravitational waves as they propagate.
+  tasks:
+    - code: "WP3-A"
+      title: "Dark-matter searches"
+      body: >-
+        Characterize diffraction by dark-matter objects and subhalos, and produce
+        lensing constraints from available data. The targets are well-motivated
+        scenarios that predict dense objects — self-interacting and ultra-light
+        dark matter, dressed primordial black holes — including the effects of
+        ellipticity and of the external potential. Increasing the density of
+        objects brings in collective effects, which is what determines whether
+        extended dark-matter objects can be distinguished from stars and stellar
+        remnants: the main astrophysical systematic for ground-based detectors.
+        Results also translate into limits on the primordial power spectrum. For
+        LISA, the work is twofold: making inference robust to enhanced dark-matter
+        substructure, and devising a strategy to detect diffraction by cold
+        dark-matter subhalos.
+      outputs:
+        - "Lensing constraints on dark-matter objects from current data"
+        - "Entries in the community repository of extended dark-matter object limits"
+    - code: "WP3-B"
+      title: "Gravity and dark energy"
+      body: >-
+        Test gravitational-wave propagation on inhomogeneous space-times and
+        confront dark-energy theories with lensed signals. Lensed propagation
+        offers tests of general relativity that go well beyond confirming that
+        lensing happens at all. The resulting likelihoods will be released in a
+        form usable with Einstein–Boltzmann solvers.

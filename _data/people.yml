@@ -1,0 +1,37 @@
+# People on the project.
+#
+# Schema
+#   name    full name
+#   role    "Role, Institution" -- see docs/SITE_CONVENTIONS.md section 8 for
+#           how relationships are described. Never the possessive.
+#   wps     list of work-package task codes this person works on
+#   url     optional personal page
+#   orcid   optional
+#   bio     optional short paragraph
+#
+# Groups: `pi`, `current` (hired), `collaborators` (named external partners who
+# are not paid from the grant).
+
+pi:
+  - name: "Miguel Zumalacárregui"
+    role: "Principal Investigator"
+    wps: ["WP2-A", "WP3-A"]
+    url: "https://miguelzuma.github.io/"
+    orcid: "0000-0002-9943-6490"
+    bio: >-
+      Leads the project and oversees all work packages, working directly on
+      microlensed waveform models and on the theory of dark-matter diffraction,
+      and closely involved in the wave-optics frameworks and the student
+      projects.
+
+# Filled as people are recruited. Until then the site says so rather than
+# showing an empty section.
+current: []
+
+collaborators:
+  - name: "Dylan Jow"
+    role: "Stanford University"
+    wps: ["WP1-B"]
+  - name: "Ue-Li Pen"
+    role: "CITA and Academia Sinica; PI of BURSTT"
+    wps: ["WP1-B"]

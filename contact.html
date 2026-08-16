@@ -1,0 +1,55 @@
+---
+layout: page
+nav: contact
+title: "Contact"
+eyebrow: "Contact"
+lede: >-
+  Enquiries about the science, about positions, or about using the project's
+  software.
+description: >-
+  How to contact the GLOW project: the Principal Investigator, the host
+  institution, and where the project's software is maintained.
+---
+
+<section class="section" aria-labelledby="pi-heading">
+  <h2 id="pi-heading">Principal Investigator</h2>
+  <div class="card">
+    <p class="card-title"><a href="{{ site.pi.site }}" rel="noopener">{{ site.pi.name }}</a></p>
+    <p class="card-meta">ORCID <a href="{{ site.pi.orcid_url }}" rel="noopener">{{ site.pi.orcid }}</a></p>
+    <p><a href="mailto:{{ site.pi.email }}">{{ site.pi.email }}</a></p>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="where-heading">
+  <h2 id="where-heading">Where the project is based</h2>
+  <div class="grid grid-2">
+    <div class="card">
+      <p class="card-meta">Host institution</p>
+      <p class="card-title"><a href="{{ site.host.institute_url }}" rel="noopener">{{ site.host.institute }}</a></p>
+      <p>{{ site.host.address }}</p>
+    </div>
+    <div class="card">
+      <p class="card-meta">Partner institution</p>
+      <p class="card-title"><a href="{{ site.partner.url }}" rel="noopener">{{ site.partner.name }}</a></p>
+      <p>{{ site.partner.address }}</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="elsewhere-heading">
+  <h2 id="elsewhere-heading">Elsewhere</h2>
+  <ul class="roles">
+    <li>
+      <strong>Project record</strong>
+      <span><a href="{{ site.project.cordis }}" rel="noopener">CORDIS, grant agreement {{ site.project.grant_number }}</a></span>
+    </li>
+    <li>
+      <strong>Software</strong>
+      <span><a href="https://github.com/miguelzuma/GLoW_public" rel="noopener">The GLoW code on GitHub</a></span>
+    </li>
+    <li>
+      <strong>Publications</strong>
+      <span><a href="{{ site.pi.inspire }}" rel="noopener">INSPIRE-HEP</a></span>
+    </li>
+  </ul>
+</section>

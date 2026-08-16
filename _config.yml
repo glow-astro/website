@@ -1,0 +1,90 @@
+title: "GLOW"
+tagline: "Gravitational Lensing of Waves"
+description: >-
+  GLOW is an ERC Consolidator Grant project developing the theory, methods and
+  software to identify and interpret wave-optics lensing of gravitational waves
+  and fast radio bursts.
+
+# The site is built to be served at the root of its own domain. On GitHub Pages
+# this means an organisation page repository (<org>.github.io), which keeps
+# baseurl empty and every internal link a plain absolute path.
+url: "https://glow-erc.github.io"
+baseurl: ""
+lang: en
+
+# The ERC project. Note the capitalisation: GLOW is this project, GLoW (lowercase
+# "o") is the software. The distinction is load-bearing -- see _data/software.yml.
+project:
+  acronym: "GLOW"
+  title: "Gravitational Lensing of Waves"
+  grant_number: "101230608"
+  call: "ERC-2025-COG"
+  scheme: "European Research Council Consolidator Grant"
+  duration: "60 months"
+  start: "2026"
+  end: "2031"
+  cordis: "https://cordis.europa.eu/project/id/101230608"
+
+pi:
+  name: "Miguel Zumalacárregui"
+  email: "miguel.zumalacarregui@aei.mpg.de"
+  orcid: "0000-0002-9943-6490"
+  orcid_url: "https://orcid.org/0000-0002-9943-6490"
+  inspire: "https://inspirehep.net/authors/1113379"
+  site: "https://miguelzuma.github.io/"
+  github: "https://github.com/miguelzuma"
+
+# Host institution of the grant. TODO(confirm): the DoA cover page names CSIC,
+# while the DoA methodology section describes the team integrating into the AEI,
+# and the ERC folder contains a host-institution change. Both are listed until
+# this is settled; every page that names an affiliation reads from here.
+host:
+  name: "Consejo Superior de Investigaciones Científicas (CSIC)"
+  short: "CSIC"
+  url: "https://www.csic.es/"
+  institute: "Instituto de Física Teórica IFT-UAM/CSIC"
+  institute_short: "IFT Madrid"
+  institute_url: "https://www.ift.uam-csic.es/"
+  address: "C/ Nicolás Cabrera 13-15, Campus de Cantoblanco, 28049 Madrid, Spain"
+
+partner:
+  name: "Max Planck Institute for Gravitational Physics (Albert Einstein Institute)"
+  short: "AEI Potsdam"
+  url: "https://www.aei.mpg.de/"
+  address: "Am Mühlenberg 1, 14476 Potsdam, Germany"
+
+# Horizon Europe communication obligations. The emblem must appear with the
+# words "Funded by the European Union"; the disclaimer must accompany it.
+# The file below is the white wordmark variant, which is what the emblem rules
+# require on a dark background -- the official "dark" file ships a navy
+# wordmark that is illegible here.
+eu:
+  emblem: "/imgs/erc_eu_funding_dark.png"
+  emblem_alt: "Funded by the European Union — European Research Council"
+  statement: >-
+    Funded by the European Union. Views and opinions expressed are however those
+    of the author(s) only and do not necessarily reflect those of the European
+    Union or the European Research Council Executive Agency. Neither the European
+    Union nor the granting authority can be held responsible for them.
+
+og_image: "/imgs/GLOW_Extended_Logo_Full_Color_for_Dark_Backgrounds_RGB.png"
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+sass:
+  style: compressed
+
+plugins:
+  - jekyll-sitemap
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .jekyll-cache
+  - tools
+  - docs

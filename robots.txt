@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://miguelzuma.github.io/sitemap.xml

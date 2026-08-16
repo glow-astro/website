@@ -1,0 +1,24 @@
+---
+layout: page
+title: "Page not found"
+eyebrow: "Error 404"
+lede: "That page does not exist."
+sitemap: false
+description: "The requested page could not be found."
+---
+
+<p>Try one of these instead:</p>
+
+<div class="grid grid-2">
+  {%- for item in site.data.nav %}
+  <a class="card card-link" href="{{ item.url | relative_url }}">
+    <p class="card-title">{{ item.title }}</p>
+  </a>
+  {%- endfor %}
+</div>
+
+<p>
+  The project record is on
+  <a href="{{ site.project.cordis }}" rel="noopener">CORDIS</a>, and the
+  publication record on <a href="{{ site.pi.inspire }}" rel="noopener">INSPIRE-HEP</a>.
+</p>

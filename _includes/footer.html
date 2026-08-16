@@ -1,0 +1,57 @@
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+
+      <div>
+        <h2>The project</h2>
+        <ul>
+          <li><a href="{{ '/science.html' | relative_url }}">Scientific case</a></li>
+          <li><a href="{{ '/work-packages.html' | relative_url }}">Work packages</a></li>
+          <li><a href="{{ '/software.html' | relative_url }}">Software &amp; data</a></li>
+          <li><a href="{{ site.project.cordis }}" rel="noopener">CORDIS record</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>People</h2>
+        <ul>
+          <li><a href="{{ '/team.html' | relative_url }}">Team</a></li>
+          <li><a href="{{ '/join.html' | relative_url }}">Open positions</a></li>
+          <li><a href="{{ site.pi.site }}" rel="noopener">{{ site.pi.name }}</a></li>
+          <li><a href="mailto:{{ site.pi.email }}">{{ site.pi.email }}</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>Host</h2>
+        <ul>
+          <li><a href="{{ site.host.institute_url }}" rel="noopener">{{ site.host.institute }}</a></li>
+          <li><a href="{{ site.partner.url }}" rel="noopener">{{ site.partner.short }}</a></li>
+          <li><a href="{{ '/contact.html' | relative_url }}">Contact</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    {%- comment -%}
+      Horizon Europe communication obligation. The emblem and the words "Funded
+      by the European Union" must appear together, accompanied by the disclaimer.
+      Both come from _config.yml so they cannot drift between pages.
+    {%- endcomment -%}
+    <div class="eu-funding">
+      <img src="{{ site.eu.emblem | relative_url }}" alt="{{ site.eu.emblem_alt }}" width="260" height="55">
+      <p>
+        {{ site.eu.statement }}
+        Grant agreement No&nbsp;{{ site.project.grant_number }}.
+      </p>
+    </div>
+
+    <div class="footer-note">
+      <p>
+        <strong>GLOW</strong> is this ERC project; <strong>GLoW</strong>, with a
+        lowercase&nbsp;“o”, is the <a href="{{ '/software.html' | relative_url }}">software</a>
+        the project develops. The project logo was designed by Ana Carvalho.
+      </p>
+    </div>
+  </div>
+</footer>

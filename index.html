@@ -1,0 +1,130 @@
+---
+layout: default
+nav: home
+title: "Home"
+description: >-
+  GLOW is an ERC Consolidator Grant project developing the theory, methods and
+  software to identify and interpret wave-optics lensing of gravitational waves
+  and fast radio bursts, and to use it to probe dark matter, distant sources and
+  gravity itself.
+---
+
+<div class="wrap">
+
+  <!-- ============ Hero ============ -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <div>
+      <h1 id="hero-heading">Gravitational Lensing of Waves</h1>
+      <p class="hero-title">An ERC Consolidator Grant project · {{ site.project.start }}–{{ site.project.end }}</p>
+      <p>
+        Gravitational waves and fast radio bursts are coherent: their phase
+        survives the journey across the Universe. A lens in the way does not
+        simply magnify them, it distorts their wavefront, leaving a
+        frequency-dependent imprint of the matter it is made of. GLOW builds the
+        theory, the methods and the software to read that imprint — and uses it
+        to find lensed events, to weigh dark matter on scales nothing else
+        reaches, and to test how gravity propagates.
+      </p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="{{ '/science.html' | relative_url }}">The scientific case</a>
+        <a class="btn" href="{{ '/work-packages.html' | relative_url }}">Work packages</a>
+        <a class="btn" href="{{ '/join.html' | relative_url }}">Join the project</a>
+      </div>
+    </div>
+    <div class="hero-media">
+      <img class="hero-logo" src="{{ '/imgs/GLOW_Extended_Logo_Full_Color_for_Dark_Backgrounds_RGB.png' | relative_url }}"
+           alt="" width="6250" height="3064">
+    </div>
+  </section>
+
+  <!-- ============ Objectives ============ -->
+  <section class="section" aria-labelledby="objectives-heading">
+    <h2 id="objectives-heading">What the project sets out to do</h2>
+    <ul class="roles">
+      <li>
+        <strong>Discover lensed gravitational waves</strong>
+        <span>Including sources at high redshift and near supermassive black holes</span>
+      </li>
+      <li>
+        <strong>Probe dark-matter objects, gravity and dark energy</strong>
+        <span>Using diffraction as a probe of structure on sub-galactic scales</span>
+      </li>
+      <li>
+        <strong>Be ready for what is coming</strong>
+        <span>Upcoming fast-radio-burst surveys, next-generation detectors, LISA, and multi-messenger follow-up</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ============ News ============
+       From _data/news.yml, newest first. The "New" flag is driven by the item's
+       own date against FRESH_DAYS below, so it expires by itself at the next
+       site build — which for GitHub Pages means the next push. -->
+  {%- assign FRESH_DAYS = 90 %}
+  {%- assign fresh_window = FRESH_DAYS | times: 86400 %}
+  {%- assign fresh_after = site.time | date: '%s' | plus: 0 | minus: fresh_window %}
+  {%- assign news = site.data.news | sort: 'date' | reverse %}
+  <section class="section" aria-labelledby="news-heading">
+    <h2 id="news-heading">News</h2>
+    <ul class="news">
+      {%- for n in news limit: 4 %}
+      {%- assign stamp = n.date | date: '%s' | plus: 0 %}
+      <li>
+        <time class="news-date" datetime="{{ n.date | date: '%Y-%m' }}">{{ n.date | date: '%b %Y' }}</time>
+        <p class="news-body">
+          {%- if stamp > fresh_after %}<span class="news-flag">New</span>{% endif -%}
+          {{ n.text }}
+          {%- if n.links %}
+          <span class="news-links">
+            {%- for l in n.links %}<a href="{{ l.url }}" rel="noopener">{{ l.text }}</a>{% unless forloop.last %} &middot; {% endunless %}{% endfor -%}
+          </span>
+          {%- endif %}
+        </p>
+      </li>
+      {%- endfor %}
+    </ul>
+  </section>
+
+  <!-- ============ Work packages ============ -->
+  <section class="section" aria-labelledby="wp-heading">
+    <h2 id="wp-heading">Work packages</h2>
+    <p class="lede">
+      Three work packages: the theory of wave-optics lensing, the search for
+      lensed gravitational waves, and what the results say about the contents of
+      the Universe.
+    </p>
+
+    <div class="grid grid-2">
+      {%- for wp in site.data.work_packages %}
+      <a class="card card-link" href="{{ '/work-packages.html#' | append: wp.id | relative_url }}">
+        <p class="eyebrow">{{ wp.code }}</p>
+        <p class="card-title">{{ wp.title }}</p>
+        <p>{{ wp.lede }}</p>
+      </a>
+      {%- endfor %}
+    </div>
+  </section>
+
+  <!-- ============ Project facts ============ -->
+  <section class="section" aria-labelledby="facts-heading">
+    <h2 id="facts-heading">The grant</h2>
+    <div class="card">
+      <ul class="roles">
+        <li>
+          <strong>{{ site.project.scheme }}</strong>
+          <span>Call {{ site.project.call }} · grant agreement {{ site.project.grant_number }} · {{ site.project.duration }}</span>
+        </li>
+        <li>
+          <strong>Principal Investigator</strong>
+          <span><a href="{{ site.pi.site }}" rel="noopener">{{ site.pi.name }}</a></span>
+        </li>
+        <li>
+          <strong>Host institution</strong>
+          <span><a href="{{ site.host.institute_url }}" rel="noopener">{{ site.host.institute }}</a></span>
+        </li>
+      </ul>
+      <p><a href="{{ site.project.cordis }}" rel="noopener">Project record on CORDIS</a></p>
+    </div>
+  </section>
+
+</div>

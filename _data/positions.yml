@@ -1,0 +1,80 @@
+# Positions funded by the grant.
+#
+# Schema
+#   id        anchor
+#   kind      "Postdoctoral researcher" | "PhD student"
+#   term      contract length as written in the Description of Action
+#   focus     the work-package task this position leads
+#   profile   what the person will work on and the background it calls for
+#   status    "planned" | "open" | "filled"
+#   deadline  optional, only meaningful when status is "open"
+#   apply_url optional, only meaningful when status is "open"
+#
+# A position stays `planned` until a call is actually advertised. Do not write
+# "open" before there is something to apply to.
+
+- id: postdoc-microlensing
+  kind: "Postdoctoral researcher"
+  term: "5 years"
+  focus: "WP1-A"
+  status: planned
+  profile: >-
+    Leads the development of microlensing methods, and contributes to the
+    microlensing searches and to plasma lensing. Calls for a strong computational
+    background and experience in lensing.
+
+- id: postdoc-data-analysis
+  kind: "Postdoctoral researcher"
+  term: "4 years"
+  focus: "WP2-A"
+  status: planned
+  profile: >-
+    Leads the data-analysis side of the microlensing searches, and supports the
+    other data-related tasks. Calls for expertise in gravitational-wave parameter
+    estimation.
+
+- id: postdoc-populations
+  kind: "Postdoctoral researcher"
+  term: "3 years"
+  focus: "WP1-A"
+  status: planned
+  profile: >-
+    Works on astrophysics and population modeling, with a specialization in
+    Bayesian analysis, and supports the other data-related tasks.
+
+- id: postdoc-dark-matter
+  kind: "Postdoctoral researcher"
+  term: "3 years"
+  focus: "WP3-A"
+  status: planned
+  profile: >-
+    Works on dark-matter signatures, in particular phenomenological models for
+    LISA, and contributes to the gravitational-wave searches.
+
+- id: phd-inference
+  kind: "PhD student"
+  term: "4 years"
+  focus: "WP2-B"
+  status: planned
+  profile: >-
+    A thesis on accelerated parameter estimation for lensing, with contributions
+    to the microlensing searches and to dark-matter work. Calls for a strong
+    numerical background.
+
+- id: phd-plasma
+  kind: "PhD student"
+  term: "4 years"
+  focus: "WP1-B"
+  status: planned
+  profile: >-
+    Develops plasma lensing and contributes to tests of gravitational-wave
+    propagation. Calls for strong theoretical and analytical skills.
+
+- id: phd-propagation
+  kind: "PhD student"
+  term: "4 years"
+  focus: "WP3-B"
+  status: planned
+  profile: >-
+    A thesis on testing gravitational-wave propagation, developing data-analysis
+    skills alongside a theoretical background.
