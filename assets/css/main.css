@@ -999,11 +999,13 @@ h2 + .stage-heading { margin-top: 1.2rem; }
 /* ---- In-page section navigation -------------------------------------- */
 
 /* Fallbacks: subnav.js measures both and overrides them. */
-:root { --header-h: 54px; --subnav-h: 44px; }
+:root { --header-h: 54px; --topicnav-h: 0px; --subnav-h: 44px; }
 
 .subnav {
 	position: sticky;
-	top: var(--header-h);
+	/* Below the topic bar where a page has one -- on science.html both are
+	   present -- and directly below the header where it does not. */
+	top: calc(var(--header-h) + var(--topicnav-h));
 	z-index: 30;
 	margin: 1.75rem 0;
 	padding: 0.4rem 0;
@@ -1053,10 +1055,25 @@ h2 + .stage-heading { margin-top: 1.2rem; }
    the reader down a page, and on topic pages this one replaces the section bar
    rather than stacking with it. */
 .topicnav {
+	position: sticky;
+	top: var(--header-h);
+	z-index: 35;
 	margin: 1.6rem 0 2rem;
 	padding: 0.5rem 0;
+	/* Opaque enough to hide the content sliding under it. The blur matches the
+	   header and the section bar so the three read as one stack. */
+	background: rgba(10, 12, 17, 0.94);
+	-webkit-backdrop-filter: blur(6px);
+	backdrop-filter: blur(6px);
 	border-top: 1px solid var(--border);
 	border-bottom: 1px solid var(--border);
+}
+
+/* Anchor jumps on a page with a topic bar must clear it as well as the
+   header. */
+.topicnav ~ * [id],
+.topicnav ~ [id] {
+	scroll-margin-top: calc(var(--header-h) + var(--topicnav-h) + 0.75rem);
 }
 
 .topicnav ul {
@@ -1119,6 +1136,13 @@ h2 + .stage-heading { margin-top: 1.2rem; }
 		padding-left: 0;
 		border-left: 0;
 	}
+
+	/* And once it is five lines tall it must stop following the reader down:
+	   a sticky bar that height eats most of a phone screen. sticky-bars.js
+	   reports 0 for it here, so the section bar closes the gap by itself. */
+	.topicnav {
+		position: static;
+	}
 }
 
 /* Where a page's sections are not all at the same level, a rule keeps the
@@ -1132,7 +1156,7 @@ h2 + .stage-heading { margin-top: 1.2rem; }
 /* Anchor jumps must clear both sticky bars. */
 .subnav ~ * [id],
 .subnav ~ [id] {
-	scroll-margin-top: calc(var(--header-h) + var(--subnav-h) + 0.75rem);
+	scroll-margin-top: calc(var(--header-h) + var(--topicnav-h) + var(--subnav-h) + 0.75rem);
 }
 
 /* One scrollable line rather than three stacked rows on a phone. */

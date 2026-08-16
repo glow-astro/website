@@ -7,18 +7,11 @@
 	var nav = document.querySelector('[data-subnav]');
 	if (!nav) return;
 
-	var header = document.querySelector('.site-header');
 	var root = document.documentElement;
 
-	/* The subnav sticks below the header, so it needs the header's height.
-	   Measured rather than hard-coded: it changes with the viewport, and the
-	   header stops being sticky on narrow screens. */
+	/* --header-h and --topicnav-h come from sticky-bars.js, which runs on every
+	   page; this only needs to publish its own height for scroll-margin-top. */
 	function measure() {
-		var h = 0;
-		if (header && getComputedStyle(header).position === 'sticky') {
-			h = header.getBoundingClientRect().height;
-		}
-		root.style.setProperty('--header-h', h + 'px');
 		root.style.setProperty('--subnav-h', nav.getBoundingClientRect().height + 'px');
 	}
 
