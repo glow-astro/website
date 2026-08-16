@@ -73,16 +73,22 @@ problem and a dark-matter probe at once, so any partition into kinds misleads.
 
 ### The science diagram
 
-`science.html` opens its Topics section with the source–lens–observer figure,
-built by `_includes/skymap.html` from the same `topics.yml`. It is the one place
+`science.html` leads with the source–lens–observer figure, above the section
+bar, built by `_includes/skymap.html` from the same `topics.yml`. It is the one place
 the topics are grouped, and that is not a contradiction with the flat bar:
 
-- the **bottom row** is the light path. A card's column lines up with the
+- the **top row** is the light path. A card's column lines up with the
   source, the lens or the observer in the picture beneath it, so its position is
   **where the phenomenon acts** — a location, not a category. Microlensing and
   dark matter can both sit at the lens, which is the overlap a heading would
   have had to deny.
-- the **top row** is what the project builds to measure any of it.
+- the **bottom row** is what the project builds to measure any of it. It comes
+  second because top-left is the strongest position on a figure and the science
+  questions belong there.
+
+The topic bar and the previous/next buttons follow the **file order**, which is
+not the diagram order: the bar builds from wave optics, because the other five
+lean on it. `row`/`column` place the cards, so the two orders differ freely.
 
 Each topic therefore carries `row`, `column`, `tint` and a short `card` blurb.
 The rows are absolutely positioned, so **no two topics may claim the same

@@ -13,15 +13,21 @@
 # That grouping was a taxonomy, and the topics resist being sorted into kinds.
 #
 # The diagram is not a taxonomy, which is why it may group where the bar may
-# not. Its bottom row is the light path -- a card sits over the source, the lens
-# or the observer, because that is where the phenomenon acts -- and its top row
-# is what the project builds in order to measure any of it. A position on a
+# not. Its top row is the light path -- a card sits over the source, the lens
+# or the observer, because that is where the phenomenon acts -- and its bottom
+# row is what the project builds in order to measure any of it. A position on a
 # journey is not a category, and cards placed near what they refer to show the
 # overlap instead of denying it: microlensing and dark matter both act at the
 # lens, and both sit there.
 #
-# Order is a reading order, and the previous/next buttons follow it. It is also
-# the diagram order: the three top-row cards, then the three bottom-row ones.
+# Order in THIS FILE is a reading order -- the topic bar and the previous/next
+# buttons follow it, and it builds: the phenomenon, the lenses, the analysis,
+# then what they measure. It is deliberately NOT the diagram order. The diagram
+# leads with what the project measures, because top-left is the strongest
+# position on a figure and the questions belong there; the bar leads with wave
+# optics, because the other five lean on it and topic 1 should not be the most
+# specialized page. `row` and `column` place the cards, so the two orders are
+# free to differ.
 #
 # Schema
 #   id       slug; the page is <id>.html and, if `media` is present, the video
@@ -49,12 +55,12 @@
 #            is the repo and family the render came from, so it can be
 #            regenerated -- see ~/code/application_plots/ANIMATIONS.md.
 
-# ---- Top row: what GLOW builds --------------------------------------------
+# ---- Bottom row: what GLOW builds -----------------------------------------
 
 - id: wave-optics
   title: "Wave optics"
   short: "Wave optics"
-  row: top
+  row: bottom
   column: 1
   tint: wave
   card: >-
@@ -82,7 +88,7 @@
 - id: microlensing
   title: "Microlensing"
   short: "Microlensing"
-  row: top
+  row: bottom
   column: 2
   tint: strong
   card: >-
@@ -110,7 +116,7 @@
 - id: data-analysis
   title: "Data analysis"
   short: "Data analysis"
-  row: top
+  row: bottom
   column: 3
   tint: methods
   card: >-
@@ -137,12 +143,12 @@
       is a picture of the posterior's structure, not a replay of the sampler.
     source: "GW231123_independent_analysis, family sampling"
 
-# ---- Bottom row: what a lensed wave measures, along the light path ---------
+# ---- Top row: what a lensed wave measures, along the light path ------------
 
 - id: sources
   title: "Distant and strong-field sources"
   short: "Sources"
-  row: bottom
+  row: top
   column: 1
   tint: source
   card: >-
@@ -158,7 +164,7 @@
 - id: dark-matter
   title: "Dark matter & small scales"
   short: "Dark matter"
-  row: bottom
+  row: top
   column: 2
   tint: lens
   card: >-
@@ -186,7 +192,7 @@
 - id: testing-gravity
   title: "Testing gravity and dark energy"
   short: "Gravity & dark energy"
-  row: bottom
+  row: top
   column: 3
   tint: grav
   card: >-
