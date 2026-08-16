@@ -46,7 +46,7 @@ Everything that repeats lives in `_data`, not in the templates:
 | File | Contents |
 | --- | --- |
 | `nav.yml` | site navigation; each `id` matches a page's `nav:` front matter |
-| `topics.yml` | the science topics: cards, topic bar, and each topic page's header |
+| `topics.yml` | the science topics: the diagram, the topic bar, and each topic page's header |
 | `work_packages.yml` | WP1–WP3 and their lettered tasks |
 | `people.yml` | PI, team members, external collaborators |
 | `positions.yml` | **open calls only** — never what the project plans to recruit |
@@ -67,14 +67,42 @@ load-bearing:
 They cross-link in both directions, and both directions are derived from
 `topics.yml`'s `wps` field, so they cannot disagree. Cross-link; do not repeat.
 
-The topic list is flat on purpose. An earlier version grouped it, which was
-wrong: microlensing is a wave-optics problem, a search problem and a
-dark-matter probe at once, so any partition misleads.
+The topic **bar** is flat on purpose. An earlier version grouped it under
+headings, which was wrong: microlensing is a wave-optics problem, a search
+problem and a dark-matter probe at once, so any partition into kinds misleads.
+
+### The science diagram
+
+`science.html` opens its Topics section with the source–lens–observer figure,
+built by `_includes/skymap.html` from the same `topics.yml`. It is the one place
+the topics are grouped, and that is not a contradiction with the flat bar:
+
+- the **bottom row** is the light path. A card's column lines up with the
+  source, the lens or the observer in the picture beneath it, so its position is
+  **where the phenomenon acts** — a location, not a category. Microlensing and
+  dark matter can both sit at the lens, which is the overlap a heading would
+  have had to deny.
+- the **top row** is what the project builds to measure any of it.
+
+Each topic therefore carries `row`, `column`, `tint` and a short `card` blurb.
+The rows are absolutely positioned, so **no two topics may claim the same
+(row, column)** and each row needs exactly three — a collision silently stacks
+two cards on a busy image. The verification pass checks both.
+
+`imgs/source_lens_observer.{jpg,webp}` is a frame from the GLOW outreach video.
+The personal site carries the same image with its own card set; they are
+independent copies on purpose.
+
+Below 940px the cards drop out of the picture and stack beneath it, which loses
+the positional argument — the figcaption states it in words for that case, and
+for anyone reading without the image.
 
 ### Animations
 
 Topic-page animations live in `media/` as `<topic>.webm`, `<topic>.mp4` and
-`<topic>_still.png`. They are **not** generated here — each comes from the repo
+`<topic>_still.png`. `media` is **optional** in `topics.yml` — `sources` has no
+render, and `topic-figure.html` emits nothing rather than a broken `/media/.webm`
+when the key is absent. They are **not** generated here — each comes from the repo
 that owns the physics, indexed in `~/code/application_plots/ANIMATIONS.md`, and
 each topic records which family it took in `topics.yml`'s `media.source`.
 

@@ -1224,8 +1224,10 @@ a.skymap-card:focus-visible {
 .skymap-card.tint-strong  { --tint: #8a5a2a; --tint-strong: #f0c08a; }
 .skymap-card.tint-grav    { --tint: #7a3f66; --tint-strong: #f0a6cd; }
 
-/* Four columns need the full measure. Below it, drop the cards out of the
-   picture and let them sit underneath in two columns, then one. */
+/* Three columns need the full measure. Below it, drop the cards out of the
+   picture and let them sit underneath in two columns, then one. The bottom
+   row's alignment with the source, the lens and the observer is lost there --
+   the figcaption states the light-path argument in words for that case. */
 @media (max-width: 940px) {
 	.skymap-frame { border: 0; border-radius: 0; background: none; }
 
@@ -1234,9 +1236,11 @@ a.skymap-card:focus-visible {
 		border-radius: var(--radius);
 	}
 
+	/* auto-fit, not repeat(2, 1fr): each row is its own grid, so a fixed two
+	   columns leaves three cards as 2 + 1 and puts a hole in both rows. */
 	.skymap-cards {
 		position: static;
-		grid-template-columns: repeat(2, 1fr);
+		grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
 		gap: 0.8rem;
 		margin-top: 0.8rem;
 	}

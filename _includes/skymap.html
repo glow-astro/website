@@ -1,0 +1,56 @@
+{%- comment -%}
+  The source-lens-observer diagram: the science overview, built entirely from
+  _data/topics.yml so it cannot drift from the topic bar or the topic pages.
+
+  The image is a frame from the GLOW outreach video -- a binary, a lens galaxy
+  and the Earth, with the wave's path drawn across it. Everything else is HTML
+  cards laid over it, so relabelling a topic is a data edit and never an image
+  edit.
+
+  Two axes, and they mean different things:
+
+    top row     what the project builds. Order is left to right, no more.
+    bottom row  where the physics acts. The three columns line up with the
+                source, the lens and the observer in the picture beneath, so a
+                card's position is a location on the light path -- not a rank,
+                and not a category.
+
+  That second point is why this figure may group when _includes/topicnav.html
+  may not: the bar would have to claim the topics sort into kinds, and they do
+  not. Placing microlensing and dark matter both at the lens shows the overlap
+  rather than hiding it. See the header of _data/topics.yml.
+
+  Below 940px the cards drop out of the picture and stack underneath it, so the
+  positional argument is lost on a phone. The figcaption carries it in words for
+  exactly that reason -- and for anyone reading without the image.
+{%- endcomment -%}
+<figure class="skymap">
+  <div class="skymap-frame">
+    <picture>
+      <source srcset="{{ '/imgs/source_lens_observer.webp' | relative_url }}" type="image/webp">
+      <img src="{{ '/imgs/source_lens_observer.jpg' | relative_url }}"
+           alt="A binary black hole at left, a galaxy at center and the Earth at right. An arrow traces a gravitational wave from the binary, bending as it passes the galaxy, on to the Earth."
+           width="1600" height="850">
+    </picture>
+    {%- assign rows = "top,bottom" | split: "," %}
+    {%- for row in rows %}
+    <div class="skymap-cards skymap-cards-{{ row }}">
+      {%- assign cards = site.data.topics | where: "row", row | sort: "column" %}
+      {%- for t in cards %}
+      <a class="skymap-card tint-{{ t.tint }}"
+         href="{{ '/' | append: t.id | append: '.html' | relative_url }}">
+        <strong>{{ t.title }}</strong>
+        <span>{{ t.card | strip_newlines | strip }}</span>
+      </a>
+      {%- endfor %}
+    </div>
+    {%- endfor %}
+  </div>
+  <figcaption>
+    A wave leaves a distant binary, passes a lens and reaches us, and every
+    stage of that journey is a measurement. Along the bottom: the source that
+    made it, the matter it passed on the way, and the theory of gravity behind
+    the whole trip. Along the top: what the project builds in order to read any
+    of it out of the signal.
+  </figcaption>
+</figure>

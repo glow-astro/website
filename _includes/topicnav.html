@@ -7,12 +7,19 @@
   wave-optics problem and a dark-matter probe -- so headings that sort them into
   categories claim a structure the science does not have. See _data/topics.yml.
 
+  The diagram on science.html does group them, and that is not a contradiction:
+  it groups by where a phenomenon acts on the light path, which is a position
+  and not a kind, and it can show two topics acting in the same place. A row of
+  text labels cannot do either.
+
   This replaces the per-page section bar on topic pages rather than sitting
   above it. Three levels of navigation on a short page is more chrome than
   content, and which topic you are in matters more than which paragraph.
 
-  Plain links, no JavaScript, no disclosure widget: six items fit on one line,
-  so hiding them behind a control would cost a click and gain nothing.
+  Plain links, no JavaScript, no disclosure widget: seven items still fit on one
+  line at the site's measure, so hiding them behind a control would cost a click
+  and gain nothing. `short` in _data/topics.yml exists to keep it that way -- if
+  a topic is added, shorten labels before reaching for a menu.
 {%- endcomment -%}
 <nav class="topicnav" aria-label="Science topics">
   <ul>

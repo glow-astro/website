@@ -15,8 +15,14 @@
   `aria-label` describes the motion for someone who cannot see it; the caption
   below says what it means. The two are different jobs and neither replaces the
   other.
+
+  `media` is optional in _data/topics.yml -- not every topic has a render -- so
+  this renders nothing rather than emitting /media/.webm. A stale `topic_id`
+  once produced exactly that silently, which is why the check is here and not
+  only in the caller.
 {%- endcomment -%}
 {%- assign t = include.topic -%}
+{%- if t.media -%}
 <figure class="topic-figure">
   <video width="{{ t.media.width }}" height="{{ t.media.height }}" autoplay muted loop playsinline
          poster="{{ '/media/' | append: t.id | append: '_still.png' | relative_url }}"
@@ -26,3 +32,4 @@
   </video>
   <figcaption>{{ t.media.caption }}</figcaption>
 </figure>
+{%- endif -%}

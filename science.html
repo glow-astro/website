@@ -88,21 +88,21 @@ sections:
 <section class="section" id="topics" aria-labelledby="topics-heading">
   <h2 id="topics-heading">Topics</h2>
   <p class="lede">
-    Five strands, each explaining the physics and showing an animation of what
-    it looks like. They overlap by design — microlensing is a wave-optics
-    problem and a dark-matter probe at once — so each card names the work
-    packages it feeds.
+    Six topics, each with its own page. The picture places them: along the
+    bottom, what a lensed wave measures at each stage of its journey — the
+    source it came from, the matter it passed, the gravity that carried it.
+    Along the top, what the project builds in order to measure any of it.
   </p>
 
-  <div class="grid grid-2">
-    {%- for t in site.data.topics %}
-    <a class="card card-link{% if t.wide %} card-wide{% endif %}" href="{{ '/' | append: t.id | append: '.html' | relative_url }}">
-      <p class="card-title">{{ t.title }}</p>
-      <p>{{ t.blurb }}</p>
-      <p class="card-meta">{{ t.wps | join: " · " }}</p>
-    </a>
-    {%- endfor %}
-  </div>
+  {% include skymap.html %}
+
+  <p>
+    They overlap, and the diagram is arranged to show it rather than to sort it
+    out. Microlensing and dark matter both sit at the lens because both are
+    things the lens is made of; wave optics is the language all three of the
+    bottom-row topics are written in. Where a topic acts is a more useful
+    question than what kind of topic it is.
+  </p>
 </section>
 
 <section class="section" id="timing" aria-labelledby="timing-heading">

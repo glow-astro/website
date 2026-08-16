@@ -1,0 +1,133 @@
+---
+layout: page
+nav: science
+title: "Distant and strong-field sources"
+eyebrow: "Science"
+lede: >-
+  Magnification is what makes a distant source detectable at all. It is also what carries a signal past a supermassive black hole, where the standard lensing formalism stops applying.
+description: >-
+  What magnification lets gravitational-wave detectors reach: black-hole mergers beyond z = 3, remnants of the first stars, and sources close enough to a supermassive black hole that weak-field lensing breaks down.
+topic_id: sources
+---
+
+{%- assign t = site.data.topics | where: "id", page.topic_id | first %}
+
+{% include topicnav.html %}
+
+{%- comment -%}
+  The one topic page with no animation: nothing in the render inventory
+  illustrates a magnified high-redshift source, and the nearest candidate
+  (`qpls_loop`, black holes as telescopes) belongs to a paper this grant does
+  not fund. `media` is optional in _data/topics.yml precisely so this page can
+  ship without one rather than borrow a figure that argues something else.
+{%- endcomment -%}
+
+<section class="section" id="reach" aria-labelledby="reach-heading">
+  <h2 id="reach-heading">What magnification buys</h2>
+  <p>
+    A detector has a horizon, and it is set by how loud a signal is when it
+    arrives. A lens moves that horizon. A source that would have been too faint
+    to register can be magnified into a confident detection, which means the
+    lensed part of the sky is systematically deeper than the rest of it — and
+    the further out a population lies, the larger the fraction of it that is
+    seen only because something magnified it.
+  </p>
+  <p>
+    That is what makes lensing a route to the early Universe rather than only a
+    curiosity about the lens. Binaries beyond a redshift of about three are near
+    the edge of what current detectors reach unaided; magnified, they come into
+    range. Further back still are the remnants of the first stars, whose masses
+    and merger rate are among the sharper predictions distinguishing models of
+    how the first generation of stars formed — and which are otherwise out of
+    reach until the next generation of instruments.
+  </p>
+</section>
+
+<section class="section" id="strong" aria-labelledby="strong-heading">
+  <h2 id="strong-heading">Where the standard picture stops applying</h2>
+  <p>
+    The usual treatment of lensing assumes a great deal: that the field is weak,
+    that deflections are small, that the lens is thin, and that the background
+    it sits on is otherwise flat. Those assumptions hold for a wave passing a
+    galaxy at a comfortable distance. They do not hold for a source in the
+    vicinity of a supermassive black hole, where the wave is generated and lensed
+    within the same strongly curved region.
+  </p>
+  <p>
+    Two things change there. The deflection is no longer a small correction to a
+    straight path, so images can appear well inside the regime where the standard
+    formalism was derived. And at first order beyond geometric optics the wave's
+    polarization couples to the background curvature, so the two polarizations no
+    longer follow quite the same trajectory — the arrival time acquires a
+    dependence on both frequency and polarization. Sources near a supermassive
+    black hole are therefore not simply brighter versions of ordinary ones; they
+    are a different calculation.
+  </p>
+  <p>
+    This is the strong-field end of the project, and it is deliberately narrow:
+    what the grant commits to is finding these events and interpreting them with
+    a formalism that does not quietly assume the weak-field limit, rather than a
+    programme of strong-field lensing in its own right.
+  </p>
+</section>
+
+<section class="section" id="claiming" aria-labelledby="claiming-heading">
+  <h2 id="claiming-heading">Why a magnified source is hard to claim</h2>
+  <p>
+    Magnification on its own is invisible. A signal that has been amplified by a
+    factor of ten looks exactly like an identical source ten times closer, or
+    like a heavier source further away — the magnification, the distance and the
+    masses are degenerate, and nothing in a purely magnified waveform separates
+    them. A source that appears to sit at redshift one may in fact be a magnified
+    source at redshift four, and there is no way to tell from the amplitude.
+  </p>
+  <p>
+    <a href="{{ '/wave-optics.html' | relative_url }}">Diffraction</a> is what
+    breaks the degeneracy. A frequency-dependent distortion is set by the
+    redshifted mass of the lens, which is an absolute scale rather than a ratio,
+    so a diffracted signal says how much lens it passed and not merely that it
+    was amplified. This is the same property that makes wave optics useful
+    everywhere else on this site, applied to the question of where a source
+    actually is.
+  </p>
+  <p>
+    The complication is that strong magnification and
+    <a href="{{ '/microlensing.html' | relative_url }}">microlensing</a> arrive
+    together. A highly magnified image lies close to a caustic of the lensing
+    galaxy, which is exactly where the galaxy's stars distort it most. So the
+    events that reach furthest are also the ones whose interpretation depends
+    most on modelling a population of microlenses — which is why the two topics
+    are not separable in practice, and why the searches for them are the same
+    searches.
+  </p>
+</section>
+
+<section class="section" id="more" aria-labelledby="more-heading">
+  <h2 id="more-heading">Where this is done</h2>
+  <ul class="roles">
+    <li>
+      <strong>Work packages</strong>
+      <span>
+        {%- for code in t.wps %}
+        <a href="{{ '/work-packages.html#' | append: code | downcase | relative_url }}">{{ code }}</a>
+        {%- unless forloop.last %} &middot; {% endunless %}{% endfor %}
+      </span>
+    </li>
+    {%- if t.papers.size > 0 %}
+    <li>
+      <strong>Papers</strong>
+      <span>
+        {%- for id in t.papers %}
+        {%- assign paper = site.data.publications.papers | where: "arxiv", id | first %}
+        <a href="{{ paper.url }}" rel="noopener">{{ paper.title }}</a>
+        {%- unless forloop.last %} &middot; {% endunless %}{% endfor %}
+      </span>
+    </li>
+    {%- endif %}
+  </ul>
+  <div class="btn-row">
+      <a class="btn" href="{{ '/data-analysis.html' | relative_url }}">← Data analysis</a>
+      <a class="btn" href="{{ '/dark-matter.html' | relative_url }}">Dark matter →</a>
+      <a class="btn" href="{{ '/science.html' | relative_url }}">All topics</a>
+  </div>
+</section>

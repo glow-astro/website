@@ -83,6 +83,43 @@ for src, href in anchors:
     if t in ids and frag not in ids[t]: print('BROKEN', src, '->', href)
 ```
 
+Then the data-integrity half. Each of these was added after the corresponding
+bug shipped, so none of them is hypothetical:
+
+```python
+import yaml, os, collections
+topics = yaml.safe_load(open('_data/topics.yml'))
+wps    = yaml.safe_load(open('_data/work_packages.yml'))
+pubs   = yaml.safe_load(open('_data/publications.yml'))
+tasks  = {t['code'] for w in wps for t in w['tasks']}
+arxiv  = {p['arxiv'] for p in pubs['papers']}
+
+cells, rows = collections.Counter(), collections.Counter()
+for t in topics:
+    for k in ('id','title','short','row','column','tint','card','blurb','wps','papers'):
+        if k not in t: print('TOPIC MISSING FIELD', t.get('id'), k)
+    cells[(t['row'], t['column'])] += 1
+    rows[t['row']] += 1
+    if not os.path.exists(f"{t['id']}.html"): print('TOPIC WITHOUT PAGE', t['id'])
+    for c in t['wps']:
+        if c not in tasks: print('TOPIC WPS UNKNOWN TASK', t['id'], c)
+    for a in t['papers']:
+        if a not in arxiv: print('TOPIC PAPER UNKNOWN', t['id'], a)
+    # media is OPTIONAL -- only check the files when the key is there
+    if 'media' in t:
+        for suffix in ('.webm', '.mp4', '_still.png'):
+            if not os.path.exists(f"media/{t['id']}{suffix}"):
+                print('MISSING MEDIA', t['id'], suffix)
+for cell, n in cells.items():
+    if n > 1: print('CELL COLLISION', cell, n)   # two cards stacked in the diagram
+for r, n in rows.items():
+    if n != 3: print('ROW NOT 3', r, n)          # a hole in the absolute grid
+```
+
+Also check every `src`/`poster`/`srcset` resolves under `_site`: a stale
+`topic_id` once emptied a page's media paths to `/media/.webm`, and the page
+still looked fine because the poster simply never appeared.
+
 For a refactor that should not change what a reader sees, extract the visible
 words from `<main>` before and after and diff them. A word-for-word match is
 proof; reading the template is not.
