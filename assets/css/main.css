@@ -19,10 +19,14 @@
 	/* Accents: warm amber primary (the GLOW logo's colour), cyan secondary.
 	   The accent means "link" and nothing else -- see docs/SITE_CONVENTIONS.md
 	   section 7. Changing the project's colour is these three lines. */
-	--accent:        #f2a45c;
-	--accent-strong: #ffc389;
-	--accent-dim:    #c07a34;
-	--cyan:          #6fd8ee;
+	--accent:         #f2a45c;
+	--accent-strong:  #ffc389;
+	--accent-dim:     #c07a34;
+	/* Visited links stay in the accent's family, duller and browner. It has to
+	   differ from --accent enough to be readable as "already seen" without
+	   becoming a second accent colour competing for attention. */
+	--accent-visited: #d3a37f;
+	--cyan:           #6fd8ee;
 
 	--radius: 10px;
 	--measure: 1000px;
@@ -72,7 +76,7 @@ a {
 	transition: color 0.12s ease, text-decoration-color 0.12s ease;
 }
 
-a:visited { color: #c3aee9; }
+a:visited { color: var(--accent-visited); }
 
 a:hover,
 a:focus-visible {
