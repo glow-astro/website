@@ -1,90 +1,20 @@
-# Positions funded by the grant.
+# Positions currently advertised.
+#
+# ONLY open calls go in this file. What the project plans to recruit, and when,
+# is not published: the shape of the team changes as the work develops, and a
+# list of planned positions on a public page becomes a promise the project did
+# not mean to make. Add an entry when a call actually opens; delete it when the
+# call closes.
 #
 # Schema
 #   id        anchor
+#   title     what the position is about, in three or four words
 #   kind      "Postdoctoral researcher" | "PhD student"
-#   title     what the position is about, in three or four words. This is what a
-#             reader scanning the page actually reads, so it carries the subject
-#             -- not the contract length.
-#   term      contract length as written in the Description of Action
-#   focus     the work-package task this position leads
+#   term      contract length
+#   focus     optional work-package task code, when the call names one
 #   profile   what the person will work on and the background it calls for
-#   status    "planned" | "open" | "filled"
-#   deadline  optional, only meaningful when status is "open"
-#   apply_url optional, only meaningful when status is "open"
+#   deadline  application deadline
+#   apply_url where to apply
 #
-# A position stays `planned` until a call is actually advertised. Do not write
-# "open" before there is something to apply to.
-
-- id: postdoc-microlensing
-  title: "Microlensing methods"
-  kind: "Postdoctoral researcher"
-  term: "5 years"
-  focus: "WP1-A"
-  status: planned
-  profile: >-
-    Leads the development of microlensing methods, and contributes to the
-    microlensing searches and to plasma lensing. Calls for a strong computational
-    background and experience in lensing.
-
-- id: postdoc-data-analysis
-  title: "Gravitational-wave data analysis"
-  kind: "Postdoctoral researcher"
-  term: "4 years"
-  focus: "WP2-A"
-  status: planned
-  profile: >-
-    Leads the data-analysis side of the microlensing searches, and supports the
-    other data-related tasks. Calls for expertise in gravitational-wave parameter
-    estimation.
-
-- id: postdoc-populations
-  title: "Astrophysics and population modeling"
-  kind: "Postdoctoral researcher"
-  term: "3 years"
-  focus: "WP1-A"
-  status: planned
-  profile: >-
-    Works on astrophysics and population modeling, with a specialization in
-    Bayesian analysis, and supports the other data-related tasks.
-
-- id: postdoc-dark-matter
-  title: "Dark-matter signatures"
-  kind: "Postdoctoral researcher"
-  term: "3 years"
-  focus: "WP3-A"
-  status: planned
-  profile: >-
-    Works on dark-matter signatures, in particular phenomenological models for
-    LISA, and contributes to the gravitational-wave searches.
-
-- id: phd-inference
-  title: "Accelerated inference"
-  kind: "PhD student"
-  term: "4 years"
-  focus: "WP2-B"
-  status: planned
-  profile: >-
-    A thesis on accelerated parameter estimation for lensing, with contributions
-    to the microlensing searches and to dark-matter work. Calls for a strong
-    numerical background.
-
-- id: phd-plasma
-  title: "Plasma lensing"
-  kind: "PhD student"
-  term: "4 years"
-  focus: "WP1-B"
-  status: planned
-  profile: >-
-    Develops plasma lensing and contributes to tests of gravitational-wave
-    propagation. Calls for strong theoretical and analytical skills.
-
-- id: phd-propagation
-  title: "Tests of gravitational-wave propagation"
-  kind: "PhD student"
-  term: "4 years"
-  focus: "WP3-B"
-  status: planned
-  profile: >-
-    A thesis on testing gravitational-wave propagation, developing data-analysis
-    skills alongside a theoretical background.
+# Empty is the normal state. The Join page says so rather than showing an
+# empty section.

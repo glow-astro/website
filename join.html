@@ -4,33 +4,33 @@ nav: join
 title: "Join the project"
 eyebrow: "Positions"
 lede: >-
-  GLOW funds four postdoctoral researchers and three doctoral students over the
-  life of the grant. This page lists what each position works on; open calls
-  appear here when they are advertised.
+  Open calls are posted here. Enquiries are welcome at any time, whether or not
+  a call is running.
 description: >-
-  Postdoctoral and doctoral positions funded by the GLOW ERC Consolidator Grant,
-  what each one works on, and how to get in touch.
+  Open positions on the GLOW ERC Consolidator Grant project, and how to get in
+  touch about working on wave-optics lensing of gravitational waves.
 sections:
   - id: open
     label: "Open calls"
-  - id: positions
-    label: "Positions"
+  - id: working-here
+    label: "Working on GLOW"
   - id: enquiries
     label: "Enquiries"
 ---
 
 {% include subnav.html %}
 
-{%- assign open_positions = site.data.positions | where: "status", "open" %}
+{%- assign open_positions = site.data.positions | default: empty %}
 
 <section class="section" id="open" aria-labelledby="open-heading">
   <h2 id="open-heading">Open calls</h2>
   {%- if open_positions.size > 0 %}
   <div class="grid grid-2">
     {%- for p in open_positions %}
-    <div class="card">
+    <div class="card" id="{{ p.id }}">
+      {%- if p.focus %}<p class="eyebrow">{{ p.focus }}</p>{% endif %}
       <p class="card-title">{{ p.title }}</p>
-      <p class="card-meta">{{ p.kind }} · {{ p.term }} · {{ p.focus }}{% if p.deadline %} · deadline {{ p.deadline }}{% endif %}</p>
+      <p class="card-meta">{{ p.kind }} · {{ p.term }}{% if p.deadline %} · deadline {{ p.deadline }}{% endif %}</p>
       <p>{{ p.profile }}</p>
       {%- if p.apply_url %}<p><a href="{{ p.apply_url }}" rel="noopener">Application details</a></p>{% endif %}
     </div>
@@ -38,66 +38,41 @@ sections:
   </div>
   {%- else %}
   <p>
-    No call is open at the moment. Positions are advertised here and announced in
-    the <a href="{{ '/' | relative_url }}#news-heading">news</a>; enquiries from
-    people who would like to be told when a call opens are welcome.
+    No call is open at the moment. Calls are posted on this page and announced
+    in the <a href="{{ '/' | relative_url }}#news-heading">news</a>. If you would
+    like to hear when one opens, write and say so.
   </p>
   {%- endif %}
 </section>
 
-<section class="section" id="positions" aria-labelledby="positions-heading">
-  <h2 id="positions-heading">Positions funded by the grant</h2>
-  <p class="lede">
-    Each position leads one task and contributes to others, so that the work
-    packages stay connected rather than running in parallel.
-  </p>
-
-  <h3>Postdoctoral researchers</h3>
-  <div class="grid grid-2">
-    {%- for p in site.data.positions %}
-    {%- if p.kind contains "Postdoctoral" %}
-    <div class="card" id="{{ p.id }}">
-      <p class="eyebrow">{{ p.focus }}</p>
-      <p class="card-title">{{ p.title }}</p>
-      <p class="card-meta">{{ p.term }}</p>
-      <p>{{ p.profile }}</p>
-    </div>
-    {%- endif %}
-    {%- endfor %}
-  </div>
-
-  <h3>Doctoral students</h3>
-  <div class="grid grid-2">
-    {%- for p in site.data.positions %}
-    {%- if p.kind contains "PhD" %}
-    <div class="card" id="{{ p.id }}">
-      <p class="eyebrow">{{ p.focus }}</p>
-      <p class="card-title">{{ p.title }}</p>
-      <p class="card-meta">{{ p.term }}</p>
-      <p>{{ p.profile }}</p>
-    </div>
-    {%- endif %}
-    {%- endfor %}
-  </div>
-
+<section class="section" id="working-here" aria-labelledby="working-here-heading">
+  <h2 id="working-here-heading">Working on GLOW</h2>
   <p>
-    Task codes refer to the <a href="{{ '/work-packages.html' | relative_url }}">work
-    packages</a>. Postdoctoral researchers on the project co-supervise the
-    doctoral students working on related tasks.
+    The grant funds postdoctoral and doctoral positions across its five years.
+    What the <a href="{{ '/work-packages.html' | relative_url }}">work packages</a>
+    need shifts as the work develops, so the subject of a given call is settled
+    when the call is written rather than years in advance.
+  </p>
+  <p>
+    The work spans wave-optics theory, numerical methods, gravitational-wave
+    data analysis and the astrophysics of lenses, and most people on the project
+    end up touching more than one of those. Everything the project builds is
+    <a href="{{ '/software.html' | relative_url }}">released publicly</a>, which
+    shapes how the work is done: code and data products are written to be used
+    by people outside the project.
   </p>
 </section>
 
 <section class="section" id="enquiries" aria-labelledby="enquiries-heading">
   <h2 id="enquiries-heading">Enquiries</h2>
   <p>
-    Informal enquiries about any of these positions are welcome at any time, and
-    are best sent to <a href="mailto:{{ site.pi.email }}">{{ site.pi.email }}</a>
-    with a short description of what you have worked on.
+    Informal enquiries are welcome at any time, and are best sent to
+    <a href="mailto:{{ site.pi.email }}">{{ site.pi.email }}</a> with a short
+    description of what you have worked on.
   </p>
   <p>
-    Applications from people whose background is adjacent rather than identical —
+    Enquiries from people whose background is adjacent rather than identical —
     numerical methods, Bayesian inference, radio astronomy, scattering theory —
-    are read on the same terms as applications from within
-    gravitational-wave lensing.
+    are read on the same terms as those from within gravitational-wave lensing.
   </p>
 </section>

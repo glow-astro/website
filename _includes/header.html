@@ -1,6 +1,15 @@
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="{{ '/' | relative_url }}">GLOW</a>
+    {%- comment -%}
+      The mark is decorative: the wordmark next to it already says GLOW, so a
+      second reading of the same word would only be noise for a screen reader.
+      favicon.svg is the mark on its own -- the extended lock-up in imgs/ sets
+      four lines of type beside it, which is unreadable at header size.
+    {%- endcomment -%}
+    <a class="brand" href="{{ '/' | relative_url }}">
+      <img class="brand-mark" src="{{ '/favicon.svg' | relative_url }}" alt="" width="32" height="32">
+      <span>GLOW</span>
+    </a>
     <nav class="site-nav" aria-label="Main">
       {%- for item in site.data.nav %}
       <a href="{{ item.url | relative_url }}"{% if page.nav == item.id %} aria-current="page"{% endif %}>{{ item.title }}</a>
