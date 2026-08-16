@@ -2,7 +2,7 @@
 layout: page
 nav: science
 title: "Testing gravity and dark energy"
-eyebrow: "Fundamental physics"
+eyebrow: "Science"
 lede: >-
   A lensed gravitational wave is a controlled experiment in how gravity propagates. Theories that modify it predict distortions no lens made of ordinary matter can produce.
 description: >-
@@ -10,7 +10,7 @@ description: >-
 topic_id: testing-gravity
 ---
 
-{%- assign t = site.data.topics.topics | where: "id", page.topic_id | first %}
+{%- assign t = site.data.topics | where: "id", page.topic_id | first %}
 
 {% include topicnav.html %}
 

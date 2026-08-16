@@ -1,0 +1,137 @@
+---
+layout: page
+nav: science
+title: "Data analysis"
+eyebrow: "Science"
+lede: >-
+  A lensing signature is only as good as the inference that finds it. Lensing
+  enlarges the parameter space at the same time as the catalogs grow, which
+  makes speed a physics problem rather than an engineering one.
+description: >-
+  How lensed gravitational waves are actually searched for: waveform models that
+  carry a microlensing signature, population-level analyses, and machine-learning
+  inference fast enough to keep up with the detectors.
+topic_id: data-analysis
+---
+
+{% include topicnav.html %}
+
+{%- assign t = site.data.topics | where: "id", page.topic_id | first %}
+
+{% include topic-figure.html topic=t %}
+
+<section class="section" id="claim" aria-labelledby="claim-heading">
+  <h2 id="claim-heading">What it takes to claim a lensed event</h2>
+  <p>
+    A lensed gravitational wave does not announce itself. It arrives as an
+    ordinary-looking signal with a distortion in it, and the question is whether
+    that distortion is better explained by a lens than by noise, by an unusual
+    source, or by the limits of the waveform model being used. Answering it
+    means fitting the lensed and the unlensed hypotheses to the same data and
+    comparing them honestly.
+  </p>
+  <p>
+    That is harder than it sounds, because every ingredient is uncertain at
+    once. The lens adds parameters to a source model that already has fifteen.
+    The waveform model itself has systematic errors, and a lensing search must
+    not mistake them for a lens. And the interesting candidates are usually
+    faint, which is exactly where all of these effects are hardest to separate.
+  </p>
+  <p>
+    The animation is a picture of that fit. Each posterior sample is a lens
+    configuration predicting its own signal, and the ridge in the left panel is
+    the combination of lens mass and shear the data genuinely constrain — as
+    opposed to the parameters that only look constrained because they were
+    chosen conveniently.
+  </p>
+</section>
+
+<section class="section" id="models" aria-labelledby="models-heading">
+  <h2 id="models-heading">Models that can be fitted</h2>
+  <p>
+    A stochastic lens cannot be fitted directly: nobody will ever measure the
+    particular arrangement of stars that produced a given distortion. What can
+    be fitted is a compressed description. Expanding the ratio of the lensed to
+    the unlensed waveform in a basis of functions turns an unpredictable lens
+    into a handful of coefficients, and the distribution of those coefficients
+    across simulated realizations gives them a physically motivated prior.
+  </p>
+  <p>
+    The significance of a lensing claim then comes from the posteriors of those
+    coefficients rather than from a template match. This has a useful property:
+    the model is agnostic about what the lenses are, so the same fit serves
+    <a href="{{ '/microlensing.html' | relative_url }}">stars</a> and
+    <a href="{{ '/dark-matter.html' | relative_url }}">dark-matter objects</a>,
+    and the distinction between them is drawn afterwards, from the population
+    the coefficients imply.
+  </p>
+</section>
+
+<section class="section" id="populations" aria-labelledby="populations-heading">
+  <h2 id="populations-heading">One event, or the whole catalog</h2>
+  <p>
+    Not every question is answered by a single loud event. Lensing also acts on
+    a catalog as a whole: it changes the distribution of apparent masses,
+    distances and signal strengths, and a population that has been lensed looks
+    different in aggregate from one that has not. That makes the catalog itself
+    a measurement, and one that survives even when no individual event is
+    convincing on its own.
+  </p>
+  <p>
+    Population analyses also discipline the single-event claims. An astrophysical
+    prior on how often lensing should occur, and on what the lenses are likely to
+    be, is what turns a well-fitting lensed model into a credible one.
+  </p>
+</section>
+
+<section class="section" id="speed" aria-labelledby="speed-heading">
+  <h2 id="speed-heading">Why speed is a physics problem</h2>
+  <p>
+    Two things are growing at once. Lensing enlarges the parameter space of
+    every analysis, and the detectors are moving towards thousands of events.
+    Analyses that take weeks per event do not merely become inconvenient; they
+    determine which questions can be asked at all. Subthreshold searches, where
+    a diffracted signal may have been pushed below the detection threshold by
+    the very distortion that makes it interesting, are only possible if each fit
+    is cheap.
+  </p>
+  <p>
+    Machine-learning inference is the route to that. A network trained to map
+    data directly to posteriors amortizes the cost: the expense moves into
+    training, and each subsequent event is analyzed in seconds. The project
+    builds on <a href="{{ '/software.html' | relative_url }}">DINGO</a> for this,
+    and is validating it with the LIGO–Virgo–KAGRA collaboration for use in
+    low-latency alerts — where the results have to be right, and have to arrive
+    while telescopes can still be pointed.
+  </p>
+</section>
+
+<section class="section" id="more" aria-labelledby="more-heading">
+  <h2 id="more-heading">Where this is done</h2>
+  <ul class="roles">
+    <li>
+      <strong>Work packages</strong>
+      <span>
+        {%- for code in t.wps %}
+        <a href="{{ '/work-packages.html#' | append: code | downcase | relative_url }}">{{ code }}</a>
+        {%- unless forloop.last %} &middot; {% endunless %}{% endfor %}
+      </span>
+    </li>
+    {%- if t.papers.size > 0 %}
+    <li>
+      <strong>Papers</strong>
+      <span>
+        {%- for id in t.papers %}
+        {%- assign paper = site.data.publications.papers | where: "arxiv", id | first %}
+        <a href="{{ paper.url }}" rel="noopener">{{ paper.title }}</a>
+        {%- unless forloop.last %} &middot; {% endunless %}{% endfor %}
+      </span>
+    </li>
+    {%- endif %}
+  </ul>
+  <div class="btn-row">
+      <a class="btn" href="{{ '/microlensing.html' | relative_url }}">← Microlensing</a>
+      <a class="btn" href="{{ '/dark-matter.html' | relative_url }}">Dark matter →</a>
+      <a class="btn" href="{{ '/science.html' | relative_url }}">All topics</a>
+  </div>
+</section>

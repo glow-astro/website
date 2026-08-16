@@ -1,16 +1,16 @@
 ---
 layout: page
 nav: science
-title: "Diffraction and wave optics"
-eyebrow: "Wave-optics lensing"
+title: "Wave optics"
+eyebrow: "Science"
 lede: >-
   When the wavelength is comparable to the scale of the lens, geometric optics fails. The lens stops being a magnifying glass and starts writing a frequency-dependent signature into the wave.
 description: >-
   Why geometric optics fails for gravitational waves, what the amplification factor is, and which lenses a wave of a given frequency can feel.
-topic_id: diffraction
+topic_id: wave-optics
 ---
 
-{%- assign t = site.data.topics.topics | where: "id", page.topic_id | first %}
+{%- assign t = site.data.topics | where: "id", page.topic_id | first %}
 
 {% include topicnav.html %}
 
@@ -61,6 +61,33 @@ topic_id: diffraction
   </p>
 </section>
 
+<section class="section" id="plasma" aria-labelledby="plasma-heading">
+  <h2 id="plasma-heading">Not only gravity: plasma and dispersion</h2>
+  <p>
+    A gravitational lens is not the only thing that can delay a wave by an
+    amount that depends on its frequency. Ionized gas does it too: a radio pulse
+    crossing a cloud of free electrons is refracted and dispersed, and where the
+    gas is structured on small enough scales the same wave-optics treatment
+    applies. This is <strong>plasma lensing</strong>, and for fast radio bursts
+    it is not a correction but a probe in its own right — a way of weighing
+    ionized matter that is otherwise close to invisible.
+  </p>
+  <p>
+    The physics differs in one instructive way. Gravitational lensing is
+    achromatic in the geometric limit, so all its frequency dependence comes
+    from diffraction; plasma lensing is chromatic to begin with, because the
+    refractive index of a plasma depends on frequency. The two therefore leave
+    distinguishable signatures, and a lens that contains both can be taken
+    apart.
+  </p>
+  <p>
+    Dispersion of a different kind appears again when
+    <a href="{{ '/testing-gravity.html' | relative_url }}">gravity itself is
+    modified</a>, where a frequency-dependent propagation speed is one of the
+    clearest signals that something beyond general relativity is at work.
+  </p>
+</section>
+
 <section class="section" id="computing" aria-labelledby="computing-heading">
   <h2 id="computing-heading">Computing it for a real lens</h2>
   <p>
@@ -73,9 +100,10 @@ topic_id: diffraction
   </p>
   <p>
     Making that tractable for general matter distributions is what the
-    <a href="{{ '/software.html' | relative_url }}">GLoW code</a> does, and
-    extending it to populations of lenses is the central methodological task of
-    the project.
+    <a href="{{ '/software.html' | relative_url }}">GLoW code</a> does.
+    Extending it to <a href="{{ '/microlensing.html' | relative_url }}">populations
+    of lenses</a>, and to the multi-plane geometry that plasma lensing needs, is
+    the central methodological task of the project.
   </p>
 </section>
 
@@ -103,7 +131,7 @@ topic_id: diffraction
     {%- endif %}
   </ul>
   <div class="btn-row">
-      <a class="btn" href="{{ '/microlensing.html' | relative_url }}">Microlensing by stellar fields →</a>
+      <a class="btn" href="{{ '/microlensing.html' | relative_url }}">Microlensing →</a>
       <a class="btn" href="{{ '/science.html' | relative_url }}">All topics</a>
   </div>
 </section>

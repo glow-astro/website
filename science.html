@@ -70,7 +70,8 @@ sections:
       <p class="card-title">What fast radio bursts add</p>
       <p>
         Precise sky localization, and an interaction with ionized matter —
-        plasma lensing — that turns them into a probe of the baryons that are
+        <a href="{{ '/wave-optics.html#plasma' | relative_url }}">plasma
+        lensing</a> — that turns them into a probe of the baryons that are
         otherwise hardest to see.
       </p>
     </div>
@@ -87,16 +88,14 @@ sections:
 <section class="section" id="topics" aria-labelledby="topics-heading">
   <h2 id="topics-heading">Topics</h2>
   <p class="lede">
-    The science in two parts: how a coherent wave is distorted by a lens, and
-    what those distortions can be used to measure.
+    Five strands, each explaining the physics and showing an animation of what
+    it looks like. They overlap by design — microlensing is a wave-optics
+    problem and a dark-matter probe at once — so each card names the work
+    packages it feeds.
   </p>
 
-  {%- for g in site.data.topics.groups %}
-  {%- assign members = site.data.topics.topics | where: "group", g.id %}
-  <h3 id="{{ g.id }}">{{ g.title }}</h3>
-  <p>{{ g.blurb }}</p>
   <div class="grid grid-2">
-    {%- for t in members %}
+    {%- for t in site.data.topics %}
     <a class="card card-link" href="{{ '/' | append: t.id | append: '.html' | relative_url }}">
       <p class="card-title">{{ t.title }}</p>
       <p>{{ t.blurb }}</p>
@@ -104,13 +103,6 @@ sections:
     </a>
     {%- endfor %}
   </div>
-  {%- endfor %}
-
-  <p>
-    Plasma lensing of fast radio bursts is developed in
-    <a href="{{ '/work-packages.html#wp1' | relative_url }}">WP1-B</a>, and will
-    get a topic of its own once there is more to show.
-  </p>
 </section>
 
 <section class="section" id="timing" aria-labelledby="timing-heading">

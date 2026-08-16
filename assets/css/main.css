@@ -1111,35 +1111,10 @@ h2 + .stage-heading { margin-top: 1.2rem; }
 	color: var(--accent-strong);
 }
 
-/* The group name is a label, not a link. aria-hidden in the markup keeps a
-   screen reader from reading it as a navigation item; the visual grouping it
-   provides is the whole point for everyone else. */
-.topicnav-group {
-	margin-left: 0.7rem;
-	padding-left: 0.8rem;
-	border-left: 1px solid var(--border-strong);
-	font-size: 0.72rem;
-	text-transform: uppercase;
-	letter-spacing: 0.09em;
-	color: var(--text-mute);
-	white-space: nowrap;
-}
-
-.topicnav-home + .topicnav-group { margin-left: 0.45rem; }
-
 @media (max-width: 620px) {
-	/* Wrapped onto several lines the vertical rules stop lining anything up,
-	   so the group labels become plain full-width headings instead. */
-	.topicnav-group {
-		flex: 1 0 100%;
-		margin: 0.5rem 0 0.1rem;
-		padding-left: 0;
-		border-left: 0;
-	}
-
-	/* And once it is five lines tall it must stop following the reader down:
-	   a sticky bar that height eats most of a phone screen. sticky-bars.js
-	   reports 0 for it here, so the section bar closes the gap by itself. */
+	/* Six labels wrap to two or three lines here, and a sticky bar that tall
+	   eats too much of a phone screen. sticky-bars.js reports 0 for it once it
+	   is static, so the section bar closes the gap by itself. */
 	.topicnav {
 		position: static;
 	}
