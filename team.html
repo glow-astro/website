@@ -23,15 +23,17 @@ sections:
     label: "Master's students"
   - id: collaborators
     label: "Collaborators"
+  - id: join
+    label: "Join"
 ---
 
 {% include subnav.html %}
 
 {%- comment -%}
   Sections run by rank: PI, postdocs, doctoral students, master's students,
-  former members, external collaborators. Each is a section of its own rather
-  than a subheading inside one "Team" block, so the page can be entered at any
-  rank from the bar above.
+  former members, external collaborators, and finally how to join. Each is a
+  section of its own rather than a subheading inside one "Team" block, so the
+  page can be entered at any rank from the bar above.
 
   The person card is one shape used by every group -- see the `member` markup
   repeated below. Liquid has no macros, so the repetition is the price of not
@@ -157,8 +159,16 @@ sections:
     </li>
     {%- endfor %}
   </ul>
+</section>
+
+<section class="section" id="join" aria-labelledby="join-heading">
+  <h2 id="join-heading">Joining the project</h2>
   <p>
     Open calls, when there are any, are posted on the
-    <a href="{{ '/join.html' | relative_url }}">Join</a> page.
+    <a href="{{ '/join.html' | relative_url }}">Join</a> page and announced in
+    the news. Informal enquiries are welcome at any time, whether or not a call
+    is running: write to
+    <a href="mailto:{{ site.pi.email }}">{{ site.pi.email }}</a> with a short
+    description of what you have worked on.
   </p>
 </section>
