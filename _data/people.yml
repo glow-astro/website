@@ -112,6 +112,15 @@ current:
     years: "2026"
     topic: "Gravitational-wave propagation beyond general relativity."
 
+# People who worked on the project and have left. The Team page hides this
+# section while the list is empty, and its front-matter `sections` list needs a
+# `former` entry adding the first time someone is listed here.
+#
+# Extra fields beyond `current`: `next` (where the person went), `end` (year
+# they left, for sorting newest first). Group people by what they did, never by
+# whether they finished.
+former: []
+
 collaborators:
   - name: "Dylan Jow"
     role: "Postdoc, Stanford University"

@@ -9,16 +9,34 @@ lede: >-
 description: >-
   The people working on GLOW, their work packages, and the external
   collaborators contributing to the project.
+# One entry per section below. `former` is deliberately absent: add it here the
+# first time someone appears in people.yml's `former` list, or the bar links to
+# a section that is not on the page.
 sections:
   - id: pi
-    label: "Principal Investigator"
-  - id: members
-    label: "Team"
+    label: "PI"
+  - id: postdocs
+    label: "Postdocs"
+  - id: phd
+    label: "PhD students"
+  - id: masters
+    label: "Master's students"
   - id: collaborators
     label: "Collaborators"
 ---
 
 {% include subnav.html %}
+
+{%- comment -%}
+  Sections run by rank: PI, postdocs, doctoral students, master's students,
+  former members, external collaborators. Each is a section of its own rather
+  than a subheading inside one "Team" block, so the page can be entered at any
+  rank from the bar above.
+
+  The person card is one shape used by every group -- see the `member` markup
+  repeated below. Liquid has no macros, so the repetition is the price of not
+  adding an include for eleven lines of markup.
+{%- endcomment -%}
 
 <section class="section" id="pi" aria-labelledby="pi-heading">
   <h2 id="pi-heading">Principal Investigator</h2>
@@ -33,27 +51,12 @@ sections:
   {%- endfor %}
 </section>
 
-<section class="section" id="members" aria-labelledby="members-heading">
-  <h2 id="members-heading">Team</h2>
-  {%- if site.data.people.current and site.data.people.current.size > 0 %}
-  {%- comment -%}
-    Grouped by stage rather than listed flat, so the reader sees the shape of
-    the team. A member with `incoming: true` carries a start date instead of a
-    silent absence.
-  {%- endcomment -%}
-  {%- assign stages = "postdoc,phd,masters" | split: "," %}
-  {%- for stage in stages %}
-  {%- assign members = site.data.people.current | where: "stage", stage %}
-  {%- if members.size > 0 %}
-  <h3>
-    {%- case stage -%}
-      {%- when "postdoc" %}Postdoctoral researchers
-      {%- when "phd" %}Doctoral students
-      {%- when "masters" %}Master's students
-    {%- endcase -%}
-  </h3>
+{%- assign postdocs = site.data.people.current | where: "stage", "postdoc" %}
+<section class="section" id="postdocs" aria-labelledby="postdocs-heading">
+  <h2 id="postdocs-heading">Postdoctoral researchers</h2>
+  {%- if postdocs.size > 0 %}
   <div class="grid grid-2">
-    {%- for p in members %}
+    {%- for p in postdocs %}
     <div class="card">
       <p class="card-title">
         {%- if p.url %}<a href="{{ p.url }}" rel="noopener">{{ p.name }}</a>{% else %}{{ p.name }}{% endif -%}
@@ -67,32 +70,95 @@ sections:
     </div>
     {%- endfor %}
   </div>
-  {%- endif %}
-  {%- endfor %}
-  <p>
-    Open calls, when there are any, are posted on the
-    <a href="{{ '/join.html' | relative_url }}">Join</a> page.
-  </p>
   {%- else %}
-  <p>
-    Recruitment has not started. Calls are posted on the
-    <a href="{{ '/join.html' | relative_url }}">Join</a> page and announced in
-    the news.
-  </p>
+  <p>No postdoctoral researchers have joined yet.</p>
   {%- endif %}
 </section>
 
+{%- assign students = site.data.people.current | where: "stage", "phd" %}
+<section class="section" id="phd" aria-labelledby="phd-heading">
+  <h2 id="phd-heading">Doctoral students</h2>
+  {%- if students.size > 0 %}
+  <div class="grid grid-2">
+    {%- for p in students %}
+    <div class="card">
+      <p class="card-title">
+        {%- if p.url %}<a href="{{ p.url }}" rel="noopener">{{ p.name }}</a>{% else %}{{ p.name }}{% endif -%}
+      </p>
+      <p class="card-meta">
+        {{ p.role }}{% if p.location %}, {{ p.location }}{% endif %} &middot; {{ p.years }}
+        {%- if p.wps %} &middot; {{ p.wps | join: ", " }}{% endif -%}
+      </p>
+      {%- if p.incoming %}<p class="tags"><span class="tag tag-accent">Starts {{ p.starts }}</span></p>{% endif %}
+      {%- if p.topic %}<p>{{ p.topic }}</p>{% endif %}
+    </div>
+    {%- endfor %}
+  </div>
+  {%- else %}
+  <p>No doctoral students have joined yet.</p>
+  {%- endif %}
+</section>
+
+{%- assign masters = site.data.people.current | where: "stage", "masters" %}
+{%- if masters.size > 0 %}
+<section class="section" id="masters" aria-labelledby="masters-heading">
+  <h2 id="masters-heading">Master's students</h2>
+  <div class="grid grid-2">
+    {%- for p in masters %}
+    <div class="card">
+      <p class="card-title">
+        {%- if p.url %}<a href="{{ p.url }}" rel="noopener">{{ p.name }}</a>{% else %}{{ p.name }}{% endif -%}
+      </p>
+      <p class="card-meta">
+        {{ p.role }}{% if p.location %}, {{ p.location }}{% endif %} &middot; {{ p.years }}
+        {%- if p.wps %} &middot; {{ p.wps | join: ", " }}{% endif -%}
+      </p>
+      {%- if p.incoming %}<p class="tags"><span class="tag tag-accent">Starts {{ p.starts }}</span></p>{% endif %}
+      {%- if p.topic %}<p>{{ p.topic }}</p>{% endif %}
+    </div>
+    {%- endfor %}
+  </div>
+</section>
+{%- endif %}
+
+{%- comment -%}
+  Former members appear only once there are any -- an empty "Former members"
+  heading on a project that has just started says the wrong thing. Remember to
+  add the section to the front matter's `sections` list at the same time.
+{%- endcomment -%}
+{%- assign former = site.data.people.former %}
+{%- if former and former.size > 0 %}
+<section class="section" id="former" aria-labelledby="former-heading">
+  <h2 id="former-heading">Former members</h2>
+  <ul class="roles">
+    {%- for p in former %}
+    <li>
+      <strong>{%- if p.url %}<a href="{{ p.url }}" rel="noopener">{{ p.name }}</a>{% else %}{{ p.name }}{% endif -%}</strong>
+      <span>
+        {{ p.role }} &middot; {{ p.years }}
+        {%- if p.next %} &middot; now {{ p.next }}{% endif -%}
+      </span>
+    </li>
+    {%- endfor %}
+  </ul>
+</section>
+{%- endif %}
+
 <section class="section" id="collaborators" aria-labelledby="collaborators-heading">
-  <h2 id="collaborators-heading">Collaborators</h2>
+  <h2 id="collaborators-heading">External collaborators</h2>
   <p>
     Researchers contributing to specific tasks from outside the project.
   </p>
   <ul class="roles">
     {%- for p in site.data.people.collaborators %}
     <li>
-      <strong>{{ p.name }}</strong>
+      <strong>{%- if p.url %}<a href="{{ p.url }}" rel="noopener">{{ p.name }}</a>{% else %}{{ p.name }}{% endif -%}</strong>
       <span>{{ p.role }}{% if p.wps %} · {{ p.wps | join: ", " }}{% endif %}</span>
     </li>
     {%- endfor %}
   </ul>
+  <p>
+    Open calls, when there are any, are posted on the
+    <a href="{{ '/join.html' | relative_url }}">Join</a> page.
+  </p>
 </section>
