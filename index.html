@@ -56,6 +56,29 @@ description: >-
     </ul>
   </section>
 
+  <!-- ============ Intro video ============
+       youtube-nocookie rather than youtube.com: the privacy-enhanced host sets
+       no tracking cookie until the viewer presses play, which is the more
+       privacy-preserving default and costs nothing. loading="lazy" keeps the
+       player off the critical path. -->
+  <section class="section" aria-labelledby="video-heading">
+    <h2 id="video-heading">Start here</h2>
+    <p>
+      A short introduction to the lensing of gravitational waves, for a general
+      audience, produced by the Max Planck Institute for Gravitational Physics.
+      Recorded scientific talks are on the
+      <a href="{{ '/publications.html#talks' | relative_url }}">Publications and talks</a>
+      page.
+    </p>
+    <div class="video">
+      <iframe src="https://www.youtube-nocookie.com/embed/zv9tStMviwA"
+              title="The Next Frontier: Lensing of Gravitational Waves"
+              loading="lazy"
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+    </div>
+  </section>
+
   <!-- ============ News ============
        From _data/news.yml, newest first. The "New" flag is driven by the item's
        own date against FRESH_DAYS below, so it expires by itself at the next
