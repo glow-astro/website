@@ -1,4 +1,7 @@
+---
+sitemap: false
+---
 User-agent: *
 Allow: /
 
-Sitemap: https://miguelzuma.github.io/sitemap.xml
+Sitemap: {{ '/sitemap.xml' | absolute_url }}
