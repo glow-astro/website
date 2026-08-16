@@ -96,7 +96,7 @@ sections:
 
   <div class="grid grid-2">
     {%- for t in site.data.topics %}
-    <a class="card card-link" href="{{ '/' | append: t.id | append: '.html' | relative_url }}">
+    <a class="card card-link{% if t.wide %} card-wide{% endif %}" href="{{ '/' | append: t.id | append: '.html' | relative_url }}">
       <p class="card-title">{{ t.title }}</p>
       <p>{{ t.blurb }}</p>
       <p class="card-meta">{{ t.wps | join: " · " }}</p>

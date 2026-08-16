@@ -22,6 +22,10 @@
 #   title    page title and card title
 #   short    label in the topic bar, where there is no room for the full title
 #   blurb    one or two sentences for the card on the hub
+#   wide     optional; the card spans both columns on the hub. With five topics
+#            one card must, or the grid ends on a lone card beside a gap. Data
+#            analysis takes it because it sits in the middle of the reading
+#            order, between the lenses and what they measure.
 #   wps      work-package tasks this topic feeds
 #   papers   arXiv ids from publications.yml, for the "read more" line
 #   media    the animation. `width`/`height` are the render's real pixel size,
@@ -81,6 +85,7 @@
 - id: data-analysis
   title: "Data analysis"
   short: "Data analysis"
+  wide: true
   blurb: >-
     A lensing signature is only as good as the inference that finds it. Lensing
     enlarges the parameter space at the same time as the catalogs grow, which
