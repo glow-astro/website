@@ -32,6 +32,10 @@ sections:
     <p class="card-title">{{ t.name }}</p>
     <p class="card-meta">{{ t.subtitle }} · {{ t.status }}{% if t.wps %} · {{ t.wps | join: ", " }}{% endif %}</p>
     <p>{{ t.purpose }}</p>
+    {%- if t.name contains "DINGO" %}
+    <p>Why this matters is explained under
+      <a href="{{ '/data-analysis.html' | relative_url }}">data analysis</a>.</p>
+    {%- endif %}
 
     {%- if t.papers %}
     <p class="card-meta">Method paper</p>

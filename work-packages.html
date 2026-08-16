@@ -28,6 +28,13 @@ sections:
   approximations the theory needs to get right.
 </p>
 
+<p>
+  This page is the plan: what the project will build, in what order, and with
+  whom. For the physics behind it — what these phenomena are and what they can
+  measure — see the <a href="{{ '/science.html' | relative_url }}">science
+  topics</a>, which each task links to below.
+</p>
+
 {%- for wp in site.data.work_packages %}
 <section class="section" id="{{ wp.id }}" aria-labelledby="{{ wp.id }}-heading">
   <p class="eyebrow">{{ wp.code }}</p>
@@ -46,6 +53,24 @@ sections:
       <li>{{ o }}</li>
       {%- endfor %}
     </ul>
+    {%- endif %}
+
+    {%- comment -%}
+      The reciprocal of the topic pages' "Where this is done". Derived by
+      matching this task's code against each topic's `wps` rather than listed
+      again here, so the two directions cannot disagree.
+    {%- endcomment -%}
+    {%- assign explained_by = "" | split: "" %}
+    {%- for t in site.data.topics %}
+    {%- if t.wps contains task.code %}{% assign explained_by = explained_by | push: t %}{% endif %}
+    {%- endfor %}
+    {%- if explained_by.size > 0 %}
+    <p class="card-meta">The physics behind it</p>
+    <p>
+      {%- for t in explained_by %}
+      <a href="{{ '/' | append: t.id | append: '.html' | relative_url }}">{{ t.title }}</a>
+      {%- unless forloop.last %} &middot; {% endunless %}{% endfor %}
+    </p>
     {%- endif %}
 
     {%- if task.partners %}
