@@ -86,8 +86,7 @@
   column: 2
   tint: strong
   card: >-
-    Stars and remnants in the lensing galaxy, treated as a population rather
-    than as objects.
+    Stars and remnants in the lensing galaxy, treated collectively.
   blurb: >-
     A lens is rarely one object. Populations of compact objects — stars,
     remnants, or dark matter — each add their own diffraction, and what a signal
@@ -157,7 +156,7 @@
   papers: []
 
 - id: dark-matter
-  title: "Dark matter"
+  title: "Dark matter and small scales"
   short: "Dark matter"
   row: bottom
   column: 2
