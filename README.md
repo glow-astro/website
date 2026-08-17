@@ -29,6 +29,29 @@ After any structural change, rebuild and run the verification pass in
 stale `topic_id` that silently emptied a page's media paths, and a page that
 declared `sections` but never included the bar to render them.
 
+## Prose review
+
+```sh
+ruby tools/jekyll_build.rb . _site
+python3 tools/make_review_doc.py          # -> /tmp/glow-site-text.odt
+```
+
+Flattens the built site into one `.odt` for reading and editing in
+OpenOffice/LibreOffice — every word the site shows, in reading order, with
+navigation, images and video stripped and external link targets spelled out.
+Track changes (Edit → Track Changes → Record) is the easiest way to hand edits
+back.
+
+It reads `_site` rather than the sources, so nothing rendered out of `_data` can
+go missing, and each page carries a `SOURCE:` line naming the files its text
+actually comes from — necessary because **most of this site's prose lives in
+`_data/*.yml`, not in the page that displays it**, and an edit is otherwise hard
+to trace back. Those file lists are discovered by scanning each template for
+`site.data.<name>`, so they cannot go stale.
+
+`PAGES` in the script fixes the reading order; the script warns about any built
+page missing from it rather than shipping a partial document.
+
 ## Deployment
 
 The site is written to be served from the root of its domain (`baseurl` is
