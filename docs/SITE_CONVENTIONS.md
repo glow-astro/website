@@ -105,11 +105,11 @@ for t in topics:
         if c not in tasks: print('TOPIC WPS UNKNOWN TASK', t['id'], c)
     for a in t['papers']:
         if a not in arxiv: print('TOPIC PAPER UNKNOWN', t['id'], a)
-    # media is OPTIONAL, and `media.file` overrides the stem -- a render that
-    # is not specific to one topic is named after what it shows
+    # media is OPTIONAL; `media.file` overrides the stem, and `media.static`
+    # means a plot (one .png) rather than an animation (webm + mp4 + poster)
     if 'media' in t:
         stem = t['media'].get('file', t['id'])
-        for suffix in ('.webm', '.mp4', '_still.png'):
+        for suffix in (('.png',) if t['media'].get('static') else ('.webm', '.mp4', '_still.png')):
             if not os.path.exists(f"media/{stem}{suffix}"):
                 print('MISSING MEDIA', t['id'], stem + suffix)
 for cell, n in cells.items():

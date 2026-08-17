@@ -150,9 +150,13 @@ for anyone reading without the image.
 
 ### Figures and animations
 
-`media/` holds both: animations as `<stem>.webm` + `<stem>.mp4` + a poster,
-and static plots as a single `.png`. They get the same frame on the page, and
-the same naming rule. Static plots come from `~/code/application_plots/plots/`
+`media/` holds both: animations as `<stem>.webm` + `<stem>.mp4` + a poster, and
+static plots as a single `.png`. They get the same frame on the page and the
+same naming rule, and **`media` in `topics.yml` always means the page's opening
+figure** — set `static: true` when that opener is a plot. Three topics open on
+a figure that is not their own result, because the simple statement should come
+before the project's version of it; the animation then follows in the section
+that needs it. Static plots come from `~/code/application_plots/plots/`
 — take the `_dark` variant, and downscale anything much wider than 2000px.
 
 Animations live in `media/` as `<stem>.webm`, `<stem>.mp4` and

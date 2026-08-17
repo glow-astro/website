@@ -47,7 +47,9 @@
 #   blurb    one or two sentences; the topic's own summary, used in prose
 #   wps      work-package tasks this topic feeds
 #   papers   arXiv ids from publications.yml, for the "read more" line
-#   media    OPTIONAL -- the animation, where one exists. `file` names the
+#   media    OPTIONAL -- the page's OPENING figure, where it has one. Set
+#            `static: true` for a plot instead of an animation; the file is
+#            then media/<file>.png and there is no poster. `file` names the
 #            render, defaulting to the topic id; set it when the animation is
 #            not specific to this topic, so the filename says what the video
 #            shows. Never reuse a name for different content -- returning
@@ -111,19 +113,26 @@
     carries is the statistics of the population rather than any single lens.
   wps: ["WP1-A", "WP2-A", "WP3-A"]
   papers: ["2606.17765", "2512.17631"]
+  # The setup before any of its parts: the sweep further down varies a
+  # parameter of a geometry the reader has not been shown yet.
   media:
-    width: 1560
-    height: 520
+    file: microlensing-chain
+    static: true
+    width: 2000
+    height: 607
     alt: >-
-      Animation: as the magnification produced by the host galaxy is increased,
-      the caustic structure around a microlens expands and the distortion it
-      imprints on the signal grows.
+      Three panels. Left: a galaxy splits a source into two images with a time
+      delay between them. Centre: a zoom into one image showing a pc-scale
+      network of overlapping microlensing caustics with micro-images marked.
+      Right: the two images' waveforms, one distorted relative to the other.
     caption: >-
-      The strength of the external potential increases, taking the macro
-      magnification from 2.5 to 25. A microlens embedded in a more strongly
-      magnified image distorts the signal far more, which is why the environment
-      of the macroimage cannot be separated from the microlensing.
-    source: "GW231123_independent_analysis, family pls_gamma"
+      The whole chain, left to right. A galaxy splits the source into two images
+      separated by a time delay. One of those images lands on a field of stars,
+      whose caustics form the network in the middle panel — a parsec across, and
+      nothing a telescope will ever resolve. Each image therefore arrives
+      carrying a different wave-optics distortion, which is what the right-hand
+      panel shows and what a search has to model.
+    source: "application_plots, plots/microlensing/microlensing_master_3"
 
 - id: data-analysis
   title: "Data analysis"
@@ -172,6 +181,29 @@
     lensing formalism stops applying.
   wps: ["WP2-A"]
   papers: ["2512.17631"]
+  # No animation exists for a magnified high-redshift source, but this plot
+  # makes the page's whole argument at once, so the page opens on it.
+  media:
+    file: lensed-population
+    static: true
+    width: 1800
+    height: 1125
+    alt: >-
+      Source mass against redshift. Grey points mark detected black-hole
+      mergers, all below a curve labelled instrument horizon. Two green regions
+      sit above that curve, marked lensed neutron stars and lensed black holes.
+      A pink contour for GW231123 runs diagonally up and to the left along a
+      dashed magnification track.
+    caption: >-
+      Where lensing takes a detector. The grey curve is what the instruments
+      will reach unaided; the detected mergers (grey points) sit below it. The
+      green regions are populations that only lensing brings into range — black
+      holes and neutron stars past redshift 3, where nothing is currently
+      detectable. The pink contour is GW231123, and the direction it runs is the
+      argument of the last section on this page: magnification, mass and
+      distance slide along one track, so the same data describe a heavy nearby
+      source or a lighter, more distant, magnified one.
+    source: "application_plots, plots/gw231123/population_lensing"
 
 - id: dark-matter
   title: "Dark matter & small scales"

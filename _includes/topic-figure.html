@@ -32,12 +32,24 @@
 {%- endcomment -%}
 {%- assign stem = t.media.file | default: t.id -%}
 <figure class="topic-figure">
+  {%- if t.media.static %}
+  {%- comment -%}
+    A plot rather than an animation. Some topics open better on a static figure
+    -- a schematic of the whole setup, or a constraint plot -- and an opener is
+    an opener whichever it is, so it stays described in topics.yml rather than
+    being hand-written into the page. Eager, not lazy: it is above the fold.
+  {%- endcomment -%}
+  <img src="{{ '/media/' | append: stem | append: '.png' | relative_url }}"
+       width="{{ t.media.width }}" height="{{ t.media.height }}" loading="eager"
+       alt="{{ t.media.alt | strip_newlines | strip }}">
+  {%- else %}
   <video width="{{ t.media.width }}" height="{{ t.media.height }}" autoplay muted loop playsinline
          poster="{{ '/media/' | append: stem | append: '_still.png' | relative_url }}"
          aria-label="{{ t.media.alt | strip_newlines | strip }}">
     <source src="{{ '/media/' | append: stem | append: '.webm' | relative_url }}" type="video/webm">
     <source src="{{ '/media/' | append: stem | append: '.mp4' | relative_url }}" type="video/mp4">
   </video>
+  {%- endif %}
   <figcaption>{{ t.media.caption }}</figcaption>
 </figure>
 {%- endif -%}

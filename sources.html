@@ -14,27 +14,7 @@ topic_id: sources
 
 {% include topicnav.html %}
 
-{%- comment -%}
-  Still, not animation. Nothing in the render inventory illustrates a magnified
-  high-redshift source, but this plot makes the page's whole argument at once --
-  the horizon, what lensing puts beyond it, and the magnification track that a
-  real candidate runs along -- so the page opens on it rather than on nothing.
-{%- endcomment -%}
-<figure class="topic-figure">
-  <img src="{{ '/media/lensed-population.png' | relative_url }}"
-       width="1800" height="1125" loading="eager"
-       alt="Source mass against redshift. Grey points mark detected black-hole mergers, all below a curve labelled instrument horizon. Two green regions sit above that curve, marked lensed neutron stars and lensed black holes. A pink contour for GW231123 runs diagonally up and to the left along a dashed magnification track.">
-  <figcaption>
-    Where lensing takes a detector. The grey curve is what the instruments will
-    reach unaided; the detected mergers (grey points) sit below it. The green
-    regions are populations that only lensing brings into range — black holes and
-    neutron stars past redshift 3, where nothing is currently detectable. The
-    pink contour is GW231123, and the direction it runs is the argument of the
-    last section on this page: magnification, mass and distance slide along one
-    track, so the same data describe a heavy nearby source or a lighter, more
-    distant, magnified one.
-  </figcaption>
-</figure>
+{% include topic-figure.html topic=t %}
 
 <section class="section" id="reach" aria-labelledby="reach-heading">
   <h2 id="reach-heading">What magnification buys</h2>
