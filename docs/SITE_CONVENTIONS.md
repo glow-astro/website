@@ -116,6 +116,27 @@ for r, n in rows.items():
     if n != 3: print('ROW NOT 3', r, n)          # a hole in the absolute grid
 ```
 
+And the citations, whose failure mode is silent — `cite.html` renders nothing
+for a key that matches no reference, so a typo removes a marker rather than
+producing a broken one:
+
+```python
+import re, io, yaml
+h    = io.open('_site/science.html', encoding='utf-8').read()
+ids  = [r['id'] for r in yaml.safe_load(open('_data/references.yml'))]
+mark = re.findall(r'<a href="#ref-([a-z0-9-]+)">(\d+)</a>', h)
+
+# the printed number must be the reference's position in the data file
+bad = [(k, n) for k, n in mark if k not in ids or ids.index(k) + 1 != int(n)]
+if bad:                        print('CITE NUMBER WRONG', bad)
+if '<sup class="cite">[]</sup>' in h: print('CITE KEY MATCHES NOTHING')
+uncited = [i for i in ids if i not in {k for k, _ in mark}]
+if uncited:                    print('REFERENCE NEVER CITED', uncited)
+```
+
+A reference that is never cited is not an error in itself, but on this site it
+has always meant a citation was deleted and its entry left behind.
+
 Also check every `src`/`poster`/`srcset` resolves under `_site`: a stale
 `topic_id` once emptied a page's media paths to `/media/.webm`, and the page
 still looked fine because the poster simply never appeared.

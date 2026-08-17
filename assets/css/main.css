@@ -1281,6 +1281,47 @@ a.skymap-card:focus-visible {
 	.skymap-cards { grid-template-columns: 1fr; }
 }
 
+/* ---- Citations and references ---------------------------------------- */
+
+/* The marker rides above the line without stretching it: `vertical-align`
+   plus a zero line-height, rather than <sup>'s default, which opens a gap in
+   every paragraph that carries one. */
+.cite {
+	font-size: 0.72rem;
+	line-height: 0;
+	vertical-align: super;
+	white-space: nowrap;
+	margin-left: 0.08em;
+	color: var(--text-mute);
+}
+
+.cite a { text-decoration: none; }
+.cite a:hover, .cite a:focus-visible { text-decoration: underline; }
+
+.references {
+	margin: 1.2rem 0 0;
+	padding-left: 1.9rem;
+	font-size: 0.9rem;
+	line-height: 1.55;
+}
+
+.references li {
+	margin-bottom: 0.7rem;
+	color: var(--text-soft);
+}
+
+/* The anchor a citation jumps to. Clearing the sticky stack is the same
+   problem the section bars have, and the same fix. */
+.references li:target {
+	background: var(--bg-card);
+	box-shadow: 0 0 0 0.45rem var(--bg-card);
+	border-radius: 3px;
+}
+
+.ref-authors { color: var(--text-mute); }
+.ref-where { color: var(--text-mute); }
+.ref-where::before { content: " · "; }
+
 /* ---- Motion ---------------------------------------------------------- */
 
 @media (prefers-reduced-motion: reduce) {

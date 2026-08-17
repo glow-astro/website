@@ -1,0 +1,148 @@
+# References cited on science.html.
+#
+# Borrowed from the grant proposal's bibliography (Part B1), which is where
+# these claims were argued in the first place -- so the citations here support
+# the same statements they supported there, rather than being attached after
+# the fact.
+#
+# ORDER IS THE NUMBERING. The list renders numbered, and _includes/cite.html
+# finds a reference's number by its position in this file, so inserting one in
+# the middle renumbers everything after it -- which is fine, because both the
+# marker and the list are generated from this one place and cannot disagree.
+# Keep the order matching first appearance on the page.
+#
+# Titles are the canonical ones from the arXiv API, not the proposal's numeric
+# style, and every `url` was checked to resolve before being committed.
+#
+# Schema
+#   id       slug used by {% include cite.html key="..." %}
+#   authors  as cited; "et al." past three
+#   title    optional -- the proposal's style omits titles for some entries and
+#            a guessed title is worse than none
+#   where    journal, volume, year; or the kind of document
+#   url      optional; arXiv abstract page, DOI, or the page itself
+
+- id: schneider-lenses
+  authors: "P. Schneider, J. Ehlers, E. E. Falco"
+  title: "Gravitational Lenses"
+  where: "Astronomy and Astrophysics Library, Springer (1992)"
+
+- id: sauer-history
+  authors: "T. Sauer"
+  title: "A brief history of gravitational lensing"
+  where: "Einstein Online"
+  url: "https://www.einstein-online.info/en/spotlight/grav_lensing_history/"
+
+- id: gaudi-exoplanets
+  authors: "B. S. Gaudi"
+  title: "Microlensing surveys for exoplanets"
+  where: "Ann. Rev. Astron. Astrophys. 50, 411 (2012)"
+  url: "https://doi.org/10.1146/annurev-astro-081811-125518"
+
+- id: eht-m87
+  authors: "Event Horizon Telescope Collaboration, K. Akiyama et al."
+  title: "First M87 Event Horizon Telescope results. I. The shadow of the supermassive black hole"
+  where: "Astrophys. J. Lett. 875, L1 (2019)"
+  url: "https://arxiv.org/abs/1906.11238"
+
+- id: planck-lensing
+  authors: "Planck Collaboration, N. Aghanim et al."
+  title: "Planck 2018 results. VIII. Gravitational lensing"
+  where: "Astron. Astrophys. 641, A8 (2020)"
+  url: "https://arxiv.org/abs/1807.06210"
+
+- id: gw150914
+  authors: "LIGO Scientific and Virgo Collaborations, B. P. Abbott et al."
+  title: "Observation of gravitational waves from a binary black hole merger"
+  where: "Phys. Rev. Lett. 116, 061102 (2016)"
+  url: "https://arxiv.org/abs/1602.03837"
+
+- id: leung-wave-mechanics
+  authors: "C. Leung et al."
+  title: "Wave mechanics, interference, and decoherence in strong gravitational lensing"
+  where: "(2023)"
+  url: "https://arxiv.org/abs/2304.01202"
+
+- id: petroff-frb
+  authors: "E. Petroff, J. W. T. Hessels, D. R. Lorimer"
+  title: "Fast radio bursts at the dawn of the 2020s"
+  where: "Astron. Astrophys. Rev. 30, 2 (2022)"
+  url: "https://arxiv.org/abs/2107.10113"
+
+- id: chime-catalog
+  authors: "CHIME/FRB Collaboration, M. Amiri et al."
+  title: "The first CHIME/FRB fast radio burst catalog"
+  where: "Astrophys. J. Supp. 257, 59 (2021)"
+  url: "https://arxiv.org/abs/2106.04352"
+
+- id: cordes-plasma
+  authors: "J. M. Cordes et al."
+  title: "Lensing of fast radio bursts by plasma structures in host galaxies"
+  where: "Astrophys. J. 842, 35 (2017)"
+  url: "https://arxiv.org/abs/1703.06580"
+
+- id: lvk-plan
+  authors: "LIGO Scientific Collaboration"
+  title: "LIGO–Virgo–KAGRA observing plan"
+  where: "Observing capabilities documentation"
+  url: "https://observing.docs.ligo.org/plan/"
+
+- id: dsa2000
+  authors: "G. Hallinan et al."
+  title: "The DSA-2000 — a radio survey camera"
+  where: "Bull. Am. Astron. Soc. 51, 255 (2019)"
+  url: "https://arxiv.org/abs/1907.07648"
+
+- id: chord
+  authors: "K. Vanderlinde et al."
+  title: "The Canadian Hydrogen Observatory and Radio-transient Detector (CHORD)"
+  where: "Canadian Long Range Plan white paper (2019)"
+  url: "https://arxiv.org/abs/1911.01777"
+
+- id: burstt
+  authors: "H.-H. Lin et al."
+  title: "BURSTT: Bustling Universe Radio Survey Telescope in Taiwan"
+  where: "Publ. Astron. Soc. Pac. 134, 094106 (2022)"
+  url: "https://arxiv.org/abs/2206.08983"
+
+- id: wierda-rates
+  authors: "A. R. A. C. Wierda, E. Wempe, O. A. Hannuksela, L. V. E. Koopmans, C. Van Den Broeck"
+  title: "Beyond the detector horizon: forecasting gravitational-wave strong lensing"
+  where: "Astrophys. J. 921, 154 (2021)"
+  url: "https://arxiv.org/abs/2106.06303"
+
+- id: smith-rates
+  authors: "G. P. Smith et al."
+  title: "Discovering gravitationally lensed gravitational waves: predicted rates, candidate selection, and localization with the Vera Rubin Observatory"
+  where: "Mon. Not. Roy. Astron. Soc. 520, 702 (2023)"
+  url: "https://arxiv.org/abs/2204.12977"
+
+- id: connor-ravi-frb
+  authors: "L. Connor, V. Ravi"
+  title: "Stellar prospects for FRB gravitational lensing"
+  where: "Mon. Not. Roy. Astron. Soc. 521, 4024 (2023)"
+  url: "https://arxiv.org/abs/2206.14310"
+
+- id: einstein-telescope
+  authors: "M. Maggiore et al."
+  title: "Science case for the Einstein Telescope"
+  where: "JCAP 03, 050 (2020)"
+  url: "https://arxiv.org/abs/1912.02622"
+
+- id: cosmic-explorer
+  authors: "M. Evans et al."
+  title: "A horizon study for Cosmic Explorer: science, observatories, and community"
+  where: "(2021)"
+  url: "https://arxiv.org/abs/2109.09882"
+
+- id: lisa-definition
+  authors: "LISA Collaboration, M. Colpi et al."
+  title: "LISA definition study report"
+  where: "(2024)"
+  url: "https://arxiv.org/abs/2402.07571"
+
+- id: glow-code
+  authors: "H. Villarrubia-Rojo, S. Savastano, M. Zumalacárregui et al."
+  title: "GLoW: novel methods for wave-optics phenomena in gravitational lensing"
+  where: "Phys. Rev. D 111, 103539 (2025)"
+  url: "https://arxiv.org/abs/2409.04606"

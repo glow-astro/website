@@ -74,6 +74,7 @@ Everything that repeats lives in `_data`, not in the templates:
 | `people.yml` | PI, team members, external collaborators |
 | `positions.yml` | **open calls only** — never what the project plans to recruit |
 | `publications.yml` | papers and talks that acknowledge the grant |
+| `references.yml` | works cited on the science page; **order is the numbering** |
 | `news.yml` | dated one-sentence items for the home page |
 | `software.yml` | tools, per-paper data releases, and the release policy |
 
@@ -93,6 +94,27 @@ They cross-link in both directions, and both directions are derived from
 The topic **bar** is flat on purpose. An earlier version grouped it under
 headings, which was wrong: microlensing is a wave-optics problem, a search
 problem and a dark-matter probe at once, so any partition into kinds misleads.
+
+### Citations
+
+`science.html` carries numbered citations, drawn from the grant proposal's own
+bibliography so they support the same claims they supported there. Cite with
+
+```liquid
+{% include cite.html key="planck-lensing" %}
+{% include cite.html key="dsa2000,chord,burstt" %}
+```
+
+and the list renders itself at `#references` from `_includes/references.html`.
+**The number is the entry's position in `references.yml`**, found by looping
+rather than stored, so a marker and the list cannot disagree — but inserting an
+entry mid-file renumbers everything after it, which is why the order is meant
+to follow first appearance on the page.
+
+A key matching no entry renders an empty marker rather than failing the build,
+so the verification pass checks it. Verify any new `url` resolves before
+committing it; the ones here were all checked, and titles came from the arXiv
+API rather than from memory.
 
 ### The science diagram
 

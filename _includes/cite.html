@@ -1,0 +1,24 @@
+{%- comment -%}
+  A citation marker:
+
+      {% include cite.html key="planck-lensing" %}
+      {% include cite.html key="dsa2000,chord,burstt" %}
+
+  The number is the reference's position in _data/references.yml, found by
+  looping rather than stored, so a marker and the list at the foot of the page
+  can never disagree about what [7] means.
+
+  A key that matches nothing renders nothing rather than a broken marker -- the
+  verification pass is what catches the typo, because a silent gap in a page is
+  easier to miss than a loud one but much easier to test for.
+{%- endcomment -%}
+{%- assign keys = include.key | split: "," -%}
+<sup class="cite">[{% for k in keys %}
+  {%- assign want = k | strip -%}
+  {%- for r in site.data.references -%}
+    {%- if r.id == want -%}
+      <a href="#ref-{{ r.id }}">{{ forloop.index }}</a>
+    {%- endif -%}
+  {%- endfor -%}
+  {%- unless forloop.last %}, {% endunless -%}
+{%- endfor %}]</sup>

@@ -1,0 +1,19 @@
+{%- comment -%}
+  The numbered reference list. Numbering comes from the order of
+  _data/references.yml, the same source cite.html counts through.
+
+  Every entry that has a `url` links from its title; entries without one are a
+  book or a document with no stable address, and are left as plain text rather
+  than pointed at a search result.
+{%- endcomment -%}
+<ol class="references">
+  {%- for r in site.data.references %}
+  <li id="ref-{{ r.id }}">
+    <span class="ref-authors">{{ r.authors }}</span>
+    {%- if r.title %},
+    {% if r.url %}<a href="{{ r.url }}" rel="noopener">{{ r.title }}</a>{% else %}{{ r.title }}{% endif -%}
+    {%- endif %}
+    <span class="ref-where">{{ r.where }}{% if r.title == nil and r.url %} · <a href="{{ r.url }}" rel="noopener">link</a>{% endif %}</span>
+  </li>
+  {%- endfor %}
+</ol>

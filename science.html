@@ -20,6 +20,8 @@ sections:
     label: "Why now"
   - id: goals
     label: "What GLOW will deliver"
+  - id: references
+    label: "References"
 ---
 
 {% include topicnav.html %}
@@ -56,10 +58,14 @@ sections:
   <p>
     Light traveling through the Universe is deflected and magnified by
     gravitational fields, occasionally producing multiple images of the same
-    object. Gravitational lensing began as a prediction thought unlikely to be
-    observed, and became one of astronomy's most productive tools: multiply
-    imaged quasars, cosmography, maps of dark matter inside lens galaxies,
-    exoplanets found by microlensing. It has now been seen across the
+    object.{% include cite.html key="schneider-lenses" %} Gravitational lensing
+    began as a prediction thought unlikely to be
+    observed,{% include cite.html key="sauer-history" %} and became one of
+    astronomy's most productive tools: multiply imaged quasars, cosmography,
+    maps of dark matter inside lens galaxies{% include cite.html key="planck-lensing" %},
+    images of supermassive black holes{% include cite.html key="eht-m87" %},
+    exoplanets found by microlensing{% include cite.html key="gaudi-exoplanets" %}.
+    It has now been seen across the
     electromagnetic spectrum, and each source and spectral range brings its own
     strengths.
   </p>
@@ -77,14 +83,16 @@ sections:
     magnify or split it, a coherent signal carries its phase intact, and the
     lens distorts the wavefront itself. The result is a
     <strong>frequency-dependent — chromatic — distortion</strong>: diffraction
-    and interference written directly into the observed signal. That distortion
+    and interference written directly into the observed
+    signal.{% include cite.html key="leung-wave-mechanics" %} That distortion
     is a measurement of the lens, not merely evidence that one was there.
   </p>
   <div class="grid grid-2">
     <div class="card">
       <p class="card-title">What gravitational waves add</p>
       <p>
-        They can be modeled from first principles, they probe gravity directly,
+        Detected since 2015{% include cite.html key="gw150914" %}, they can be
+        modeled from first principles, they probe gravity directly,
         and they are essentially unabsorbed on their way to us. A lensing
         signature in a waveform can therefore be predicted, fitted and believed.
       </p>
@@ -92,10 +100,12 @@ sections:
     <div class="card">
       <p class="card-title">What fast radio bursts add</p>
       <p>
-        Precise sky localization, and an interaction with ionized matter —
+        Short, powerful extragalactic
+        transients{% include cite.html key="petroff-frb,chime-catalog" %} with
+        precise sky localization, and an interaction with ionized matter —
         <a href="{{ '/wave-optics.html#plasma' | relative_url }}">plasma
-        lensing</a> — that turns them into a probe of the baryons that are
-        otherwise hardest to see.
+        lensing</a>{% include cite.html key="cordes-plasma" %} — that turns them
+        into a probe of the baryons that are otherwise hardest to see.
       </p>
     </div>
   </div>
@@ -113,16 +123,20 @@ sections:
   <p>
     The observational situation is changing quickly. The LIGO–Virgo–KAGRA
     network will soon deliver thousands of detections from compact binary
-    mergers. Radio surveys — CHIME, DSA-2000, CHORD, BURSTT — are increasing the
-    number of observed fast radio bursts by orders of magnitude. A first
+    mergers.{% include cite.html key="lvk-plan" %} Radio surveys — CHIME,
+    DSA-2000, CHORD, BURSTT — are increasing the number of observed fast radio
+    bursts by orders of
+    magnitude.{% include cite.html key="dsa2000,chord,burstt" %} A first
     discovery of lensed gravitational waves and fast radio bursts is expected in
-    the coming years.
+    the coming years.{% include cite.html key="wierda-rates,smith-rates,connor-ravi-frb" %}
   </p>
   <p>
     What follows is a shift from discovery to population: detector upgrades, the
-    next generation of ground-based observatories, and the SKA survey. LISA,
-    adopted by ESA in 2024 and scheduled to launch in 2035, opens the
-    low-frequency band and with it a different set of lensing signatures.
+    next generation of ground-based
+    observatories{% include cite.html key="einstein-telescope,cosmic-explorer" %},
+    and the SKA survey. LISA, adopted by ESA in 2024 and scheduled to launch in
+    2035{% include cite.html key="lisa-definition" %}, opens the low-frequency
+    band and with it a different set of lensing signatures.
   </p>
   <p>
     The methods have to exist before the events arrive. An advanced framework for
@@ -160,8 +174,19 @@ sections:
   </ul>
   <p>
     The project builds on several years of work on wave-optics lensing and on the
-    public <a href="{{ '/software.html' | relative_url }}">GLoW code</a>, which
-    already computes diffraction by general matter distributions fast enough to
-    sit inside a parameter-estimation loop.
+    public <a href="{{ '/software.html' | relative_url }}">GLoW
+    code</a>{% include cite.html key="glow-code" %}, which already computes
+    diffraction by general matter distributions fast enough to sit inside a
+    parameter-estimation loop.
   </p>
+</section>
+
+<section class="section" id="references" aria-labelledby="references-heading">
+  <h2 id="references-heading">References</h2>
+  <p>
+    The sources behind the claims above, carried over from the grant proposal's
+    own bibliography. Work by the project itself is on the
+    <a href="{{ '/publications.html' | relative_url }}">publications page</a>.
+  </p>
+  {% include references.html %}
 </section>
