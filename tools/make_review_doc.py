@@ -79,9 +79,31 @@ def data_sources(page):
     return [f"_data/{n}.yml" for n in names if n not in ("nav",)]
 
 
+def lift_media_descriptions(soup):
+    """Rescue alt / aria-label text before the media elements are dropped.
+
+    These are full sentences describing every figure, they are what a screen
+    reader actually reads out, and nobody proofreads them because they are
+    invisible. Lifted into a paragraph beside the caption so they get read like
+    everything else.
+    """
+    for fig in soup.find_all("figure"):
+        for el in fig.find_all(["img", "video"]):
+            desc = el.get("alt") or el.get("aria-label") or ""
+            desc = " ".join(desc.split())
+            if not desc:
+                continue
+            p = soup.new_tag("p")
+            p["class"] = "cap"
+            p.string = "[image description] " + desc
+            cap = fig.find("figcaption")
+            cap.insert_before(p) if cap else fig.append(p)
+
+
 def flatten(path, title):
     html = io.open(os.path.join(SITE, path), encoding="utf-8").read()
     soup = BeautifulSoup(html, "html.parser")
+    lift_media_descriptions(soup)
     for sel in DROP:
         for el in soup.select(sel):
             el.decompose()
