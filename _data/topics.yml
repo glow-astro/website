@@ -115,11 +115,16 @@
   papers: ["2606.17765", "2512.17631"]
   # The setup before any of its parts: the sweep further down varies a
   # parameter of a geometry the reader has not been shown yet.
+  #
+  # The _web_ variant, not _talk_: its type is sized off main.css rather than
+  # off a slide, so the panel titles read as headings next to the site's own.
+  # One thing it cannot fix -- the labels inside the left panel are baked into
+  # a raster diagram with no vector source, so they stay serif.
   media:
     file: microlensing-chain
     static: true
     width: 2000
-    height: 607
+    height: 621
     alt: >-
       Three panels. Left: a galaxy splits a source into two images with a time
       delay between them. Centre: a zoom into one image showing a pc-scale
@@ -132,7 +137,7 @@
       nothing a telescope will ever resolve. Each image therefore arrives
       carrying a different wave-optics distortion, which is what the right-hand
       panel shows and what a search has to model.
-    source: "application_plots, plots/microlensing/microlensing_master_3"
+    source: "application_plots, plots/microlensing/microlensing_master_3_web_dark"
 
 - id: data-analysis
   title: "Data analysis"
