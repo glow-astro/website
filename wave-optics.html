@@ -59,6 +59,29 @@ topic_id: wave-optics
     image — the subject of
     <a href="{{ '/dark-matter.html' | relative_url }}">dark matter</a>.
   </p>
+
+  {%- comment -%}
+    Ordinary light through a round hole: the same statement as everything above,
+    in a regime anyone can picture and a laboratory can reproduce. It is here
+    rather than at the head of the page because it is the analogy, not the
+    subject -- the topic figure shows the gravitational-wave case.
+  {%- endcomment -%}
+  <figure class="topic-figure">
+    <video width="1560" height="780" autoplay muted loop playsinline
+           poster="{{ '/media/diffraction_still.png' | relative_url }}"
+           aria-label="Animation: light of a single colour passes through a small circular hole and casts a bright core ringed by fainter circles. As the colour sweeps from red to violet the rings contract and the core brightens.">
+      <source src="{{ '/media/diffraction.webm' | relative_url }}" type="video/webm">
+      <source src="{{ '/media/diffraction.mp4' | relative_url }}" type="video/mp4">
+    </video>
+    <figcaption>
+      The same physics in visible light, where it can be checked on a bench. A
+      circular hole 200&nbsp;µm across, lit by one colour at a time and swept
+      across the spectrum: the rings contract as the wavelength falls, the first
+      dark ring sitting at 1.22&nbsp;λ/D, while the core brightens as 1/λ².
+      Longer wavelength, stronger diffraction — which is the whole reason
+      gravitational waves reach lens masses that light passes straight by.
+    </figcaption>
+  </figure>
 </section>
 
 <section class="section" id="plasma" aria-labelledby="plasma-heading">

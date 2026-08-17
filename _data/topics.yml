@@ -179,14 +179,17 @@
     width: 1560
     height: 520
     alt: >-
-      Animation: as the frequency rises, the Fresnel tube around the line of
+      Animation: as the frequency rises, the Fresnel volume around the line of
       sight shrinks and the number of dark-matter halos inside it falls from
-      thousands to a handful, while the resulting distortion changes character.
+      thousands to a handful, while the real and imaginary parts of the
+      amplification factor trace out their frequency dependence.
     caption: >-
-      A frequency sweep from 0.5 mHz to 1 Hz through one realization of 2502
-      dark-matter halos. The Fresnel tube shrinks as the frequency rises, so
-      thousands of halos contribute at low frequency and only a few at high
-      frequency — which is why a single signal probes a range of masses at once.
+      A frequency sweep through one realization of 2502 cold-dark-matter halos
+      along the line of sight to a source at redshift 3. The Fresnel volume
+      shrinks as the frequency rises, so thousands of halos contribute at low
+      frequency and only a few dozen at high frequency — which is why a single
+      signal probes a range of masses at once. On the right, the real and
+      imaginary parts of the amplification factor they produce.
     source: "cdm_timbre, family stochastic_diffraction"
 
 - id: testing-gravity
@@ -207,12 +210,16 @@
     width: 1560
     height: 975
     alt: >-
-      Animation: a wave passing a screened lens splits into two polarization
-      eigenstates that travel at slightly different speeds, so one pulls ahead
-      of the other and the waveform is scrambled.
+      Animation: a screened lens sweeps across a gravitational-wave signal drawn
+      as a snapshot in space; below, the two polarizations drift apart in time,
+      and the detector would record a waveform scrambled relative to the
+      prediction of general relativity.
     caption: >-
-      Gravitational-wave birefringence: a screened lens gives two polarization
-      eigenstates slightly different speeds, and one pulls ahead of the other.
-      Over a short enough delay the two copies overlap and the waveform is
-      scrambled rather than repeated.
+      Gravitational-wave birefringence. Top: a Vainshtein-screened lens crossing
+      the signal, which is drawn where it is in space — the low-frequency
+      inspiral leading, the merger at the packet and the ringdown trailing. The
+      lens gives the two polarizations slightly different speeds, so they pull
+      apart, here by 50 ms. Below: what a detector records. The delay is short
+      enough that the two copies overlap, so the waveform is scrambled rather
+      than repeated — and no electromagnetic counterpart is needed to see it.
     source: "gw_birefringence, family birefringence_scramble"

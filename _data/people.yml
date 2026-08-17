@@ -12,6 +12,14 @@
 #             (co-supervised), (co-supervised with X), (close collaboration);
 #             leave it off when the supervision was simply the PI's. Never the
 #             possessive -- see docs/SITE_CONVENTIONS.md section 8.
+#
+#             "Affiliated postdoctoral researcher" means someone working on the
+#             project whose salary comes from another grant. They are the same
+#             rank, so they share the postdocs section rather than getting one
+#             of their own; within it, order is grant-funded first and then
+#             affiliated. That ordering is carried by this file alone -- the
+#             template renders whatever order it finds -- so keep new entries
+#             in the right half of the list.
 #   location  optional, when the person is not based with the rest of the team
 #   years     e.g. "2026–"
 #   topic     one sentence on what the person works on
@@ -36,12 +44,33 @@ pi:
       projects.
 
 current:
+  # Postdocs the grant pays for, first.
   - name: "Han-Gil Choi"
     url: "https://inspirehep.net/authors/1852430"
     stage: postdoc
     role: "Postdoctoral researcher"
     years: "2026–"
     topic: "Signatures of low-mass dark-matter halos in LISA through stochastic diffraction."
+
+  - name: "Héctor Villarrubia-Rojo"
+    url: "https://inspirehep.net/authors/1897475"
+    stage: postdoc
+    role: "Postdoctoral researcher"
+    years: "2026–"
+    incoming: true
+    starts: "October 2026"
+    topic: "Lead developer of the GLoW code; wave-optics methods for gravitational lensing. Previously a Margarita Salas Fellow in the group (2022–2024)."
+
+  # Then those on the project but paid by another grant. See the note on
+  # `role` in the schema above: the ordering is the point, not decoration.
+  - name: "Daniel Ballard"
+    url: "https://inspirehep.net/authors/2648800"
+    stage: postdoc
+    role: "Affiliated postdoctoral researcher"
+    years: "2026–"
+    incoming: true
+    starts: "October 2026"
+    topic: "Lens modeling and analysis."
 
   - name: "Xikai Shan"
     url: "https://inspirehep.net/authors/1837042"
@@ -54,29 +83,11 @@ current:
   - name: "Juan Urrutia"
     url: "https://inspirehep.net/authors/2049477"
     stage: postdoc
-    role: "Postdoctoral researcher"
+    role: "Affiliated postdoctoral researcher"
     years: "2026–"
     incoming: true
     starts: "October 2026"
     topic: "Dark-matter halos and diffraction signatures in space-based gravitational-wave data."
-
-  - name: "Héctor Villarrubia-Rojo"
-    url: "https://inspirehep.net/authors/1897475"
-    stage: postdoc
-    role: "Postdoctoral researcher"
-    years: "2026–"
-    incoming: true
-    starts: "October 2026"
-    topic: "Lead developer of the GLoW code; wave-optics methods for gravitational lensing. Previously a Margarita Salas Fellow in the group (2022–2024)."
-
-  - name: "Daniel Ballard"
-    url: "https://inspirehep.net/authors/2648800"
-    stage: postdoc
-    role: "Postdoctoral researcher"
-    years: "2026–"
-    incoming: true
-    starts: "October 2026"
-    topic: "Lens modeling and analysis."
 
   - name: "Manon van Zyl"
     stage: phd

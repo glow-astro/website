@@ -12,6 +12,36 @@ description: >-
 <div class="wrap">
 
   <!-- ============ Hero ============ -->
+  {%- comment -%}
+    The project's name written by the effect the project studies: the letters
+    GLoW used as an aperture, with the wavelength swept until the word stops
+    being legible. It sits above the hero rather than replacing the logo in it
+    -- the lock-up is the official mark and has its own rules -- and it carries
+    a caption, because on this site a picture that only decorates is a picture
+    that has not been explained.
+  {%- endcomment -%}
+  <figure class="hero-banner">
+    {%- comment -%}
+      Deliberately not `loop`. This is the one-way "reveal" render: it runs from
+      the longest wavelength to the shortest and ends held on the readable word.
+      Looping it would spend most of the time on the unreadable end and throw
+      away the point of the sweep.
+    {%- endcomment -%}
+    <video width="1560" height="780" autoplay muted playsinline
+           poster="{{ '/media/glow-word_still.png' | relative_url }}"
+           aria-label="Animation: the word GLoW, formed by light passing through letter-shaped openings. It begins as a blur of orange and red interference fringes and sharpens until the word is legible.">
+      <source src="{{ '/media/glow-word.webm' | relative_url }}" type="video/webm">
+      <source src="{{ '/media/glow-word.mp4' | relative_url }}" type="video/mp4">
+    </video>
+    <figcaption>
+      The project's name as a diffraction pattern: the letters used as an
+      opening, with a screen 100&nbsp;mm behind them and the wavelength sweeping
+      down until the word resolves. Whether you can read it is a question about
+      the wavelength, not about the optics — which is the argument this whole
+      project rests on.
+    </figcaption>
+  </figure>
+
   <section class="hero" aria-labelledby="hero-heading">
     <div>
       <h1 id="hero-heading">Gravitational Lensing of Waves</h1>
