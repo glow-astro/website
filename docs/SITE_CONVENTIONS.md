@@ -105,11 +105,13 @@ for t in topics:
         if c not in tasks: print('TOPIC WPS UNKNOWN TASK', t['id'], c)
     for a in t['papers']:
         if a not in arxiv: print('TOPIC PAPER UNKNOWN', t['id'], a)
-    # media is OPTIONAL -- only check the files when the key is there
+    # media is OPTIONAL, and `media.file` overrides the stem -- a render that
+    # is not specific to one topic is named after what it shows
     if 'media' in t:
+        stem = t['media'].get('file', t['id'])
         for suffix in ('.webm', '.mp4', '_still.png'):
-            if not os.path.exists(f"media/{t['id']}{suffix}"):
-                print('MISSING MEDIA', t['id'], suffix)
+            if not os.path.exists(f"media/{stem}{suffix}"):
+                print('MISSING MEDIA', t['id'], stem + suffix)
 for cell, n in cells.items():
     if n > 1: print('CELL COLLISION', cell, n)   # two cards stacked in the diagram
 for r, n in rows.items():
@@ -136,6 +138,30 @@ if uncited:                    print('REFERENCE NEVER CITED', uncited)
 
 A reference that is never cited is not an error in itself, but on this site it
 has always meant a citation was deleted and its entry left behind.
+
+Two more on the media, both of which have bitten:
+
+```python
+# nothing in media/ unreferenced, nothing referenced missing
+refd = set()
+for f in glob.glob('_site/*.html'):
+    refd |= set(re.findall(r'"/media/([^"]+)"', io.open(f, encoding='utf-8').read()))
+have = {os.path.basename(p) for p in glob.glob('media/*')}
+if have - refd: print('ORPHANED MEDIA', sorted(have - refd))
+if refd - have: print('MEDIA MISSING', sorted(refd - have))
+
+# no page may play the same video twice
+for f in glob.glob('_site/*.html'):
+    v = re.findall(r'"/media/([^"]+)\.webm"', io.open(f, encoding='utf-8').read())
+    dup = [x for x in set(v) if v.count(x) > 1]
+    if dup: print('REPEATED VIDEO', os.path.basename(f), dup)
+```
+
+**Never reuse a media filename for different content.** Doing so serves every
+returning visitor the old video out of cache, which presents as a page showing
+the wrong animation — or the same one twice — while the file on disk is
+correct, so it looks like a template bug and is not one. Give the new render a
+new name and point `media.file` at it.
 
 Also check every `src`/`poster`/`srcset` resolves under `_site`: a stale
 `topic_id` once emptied a page's media paths to `/media/.webm`, and the page

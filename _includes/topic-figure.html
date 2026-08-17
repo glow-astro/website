@@ -23,12 +23,20 @@
 {%- endcomment -%}
 {%- assign t = include.topic -%}
 {%- if t.media -%}
+{%- comment -%}
+  The file is named after what it SHOWS, via `media.file`, falling back to the
+  topic id. Not cosmetic: reusing one name for two different renders means every
+  browser that has been here before serves the old video out of cache, which
+  looks exactly like a template bug and cost one round of confusion already.
+  A new animation gets a new name, and the stale one expires on its own.
+{%- endcomment -%}
+{%- assign stem = t.media.file | default: t.id -%}
 <figure class="topic-figure">
   <video width="{{ t.media.width }}" height="{{ t.media.height }}" autoplay muted loop playsinline
-         poster="{{ '/media/' | append: t.id | append: '_still.png' | relative_url }}"
+         poster="{{ '/media/' | append: stem | append: '_still.png' | relative_url }}"
          aria-label="{{ t.media.alt | strip_newlines | strip }}">
-    <source src="{{ '/media/' | append: t.id | append: '.webm' | relative_url }}" type="video/webm">
-    <source src="{{ '/media/' | append: t.id | append: '.mp4' | relative_url }}" type="video/mp4">
+    <source src="{{ '/media/' | append: stem | append: '.webm' | relative_url }}" type="video/webm">
+    <source src="{{ '/media/' | append: stem | append: '.mp4' | relative_url }}" type="video/mp4">
   </video>
   <figcaption>{{ t.media.caption }}</figcaption>
 </figure>

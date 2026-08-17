@@ -150,8 +150,15 @@ for anyone reading without the image.
 
 ### Animations
 
-Topic-page animations live in `media/` as `<topic>.webm`, `<topic>.mp4` and
-`<topic>_still.png`. `media` is **optional** in `topics.yml` — `sources` has no
+Topic-page animations live in `media/` as `<stem>.webm`, `<stem>.mp4` and
+`<stem>_still.png`, where `<stem>` is `topics.yml`'s `media.file` or, failing
+that, the topic id. Set `media.file` whenever the render is not specific to one
+topic, so the filename says what the video shows.
+
+**Never reuse a filename for different content.** Returning visitors get the old
+video out of cache, which looks exactly like the page rendering the wrong
+animation — or the same one twice — while the file on disk is right. This has
+already cost one round of debugging. `media` is **optional** in `topics.yml` — `sources` has no
 render, and `topic-figure.html` emits nothing rather than a broken `/media/.webm`
 when the key is absent. They are **not** generated here — each comes from the repo
 that owns the physics, indexed in `~/code/application_plots/ANIMATIONS.md`, and
