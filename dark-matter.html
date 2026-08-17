@@ -64,6 +64,30 @@ topic_id: dark-matter
     <a href="{{ '/microlensing.html' | relative_url }}">similar signatures</a>
     and are the dominant astrophysical systematic.
   </p>
+
+  {%- comment -%}
+    Why that separation is possible at all: a diffraction pattern carries the
+    shape of the thing that made it, not only its size. Optics again, because
+    the point is general -- and because a polygon makes it visible in a way a
+    density profile does not.
+  {%- endcomment -%}
+  <figure class="topic-figure">
+    <video width="1560" height="780" autoplay muted loop playsinline
+           poster="{{ '/media/diffraction-shape_still.png' | relative_url }}"
+           aria-label="Animation: an opening morphs through a circle, triangle, square, pentagon and hexagon at constant area, and the pattern of light behind it grows a matching set of spikes — six for the triangle, four for the square, ten for the pentagon.">
+      <source src="{{ '/media/diffraction-shape.webm' | relative_url }}" type="video/webm">
+      <source src="{{ '/media/diffraction-shape.mp4' | relative_url }}" type="video/mp4">
+    </video>
+    <figcaption>
+      A diffraction pattern carries the <em>shape</em> of what made it, not just
+      its size. An opening morphs through a circle, triangle, square, pentagon
+      and hexagon at fixed area, and the pattern grows spikes to match — n of
+      them for an even-sided polygon and 2n for an odd-sided one, because
+      opposite parallel edges radiate into the same line. The same sensitivity is
+      what lets a diffracted gravitational wave say whether the lens was a point
+      mass or an extended halo, rather than only how heavy it was.
+    </figcaption>
+  </figure>
   <p>
     With LISA the target is the population itself. Thousands of low-mass halos
     along the line of sight to a massive black-hole binary leave a collective

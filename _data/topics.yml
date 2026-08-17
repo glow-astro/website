@@ -72,18 +72,25 @@
     wave.
   wps: ["WP1-A", "WP1-B"]
   papers: ["2606.17765"]
+  # The opener is ordinary optics, not the gravitational-wave case: a bench
+  # experiment anyone can picture, making the same statement the rest of the
+  # page makes about lenses. The GW sweep follows in the first section.
   media:
     width: 1560
-    height: 520
+    height: 780
     alt: >-
-      Animation: as the source moves closer to a point lens and crosses a
-      caustic, the pattern of images changes and the amplification factor
-      develops oscillations that grow with frequency.
+      Animation: light of a single colour passes through a rectangular opening
+      that grows, shrinks, and then stretches. The pattern on the screen behind
+      it moves the opposite way — tightening as the opening widens, and
+      stretching across as the opening stretches down.
     caption: >-
-      The impact parameter falls from 2.0 to 0.1 Einstein radii and the source
-      crosses a caustic mid-sweep. As the alignment tightens, the amplification
-      factor acquires the oscillations that are the signature of diffraction.
-    source: "GW231123_independent_analysis, family pls_y"
+      A bench experiment that says what the rest of this page says. One colour
+      of light, one opening, and the pattern it casts: widen the opening and the
+      pattern tightens, stretch the opening one way and the pattern stretches
+      the other. Size on the screen goes as the wavelength divided by the size
+      of the opening — which is why a wave of a given frequency feels lenses of
+      a particular scale, and passes the rest by.
+    source: "application_plots, family diffraction_size_glow"
 
 - id: microlensing
   title: "Microlensing"

@@ -87,6 +87,30 @@ sections:
     signal.{% include cite.html key="leung-wave-mechanics" %} That distortion
     is a measurement of the lens, not merely evidence that one was there.
   </p>
+
+  {%- comment -%}
+    Chromatic distortion, demonstrated in the one regime where it can be set up
+    on a bench and photographed. This is the only render whose colour is
+    physical rather than styled -- each frame is drawn in the true colour of its
+    wavelength -- which is why it is here, on the page that argues frequency
+    dependence, and not in the project's own palette.
+  {%- endcomment -%}
+  <figure class="topic-figure">
+    <video width="1560" height="780" autoplay muted loop playsinline
+           poster="{{ '/media/diffraction_still.png' | relative_url }}"
+           aria-label="Animation: light of a single colour passes through a small circular hole and casts a bright core ringed by fainter circles. As the colour sweeps from red to violet the rings contract and the core brightens.">
+      <source src="{{ '/media/diffraction.webm' | relative_url }}" type="video/webm">
+      <source src="{{ '/media/diffraction.mp4' | relative_url }}" type="video/mp4">
+    </video>
+    <figcaption>
+      The same statement in visible light, where it fits on a bench. A circular
+      hole 200&nbsp;µm across, lit by one colour at a time: the rings contract as
+      the wavelength falls, the first dark ring sitting at 1.22&nbsp;λ/D, while
+      the core brightens as 1/λ². Longer wavelength, stronger diffraction — and a
+      gravitational wave is a very long wavelength indeed.
+    </figcaption>
+  </figure>
+
   <div class="grid grid-2">
     <div class="card">
       <p class="card-title">What gravitational waves add</p>

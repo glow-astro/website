@@ -40,6 +40,26 @@ topic_id: wave-optics
     measures how the mass is distributed. This is the quantity everything on
     this site is ultimately about.
   </p>
+
+  {%- comment -%}
+    The gravitational-wave case, following the optical opener above: same
+    statement, real lens. It sits here rather than at the head of the page
+    because it only means anything once the amplification factor has a name.
+  {%- endcomment -%}
+  <figure class="topic-figure">
+    <video width="1560" height="520" autoplay muted loop playsinline
+           poster="{{ '/media/wave-optics-gw_still.png' | relative_url }}"
+           aria-label="Animation: as the source moves closer to a point lens and crosses a caustic, the pattern of images changes and the amplification factor develops oscillations that grow with frequency.">
+      <source src="{{ '/media/wave-optics-gw.webm' | relative_url }}" type="video/webm">
+      <source src="{{ '/media/wave-optics-gw.mp4' | relative_url }}" type="video/mp4">
+    </video>
+    <figcaption>
+      The same thing for a gravitational wave. The impact parameter falls from
+      2.0 to 0.1 Einstein radii and the source crosses a caustic mid-sweep; as
+      the alignment tightens, the amplification factor acquires the oscillations
+      that are the signature of diffraction.
+    </figcaption>
+  </figure>
 </section>
 
 <section class="section" id="scales" aria-labelledby="scales-heading">
@@ -60,28 +80,6 @@ topic_id: wave-optics
     <a href="{{ '/dark-matter.html' | relative_url }}">dark matter</a>.
   </p>
 
-  {%- comment -%}
-    Ordinary light through a round hole: the same statement as everything above,
-    in a regime anyone can picture and a laboratory can reproduce. It is here
-    rather than at the head of the page because it is the analogy, not the
-    subject -- the topic figure shows the gravitational-wave case.
-  {%- endcomment -%}
-  <figure class="topic-figure">
-    <video width="1560" height="780" autoplay muted loop playsinline
-           poster="{{ '/media/diffraction_still.png' | relative_url }}"
-           aria-label="Animation: light of a single colour passes through a small circular hole and casts a bright core ringed by fainter circles. As the colour sweeps from red to violet the rings contract and the core brightens.">
-      <source src="{{ '/media/diffraction.webm' | relative_url }}" type="video/webm">
-      <source src="{{ '/media/diffraction.mp4' | relative_url }}" type="video/mp4">
-    </video>
-    <figcaption>
-      The same physics in visible light, where it can be checked on a bench. A
-      circular hole 200&nbsp;µm across, lit by one colour at a time and swept
-      across the spectrum: the rings contract as the wavelength falls, the first
-      dark ring sitting at 1.22&nbsp;λ/D, while the core brightens as 1/λ².
-      Longer wavelength, stronger diffraction — which is the whole reason
-      gravitational waves reach lens masses that light passes straight by.
-    </figcaption>
-  </figure>
 </section>
 
 <section class="section" id="plasma" aria-labelledby="plasma-heading">
