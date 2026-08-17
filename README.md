@@ -148,9 +148,14 @@ Below 940px the cards drop out of the picture and stack beneath it, which loses
 the positional argument — the figcaption states it in words for that case, and
 for anyone reading without the image.
 
-### Animations
+### Figures and animations
 
-Topic-page animations live in `media/` as `<stem>.webm`, `<stem>.mp4` and
+`media/` holds both: animations as `<stem>.webm` + `<stem>.mp4` + a poster,
+and static plots as a single `.png`. They get the same frame on the page, and
+the same naming rule. Static plots come from `~/code/application_plots/plots/`
+— take the `_dark` variant, and downscale anything much wider than 2000px.
+
+Animations live in `media/` as `<stem>.webm`, `<stem>.mp4` and
 `<stem>_still.png`, where `<stem>` is `topics.yml`'s `media.file` or, failing
 that, the topic id. Set `media.file` whenever the render is not specific to one
 topic, so the filename says what the video shows.

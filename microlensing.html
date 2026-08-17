@@ -15,6 +15,25 @@ topic_id: microlensing
 {% include topicnav.html %}
 
 {% include topic-figure.html topic=t %}
+{%- comment -%}
+  Figure 2 of the proposal: the entire chain in one row, galaxy to waveform.
+  It goes above the animation because it is the setup -- what is being varied
+  further down only means something once the geometry is on the page.
+{%- endcomment -%}
+<figure class="topic-figure">
+  <img src="{{ '/media/microlensing-chain.png' | relative_url }}"
+       width="2000" height="607" loading="eager"
+       alt="Three panels. Left: a galaxy splits a source into two images with a time delay between them. Centre: a zoom into one image showing a pc-scale network of overlapping microlensing caustics with micro-images marked. Right: the two images' waveforms, one distorted relative to the other.">
+  <figcaption>
+    The whole chain, left to right. A galaxy splits the source into two images
+    separated by a time delay. One of those images lands on a field of stars,
+    whose caustics form the network in the middle panel — a parsec across, and
+    nothing a telescope will ever resolve. Each image therefore arrives carrying
+    a different wave-optics distortion, which is what the right-hand panel shows
+    and what a search has to model.
+  </figcaption>
+</figure>
+
 <section class="section" id="population" aria-labelledby="population-heading">
   <h2 id="population-heading">A lens is a population, not an object</h2>
   <p>

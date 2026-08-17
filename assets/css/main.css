@@ -571,7 +571,10 @@ figure.float-left {
 	margin: 1.6rem 0 2rem;
 }
 
-.topic-figure video {
+/* Video or still: a plot and an animation are the same kind of thing here, and
+   giving them different frames would imply a distinction that is not there. */
+.topic-figure video,
+.topic-figure img {
 	display: block;
 	width: 100%;
 	height: auto;
