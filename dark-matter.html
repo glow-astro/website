@@ -32,18 +32,27 @@ topic_id: dark-matter
     smaller than the telescope can resolve.
   </p>
 
+  {%- comment -%}
+    application_plots, plots/dm_forecasts/DM_WO_v2 (utils/pbh_em_panel.py).
+    The v2 idiom is what makes it usable here: one envelope line for the
+    strongest limit at each mass, rather than a stack of separately shaded
+    bounds that leaves the reader to work out which one actually bounds the
+    allowed region. Two other text levels exist, _clean and _full.
+  {%- endcomment -%}
   <figure class="topic-figure">
     <img src="{{ '/media/dm-constraints.png' | relative_url }}"
-         width="1893" height="654" loading="lazy"
-         alt="Fraction of dark matter in compact objects against object mass, from 10 to the minus 18 up to 10 to the 7 solar masses. Shaded regions marked stars, quasars, dynamics and supernovae are excluded. Coloured bands along the bottom label which messenger probes which mass range: X-rays through visible and infrared to FRBs, ground-based gravitational waves and LISA.">
+         width="1893" height="761" loading="lazy"
+         alt="Fraction of dark matter in compact objects against object mass, from 10 to the minus 18 up to 10 to the 7 solar masses. Thin grey lines are individual limits, each labelled — evaporation, HSC, stars, quasars, gravitational waves from O3, supernovae, radio and dynamics. A single bright line traces the strongest limit at each mass, with everything above it shaded as excluded. Coloured bands along the bottom label which messenger reaches which mass range, from X-rays through visible and infrared to FRBs, ground-based gravitational waves and LISA.">
     <figcaption>
-      How much of the dark matter could be compact objects of a given mass. The
-      shaded regions are already excluded by observations — starlight, quasars,
-      stellar dynamics, and the brightnesses of distant supernovae. The coloured
-      bands underneath say which kind of signal reaches which mass: each is set
-      by its own wavelength, which is why coherent sources open decades that no
-      light-based probe covers. Ground-based gravitational waves and LISA sit at
-      the right-hand end, and the FRB band in the middle.
+      How much of the dark matter could be compact objects of a given mass.
+      Each thin grey line is one limit, from a different observation; the bright
+      line running across them is the envelope — the strongest constraint at
+      every mass — and everything above it is ruled out. What is left below is
+      what remains possible, and it is not small: around 10<sup>−9</sup> and
+      again above a solar mass, a per-cent-level fraction of the dark matter
+      could still be compact objects. The coloured bands underneath say which
+      signal reaches which mass, each set by its own wavelength. Gravitational
+      waves already contribute one of these limits, from the O3 observing run.
     </figcaption>
   </figure>
 </section>
