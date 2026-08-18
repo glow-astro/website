@@ -11,6 +11,12 @@ description: >-
   How lensed gravitational waves are actually searched for: waveform models that
   carry a microlensing signature, population-level analyses, and machine-learning
   inference fast enough to keep up with the detectors.
+# Cited on this page, in order of first appearance -- and that order is
+# the numbering. Pulled from _data/references.yml, which several pages
+# share; the numbers here are this page's own.
+refs:
+  - cranmer-sbi
+  - lvk-plan
 topic_id: data-analysis
 ---
 
@@ -54,7 +60,8 @@ topic_id: data-analysis
     be fitted is a compressed description. Expanding the ratio of the lensed to
     the unlensed waveform in a basis of functions turns an unpredictable lens
     into a handful of coefficients, and the distribution of those coefficients
-    across simulated realizations gives them a physically motivated prior.
+    across simulated realizations gives them a physically motivated
+    prior.{% include cite.html key="cranmer-sbi" %}
   </p>
   <p>
     The significance of a lensing claim then comes from the posteriors of those
@@ -88,7 +95,8 @@ topic_id: data-analysis
   <h2 id="speed-heading">Why speed is a physics problem</h2>
   <p>
     Two things are growing at once. Lensing enlarges the parameter space of
-    every analysis, and the detectors are moving towards thousands of events.
+    every analysis, and the detectors are moving towards thousands of
+    events.{% include cite.html key="lvk-plan" %}
     Analyses that take weeks per event do not merely become inconvenient; they
     determine which questions can be asked at all. Subthreshold searches, where
     a diffracted signal may have been pushed below the detection threshold by
@@ -104,6 +112,11 @@ topic_id: data-analysis
     low-latency alerts — where the results have to be right, and have to arrive
     while telescopes can still be pointed.
   </p>
+</section>
+
+<section class="section" id="references" aria-labelledby="references-heading">
+  <h2 id="references-heading">References</h2>
+  {% include references.html %}
 </section>
 
 <section class="section" id="more" aria-labelledby="more-heading">

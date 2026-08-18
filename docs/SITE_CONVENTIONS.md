@@ -119,25 +119,42 @@ for r, n in rows.items():
 ```
 
 And the citations, whose failure mode is silent — `cite.html` renders nothing
-for a key that matches no reference, so a typo removes a marker rather than
-producing a broken one:
+for a key that is not in the page's `refs:`, so a typo removes a marker rather
+than producing a broken one. Numbering is per page: `references.yml` is a
+shared pool, and a page's own `refs:` front matter fixes both which entries it
+cites and what number each gets.
 
 ```python
-import re, io, yaml
-h    = io.open('_site/science.html', encoding='utf-8').read()
-ids  = [r['id'] for r in yaml.safe_load(open('_data/references.yml'))]
-mark = re.findall(r'<a href="#ref-([a-z0-9-]+)">(\d+)</a>', h)
-
-# the printed number must be the reference's position in the data file
-bad = [(k, n) for k, n in mark if k not in ids or ids.index(k) + 1 != int(n)]
-if bad:                        print('CITE NUMBER WRONG', bad)
-if '<sup class="cite">[]</sup>' in h: print('CITE KEY MATCHES NOTHING')
-uncited = [i for i in ids if i not in {k for k, _ in mark}]
-if uncited:                    print('REFERENCE NEVER CITED', uncited)
+import re, io, glob, os, yaml
+pool = {r['id'] for r in yaml.safe_load(open('_data/references.yml'))}
+for src in sorted(glob.glob('*.html')):
+    txt  = io.open(src, encoding='utf-8').read()
+    fm   = re.match(r"---\n(.*?)\n---\n", txt, re.S)
+    refs = (yaml.safe_load(fm.group(1)) or {}).get('refs') if fm else None
+    cited = []
+    for m in re.finditer(r'cite\.html key="([^"]+)"', txt):
+        for k in (x.strip() for x in m.group(1).split(',')):
+            if k not in cited: cited.append(k)
+    if not cited and not refs: continue
+    for k in cited:
+        if   k not in pool:            print('KEY NOT IN BIBLIOGRAPHY', src, k)
+        elif k not in (refs or []):    print('CITED BUT NOT IN refs:', src, k)
+    for k in (refs or []):
+        if   k not in pool:            print('refs ENTRY UNKNOWN', src, k)
+        elif k not in cited:           print('IN refs BUT NEVER CITED', src, k)
+    h = io.open(os.path.join('_site', src), encoding='utf-8').read()
+    for key, n in re.findall(r'<a href="#ref-([a-z0-9-]+)">(\d+)</a>', h):
+        if key not in (refs or []) or refs.index(key) + 1 != int(n):
+            print('NUMBER WRONG', src, key, n)
+    if '<sup class="cite">[]</sup>' in h: print('EMPTY MARKER', src)
+    anchors = set(re.findall(r'<li id="ref-([a-z0-9-]+)"', h))
+    miss = {k for k, _ in re.findall(r'<a href="#ref-([a-z0-9-]+)">(\d+)</a>', h)} - anchors
+    if miss: print('MARKER WITHOUT LIST ENTRY', src, miss)
 ```
 
-A reference that is never cited is not an error in itself, but on this site it
-has always meant a citation was deleted and its entry left behind.
+An entry in `refs:` that is never cited is not broken output, but on this site
+it has always meant a citation was deleted and its entry left behind — and now
+it also shifts every number after it, so it is checked.
 
 Two more on the media, both of which have bitten:
 

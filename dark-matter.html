@@ -7,6 +7,12 @@ lede: >-
   Diffraction is sensitive to structure on scales no image can resolve, which makes coherent sources one of the few probes of dark matter below the size of a galaxy.
 description: >-
   Diffraction is sensitive to structure no image can resolve, which makes coherent sources a probe of dark matter below the scale of a galaxy.
+# Cited on this page, in order of first appearance -- and that order is
+# the numbering. Pulled from _data/references.yml, which several pages
+# share; the numbers here are this page's own.
+refs:
+  - carr-kuhnel-pbh
+  - lisa-definition
 topic_id: dark-matter
 ---
 
@@ -101,20 +107,27 @@ topic_id: dark-matter
     Two regimes, on different instruments. With ground-based detectors the
     targets are individual dense objects — the kind predicted by
     self-interacting and ultra-light dark matter, or by primordial black holes
-    that have accreted a halo — and the immediate task is to distinguish them
+    that have accreted a halo{% include cite.html key="carr-kuhnel-pbh" %} —
+    and the immediate task is to distinguish them
     from stars and stellar remnants, which produce
     <a href="{{ '/microlensing.html' | relative_url }}">similar signatures</a>
     and are the dominant astrophysical systematic.
   </p>
 
   <p>
-    With LISA the target is the population itself. Thousands of low-mass halos
+    With LISA{% include cite.html key="lisa-definition" %} the target is the
+    population itself. Thousands of low-mass halos
     along the line of sight to a massive black-hole binary leave a collective
     diffraction imprint whose fluctuations, rather than any individual feature,
     carry the signal. Making LISA's inference robust to that imprint, and then
     turning it into a measurement of cold-dark-matter substructure, is one of
     the project's principal goals.
   </p>
+</section>
+
+<section class="section" id="references" aria-labelledby="references-heading">
+  <h2 id="references-heading">References</h2>
+  {% include references.html %}
 </section>
 
 <section class="section" id="more" aria-labelledby="more-heading">

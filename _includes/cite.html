@@ -4,20 +4,24 @@
       {% include cite.html key="planck-lensing" %}
       {% include cite.html key="dsa2000,chord,burstt" %}
 
-  The number is the reference's position in _data/references.yml, found by
-  looping rather than stored, so a marker and the list at the foot of the page
-  can never disagree about what [7] means.
+  The number is the key's position in the page's own `refs:` front matter, not
+  its position in _data/references.yml. That file is a bibliography several
+  pages draw on; each page decides which of it to cite and in what order, so
+  the same work is [3] on one page and [1] on another, and every page numbers
+  from 1 with no gaps. Both this marker and the list at the foot of the page
+  read that one list, so they cannot disagree about what [7] means.
 
   A key that matches nothing renders nothing rather than a broken marker -- the
   verification pass is what catches the typo, because a silent gap in a page is
-  easier to miss than a loud one but much easier to test for.
+  easier to miss than a loud one but much easier to test for. A key that is
+  real but missing from `refs:` is the same silent gap, and is checked too.
 {%- endcomment -%}
 {%- assign keys = include.key | split: "," -%}
 <sup class="cite">[{% for k in keys %}
   {%- assign want = k | strip -%}
-  {%- for r in site.data.references -%}
-    {%- if r.id == want -%}
-      <a href="#ref-{{ r.id }}">{{ forloop.index }}</a>
+  {%- for id in page.refs -%}
+    {%- if id == want -%}
+      <a href="#ref-{{ id }}">{{ forloop.index }}</a>
     {%- endif -%}
   {%- endfor -%}
   {%- unless forloop.last %}, {% endunless -%}

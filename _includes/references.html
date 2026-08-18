@@ -1,13 +1,14 @@
 {%- comment -%}
-  The numbered reference list. Numbering comes from the order of
-  _data/references.yml, the same source cite.html counts through.
+  The numbered reference list, in the order the page's `refs:` front matter
+  gives -- the same list cite.html counts through, so the numbers match.
 
   Every entry that has a `url` links from its title; entries without one are a
   book or a document with no stable address, and are left as plain text rather
   than pointed at a search result.
 {%- endcomment -%}
 <ol class="references">
-  {%- for r in site.data.references %}
+  {%- for id in page.refs %}
+  {%- assign r = site.data.references | where: "id", id | first %}
   <li id="ref-{{ r.id }}">
     <span class="ref-authors">{{ r.authors }}</span>
     {%- if r.title %},

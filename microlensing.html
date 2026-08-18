@@ -7,6 +7,12 @@ lede: >-
   A real lens is not one object. Stars and remnants in the lensing galaxy each add their own diffraction, on top of the magnification of the galaxy itself. Modelling that population is what makes a search possible.
 description: >-
   Stars and remnants in a lensing galaxy each add their own diffraction. How a stochastic population becomes a search for lensed gravitational waves.
+# Cited on this page, in order of first appearance -- and that order is
+# the numbering. Pulled from _data/references.yml, which several pages
+# share; the numbers here are this page's own.
+refs:
+  - mishra-microlensing
+  - glow-code
 topic_id: microlensing
 ---
 
@@ -52,7 +58,8 @@ topic_id: microlensing
     host galaxy, which magnifies the image it distorts. As the magnification
     produced by the galaxy rises, the same microlens imprints a far stronger
     signature. Highly magnified images — the ones most likely to be detected —
-    are also the ones most strongly affected by microlensing.
+    are also the ones most strongly affected by
+    microlensing.{% include cite.html key="mishra-microlensing" %}
   </p>
 
   <figure class="topic-figure">
@@ -90,10 +97,16 @@ topic_id: microlensing
     motivated prior for them.
   </p>
   <p>
-    This is the reduced-order model the project's searches are built on. It has
+    This is the reduced-order model the project's searches are built
+    on.{% include cite.html key="glow-code" %} It has
     already been applied to real data: GW231123 is the first compelling
     candidate for a magnified and diffracted black-hole merger.
   </p>
+</section>
+
+<section class="section" id="references" aria-labelledby="references-heading">
+  <h2 id="references-heading">References</h2>
+  {% include references.html %}
 </section>
 
 <section class="section" id="more" aria-labelledby="more-heading">

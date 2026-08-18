@@ -97,8 +97,9 @@ problem and a dark-matter probe at once, so any partition into kinds misleads.
 
 ### Citations
 
-`science.html` carries numbered citations, drawn from the grant proposal's own
-bibliography so they support the same claims they supported there. Cite with
+`science.html` and all six topic pages carry numbered citations, drawn from the
+grant proposal's own bibliography so they support the same claims they supported
+there. Cite with
 
 ```liquid
 {% include cite.html key="planck-lensing" %}
@@ -106,10 +107,18 @@ bibliography so they support the same claims they supported there. Cite with
 ```
 
 and the list renders itself at `#references` from `_includes/references.html`.
-**The number is the entry's position in `references.yml`**, found by looping
-rather than stored, so a marker and the list cannot disagree — but inserting an
-entry mid-file renumbers everything after it, which is why the order is meant
-to follow first appearance on the page.
+
+**`references.yml` is a pool, not a numbering.** Each page declares the entries
+it cites, in first-appearance order, in its own `refs:` front matter, and *that*
+is the numbering — so every page counts from 1 with no gaps, the same work is
+`[3]` on one page and `[1]` on another, and trimming a page's citations
+renumbers nothing but that page. Both the marker and the list read the page's
+`refs:`, so they cannot disagree. Adding to `references.yml` is free; deleting
+from it breaks every page that cites the entry, which the verification pass
+catches.
+
+Keep topic-page lists short — two or three. The science case is the place for
+the full argument.
 
 A key matching no entry renders an empty marker rather than failing the build,
 so the verification pass checks it. Verify any new `url` resolves before
