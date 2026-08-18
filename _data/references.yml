@@ -164,11 +164,17 @@
   where: "(2019)"
   url: "https://arxiv.org/abs/1911.01429"
 
-- id: carr-kuhnel-pbh
-  authors: "B. Carr, F. Kühnel"
-  title: "Primordial black holes as dark matter: recent developments"
-  where: "(2020)"
-  url: "https://arxiv.org/abs/2006.02838"
+- id: nadler-small-scale
+  authors: "E. O. Nadler, K. K. Rogers, A. Drlica-Wagner"
+  title: "Dark matter constraints from small-scale cosmic structure"
+  where: "(2026)"
+  url: "https://arxiv.org/abs/2607.28564"
+
+- id: carr-pbh
+  authors: "B. Carr, A. J. Iovino, G. Perna et al."
+  title: "Primordial black holes: constraints, potential evidence and prospects"
+  where: "Riv. Nuovo Cim. 49, 225 (2026)"
+  url: "https://arxiv.org/abs/2601.06024"
 
 - id: ezquiaga-dark-energy
   authors: "J. M. Ezquiaga, M. Zumalacárregui"
