@@ -18,7 +18,7 @@
   lede: >-
     The theory and numerical methods for wave-optics lensing: diffraction by
     populations of microlenses, and lensing by ionized plasma. Everything the
-    other two work packages need in order to model a realistic lens.
+    other two work packages need in order to model realistic lenses.
   tasks:
     - code: "WP1-A"
       title: "Microlensing diffraction"
@@ -52,9 +52,9 @@
   code: "WP2"
   title: "Discovery and interpretation of lensed gravitational waves"
   lede: >-
-    Turning the theory into a search. Waveform models that carry a microlensing
-    signature, population-level analyses, and inference fast enough to keep up
-    with the detectors.
+    Turning the theory into a search. Waveform models for microlensing
+    signatures, population-level analyses, and accelerated inference to keep up
+    with upcoming data.
   tasks:
     - code: "WP2-A"
       title: "Microlensing searches"
@@ -86,8 +86,8 @@
   title: "Fundamental physics"
   lede: >-
     What lensed coherent sources reveal about the constituents of the Universe:
-    the small-scale distribution of dark matter, and the behaviour of
-    gravitational waves as they propagate.
+    the small-scale distribution of dark matter, and the impact of dark energy
+    on the propagation of gravitational waves.
   tasks:
     - code: "WP3-A"
       title: "Dark-matter searches"

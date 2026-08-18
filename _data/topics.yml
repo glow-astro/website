@@ -70,7 +70,8 @@
   column: 1
   tint: wave
   card: >-
-    Diffraction and interference: the theory, and the code that computes it.
+    Diffraction, interference and plasma lensing: the theory, and the
+    algorithms to compute it.
   blurb: >-
     When the wavelength is comparable to the scale of the lens, geometric optics
     fails. Diffraction, interference, plasma lensing and dispersion are all the
@@ -147,7 +148,7 @@
   column: 3
   tint: methods
   card: >-
-    Waveform models, population analyses, and inference fast enough to keep up.
+    Waveform models, population analyses, and simulation-based inference.
   blurb: >-
     A lensing signature is only as good as the inference that finds it. Lensing
     enlarges the parameter space at the same time as the catalogs grow, which
@@ -179,7 +180,7 @@
   column: 1
   tint: source
   card: >-
-    Magnified black holes beyond z = 3, and sources near supermassive black
+    Magnified black holes at z > 3, and sources near supermassive black
     holes.
   blurb: >-
     Magnification is what makes a distant source detectable at all. It is also
@@ -222,7 +223,8 @@
   column: 2
   tint: lens
   card: >-
-    Halos and compact objects on scales no image can resolve.
+    Halos and compact objects below 10<sup>6</sup> M<sub>☉</sub>, on scales
+    no image can resolve.
   blurb: >-
     Diffraction is sensitive to structure on scales no image can resolve, which
     makes coherent sources one of the few probes of dark matter below the size
@@ -258,7 +260,8 @@
   column: 3
   tint: grav
   card: >-
-    Distortions along the way that no lens made of ordinary matter can produce.
+    Distortions on propagating waves that can't be produced in Einstein's
+    theory.
   blurb: >-
     A lensed gravitational wave is a controlled experiment in how gravity
     propagates. Theories that modify it predict distortions no lens made of
