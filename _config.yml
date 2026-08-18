@@ -88,3 +88,8 @@ exclude:
   - .jekyll-cache
   - tools
   - docs
+  # The prose-review document, edited in LibreOffice and left in the tree while
+  # it is being worked on. It is the whole site's text in one file: built into
+  # _site it would be a public page nobody linked but a crawler would find.
+  - "glow-site-text*.html"
+  - ".~lock*"
