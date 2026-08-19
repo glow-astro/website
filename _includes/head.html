@@ -1,12 +1,19 @@
 {%- comment -%}
   Per-page metadata. Pages set `title`, `description` and (optionally)
   `og_image` in their front matter; sensible site-wide fallbacks apply.
+
+  Every page carries the tagline, not just the home page: three other things are
+  called GLOW -- an ERC Advanced Grant in AI (101096017, running to 2028) and the
+  German Long Wavelength radio consortium among them -- so a bare "Dark matter |
+  GLOW" in a tab or a search result does not say which project this is. The
+  acronym and tagline come from _config.yml rather than being written here.
 {%- endcomment -%}
 {%- assign page_title = page.title | default: site.title -%}
+{%- assign brand = site.title | append: " — " | append: site.tagline -%}
 {%- if page.nav == "home" -%}
-  {%- assign full_title = "GLOW | Gravitational Lensing of Waves" -%}
+  {%- assign full_title = brand -%}
 {%- else -%}
-  {%- assign full_title = page_title | append: " | GLOW" -%}
+  {%- assign full_title = page_title | append: " | " | append: brand -%}
 {%- endif -%}
 {%- assign page_desc = page.description | default: site.description -%}
 {%- assign canonical = page.url | replace: "index.html", "" | absolute_url -%}
@@ -19,7 +26,7 @@
 <link rel="canonical" href="{{ canonical }}">
 
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="{{ site.title }} — {{ site.tagline }}">
+<meta property="og:site_name" content="{{ brand }}">
 <meta property="og:title" content="{{ full_title }}">
 <meta property="og:description" content="{{ page_desc | strip_newlines | strip }}">
 <meta property="og:url" content="{{ canonical }}">
@@ -45,7 +52,7 @@
       "@type": "WebSite",
       "@id": "{{ site.url }}/#website",
       "url": "{{ site.url }}/",
-      "name": {{ site.title | jsonify }},
+      "name": {{ brand | jsonify }},
       "description": {{ site.description | strip_newlines | strip | jsonify }},
       "inLanguage": "en"
     },

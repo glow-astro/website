@@ -5,10 +5,11 @@ description: >-
   software to identify and interpret wave-optics lensing of gravitational waves
   and fast radio bursts.
 
-# The site is built to be served at the root of its own domain. On GitHub Pages
-# this means an organisation page repository (<org>.github.io), which keeps
-# baseurl empty and every internal link a plain absolute path.
-url: "https://glow-erc.github.io"
+# The site is built to be served at the root of its own domain, so baseurl stays
+# empty and every internal link is a plain absolute path. The domain was
+# registered 2026-08-19; on GitHub Pages it needs a CNAME file in this directory
+# as well, which is deliberately not committed until the domain is final.
+url: "https://glow-erc.org"
 baseurl: ""
 lang: en
 
@@ -34,10 +35,13 @@ pi:
   site: "https://miguelzuma.github.io/"
   github: "https://github.com/miguelzuma"
 
-# Host institution of the grant. TODO(confirm): the DoA cover page names CSIC,
-# while the DoA methodology section describes the team integrating into the AEI,
-# and the ERC folder contains a host-institution change. Both are listed until
-# this is settled; every page that names an affiliation reads from here.
+# Host institution of the grant. Confirmed 2026-08-19 against the public CORDIS
+# record for 101230608, which names CSIC as the host beneficiary -- consistent
+# with the DoA cover page. The AEI, which the DoA methodology describes the team
+# integrating into, is carried below as `partner` rather than as the host. If the
+# host-institution change in the ERC folder is a pending amendment rather than a
+# completed one, CORDIS would not yet show it and this needs revisiting.
+# Every page that names an affiliation reads from here.
 host:
   name: "Consejo Superior de Investigaciones Científicas (CSIC)"
   short: "CSIC"
@@ -91,5 +95,6 @@ exclude:
   # The prose-review document, edited in LibreOffice and left in the tree while
   # it is being worked on. It is the whole site's text in one file: built into
   # _site it would be a public page nobody linked but a crawler would find.
-  - "glow-site-text*.html"
+  # The pattern is extension-less on purpose -- the generated .odt sits here too.
+  - "glow-site-text*"
   - ".~lock*"
