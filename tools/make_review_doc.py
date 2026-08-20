@@ -23,6 +23,7 @@ applied to the sources.
 """
 import io, os, re, subprocess, sys, glob
 from bs4 import BeautifulSoup
+import yaml
 
 SITE = "_site"
 DEFAULT_OUT = "/tmp/glow-site-text.odt"
@@ -62,11 +63,21 @@ ul { margin: 0 0 8pt; padding-left: 18pt; }
 .cap { font-size: 9.5pt; color: #444; }
 .meta { font-size: 9.5pt; color: #444; }
 .url { font-size: 8pt; color: #888; font-family: 'Liberation Mono', monospace; }
+.note { font-size: 10pt; color: #7a4a00; border-left: 3pt solid #d99; padding-left: 6pt; }
 """
+
+NOTES_FILE = "_data/review_notes.yml"
 
 DROP = ["header", "footer", ".skip-link", "script", "style", "noscript",
         "img", "video", "iframe", "picture", "source",
         ".topicnav", ".subnav", ".btn-row"]
+
+
+def load_notes():
+    """Open review questions, keyed by page -- see _data/review_notes.yml."""
+    if not os.path.exists(NOTES_FILE):
+        return {}
+    return yaml.safe_load(io.open(NOTES_FILE, encoding="utf-8")) or {}
 
 
 def data_sources(page):
@@ -100,7 +111,7 @@ def lift_media_descriptions(soup):
             cap.insert_before(p) if cap else fig.append(p)
 
 
-def flatten(path, title):
+def flatten(path, title, notes=()):
     html = io.open(os.path.join(SITE, path), encoding="utf-8").read()
     soup = BeautifulSoup(html, "html.parser")
     lift_media_descriptions(soup)
@@ -121,14 +132,20 @@ def flatten(path, title):
     if cards:
         out.append('<h3>Diagram cards</h3>')
         for c in cards:
-            strong = c.find("strong")
-            span = c.find("span")
-            label = strong.get_text(" ", strip=True) if strong else ""
-            body = span.get_text(" ", strip=True) if span else ""
+            # .skymap-title / .skymap-blurb, not <strong>/<span>: the card title
+            # stopped being a <strong> when emphasis was given a convention, and
+            # this silently emitted an empty label for a while.
+            title = c.select_one(".skymap-title")
+            blurb = c.select_one(".skymap-blurb")
+            label = title.get_text(" ", strip=True) if title else ""
+            body = blurb.get_text(" ", strip=True) if blurb else ""
+            if not label:
+                print(f"WARNING: {path}: a diagram card has no .skymap-title")
             out.append(f"<li><b>{label}</b> — {body}</li>")
         for c in cards:
             c.decompose()
 
+    pending = list(notes)
     for el in main.find_all(["h1", "h2", "h3", "h4", "p", "li", "figcaption", "dt", "dd"]):
         # Nested blocks are reached through their parent; do not emit twice.
         if el.find_parent(["li", "figcaption"]):
@@ -171,6 +188,18 @@ def flatten(path, title):
                 k = ' class="meta"'
             out.append(f"<{level}{k}>{frag}</{level}>")
 
+        # An open question belongs beside the paragraph it is about, so it is
+        # emitted as soon as that paragraph goes past.
+        for note in [n for n in pending if n.get("after", "") in text]:
+            out.append(f'<p class="note">NOTE: {note["text"].strip()}</p>')
+            pending.remove(note)
+
+    # A stale anchor must not swallow the note. Say which one, and keep it.
+    for note in pending:
+        print(f"WARNING: {path}: no paragraph matches "
+              f"{note.get('after', '')!r} -- note moved to the end of the page")
+        out.append(f'<p class="note">NOTE (unplaced): {note["text"].strip()}</p>')
+
     body = "\n".join(out)
     return re.sub(r"(?:<li>.*?</li>\s*)+", lambda m: "<ul>" + m.group(0) + "</ul>",
                   body, flags=re.S)
@@ -197,7 +226,12 @@ def main():
              '<span class="url">_data/*.yml</span>, not in the page.</p>',
              '<p class="meta">Track changes is the easiest way to hand this '
              'back (Edit &rarr; Track Changes &rarr; Record).</p>']
-    parts += [flatten(p, t) for p, t in PAGES]
+    notes = load_notes()
+    stale = sorted(set(notes) - {p for p, _ in PAGES})
+    if stale:
+        print("WARNING: review_notes.yml names pages that are not in this "
+              "document:", ", ".join(stale))
+    parts += [flatten(p, t, notes.get(p, [])) for p, t in PAGES]
 
     # The EU statement is identical in every footer, so it was dropped above.
     # It is also obligatory wording, so it gets reviewed once, here.

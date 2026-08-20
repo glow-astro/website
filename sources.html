@@ -4,7 +4,7 @@ nav: science
 title: "Distant and strong-field sources"
 eyebrow: "Science"
 lede: >-
-  Magnification is what makes a distant source detectable at all. It is also what carries a signal past a supermassive black hole, where the standard lensing formalism stops applying.
+  Gravitational magnification turns gravitational lenses into telescopes, enabling the observation of even the most distant sources. It can also reveal the association of a signal with a supermassive black hole.
 description: >-
   What magnification lets gravitational-wave detectors reach: black-hole mergers beyond z = 3, remnants of the first stars, and sources close enough to a supermassive black hole that weak-field lensing breaks down.
 # Cited on this page, in order of first appearance -- and that order is
@@ -22,27 +22,91 @@ topic_id: sources
 
 {% include topic-figure.html topic=t %}
 
-<section class="section" id="reach" aria-labelledby="reach-heading">
-  <h2 id="reach-heading">What magnification buys</h2>
+<section class="section" id="telescopes" aria-labelledby="telescopes-heading">
+  <h2 id="telescopes-heading">Gravitational lenses as telescopes</h2>
   <p>
-    A detector has a horizon, and it is set by how loud a signal is when it
-    arrives. A lens moves that horizon. A source that would have been too faint
-    to register can be magnified into a confident detection, which means the
-    lensed part of the sky is systematically deeper than the rest of it — and
-    the further out a population lies, the larger the fraction of it that is
-    seen only because something magnified
-    it.{% include cite.html key="wierda-rates,smith-rates" %}
+    A detector's horizon is a measure of its sensitivity, indicating how far it
+    can observe a certain type of source. A lens can enable observations beyond
+    that horizon by making a signal louder: this was exquisitely leveraged by
+    the <a href="https://frontierfields.org/" rel="noopener">Hubble Frontier
+    Fields</a> programme.
   </p>
   <p>
-    That is what makes lensing a route to the early Universe rather than only a
-    curiosity about the lens. Binaries beyond a redshift of about three are near
-    the edge of what current detectors reach unaided; magnified, they come into
-    range. Further back still are the remnants of the first stars, whose masses
-    and merger rate are among the sharper predictions distinguishing models of
-    how the first generation of stars formed — and which are otherwise out of
-    reach until the next generation of instruments.
+    Gravitational-wave interferometers cannot point towards known lenses, but
+    will over time register magnified sources, further into the Universe. The
+    chances of observing lensed sources and their distribution can be understood
+    as a tug of war between two competing effects: further sources need a close
+    alignment with a lens — that is, a higher magnification to overcome the
+    distance — but the number of potential lenses grows with the
+    distance.{% include cite.html key="wierda-rates" %}
+  </p>
+  <p>
+    Lensed gravitational waves will allow us to learn about how black holes and
+    neutron stars formed in earlier cosmic epochs. The expected distribution of
+    lensed events is shown in the figure above, assuming that binary mergers
+    follow the star-formation history.{% include cite.html key="smith-rates" %}
+    These predictions depend on the merger rate at high redshift, which is very
+    poorly constrained. At a minimum, we will be able to constrain the merger
+    rate at redshifts beyond the detector horizon. At best, we can detect
+    sources well beyond the detector horizon, including remnants from the first
+    stars and lensed neutron stars with electromagnetic counterparts.
   </p>
 </section>
+
+<section class="section" id="identifying" aria-labelledby="identifying-heading">
+  <h2 id="identifying-heading">Identifying lensed gravitational waves</h2>
+  <p>
+    Magnification of a gravitational wave cannot be identified on its own: it
+    only makes the source appear closer. One possibility is when the lens forms
+    multiple images. If two or more are recorded, they appear as separate events
+    with different amplitudes — different magnifications — but the same
+    underlying properties, such as mass ratio and spins. This has been a major
+    pursuit by the gravitational-wave lensing community.
+  </p>
+  <p>
+    <a href="{{ '/wave-optics.html' | relative_url }}">Diffraction</a> can be
+    used to identify lensed sources. Like impurities in the lens of a telescope,
+    stars and remnants within the lens galaxy produce distortions of the signal
+    that give it away. A frequency-dependent distortion reveals the lensing and
+    also says something about the properties of the lens. Compact objects in the
+    lens galaxy produce
+    <a href="{{ '/microlensing.html' | relative_url }}">microlensing</a>, an
+    effect routinely studied in lensed electromagnetic sources, but one that
+    requires the inclusion of
+    <a href="{{ '/wave-optics.html' | relative_url }}">wave optics</a> for
+    coherent sources.
+  </p>
+  <p>
+    The role of diffraction is enhanced when microlensing and high magnification
+    happen together. An external potential leading to high magnification
+    increases the Einstein radii of stars and microlenses, making them much more
+    effective at distorting gravitational waves. So the events that reach
+    furthest are also the ones whose interpretation depends most on wave-optics
+    microlens modelling. This is why the two topics are not separable in
+    practice.
+  </p>
+</section>
+
+{%- comment -%}
+  "Towards multi-messenger lensing" -- a section the owner opened in the prose
+  review but which has no prose yet. It is held here, unrendered, rather than
+  shipped as a heading with nothing under it: the page is live, and an empty
+  section reads as a bug. The brief is carried in _data/review_notes.yml so it
+  comes back in the next review document instead of being retyped.
+
+  The argument to write, in the owner's words: lensed neutron stars are highly
+  magnified, therefore more subject to diffraction distortions, and hard to find
+  without the tools. It needs a microlensing diffraction theory (-> microlensing)
+  and accelerated lensing (-> data analysis, dingo) in low-latency searches.
+  Discovering a lensed multi-messenger event opens a new window: time-delay
+  cosmography with millisecond accuracy, and microlensing uncertainties
+  mitigated because wave optics plus geometric optics gives a long lever arm on
+  the microlens population. A detection is ambitious but valuable enough that
+  LSST has an approved target of opportunity for it.
+
+  Writing it turns on citations that are not yet in _data/references.yml -- the
+  LSST target-of-opportunity paper among them -- so it is not drafted here.
+{%- endcomment -%}
 
 <section class="section" id="strong" aria-labelledby="strong-heading">
   <h2 id="strong-heading">Where the standard picture stops applying</h2>
@@ -69,37 +133,6 @@ topic_id: sources
     what the grant commits to is finding these events and interpreting them with
     a formalism that does not quietly assume the weak-field limit, rather than a
     programme of strong-field lensing in its own right.
-  </p>
-</section>
-
-<section class="section" id="claiming" aria-labelledby="claiming-heading">
-  <h2 id="claiming-heading">Why a magnified source is hard to claim</h2>
-  <p>
-    Magnification on its own is invisible. A signal that has been amplified by a
-    factor of ten looks exactly like an identical source ten times closer, or
-    like a heavier source further away — the magnification, the distance and the
-    masses are degenerate, and nothing in a purely magnified waveform separates
-    them. A source that appears to sit at redshift one may in fact be a magnified
-    source at redshift four, and there is no way to tell from the amplitude.
-  </p>
-  <p>
-    <a href="{{ '/wave-optics.html' | relative_url }}">Diffraction</a> is what
-    breaks the degeneracy. A frequency-dependent distortion is set by the
-    redshifted mass of the lens, which is an absolute scale rather than a ratio,
-    so a diffracted signal says how much lens it passed and not merely that it
-    was amplified. This is the same property that makes wave optics useful
-    everywhere else on this site, applied to the question of where a source
-    actually is.
-  </p>
-  <p>
-    The complication is that strong magnification and
-    <a href="{{ '/microlensing.html' | relative_url }}">microlensing</a> arrive
-    together. A highly magnified image lies close to a caustic of the lensing
-    galaxy, which is exactly where the galaxy's stars distort it most. So the
-    events that reach furthest are also the ones whose interpretation depends
-    most on modelling a population of microlenses — which is why the two topics
-    are not separable in practice, and why the searches for them are the same
-    searches.
   </p>
 </section>
 

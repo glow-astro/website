@@ -51,6 +51,17 @@ python3 tools/make_review_doc.py          # -> /tmp/glow-site-text.odt
 python3 tools/make_review_doc.py glow-site-text.odt   # ... or somewhere you will find it
 ```
 
+Open questions live in `_data/review_notes.yml`, keyed by page and anchored to
+the paragraph they are about. The generator injects them into the document and
+never into the site, so a note survives from one round to the next instead of
+being retyped — which is what happened to every note in that file at least
+once, because the only copy lived in an `.odt` that was regenerated from
+scratch each time. A note whose anchor stops matching is reported and moved to
+the end of its page rather than dropped.
+
+```sh
+```
+
 Flattens the built site into one `.odt` for reading and editing in
 OpenOffice/LibreOffice — every word the site shows, in reading order, with
 navigation, images and video stripped and external link targets spelled out.
@@ -92,6 +103,7 @@ Everything that repeats lives in `_data`, not in the templates:
 | `references.yml` | works cited on the science page; **order is the numbering** |
 | `news.yml` | dated one-sentence items for the home page |
 | `software.yml` | tools, per-paper data releases, and the release policy |
+| `review_notes.yml` | open questions from the prose review; **never built into the site** |
 
 ### Science and work packages
 

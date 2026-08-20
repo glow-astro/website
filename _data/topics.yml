@@ -183,9 +183,9 @@
     Magnified black holes at z > 3, and sources near supermassive black
     holes.
   blurb: >-
-    Magnification is what makes a distant source detectable at all. It is also
-    what carries a signal past a supermassive black hole, where the standard
-    lensing formalism stops applying.
+    Gravitational magnification turns gravitational lenses into telescopes,
+    enabling the observation of even the most distant sources. It can also
+    reveal the association of a signal with a supermassive black hole.
   wps: ["WP2-A"]
   papers: ["2512.17631"]
   # No animation exists for a magnified high-redshift source, but this plot
@@ -203,17 +203,18 @@
       magnification track runs from a marker at low redshift up through the pink
       contour for GW231123 and on into the lensed black-hole region.
     caption: >-
-      Where lensing takes a detector. The grey curve is what the instruments
-      will reach unaided, and every merger detected so far (grey points) sits
-      below it. The green regions are what lensing brings into range: black
-      holes out to redshifts where their population still tracks star
-      formation, and neutron stars, which arrive with an electromagnetic
-      counterpart and so are worth far more than one signal. The dashed line is
-      the magnification track, and it is the argument of the last section on
-      this page — magnification, mass and distance slide along it together, so
-      one dataset describes a heavy nearby source or a lighter, more distant,
-      magnified one. GW231123's contour lies along that track, and the track
-      runs on into the population above.
+      Lensing takes a detector beyond its nominal capabilities. The grey curve
+      shows the “detector horizon”, the maximum distance at which sources are
+      observable. Every merger detected so far (grey points show median values)
+      sits below it. The green regions show where lensed black holes and neutron
+      stars (magnification > 2) are expected. Black holes are typically observed
+      around and beyond the detector horizon, assuming the merger history
+      follows star formation. Neutron stars are expected well beyond the
+      detector horizon, subject to large magnification factors and wave-optics
+      distortions, and with observable electromagnetic counterparts. GW231123 in
+      the standard analysis is highlighted (pink diamond), along with its true
+      mass/source under gravitational magnification (dashed line) and the 90%
+      confidence regions inferred from the lensed analysis.
     source: "application_plots, plots/gw231123/population_lensing"
 
 - id: dark-matter

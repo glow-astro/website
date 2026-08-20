@@ -21,7 +21,6 @@ refs:
   - eht-m87
   - gaudi-exoplanets
   - leung-wave-mechanics
-  - gw150914
   - petroff-frb
   - chime-catalog
   - cordes-plasma
@@ -40,7 +39,7 @@ sections:
   - id: lensing
     label: "A new frontier"
   - id: coherence
-    label: "Why coherence changes things"
+    label: "Coherent sources"
   - id: timing
     label: "Why now"
   - id: goals
@@ -60,8 +59,8 @@ sections:
 {%- endcomment -%}
 
 <p>
-  A propagating wave is an opportunity to understand all elements of the
-  system: the sources, the lenses, and gravity itself. Through new
+  A propagating wave is an opportunity to understand all elements of
+  gravitational lensing: the sources, the lenses, and gravity itself. Through new
   methodologies, GLOW will illuminate some of the universe's darkest secrets:
   sources beyond the detector horizon, the small-scale distribution of dark
   matter, and the properties of gravity and dark energy.
@@ -99,16 +98,16 @@ sections:
 </section>
 
 <section class="section" id="coherence" aria-labelledby="coherence-heading">
-  <h2 id="coherence-heading">Why coherence changes things</h2>
+  <h2 id="coherence-heading">The uniqueness of coherent sources</h2>
   <p>
     Gravitational waves and fast radio bursts are phase coherent. Where light
     from a distant galaxy arrives as an incoherent sum and the lens can only
     magnify or split it, a coherent signal carries its phase intact, and the
     lens distorts the wavefront itself. The result is a
-    <strong>frequency-dependent — chromatic — distortion</strong>: diffraction
-    and interference written directly into the observed
-    signal.{% include cite.html key="leung-wave-mechanics" %} That distortion
-    is a measurement of the lens, not merely evidence that one was there.
+    <strong>frequency-dependent (or chromatic) distortion</strong>: diffraction
+    and interference.{% include cite.html key="leung-wave-mechanics" %} The
+    distortions not only reveal that lensing occurred, they also carry detailed
+    information about the lens.
   </p>
 
   {%- comment -%}
@@ -139,21 +138,23 @@ sections:
     <div class="card">
       <p class="card-title">What gravitational waves add</p>
       <p>
-        Detected since 2015{% include cite.html key="gw150914" %}, they can be
-        modeled from first principles, they probe gravity directly,
-        and they are essentially unabsorbed on their way to us. A lensing
-        signature in a waveform can therefore be predicted, fitted and believed.
+        Gravitational waves from compact binary coalescences can be modeled
+        from first principles, allowing us to disentangle lensing effects from
+        source properties. Moreover they probe gravity directly and are not
+        affected by effects other than lensing as they propagate, allowing
+        interferometers to monitor the entire sky.
       </p>
     </div>
     <div class="card">
       <p class="card-title">What fast radio bursts add</p>
       <p>
-        Short, powerful extragalactic
+        Fast radio bursts are short and powerful extragalactic
         transients{% include cite.html key="petroff-frb,chime-catalog" %} with
-        precise sky localization, and an interaction with ionized matter —
-        <a href="{{ '/wave-optics.html#plasma' | relative_url }}">plasma
-        lensing</a>{% include cite.html key="cordes-plasma" %} — that turns them
-        into a probe of the baryons that are otherwise hardest to see.
+        millions of recorded cycles. They have precise sky localization, and
+        their interaction with ionized matter
+        (<a href="{{ '/wave-optics.html#plasma' | relative_url }}">plasma
+        lensing</a>{% include cite.html key="cordes-plasma" %}) turns them into
+        a probe of the baryons on very small scales.
       </p>
     </div>
   </div>
@@ -161,52 +162,50 @@ sections:
     Because diffraction is sensitive to structure comparable in size to the
     wavelength, coherent sources reach lens masses and scales that image-based
     lensing cannot resolve. This is what makes them a probe of dark matter on
-    sub-galactic scales, and of objects too small and too dark to find any other
-    way.
+    sub-galactic scales, potentially reaching planetary-scale objects for fast
+    radio bursts — scales far too small and too dark to access any other way.
   </p>
 </section>
 
 <section class="section" id="timing" aria-labelledby="timing-heading">
   <h2 id="timing-heading">Why now</h2>
   <p>
-    The observational situation is changing quickly. The LIGO–Virgo–KAGRA
-    network will soon deliver thousands of detections from compact binary
-    mergers.{% include cite.html key="lvk-plan" %} Radio surveys — CHIME,
-    DSA-2000, CHORD, BURSTT — are increasing the number of observed fast radio
-    bursts by orders of
-    magnitude.{% include cite.html key="dsa2000,chord,burstt" %} A first
+    The observational landscape is evolving fast. LIGO–Virgo–KAGRA recently
+    reported the discovery of GW231123, a compelling candidate for a lensed
+    gravitational wave. Soon, their network will deliver thousands of detections
+    from compact binary mergers.{% include cite.html key="lvk-plan" %} Radio
+    surveys — CHIME, DSA-2000, CHORD, BURSTT — are increasing the number of
+    observed fast radio bursts
+    dramatically.{% include cite.html key="dsa2000,chord,burstt" %} A first
     discovery of lensed gravitational waves and fast radio bursts is expected in
     the coming years.{% include cite.html key="wierda-rates,smith-rates,connor-ravi-frb" %}
+    GLOW will develop the tools needed to interpret these observations.
   </p>
   <p>
     What follows is a shift from discovery to population: detector upgrades, the
-    next generation of ground-based
-    observatories{% include cite.html key="einstein-telescope,cosmic-explorer" %},
-    and the SKA survey. LISA, adopted by ESA in 2024 and scheduled to launch in
+    next generation of ground-based observatories (Einstein Telescope, Cosmic
+    Explorer){% include cite.html key="einstein-telescope,cosmic-explorer" %},
+    and the SKA survey will elevate these numbers by orders of magnitude. LISA,
+    scheduled to launch in
     2035{% include cite.html key="lisa-definition" %}, opens the low-frequency
-    band and with it a different set of lensing signatures.
-  </p>
-  <p>
-    The methods have to exist before the events arrive. An advanced framework for
-    realistic matter distributions — not the handful of idealized lenses with
-    closed-form solutions — is what stands between a detection and an
-    interpretation.
+    band and a different set of lensing signatures. GLOW will help us prepare
+    for lensing observations with these exciting facilities.
   </p>
 </section>
 
 <section class="section" id="goals" aria-labelledby="goals-heading">
   <h2 id="goals-heading">What GLOW will deliver</h2>
   <p class="lede">
-    Three goals, and the methods that have to exist before they can be reached.
+    The project serves three overarching goals:
   </p>
   <dl class="roles">
     <div>
-      <dt>Discovery</dt>
-      <dd>Find lensed gravitational waves, including sources at high redshift and in the vicinity of supermassive black holes</dd>
+      <dt>New horizons</dt>
+      <dd>Discover lensed gravitational waves, including sources at high redshift and in the vicinity of supermassive black holes</dd>
     </div>
     <div>
       <dt>Fundamental physics</dt>
-      <dd>Probe dark-matter objects, the nature of gravity, and theories of dark energy</dd>
+      <dd>Probe dark-matter objects on elusive scales, the nature of gravity, and theories of dark energy</dd>
     </div>
     <div>
       <dt>Readiness</dt>
@@ -221,19 +220,18 @@ sections:
     <li>Effective description of dark-matter diffraction and gravitational-wave propagation (<a href="{{ '/work-packages.html#wp3' | relative_url }}">WP3</a>)</li>
   </ul>
   <p>
-    The project builds on several years of work on wave-optics lensing and on the
-    public <a href="{{ '/software.html' | relative_url }}">GLoW
+    The project builds on several years of work on wave-optics lensing, which
+    led to the first public <a href="{{ '/software.html' | relative_url }}">GLoW
     code</a>{% include cite.html key="glow-code" %}, which already computes
-    diffraction by general matter distributions fast enough to sit inside a
-    parameter-estimation loop.
+    diffraction by general matter distributions fast enough to perform
+    systematic analyses.
   </p>
 </section>
 
 <section class="section" id="references" aria-labelledby="references-heading">
   <h2 id="references-heading">References</h2>
   <p>
-    The sources behind the claims above, carried over from the grant proposal's
-    own bibliography. Work by the project itself is on the
+    Primary sources for this section. Work by the project itself is on the
     <a href="{{ '/publications.html' | relative_url }}">publications page</a>.
   </p>
   {% include references.html %}
