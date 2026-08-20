@@ -5,3 +5,6 @@ Gemfile.lock
 vendor/
 glow-site-text*
 .~lock*
+
+# Scratch directory used by tools/preview.sh while a build is in progress.
+.preview-build/

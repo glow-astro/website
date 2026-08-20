@@ -12,17 +12,31 @@ structural changes.
 ## Local preview
 
 ```sh
+tools/preview.sh                  # build, serve on :8811, open a browser
+tools/preview.sh science.html     # open that page instead of the home page
+tools/preview.sh -w               # rebuild whenever a source file changes
+tools/preview.sh -h               # all the options
+```
+
+Stop it with ctrl-C. It builds into a scratch directory and swaps that in, so a
+failed build leaves the previous `_site` in place rather than half-replaced —
+you are never reading a stale page while believing it is the new one.
+
+Its server sends `Cache-Control: no-store`, which is the point of using it over
+a bare `python3 -m http.server`: **CSS, JS and images cache hard, and that has
+produced two false bug reports here** — a sticky bar that looked missing when it
+was only unstyled, and a figure that kept reporting its pre-edit height. With
+this server you do not need `ctrl+shift+r`.
+
+Underneath, it runs:
+
+```sh
 ruby tools/jekyll_build.rb . _site
-cd _site && python3 -m http.server 8794 --bind 127.0.0.1
 ```
 
 `tools/jekyll_build.rb` loads Jekyll from `~/.local/share/gem` directly, working
 around a RubyGems dependency-activation problem on this machine. Use it rather
 than `bundle exec jekyll`.
-
-CSS and JS cache hard — hard-reload (`ctrl+shift+r`) before believing what the
-browser shows. This has already caused one false bug report: a new sticky bar
-looked missing when it was only unstyled.
 
 After any structural change, rebuild and run the verification pass in
 [`docs/SITE_CONVENTIONS.md`](docs/SITE_CONVENTIONS.md) §3. It has caught a
@@ -34,6 +48,7 @@ declared `sections` but never included the bar to render them.
 ```sh
 ruby tools/jekyll_build.rb . _site
 python3 tools/make_review_doc.py          # -> /tmp/glow-site-text.odt
+python3 tools/make_review_doc.py glow-site-text.odt   # ... or somewhere you will find it
 ```
 
 Flattens the built site into one `.odt` for reading and editing in
