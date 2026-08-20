@@ -71,20 +71,20 @@ description: >-
   <!-- ============ Objectives ============ -->
   <section class="section" aria-labelledby="objectives-heading">
     <h2 id="objectives-heading">What the project sets out to do</h2>
-    <ul class="roles">
-      <li>
-        <strong>Discover lensed gravitational waves</strong>
-        <span>Including sources at high redshift and near supermassive black holes</span>
-      </li>
-      <li>
-        <strong>Probe dark matter, gravity and dark energy</strong>
-        <span>Using diffraction, birefringence &amp; dispersion to advance fundamental physics</span>
-      </li>
-      <li>
-        <strong>Be ready for a bright future</strong>
-        <span>Upcoming fast-radio-burst surveys, ground &amp; space detectors, and multi-messenger follow-up</span>
-      </li>
-    </ul>
+    <dl class="roles">
+      <div>
+        <dt>Discover lensed gravitational waves</dt>
+        <dd>Including sources at high redshift and near supermassive black holes</dd>
+      </div>
+      <div>
+        <dt>Probe dark matter, gravity and dark energy</dt>
+        <dd>Using diffraction, birefringence &amp; dispersion to advance fundamental physics</dd>
+      </div>
+      <div>
+        <dt>Be ready for a bright future</dt>
+        <dd>Upcoming fast-radio-burst surveys, ground &amp; space detectors, and multi-messenger follow-up</dd>
+      </div>
+    </dl>
   </section>
 
   <!-- ============ Intro video ============
@@ -168,20 +168,20 @@ description: >-
   <section class="section" aria-labelledby="facts-heading">
     <h2 id="facts-heading">The grant</h2>
     <div class="card">
-      <ul class="roles">
-        <li>
-          <strong>{{ site.project.scheme }}</strong>
-          <span>Call {{ site.project.call }} · grant agreement {{ site.project.grant_number }} · {{ site.project.duration }}</span>
-        </li>
-        <li>
-          <strong>Principal Investigator</strong>
-          <span><a href="{{ site.pi.site }}" rel="noopener">{{ site.pi.name }}</a></span>
-        </li>
-        <li>
-          <strong>Host institution</strong>
-          <span><a href="{{ site.host.institute_url }}" rel="noopener">{{ site.host.institute }}</a></span>
-        </li>
-      </ul>
+      <dl class="roles">
+        <div>
+          <dt>{{ site.project.scheme }}</dt>
+          <dd>Call {{ site.project.call }} · grant agreement {{ site.project.grant_number }} · {{ site.project.duration }}</dd>
+        </div>
+        <div>
+          <dt>Principal Investigator</dt>
+          <dd><a href="{{ site.pi.site }}" rel="noopener">{{ site.pi.name }}</a></dd>
+        </div>
+        <div>
+          <dt>Host institution</dt>
+          <dd><a href="{{ site.host.institute_url }}" rel="noopener">{{ site.host.institute }}</a></dd>
+        </div>
+      </dl>
       <p><a href="{{ site.project.cordis }}" rel="noopener">Project record on CORDIS</a></p>
     </div>
   </section>

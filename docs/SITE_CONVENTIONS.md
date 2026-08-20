@@ -263,9 +263,11 @@ Everything degrades: with JavaScript off, the site is fully readable.
 Dark, quiet, typographic. No decoration that is not carrying information.
 
 ```css
---bg: #0a0c11;  --bg-card: #151926;  --border: #2a3040;
+--bg: #0a0c11;  --bg-raised: #12151d;  --bg-card: #151926;  --border: #2a3040;
 --text: #e8eaf0;  --text-soft: #c2c8d6;  --text-mute: #9198a8;
---accent: #b7a2ff;  --accent-strong: #d0c2ff;  --accent-dim: #8b74e8;
+--accent: #f2a45c;  --accent-strong: #ffc389;  --accent-dim: #c07a34;
+--accent-visited: #d3a37f;
+--link-line: …/.45;  --accent-wash: …/.14;  --accent-halo: …/.50;  /* derived */
 --cyan: #6fd8ee;          /* hover / focus */
 --radius: 10px;  --measure: 1000px;
 --font: system-ui, -apple-system, "Segoe UI", Roboto, ...
@@ -275,6 +277,64 @@ Dark, quiet, typographic. No decoration that is not carrying information.
 lists of names unreadable — the names and the band above them were the same
 colour. Section headings are neutral; caps, letter-spacing and a trailing rule
 carry the hierarchy instead.
+
+Anything tinted with the accent — the underline under a link, the wash behind a
+badge, the halo on the News pulse — gets a **token derived from `--accent`**,
+never a hand-written `rgba()`. Three of them were still the pre-amber violet
+long after the palette changed, because they were literals nobody thought to
+grep for. Changing the project's colour is the four `--accent*` lines and
+nothing else.
+
+### Links
+
+Two families, and a component belongs to exactly one:
+
+| | looks like | who |
+| --- | --- | --- |
+| **In prose** | amber, 1px underline, → cyan on hover | anything inside a `<p>`, `<li>`, `<dd>`, caption |
+| **Its own affordance** | no underline, usually not amber | `.site-nav`, `.subnav`, `.topicnav`, `.btn`, `.card-link`, `.skymap-card`, `.brand`, `.skip-link` |
+
+- The underline is not decoration. It is what a reader who cannot separate amber
+  from body text has to go on — colour is never the only signal (§7 above).
+- A component in the second family sets `text-decoration: none` **in its own
+  rule**, next to the padding and background that make it a button. There is no
+  central opt-out list; a collected selector would put the declaration a hundred
+  lines away from the thing it describes.
+- `.card-title` is the hybrid: undecorated at rest, underlined on hover, because
+  a title alone on its line reads as a heading until you reach for it.
+- Link text names its destination. Never "here", "this link", "click". Trailing
+  punctuation stays outside the link.
+- External links are styled exactly like internal ones: no icon, no new tab,
+  always `rel="noopener"`. The outbound links here are few and their text
+  already says where they go ("CORDIS, grant agreement 101230608", "The GLoW
+  code on GitHub"); an icon on each would speckle the prose for no gain.
+
+### Emphasis
+
+**Emphasis never carries colour**, because amber already means "link" — a
+coloured word would look clickable. Weight and slope are all there is:
+
+- `<strong>` — the one claim in a section that has to survive skimming.
+- `<em>` — contrastive stress: the word that changes the sentence if you move
+  it. *"the **range** of masses"*, *"**statistics**, not individual events"*.
+- Never both on one span, never more than a clause, and never a whole sentence.
+- Inside dimmed text (`.lede`, captions, `.roles` descriptions) both lift back
+  to the body colour. That is a return to full brightness, not a new colour.
+  Inside a link they inherit the amber instead, or a bolded link would go grey.
+
+The budget is deliberate: across seventeen pages the site uses `<em>` twice and
+`<strong>` four times in prose, plus the standing GLOW/GLoW note. That is the
+level to hold. If a paragraph needs emphasis to be readable, the sentence is
+usually the thing to fix.
+
+**`<strong>` means emphasis and nothing else** — `grep '<strong>' _site/*.html`
+should return only emphasis, and it does. A label in front of a value is not
+emphasis: that is a `<dl class="roles">` with `<dt>`/`<dd>` (the twelve of them
+were `<li><strong>…</strong><span>…</span></li>` until this rule arrived). A
+card title inside a link is not emphasis either — see `.skymap-title`.
+
+The canonical emphasis on this site is the naming note, where the contrast *is*
+the sentence: **GLOW** is the project, **GLoW** is the code.
 
 Other rules worth keeping:
 

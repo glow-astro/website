@@ -132,17 +132,17 @@ sections:
 {%- if former and former.size > 0 %}
 <section class="section" id="former" aria-labelledby="former-heading">
   <h2 id="former-heading">Former members</h2>
-  <ul class="roles">
+  <dl class="roles">
     {%- for p in former %}
-    <li>
-      <strong>{%- if p.url %}<a href="{{ p.url }}" rel="noopener">{{ p.name }}</a>{% else %}{{ p.name }}{% endif -%}</strong>
-      <span>
+    <div>
+      <dt>{%- if p.url %}<a href="{{ p.url }}" rel="noopener">{{ p.name }}</a>{% else %}{{ p.name }}{% endif -%}</dt>
+      <dd>
         {{ p.role }} &middot; {{ p.years }}
         {%- if p.next %} &middot; now {{ p.next }}{% endif -%}
-      </span>
-    </li>
+      </dd>
+    </div>
     {%- endfor %}
-  </ul>
+  </dl>
 </section>
 {%- endif %}
 
@@ -151,14 +151,14 @@ sections:
   <p>
     Researchers contributing to specific tasks from outside the project.
   </p>
-  <ul class="roles">
+  <dl class="roles">
     {%- for p in site.data.people.collaborators %}
-    <li>
-      <strong>{%- if p.url %}<a href="{{ p.url }}" rel="noopener">{{ p.name }}</a>{% else %}{{ p.name }}{% endif -%}</strong>
-      <span>{{ p.role }}{% if p.wps %} · {{ p.wps | join: ", " }}{% endif %}</span>
-    </li>
+    <div>
+      <dt>{%- if p.url %}<a href="{{ p.url }}" rel="noopener">{{ p.name }}</a>{% else %}{{ p.name }}{% endif -%}</dt>
+      <dd>{{ p.role }}{% if p.wps %} · {{ p.wps | join: ", " }}{% endif %}</dd>
+    </div>
     {%- endfor %}
-  </ul>
+  </dl>
 </section>
 
 <section class="section" id="join" aria-labelledby="join-heading">

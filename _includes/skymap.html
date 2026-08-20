@@ -42,8 +42,8 @@
       {%- for t in cards %}
       <a class="skymap-card tint-{{ t.tint }}"
          href="{{ '/' | append: t.id | append: '.html' | relative_url }}">
-        <strong>{{ t.title }}</strong>
-        <span>{{ t.card | strip_newlines | strip }}</span>
+        <span class="skymap-title">{{ t.title }}</span>
+        <span class="skymap-blurb">{{ t.card | strip_newlines | strip }}</span>
       </a>
       {%- endfor %}
     </div>

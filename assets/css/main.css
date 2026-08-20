@@ -18,10 +18,19 @@
 
 	/* Accents: warm amber primary (the GLOW logo's colour), cyan secondary.
 	   The accent means "link" and nothing else -- see docs/SITE_CONVENTIONS.md
-	   section 7. Changing the project's colour is these three lines. */
+	   section 7. Changing the project's colour is these four lines. */
 	--accent:         #f2a45c;
 	--accent-strong:  #ffc389;
 	--accent-dim:     #c07a34;
+	/* The underline under a body link. Derived from --accent and kept beside it
+	   because it has already drifted once: it sat at the pre-amber purple for
+	   several commits after the palette changed, putting a violet rule under
+	   every amber link. */
+	--link-line:      rgba(242, 164, 92, 0.45);
+	/* Tinted fills that must track the accent: the badge ground, the New pulse's
+	   halo. Both were still violet after the palette change. */
+	--accent-wash:    rgba(242, 164, 92, 0.14);
+	--accent-halo:    rgba(242, 164, 92, 0.50);
 	/* Visited links stay in the accent's family, duller and browner. It has to
 	   differ from --accent enough to be readable as "already seen" without
 	   becoming a second accent colour competing for attention. */
@@ -67,12 +76,29 @@ img, video { height: auto; }
 
 /* ---- Links ---------------------------------------------------------- */
 
+/* Amber means "link" and nothing else on this site, which is why emphasis below
+   carries no colour at all. Links come in two families:
+
+     * A link in running prose -- amber, underlined, hover to cyan. The
+       underline is not decoration: it is the affordance that survives for a
+       reader who cannot separate amber from the body text, and colour is never
+       allowed to be the only signal here.
+     * A link that is its own affordance -- a nav item, a button, a card, a
+       topic chip, the skip link. Its container already says it is clickable, so
+       it drops the underline and usually the amber too. Each such component
+       sets `text-decoration: none` in its own rule rather than being collected
+       into a list here: the declaration belongs with the padding and colour
+       that make the component a button in the first place.
+
+   .card-title is the one hybrid -- undecorated at rest, underlined on hover,
+   because a title sitting alone on its line reads as a heading until you reach
+   for it. */
 a {
 	color: var(--accent);
 	text-decoration: underline;
 	text-decoration-thickness: 1px;
 	text-underline-offset: 0.18em;
-	text-decoration-color: rgba(183, 162, 255, 0.45);
+	text-decoration-color: var(--link-line);
 	transition: color 0.12s ease, text-decoration-color 0.12s ease;
 }
 
@@ -203,7 +229,24 @@ p { margin: 0 0 1.05em; }
 ul, ol { margin: 0 0 1.05em; padding-left: 1.3em; }
 li { margin-bottom: 0.35em; }
 
-strong { font-weight: 640; }
+/* ---- Emphasis -------------------------------------------------------- */
+
+/* Emphasis carries no colour. Amber is the link and nothing else, so reaching
+   for a hue to stress a word would make it look clickable -- weight and slope
+   are all that is left, and they are enough.
+
+   <strong> is the one claim in a section that has to survive skimming.
+   <em> is contrastive stress: the word that changes the sentence's meaning if
+   you move it ("the *range* of masses", "*statistics*, not individual events").
+   Never both on the same span, and never on more than a clause.
+
+   Both lift to full brightness so they still register inside dimmed text --
+   .lede, figure captions, the descriptions in .roles. That is a return to the
+   body colour, not a new colour. Inside a link they inherit the link's amber
+   instead, or a bolded link would go grey. */
+strong { font-weight: 640; color: var(--text); }
+em { font-style: italic; color: var(--text); }
+a strong, a em { color: inherit; }
 
 hr {
 	border: none;
@@ -497,7 +540,12 @@ main { padding-bottom: 3rem; }
 	grid-template-columns: repeat(auto-fit, minmax(min(215px, 100%), 1fr));
 }
 
-.roles li {
+/* A description list, not a bullet list: every one of these is a label and the
+   thing it labels -- "Work packages" / WP2-A, "Host institution" / IFT. It was
+   <li><strong>label</strong><span>value</span></li> until the emphasis rule
+   above needed <strong> to mean emphasis and nothing else. The <div> wrappers
+   are what the grid lays out; a <dl> is allowed to group its pairs that way. */
+.roles > div {
 	margin: 0;
 	padding: 0.75rem 0.9rem;
 	border-left: 3px solid var(--accent-dim);
@@ -507,9 +555,9 @@ main { padding-bottom: 3rem; }
 	line-height: 1.45;
 }
 
-.roles strong { display: block; }
+.roles dt { font-weight: 640; }
 
-.roles span { color: var(--text-mute); font-size: 0.87rem; }
+.roles dd { margin: 0; color: var(--text-mute); font-size: 0.87rem; }
 
 /* ---- Figures --------------------------------------------------------- */
 
@@ -639,7 +687,7 @@ figure.float-left {
 	letter-spacing: 0.03em;
 	padding: 0.1em 0.5em;
 	border-radius: 4px;
-	background: rgba(183, 162, 255, 0.14);
+	background: var(--accent-wash);
 	color: var(--accent);
 	border: 1px solid var(--accent-dim);
 	white-space: nowrap;
@@ -704,7 +752,7 @@ figure.float-left {
 @keyframes news-pulse {
 	0%, 100% {
 		background: var(--accent);
-		box-shadow: 0 0 0 0 rgba(183, 162, 255, 0.5);
+		box-shadow: 0 0 0 0 var(--accent-halo);
 	}
 	50% {
 		background: var(--cyan);
@@ -1232,14 +1280,14 @@ a.skymap-card:focus-visible {
 	border-color: var(--tint-strong, var(--accent));
 }
 
-.skymap-card strong {
+.skymap-card .skymap-title {
 	display: block;
 	margin-bottom: 0.15rem;
 	font-size: 0.95rem;
 	color: var(--tint-strong, var(--accent-strong));
 }
 
-.skymap-card > span {
+.skymap-card .skymap-blurb {
 	display: block;
 	font-size: 0.8rem;
 	line-height: 1.4;
@@ -1247,7 +1295,7 @@ a.skymap-card:focus-visible {
 }
 
 /* Keep a hyphenated term from splitting across lines in a narrow column. */
-.skymap-card strong span { white-space: nowrap; }
+.skymap-card .skymap-title span { white-space: nowrap; }
 
 .skymap-card.tint-source  { --tint: #3f7f68; --tint-strong: #8fe0c0; }
 .skymap-card.tint-wave    { --tint: #2f6a7d; --tint-strong: #8ad6e8; }

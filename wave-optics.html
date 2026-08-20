@@ -145,27 +145,27 @@ topic_id: wave-optics
 
 <section class="section" id="more" aria-labelledby="more-heading">
   <h2 id="more-heading">Where this is done</h2>
-  <ul class="roles">
-    <li>
-      <strong>Work packages</strong>
-      <span>
+  <dl class="roles">
+    <div>
+      <dt>Work packages</dt>
+      <dd>
         {%- for code in t.wps %}
         <a href="{{ '/work-packages.html#' | append: code | downcase | relative_url }}">{{ code }}</a>
         {%- unless forloop.last %} &middot; {% endunless %}{% endfor %}
-      </span>
-    </li>
+      </dd>
+    </div>
     {%- if t.papers.size > 0 %}
-    <li>
-      <strong>Papers</strong>
-      <span>
+    <div>
+      <dt>Papers</dt>
+      <dd>
         {%- for id in t.papers %}
         {%- assign paper = site.data.publications.papers | where: "arxiv", id | first %}
         <a href="{{ paper.url }}" rel="noopener">{{ paper.title }}</a>
         {%- unless forloop.last %} &middot; {% endunless %}{% endfor %}
-      </span>
-    </li>
+      </dd>
+    </div>
     {%- endif %}
-  </ul>
+  </dl>
   <div class="btn-row">
       <a class="btn" href="{{ '/microlensing.html' | relative_url }}">Microlensing →</a>
       <a class="btn" href="{{ '/science.html' | relative_url }}">All topics</a>
