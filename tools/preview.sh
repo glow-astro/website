@@ -22,6 +22,13 @@
 # binary, which works around RubyGems' recursive dependency activation on this
 # machine. See the comment at the top of that file.
 
+# Ubuntu's /bin/sh is dash, which has no `set -o pipefail` and would die on the
+# next line. `sh tools/preview.sh` is an easy thing to type, so rather than fail
+# with a shell error that says nothing about what is wrong, start over in bash.
+if [ -z "${BASH_VERSION:-}" ]; then
+  exec bash "$0" "$@"
+fi
+
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
