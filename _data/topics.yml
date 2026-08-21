@@ -110,8 +110,9 @@
     Stars and remnants in the lensing galaxy, treated collectively.
   blurb: >-
     A lens is rarely one object. Populations of compact objects — stars,
-    remnants, or dark matter — each add their own diffraction, and what a signal
-    carries is the statistics of the population rather than any single lens.
+    remnants, or dark matter — contribute collectively to the diffraction, and
+    what a signal carries is the statistics of the population rather than any
+    single lens.
   wps: ["WP1-A", "WP2-A", "WP3-A"]
   papers: ["2606.17765", "2512.17631"]
   # The setup before any of its parts: the sweep further down varies a
@@ -150,9 +151,9 @@
   card: >-
     Waveform models, population analyses, and simulation-based inference.
   blurb: >-
-    A lensing signature is only as good as the inference that finds it. Lensing
-    enlarges the parameter space at the same time as the catalogs grow, which
-    makes speed a physics problem rather than an engineering one.
+    Lensing predictions have to become searches over real data — effective
+    models for stochastic lenses, population analyses, and inference fast enough
+    to keep up with the detectors.
   wps: ["WP2-A", "WP2-B"]
   papers: ["2512.17631", "2606.17765"]
   media:
@@ -163,12 +164,13 @@
       analysis, each one a lens configuration, with the predicted response
       converging on the best-fitting model as the samples improve.
     caption: >-
-      Every draw from the posterior of the GW231123 analysis is itself a lens,
-      and predicts a signal. Walking the samples from the low-likelihood tail to
-      the best fit shows which combination of lens mass and shear the data
-      actually constrain — the ridge in the left panel — and how the predicted
-      response converges. This orders the finished posterior by likelihood: it
-      is a picture of the posterior's structure, not a replay of the sampler.
+      Parameter estimation compares the data with the predictions of a model
+      across parameter space. The exploration is shown here for a two-parameter
+      example: on the left, each point is a value of the lens mass and the
+      external shear; on the right, the time-domain response that pair predicts,
+      bouncing around the best fit. The upper panel shows the total response and
+      the lower one the wave-optics contribution. The samples are ordered by
+      likelihood, so they close in on the best fit as the animation runs.
     source: "GW231123_independent_analysis, family sampling"
 
 # ---- Top row: what a lensed wave measures, along the light path ------------

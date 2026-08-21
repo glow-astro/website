@@ -4,19 +4,20 @@ nav: science
 title: "Data analysis"
 eyebrow: "Science"
 lede: >-
-  A lensing signature is only as good as the inference that finds it. Lensing
-  enlarges the parameter space at the same time as the catalogs grow, which
-  makes speed a physics problem rather than an engineering one.
+  Lensing predictions have to become searches over real data. Only with the
+  right inference tools does a distorted signal turn into information about the
+  source, about matter on small scales, and about gravity itself.
 description: >-
-  How lensed gravitational waves are actually searched for: waveform models that
-  carry a microlensing signature, population-level analyses, and machine-learning
-  inference fast enough to keep up with the detectors.
+  How lensed gravitational waves are actually searched for: effective models for
+  stochastic lenses, population-level analyses, and machine-learning inference
+  fast enough to keep up with the detectors.
 # Cited on this page, in order of first appearance -- and that order is
 # the numbering. Pulled from _data/references.yml, which several pages
 # share; the numbers here are this page's own.
 refs:
-  - cranmer-sbi
   - lvk-plan
+  - cranmer-sbi
+  - caldarola-dingo
 topic_id: data-analysis
 ---
 
@@ -26,42 +27,49 @@ topic_id: data-analysis
 
 {% include topic-figure.html topic=t %}
 
-<section class="section" id="claim" aria-labelledby="claim-heading">
-  <h2 id="claim-heading">What it takes to claim a lensed event</h2>
+<section class="section" id="discovery" aria-labelledby="discovery-heading">
+  <h2 id="discovery-heading">Discovering lensed signals</h2>
   <p>
-    A lensed gravitational wave does not announce itself. It arrives as an
-    ordinary-looking signal with a distortion in it, and the question is whether
-    that distortion is better explained by a lens than by noise, by an unusual
-    source, or by the limits of the waveform model being used. Answering it
-    means fitting the lensed and the unlensed hypotheses to the same data and
-    comparing them honestly.
+    Lensing signatures are usually subtle. Most lensed gravitational waves will
+    arrive looking like ordinary signals carrying a small distortion, and the
+    question is whether that distortion is better explained by a lens than by
+    detector noise, by missing physical effects, or by inaccuracies in the
+    waveform model. The first step towards an answer is to analyze the same data
+    under the lensed and the unlensed hypotheses and compare the results — which
+    is what the animation above is a picture of, each sample in it being a lens
+    configuration in its own right.
   </p>
   <p>
-    That is harder than it sounds, because every ingredient is uncertain at
-    once. The lens adds parameters to a source model that already has fifteen.
-    The waveform model itself has systematic errors, and a lensing search must
-    not mistake them for a lens. And the interesting candidates are usually
-    faint, which is exactly where all of these effects are hardest to separate.
-  </p>
-  <p>
-    The animation is a picture of that fit. Each posterior sample is a lens
-    configuration predicting its own signal, and the ridge in the left panel is
-    the combination of lens mass and shear the data genuinely constrain — as
-    opposed to the parameters that only look constrained because they were
-    chosen conveniently.
+    An uncontested discovery will be very hard, for several reasons. First,
+    lensing enlarges the parameter space, introducing degeneracies with physical
+    effects such as spin-induced precession, which then have to be disentangled.
+    Second, non-Gaussian noise transients and model inaccuracies can mimic some
+    lensing signatures, so the significance of a candidate has to account for
+    the probability of a false positive. Third, the astrophysical chance of a
+    particular lensing configuration has to be folded in, which introduces
+    uncertainties of its own. Finally, realistic lenses need models that do not
+    yet exist.
   </p>
 </section>
 
-<section class="section" id="models" aria-labelledby="models-heading">
-  <h2 id="models-heading">Models that can be fitted</h2>
+<section class="section" id="effective" aria-labelledby="effective-heading">
+  <h2 id="effective-heading">An effective microlensing theory</h2>
   <p>
-    A stochastic lens cannot be fitted directly: nobody will ever measure the
-    particular arrangement of stars that produced a given distortion. What can
-    be fitted is a compressed description. Expanding the ratio of the lensed to
-    the unlensed waveform in a basis of functions turns an unpredictable lens
-    into a handful of coefficients, and the distribution of those coefficients
-    across simulated realizations gives them a physically motivated
-    prior.{% include cite.html key="cranmer-sbi" %}
+    Stochastic lenses such as stellar fields cannot be fitted directly: no
+    method will ever measure the particular arrangement of objects that produced
+    a given distortion. The project will develop an effective description
+    instead. A well-tempered basis of functions reduces a seemingly random lens
+    to a handful of free coefficients, and the distribution of those
+    coefficients across simulated realizations gives them a physically motivated
+    prior — the
+    <a href="https://inspirehep.net/arxiv/2606.17765" rel="noopener">reduced-order
+    model</a> developed for
+    <a href="{{ '/microlensing.html' | relative_url }}">microlensing</a>. These
+    methods extend inference beyond the simple lens models — a point lens with
+    external shear, for instance, the model behind the analysis of
+    <a href="https://inspirehep.net/arxiv/2512.17631" rel="noopener">GW231123</a>
+    — that are currently within reach through the
+    <a href="{{ '/software.html' | relative_url }}">GLoW code</a>.
   </p>
   <p>
     The significance of a lensing claim then comes from the posteriors of those
@@ -74,43 +82,48 @@ topic_id: data-analysis
   </p>
 </section>
 
-<section class="section" id="populations" aria-labelledby="populations-heading">
-  <h2 id="populations-heading">One event, or the whole catalog</h2>
+<section class="section" id="global" aria-labelledby="global-heading">
+  <h2 id="global-heading">Global evidence for lensing</h2>
   <p>
-    Not every question is answered by a single loud event. Lensing also acts on
-    a catalog as a whole: it changes the distribution of apparent masses,
-    distances and signal strengths, and a population that has been lensed looks
-    different in aggregate from one that has not. That makes the catalog itself
-    a measurement, and one that survives even when no individual event is
-    convincing on its own.
+    Not every question is answered by a single loud event. It is far more likely
+    that near-term detectors deliver many lensed events, none of them carrying
+    much evidence on its own. Searching the catalog as a whole is therefore
+    essential: beyond the wave-optics distortions in individual signals, lensing
+    changes the distribution of apparent masses and distances across the
+    population.
   </p>
   <p>
     Population analyses also discipline the single-event claims. An astrophysical
     prior on how often lensing should occur, and on what the lenses are likely to
-    be, is what turns a well-fitting lensed model into a credible one.
+    be, is what turns a well-fitting lensed model into a credible one. New
+    population methods may also be able to fold in information from sources that
+    form multiple images.
   </p>
 </section>
 
 <section class="section" id="speed" aria-labelledby="speed-heading">
-  <h2 id="speed-heading">Why speed is a physics problem</h2>
+  <h2 id="speed-heading">The need for speed</h2>
   <p>
-    Two things are growing at once. Lensing enlarges the parameter space of
-    every analysis, and the detectors are moving towards thousands of
-    events.{% include cite.html key="lvk-plan" %}
-    Analyses that take weeks per event do not merely become inconvenient; they
-    determine which questions can be asked at all. Subthreshold searches, where
-    a diffracted signal may have been pushed below the detection threshold by
-    the very distortion that makes it interesting, are only possible if each fit
-    is cheap.
+    Lensing searches face a growing computational challenge. Inference of
+    wave-optics distortions enlarges the parameter space of every event
+    analyzed, and improving detector sensitivity will bring thousands of events
+    per year.{% include cite.html key="lvk-plan" %} Analyses that take days or
+    weeks per event become prohibitive at that rate — and the cost grows sharply
+    again for searches over pairs of events, where multiply-imaged candidates
+    have to be compared with one another.
   </p>
   <p>
-    Machine-learning inference is the route to that. A network trained to map
-    data directly to posteriors amortizes the cost: the expense moves into
-    training, and each subsequent event is analyzed in seconds. The project
-    builds on <a href="{{ '/software.html' | relative_url }}">DINGO</a> for this,
-    and is validating it with the LIGO–Virgo–KAGRA collaboration for use in
-    low-latency alerts — where the results have to be right, and have to arrive
-    while telescopes can still be pointed.
+    Accelerated inference is the way through. A network trained to map data
+    directly to posteriors amortizes the cost: the expense moves into training,
+    and each subsequent event is analyzed in seconds. The project builds on
+    <a href="{{ '/software.html' | relative_url }}">DINGO</a> for this, a
+    simulation-based inference tool{% include cite.html key="cranmer-sbi" %}
+    already demonstrated for an isolated point
+    lens.{% include cite.html key="caldarola-dingo" %} At a later stage the same
+    machinery can run real-time searches for lensed neutron stars, so that
+    telescopes can follow up a potential
+    <a href="{{ '/sources.html#multimessenger' | relative_url }}">multi-messenger
+    observation</a> while there is still something to see.
   </p>
 </section>
 

@@ -229,3 +229,9 @@
   title: "Lens Stochastic Diffraction: A Signature of Compact Objects in Gravitational-Wave Data"
   where: "arXiv preprint (2024)"
   url: "https://arxiv.org/abs/2404.17405"
+
+- id: caldarola-dingo
+  authors: "M. Caldarola, S. Goyal, N. Gupte, S. R. Green, M. Zumalacárregui"
+  title: "Accelerated inference of microlensed gravitational waves with machine learning"
+  where: "Phys. Rev. D 113, 104073 (2026)"
+  url: "https://arxiv.org/abs/2511.08486"
