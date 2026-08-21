@@ -347,11 +347,13 @@ Other rules worth keeping:
   its position in flow.
 - Match stacked logos on **width**, not height, when their aspect ratios differ.
 - A `prefers-reduced-motion` block pauses autoplaying video and exposes
-  controls. Honour it in any new animation. A figure that is an argument rather
-  than a loop can instead ship with `controls` and no `autoplay` — see the
-  caustic animation on `sources.html`, which plays on request and holds its last
-  frame. That form needs no reduced-motion handling at all, because nothing
-  moves until the reader asks.
+  controls. Honour it in any new animation. An animation that is a *sequence*
+  rather than a loop goes through `_includes/figure-ondemand.html` instead:
+  `controls`, no `autoplay`, no `loop`, and **the last frame as the poster**, so
+  it plays once on request and settles back onto the picture it started from.
+  That form needs no reduced-motion handling at all, because nothing moves until
+  the reader asks. Choose by the animation: a loop that any frame represents, or
+  a sweep that has an end.
 - There is a print stylesheet. Check any new page prints sensibly.
 
 Accessibility is not optional: real `alt` text on anything informative and

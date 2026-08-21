@@ -50,6 +50,12 @@
     <source src="{{ '/media/' | append: stem | append: '.mp4' | relative_url }}" type="video/mp4">
   </video>
   {%- endif %}
-  <figcaption>{{ t.media.caption }}</figcaption>
+  {%- comment -%}
+    An opener can cite: set `media.cite` in _data/topics.yml to a key (or a
+    comma-separated list) that the page already declares in its `refs:`. The
+    caption itself is data, so a citation cannot be written into the YAML --
+    Liquid in a data file is not executed.
+  {%- endcomment -%}
+  <figcaption>{{ t.media.caption }}{% if t.media.cite %}{% include cite.html key=t.media.cite %}{% endif %}</figcaption>
 </figure>
 {%- endif -%}

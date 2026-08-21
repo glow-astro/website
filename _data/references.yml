@@ -194,6 +194,18 @@
   where: "Mon. Not. Roy. Astron. Soc. 515, 3299 (2022)"
   url: "https://arxiv.org/abs/2110.09540"
 
+- id: andreoni-too
+  authors: "I. Andreoni, R. Margutti, O. S. Salafia et al."
+  title: "Target-of-opportunity Observations of Gravitational-wave Events with Vera C. Rubin Observatory"
+  where: "Astrophys. J. Suppl. 260, 18 (2022)"
+  url: "https://arxiv.org/abs/2111.01945"
+
+- id: shan-microlens-field
+  authors: "X. Shan, G. Li, X. Chen et al."
+  title: "Wave effect of gravitational waves intersected with a microlens field II: An adaptive hierarchical tree algorithm and population study"
+  where: "Sci. China Phys. Mech. Astron. 68, 219512 (2025)"
+  url: "https://arxiv.org/abs/2409.06747"
+
 - id: cheung-priors
   authors: "M. H.-Y. Cheung, D. Wadekar, M. Zaldarriaga, T. Venumadhav"
   title: "The diffraction-lensing interpretation of GW231123 with astrophysical priors"

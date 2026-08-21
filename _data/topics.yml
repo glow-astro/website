@@ -73,8 +73,8 @@
     Diffraction, interference and plasma lensing: the theory, and the
     algorithms to compute it.
   blurb: >-
-    When the wavelength is comparable to the scale of the lens, geometric optics
-    fails. Diffraction, interference, plasma lensing and dispersion are all the
+    When the wavelength is comparable to the gravitational radius of the lens,
+    geometric optics fails. Diffraction, interference, plasma lensing and dispersion are all the
     same statement: the lens writes a frequency-dependent signature into the
     wave.
   wps: ["WP1-A", "WP1-B"]
@@ -92,12 +92,12 @@
       it moves the opposite way — tightening as the opening widens, and
       stretching across as the opening stretches down.
     caption: >-
-      A bench experiment that says what the rest of this page says. One colour
-      of light, one opening, and the pattern it casts: widen the opening and the
-      pattern tightens, stretch the opening one way and the pattern stretches
-      the other. Size on the screen goes as the wavelength divided by the size
-      of the opening — which is why a wave of a given frequency feels lenses of
-      a particular scale, and passes the rest by.
+      Diffraction patterns carry information about the objects they probe. Here
+      simulated monochromatic light is shot through a single opening whose size
+      and shape change (top right). The pattern it casts — in full at left, and
+      as a cut through the middle at bottom right — follows the size of that
+      opening: widen it and the pattern tightens, stretch it one way and the
+      pattern stretches the other.
     source: "application_plots, family diffraction_size_glow"
 
 - id: microlensing
@@ -215,6 +215,7 @@
       the standard analysis is highlighted (pink diamond), along with its true
       mass/source under gravitational magnification (dashed line) and the 90%
       confidence regions inferred from the lensed analysis.
+    cite: smith-rates
     source: "application_plots, plots/gw231123/population_lensing"
 
 - id: dark-matter

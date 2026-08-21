@@ -211,16 +211,26 @@ content and worth keeping for that reason. They are **not** generated here — e
 that owns the physics, indexed in `~/code/application_plots/ANIMATIONS.md`, and
 each topic records which family it took in `topics.yml`'s `media.source`.
 
-**One video does not autoplay.** `media/wavefront-caustics.*`, at the end of
-`sources.html`, has `controls` and neither `autoplay` nor `loop`: it is a
-twenty-second argument with five deliberate pauses in it, not a seamless loop,
-so a reader arriving mid-sweep would see a red line in the middle of nowhere.
-It waits to be asked, plays once, and stops. That works only because its poster
-is the generator's **last** frame rather than its first — the figure therefore
-says something complete before it is played and settles back onto the same
-picture when it ends. Do not restore consistency here. It is also why
-`assets/js/reduced-motion.js` does not touch it: that script rewrites
-`video[autoplay]`, and nothing moves in this one until someone asks.
+**Two kinds of figure, and the choice is about the animation, not the page.**
+Most are autoplaying loops: the motion is a texture, any frame is as good as
+any other, and a reader can arrive at any moment. Some are *sequences* — a
+sweep with a beginning, an end and deliberate pauses in it — where arriving
+mid-way means arriving at a frame that says nothing, and where a loop restarts
+the argument while the reader is still on the caption. Those go through
+`_includes/figure-ondemand.html`, which gives them `controls` and neither
+`autoplay` nor `loop`: asked once, played once, stopped.
+
+That pattern needs **the last frame as the poster**, which is the whole trick:
+the figure then shows the finished result before anyone plays it and settles
+back onto the same picture at the end, so pressing play returns you to where
+you started. Most generators poster somewhere in the middle, so the frame
+usually has to be pulled out of the encoded video — the include carries the
+`ffmpeg` line. Get this wrong and you have a figure that says nothing until
+played and then rests somewhere else, which reads as a stuck video.
+
+`assets/js/reduced-motion.js` does not touch on-demand figures, and should not:
+it rewrites `video[autoplay]`, and nothing moves in these until a reader asks,
+which is what the setting is for.
 
 Take the `_web_dark` variant: this site is dark-only. Renders are not all the
 same shape, so `media.width`/`media.height` carry each one's real pixel size —

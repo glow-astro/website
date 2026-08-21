@@ -14,6 +14,7 @@ refs:
   - wierda-rates
   - smith-rates
   - cheung-priors
+  - andreoni-too
   - gondan-echoes
   - oancea-strong-field
 topic_id: sources
@@ -102,45 +103,24 @@ topic_id: sources
   </p>
 
   {%- comment -%}
-    The multiple images this section argues from, drawn as one object rather
-    than three. From application_plots, animations/wavefront_caustics -- the web
-    dark variant.
-
-    THE ONE VIDEO ON THIS SITE THAT DOES NOT AUTOPLAY OR LOOP. Do not "restore
-    consistency" here: it is a 20-second argument with five deliberate pauses in
-    it, not a seamless loop, and a reader who arrives mid-sweep sees a red line
-    in the middle of nowhere. So it waits to be asked, plays once, and stops.
-
-    That works because the poster is the generator's LAST frame, not its first.
-    The front has gone by then, but that frame carries the whole result --
-    caustic closed, three image paths up, both image-count regions labelled --
-    so the figure says something complete before it is played and settles back
-    onto the same picture when it ends. It is also, unchanged, what a reader who
-    asks for reduced motion is left with.
-
-    `controls` is the affordance, so this is not caught by
-    assets/js/reduced-motion.js, which only rewrites video[autoplay]. Nothing
-    moves here until someone asks, which is what that setting is for.
+    From application_plots, animations/wavefront_caustics -- the web dark
+    variant, whose generator already posters on the last frame, which is what
+    figure-ondemand.html needs. Caption is the owner's, lightly edited.
   {%- endcomment -%}
-  <figure class="topic-figure">
-    <video width="1560" height="780" controls preload="metadata" playsinline
-           poster="{{ '/media/wavefront-caustics_still.png' | relative_url }}"
-           aria-label="Animation: a red wavefront sweeps past a lens and kinks, with blue rays trailing behind it and a gold caustic unzipping outwards from a cusp. Three teal ray paths reach an off-axis observer one after another. At the end the region inside the caustic is shaded as reaching three images and the region outside it as reaching one.">
-      <source src="{{ '/media/wavefront-caustics.webm' | relative_url }}" type="video/webm">
-      <source src="{{ '/media/wavefront-caustics.mp4' | relative_url }}" type="video/mp4">
-    </video>
-    <figcaption>
-      Why a lens can make more than one image. The red surface is the
-      wavefront — the surface of constant optical path — the blue rays behind it
-      are its own history, and the gold curve is the envelope those rays fold
-      into. A thin lens imposes its delay all at once, so the middle of the
-      front hangs back and peels off from the outside in; where the front folds
-      over itself, a point is crossed three times rather than once. Those three
-      crossings are the three images, and the gaps between them are the time
-      delays. At the end the frame is shaded by how many rays reach each
-      point — three inside the caustic, one outside.
-    </figcaption>
-  </figure>
+  {%- capture caustic_caption -%}
+    Formation of multiple images. The wavefront (red) advances and is bent by a
+    lens — instantaneously, in the thin-lens approximation — which focuses the
+    wavevectors (blue). The point where the wavefront intersects itself is a
+    <em>cusp</em>, and the edges of the bend are <em>folds</em>. Together these
+    are the <em>caustics</em> (gold): the magnification of a signal goes with
+    the density of wavevectors at a point, so a caustic is where that density
+    diverges — infinite magnification in the geometric-optics limit — and where
+    the number of images changes.
+  {%- endcapture -%}
+  {% include figure-ondemand.html
+             stem="wavefront-caustics" width="1560" height="780"
+             alt="Animation: a red wavefront sweeps past a lens and kinks, with blue rays trailing behind it and a gold caustic unzipping outwards from a cusp. Three teal ray paths reach an off-axis observer one after another. At the end the region inside the caustic is shaded as reaching three images and the region outside it as reaching one."
+             caption=caustic_caption %}
 </section>
 
 <section class="section" id="multimessenger" aria-labelledby="multimessenger-heading">
@@ -162,18 +142,18 @@ topic_id: sources
   <p>
     The reward is a measurement neither messenger makes alone. An
     electromagnetic counterpart fixes the arrival time of each image to
-    milliseconds rather than to the width of a light curve, which turns the
-    delay between images into a cosmological measurement far sharper than
-    image-based time-delay cosmography can reach. And because the same signal
+    milliseconds rather than to the days a light curve resolves, removing an
+    important source of uncertainty in time-delay cosmography — the one that
+    limits lensed quasars and supernovae. And because the same signal
     carries both a geometric-optics arrival time and a wave-optics distortion,
     the microlensing that usually limits such measurements is constrained by the
     data itself rather than marginalized over — the two regimes together give a
     long lever arm on the population of microlenses.
   </p>
   <p>
-    A detection is ambitious. It is also valuable enough that the Vera Rubin
+    A detection is ambitious. But it is valuable enough that the Vera Rubin
     Observatory has an approved target-of-opportunity programme for exactly this
-    case.{% include cite.html key="smith-rates" %}
+    case.{% include cite.html key="andreoni-too" %}
   </p>
 </section>
 
@@ -195,11 +175,11 @@ topic_id: sources
     part of the signal.{% include cite.html key="oancea-strong-field" %} Those
     are also the signatures that beyond-general-relativity theories of
     <a href="{{ '/testing-gravity.html' | relative_url }}">gravity and dark
-    energy</a> predict for propagation over cosmological distances, which is
-    what
-    makes the multiple images useful: an effect carried by one image and not
-    another is telling you about the strong-field region, while one common to
-    all of them is telling you about the theory.
+    energy</a> predict for propagation over cosmological distances. Multiple
+    images around the black hole are what separate the two: an effect carried by
+    one image and not another belongs to the strong-field region each took a
+    different path through, while one shared by all of them belongs to the
+    propagation, and so to the theory.
   </p>
 </section>
 

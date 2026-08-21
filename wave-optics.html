@@ -4,7 +4,7 @@ nav: science
 title: "Wave optics"
 eyebrow: "Science"
 lede: >-
-  When the wavelength is comparable to the scale of the lens, geometric optics fails. The lens stops being a magnifying glass and starts writing a frequency-dependent signature into the wave.
+  When the wavelength is comparable to the gravitational radius of the lens, geometric optics fails. Diffraction and interference then appear as frequency-dependent modulations of the wave.
 description: >-
   Why geometric optics fails for gravitational waves, what the amplification factor is, and which lenses a wave of a given frequency can feel.
 # Cited on this page, in order of first appearance -- and that order is
@@ -12,6 +12,7 @@ description: >-
 # share; the numbers here are this page's own.
 refs:
   - leung-wave-mechanics
+  - shan-microlens-field
   - cordes-plasma
   - glow-code
 topic_id: wave-optics
@@ -22,37 +23,112 @@ topic_id: wave-optics
 {% include topicnav.html %}
 
 {% include topic-figure.html topic=t %}
-<section class="section" id="what" aria-labelledby="what-heading">
-  <h2 id="what-heading">When a lens stops being a magnifying glass</h2>
+<section class="section" id="chromatic" aria-labelledby="chromatic-heading">
+  <h2 id="chromatic-heading">Beyond magnification: chromatic distortions</h2>
   <p>
-    Light from a distant galaxy reaches us as an incoherent sum of countless
-    independent emissions. A lens in the way can bend it, brighten it, and split
-    it into separate images, but each image is still just a picture: the lens
-    acts like a piece of glass, and the description that works is geometric
-    optics — rays, paths, magnifications.
+    In most lensing situations, propagation can be understood in terms of
+    geometric optics: each path between source and observer behaves as a ray, a
+    well-defined trajectory that is deflected, magnified and delayed by the
+    lenses along the way. A lens can split a source into multiple images.
+    Resolving those images is another matter — most astronomical sources are
+    extended and fairly static, so only configurations with large angular
+    separations or long time delays can be told apart, and what is left in most
+    cases is an overall magnification.
   </p>
   <p>
-    That description holds only while the wavelength is very small compared with
-    everything the lens is made of. Gravitational waves from merging black holes
-    have wavelengths of hundreds to thousands of kilometres, and the waves LISA
-    will observe are larger still. Once the wavelength approaches the scale of
-    the lens, the separate images stop being separate: their wavefronts overlap
-    and interfere, and the result depends on
-    frequency.{% include cite.html key="leung-wave-mechanics" %}
+    Coherent transients change that. Gravitational waves and fast radio bursts
+    come from extremely compact sources, so they are far less limited by their
+    own finite size, and they vary fast enough that <em>interference</em>
+    between images separated by very small time delays becomes observable.
+  </p>
+  <p>
+    The wave-optics regime begins when the lensing time delays are comparable to
+    the period of the signal — equivalently, when the wavelength approaches the
+    gravitational radius of the lens, λ&nbsp;∼&nbsp;GM/c². Diffraction there
+    cannot be read as a finite number of well-defined images at all; the source
+    is smeared across the lens plane instead. At much longer wavelengths
+    (λ&nbsp;≫&nbsp;GM/c²) the wave travels around the lens essentially
+    undisturbed. The figure below shows these regimes, together with the
+    amplification factor in the frequency domain, its time-domain counterpart,
+    and the waveform of a typical gravitational
+    wave.{% include cite.html key="leung-wave-mechanics" %}
   </p>
   <p>
     What the detector records is then the unlensed signal multiplied by an
     <strong>amplification factor</strong> — a complex, frequency-dependent
     function that encodes the lens. Its oscillations are the interference
     between paths; their spacing measures time delays, and their envelope
-    measures how the mass is distributed. This is the quantity everything on
-    this site is ultimately about.
+    measures how the mass is distributed. This quantity fully specifies
+    wave-optics lensing.
   </p>
 
   {%- comment -%}
-    The gravitational-wave case, following the optical opener above: same
-    statement, real lens. It sits here rather than at the head of the page
-    because it only means anything once the amplification factor has a name.
+    From application_plots, animations/lensing_regimes_both -- the web dark
+    variant, with the generator's own poster. An autoplaying loop, not an
+    on-demand figure: the sweep returns to where it began, so any frame is a
+    legitimate place to arrive and there is no ending to hold.
+  {%- endcomment -%}
+  <figure class="topic-figure">
+    <video width="1560" height="780" autoplay muted loop playsinline
+           poster="{{ '/media/lensing-regimes_still.png' | relative_url }}"
+           aria-label="Animation: as the effective lens mass grows, two overlapping blurred spots in the lens plane sharpen into two distinct images. Below, the detector band slides across the amplification factor while its time-domain counterpart stretches against a gravitational waveform, until the two arrivals are separated and interfere.">
+      <source src="{{ '/media/lensing-regimes.webm' | relative_url }}" type="video/webm">
+      <source src="{{ '/media/lensing-regimes.mp4' | relative_url }}" type="video/mp4">
+    </video>
+    <figcaption>
+      The same lens in three regimes, in both domains at once. Nothing about the
+      lens changes across the sweep: what changes is the ratio between its
+      time-delay scale and the period of the wave. While the period is long, the
+      two images are not resolved and there is nothing to measure. As the ratio
+      grows the amplification factor develops the oscillations that
+      <em>are</em> diffraction. Once the delays are long compared with the
+      period, the images separate and interfere in the ordinary
+      geometric-optics way.
+    </figcaption>
+  </figure>
+</section>
+
+<section class="section" id="scales" aria-labelledby="scales-heading">
+  <h2 id="scales-heading">Which lenses a wave can feel</h2>
+  <p>
+    Diffraction sets its own scale, and for an isolated lens that scale is the
+    ratio of the signal's wavelength to the lens's gravitational radius. This
+    fixes a characteristic redshifted lens mass for each band — the mass whose
+    time delay matches one period of the wave. It is of order
+    10<sup>7</sup>–10<sup>8</sup>&nbsp;M<sub>☉</sub> for LISA at millihertz
+    frequencies, tens to hundreds of M<sub>☉</sub> for LIGO–Virgo–KAGRA, and
+    around 10<sup>−5</sup>&nbsp;M<sub>☉</sub> — a few tens of Earth masses — for
+    fast radio bursts at gigahertz frequencies. An isolated lens far below its
+    band's mass is invisible; one far above it is back in the geometric-optics
+    regime.
+  </p>
+  <p>
+    These effects grow as the alignment between source and lens tightens, and
+    near caustics, where the geometric-optics magnification diverges. Wave
+    optics is what keeps a prediction finite and continuous across a caustic —
+    the animation below crosses one.
+  </p>
+  <p>
+    Two consequences follow, and both matter for coherent sources. A single
+    signal probes a <em>range</em> of scales at once, because it spans a range
+    of frequencies. And the scales it reaches are set by the wavelength rather
+    than by spatial resolution, which is how a gravitational wave can be
+    sensitive to objects far too small and too dark to image — the subject of
+    <a href="{{ '/dark-matter.html' | relative_url }}">dark matter</a>.
+  </p>
+  <p>
+    Lensing also cannot always be reduced to an isolated object. Collective
+    effects matter: a stellar field of thousands of stars leaves a far stronger
+    diffraction signature than any single star or compact object
+    would.{% include cite.html key="shan-microlens-field" %} That is the subject
+    of <a href="{{ '/microlensing.html' | relative_url }}">microlensing</a>.
+  </p>
+
+  {%- comment -%}
+    Moved here from the section above, where it sat immediately after the
+    amplification factor was named. It belongs with the argument about
+    alignment and caustics instead: the sweep IS a caustic crossing, and it is
+    what the paragraph above points at.
   {%- endcomment -%}
   <figure class="topic-figure">
     <video width="1560" height="520" autoplay muted loop playsinline
@@ -62,39 +138,18 @@ topic_id: wave-optics
       <source src="{{ '/media/wave-optics-gw.mp4' | relative_url }}" type="video/mp4">
     </video>
     <figcaption>
-      The same thing for a gravitational wave. The impact parameter falls from
-      2.0 to 0.1 Einstein radii and the source crosses a caustic mid-sweep; as
-      the alignment tightens, the amplification factor acquires the oscillations
-      that are the signature of diffraction.
+      The impact parameter falls from 2.0 to 0.1 Einstein radii and the source
+      crosses a caustic mid-sweep; as the alignment tightens, the amplification
+      factor acquires the oscillations that are the signature of diffraction.
     </figcaption>
   </figure>
-</section>
-
-<section class="section" id="scales" aria-labelledby="scales-heading">
-  <h2 id="scales-heading">Which lenses a wave can feel</h2>
-  <p>
-    Diffraction sets its own scale. A wave of a given frequency is sensitive to
-    structure within a region around the line of sight — the Fresnel scale —
-    that shrinks as the frequency rises. Mass outside it barely matters; mass
-    inside it contributes coherently.
-  </p>
-  <p>
-    Two consequences follow, and both are why coherent sources are worth the
-    trouble. A single signal probes a <em>range</em> of scales at once, because
-    it spans a range of frequencies. And the scales it reaches are set by the
-    wavelength rather than by any telescope's resolution, which is how a
-    gravitational wave can be sensitive to objects far too small and too dark to
-    image — the subject of
-    <a href="{{ '/dark-matter.html' | relative_url }}">dark matter</a>.
-  </p>
-
 </section>
 
 <section class="section" id="plasma" aria-labelledby="plasma-heading">
   <h2 id="plasma-heading">Not only gravity: plasma and dispersion</h2>
   <p>
-    A gravitational lens is not the only thing that can delay a wave by an
-    amount that depends on its frequency. Ionized gas does it too: a radio pulse
+    A gravitational lens is not the only thing that can cause
+    frequency-dependent distortions. Ionized gas does it too: a radio pulse
     crossing a cloud of free electrons is refracted and dispersed, and where the
     gas is structured on small enough scales the same wave-optics treatment
     applies. This is <strong>plasma lensing</strong>, and for fast radio bursts
@@ -106,35 +161,44 @@ topic_id: wave-optics
     The physics differs in one instructive way. Gravitational lensing is
     achromatic in the geometric limit, so all its frequency dependence comes
     from diffraction; plasma lensing is chromatic to begin with, because the
-    refractive index of a plasma depends on frequency. The two therefore leave
-    distinguishable signatures, and a lens that contains both can be taken
-    apart.
+    refractive index of a plasma depends on frequency — much as it does in the
+    water droplets that make a rainbow. The two therefore leave distinguishable
+    signatures, and a lens that contains both can be taken apart.
+  </p>
+  <p>
+    Radio sources also force the treatment onto more than one lens plane. A fast
+    radio burst is not only lensed somewhere along the way: it can be
+    plasma-lensed in its host galaxy and again in the Milky Way, and those
+    planes have to be handled together.
   </p>
   <p>
     Dispersion of a different kind appears again when
     <a href="{{ '/testing-gravity.html' | relative_url }}">gravity itself is
-    modified</a>, where a frequency-dependent propagation speed is one of the
-    clearest signals that something beyond general relativity is at work.
+    modified</a>: a frequency- and polarization-dependent propagation speed for
+    gravitational waves would be a smoking gun for departures from Einstein's
+    theory on cosmological scales, with implications for dark-energy dynamics.
   </p>
 </section>
 
 <section class="section" id="computing" aria-labelledby="computing-heading">
-  <h2 id="computing-heading">Computing it for a real lens</h2>
+  <h2 id="computing-heading">Algorithms for realistic lenses</h2>
   <p>
-    For a handful of idealized lenses — a point mass, a perfectly symmetric halo
-    — the amplification factor can be written down. Real lenses are neither. A
-    galaxy contains stars, remnants and dark substructure; the integral that
-    gives the amplification factor runs over a potential with singularities in
-    it, and has to be evaluated fast enough to sit inside a parameter-estimation
-    loop that will call it millions of
-    times.{% include cite.html key="glow-code" %}
+    Computing wave-optics lensing is numerically hard. The amplification factor
+    is an integral of a highly oscillatory function whose convergence is poorly
+    behaved, and only a handful of idealized lenses — a point mass among them —
+    give a closed-form expression for it. Realistic configurations, such as
+    fields of stars and remnants, need better methods, and those methods have to
+    be fast enough to be used in
+    <a href="{{ '/data-analysis.html' | relative_url }}">data
+    analysis</a>.{% include cite.html key="glow-code" %}
   </p>
   <p>
-    Making that tractable for general matter distributions is what the
-    <a href="{{ '/software.html' | relative_url }}">GLoW code</a> does.
-    Extending it to <a href="{{ '/microlensing.html' | relative_url }}">populations
-    of lenses</a>, and to the multi-plane geometry that plasma lensing needs, is
-    the central methodological task of the project.
+    Making wave-optics lensing tractable for general matter distributions is a
+    major goal of the project, and the foundational work has crystallized into
+    the <a href="{{ '/software.html' | relative_url }}">GLoW code</a>. Extending
+    it to <a href="{{ '/microlensing.html' | relative_url }}">populations of
+    lenses</a>, and to the multi-plane geometry that plasma lensing needs, is
+    where the methodological effort goes now.
   </p>
 </section>
 

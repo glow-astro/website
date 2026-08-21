@@ -1,0 +1,60 @@
+{%- comment -%}
+  A figure that is an argument rather than a loop: it waits to be asked, plays
+  once, and stops on its last frame.
+
+      {%- capture caption -%}
+        Prose, with <a href="...">links</a> and {% include cite.html key="..." %}
+        if it needs them.
+      {%- endcapture -%}
+      {% include figure-ondemand.html
+                 stem="wavefront-caustics" width="1560" height="780"
+                 alt="Animation: ..." caption=caption %}
+
+  Capture the caption rather than passing a long string inline: `capture` runs
+  Liquid, so a caption can carry links and citations, and the page keeps prose
+  that is readable in the source.
+
+  WHEN TO USE THIS INSTEAD OF AN AUTOPLAYING LOOP
+
+  Use it when the animation is a sequence with a beginning and an end -- a
+  derivation, a sweep through a parameter, anything with deliberate pauses in
+  it. A reader who arrives mid-sweep on such a figure sees a frame that means
+  nothing, and a loop restarts the argument under them while they are still
+  reading the caption. Use the autoplaying loop (`topic-figure.html`) when the
+  motion is a texture rather than a story and any frame is as good as any other.
+
+  THE POSTER MUST BE THE LAST FRAME
+
+  This is what makes the pattern work rather than merely quiet. With the last
+  frame as the poster, the figure already shows the finished result before
+  anyone plays it, and settles back onto exactly that picture when it ends:
+  press play and you return to where you started. With the first frame as the
+  poster you get a figure that says nothing until played and then rests on
+  something different from how it began, which reads as a stuck video.
+
+  Most generators in ~/code/application_plots poster somewhere in the middle by
+  default, so the frame usually has to be pulled out of the encoded video:
+
+      ffmpeg -sseof -0.1 -i media/<stem>.mp4 -frames:v 1 media/<stem>_still.png
+
+  ACCESSIBILITY
+
+  `controls` is the affordance, and it is why assets/js/reduced-motion.js does
+  not touch this: that script rewrites `video[autoplay]`, and nothing here moves
+  until a reader asks, which is what the setting is for. `alt` describes the
+  motion for a reader who cannot see it; the caption says what it means. They
+  are different jobs and neither replaces the other -- and because the poster is
+  the whole result, a reader who never presses play still has the figure.
+
+  See docs/SITE_CONVENTIONS.md section 7 and the README's media section.
+{%- endcomment -%}
+<figure class="topic-figure">
+  <video width="{{ include.width }}" height="{{ include.height }}"
+         controls preload="metadata" playsinline
+         poster="{{ '/media/' | append: include.stem | append: '_still.png' | relative_url }}"
+         aria-label="{{ include.alt | strip_newlines | strip }}">
+    <source src="{{ '/media/' | append: include.stem | append: '.webm' | relative_url }}" type="video/webm">
+    <source src="{{ '/media/' | append: include.stem | append: '.mp4' | relative_url }}" type="video/mp4">
+  </video>
+  <figcaption>{{ include.caption }}</figcaption>
+</figure>
