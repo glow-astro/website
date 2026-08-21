@@ -235,3 +235,9 @@
   title: "Accelerated inference of microlensed gravitational waves with machine learning"
   where: "Phys. Rev. D 113, 104073 (2026)"
   url: "https://arxiv.org/abs/2511.08486"
+
+- id: lvk-lensing-gwtc4
+  authors: "LIGO Scientific, Virgo and KAGRA Collaborations, A. G. Abac et al."
+  title: "GWTC-4.0: searches for gravitational-wave lensing signatures"
+  where: "arXiv preprint (2025)"
+  url: "https://arxiv.org/abs/2512.16347"
