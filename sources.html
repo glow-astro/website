@@ -100,6 +100,34 @@ topic_id: sources
     microlens modelling. This is why the two topics are not separable in
     practice.
   </p>
+
+  {%- comment -%}
+    The multiple images this section argues from, drawn as one object rather
+    than three. From application_plots, animations/wavefront_caustics -- the web
+    dark variant, whose poster is deliberately the LAST frame: the front has
+    gone by then, but that is the frame carrying the result, with the caustic
+    closed and both image-count regions labelled. It is what a reader who asks
+    for reduced motion keeps, so it has to stand alone.
+  {%- endcomment -%}
+  <figure class="topic-figure">
+    <video width="1560" height="780" autoplay muted loop playsinline
+           poster="{{ '/media/wavefront-caustics_still.png' | relative_url }}"
+           aria-label="Animation: a red wavefront sweeps past a lens and kinks, with blue rays trailing behind it and a gold caustic unzipping outwards from a cusp. Three teal ray paths reach an off-axis observer one after another. At the end the region inside the caustic is shaded as reaching three images and the region outside it as reaching one.">
+      <source src="{{ '/media/wavefront-caustics.webm' | relative_url }}" type="video/webm">
+      <source src="{{ '/media/wavefront-caustics.mp4' | relative_url }}" type="video/mp4">
+    </video>
+    <figcaption>
+      Why a lens can make more than one image. The red surface is the
+      wavefront — the surface of constant optical path — the blue rays behind it
+      are its own history, and the gold curve is the envelope those rays fold
+      into. A thin lens imposes its delay all at once, so the middle of the
+      front hangs back and peels off from the outside in; where the front folds
+      over itself, a point is crossed three times rather than once. Those three
+      crossings are the three images, and the gaps between them are the time
+      delays. At the end the frame is shaded by how many rays reach each
+      point — three inside the caustic, one outside.
+    </figcaption>
+  </figure>
 </section>
 
 <section class="section" id="multimessenger" aria-labelledby="multimessenger-heading">
