@@ -182,6 +182,12 @@
   where: "Phys. Rev. Lett. 119, 251304 (2017)"
   url: "https://arxiv.org/abs/1710.05901"
 
+- id: menadeo-propagation
+  authors: "N. Menadeo, M. Zumalacárregui"
+  title: "Gravitational wave propagation beyond general relativity: Geometric optic expansion and lens-induced dispersion"
+  where: "Phys. Rev. D 111, 104022 (2025)"
+  url: "https://arxiv.org/abs/2411.07164"
+
 - id: gondan-echoes
   authors: "L. Gondán, B. Kocsis"
   title: "Astrophysical gravitational-wave echoes from galactic nuclei"
