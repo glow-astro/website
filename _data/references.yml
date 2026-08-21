@@ -217,3 +217,15 @@
   title: "Frequency- and polarization-dependent lensing of gravitational waves in strong gravitational fields"
   where: "Phys. Rev. D 109, 124045 (2024)"
   url: "https://arxiv.org/abs/2209.06459"
+
+- id: cheung-stellar-microlensing
+  authors: "M. H.-Y. Cheung, J. Gais, O. A. Hannuksela, T. G. F. Li"
+  title: "Stellar-mass microlensing of gravitational waves"
+  where: "Mon. Not. Roy. Astron. Soc. 503, 3326 (2021)"
+  url: "https://arxiv.org/abs/2012.07800"
+
+- id: zumalacarregui-stochastic
+  authors: "M. Zumalacárregui"
+  title: "Lens Stochastic Diffraction: A Signature of Compact Objects in Gravitational-Wave Data"
+  where: "arXiv preprint (2024)"
+  url: "https://arxiv.org/abs/2404.17405"

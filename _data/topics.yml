@@ -130,15 +130,15 @@
     alt: >-
       Three panels. Left: a galaxy splits a source into two images with a time
       delay between them. Centre: a zoom into one image showing a pc-scale
-      network of overlapping microlensing caustics with micro-images marked.
-      Right: the two images' waveforms, one distorted relative to the other.
+      network of overlapping microlensing critical curves, with orange marking
+      high magnification. Right: the two images' waveforms, one distorted
+      relative to the other.
     caption: >-
-      The whole chain, left to right. A galaxy splits the source into two images
-      separated by a time delay. One of those images lands on a field of stars,
-      whose caustics form the network in the middle panel — a parsec across, and
-      nothing a telescope will ever resolve. Each image therefore arrives
-      carrying a different wave-optics distortion, which is what the right-hand
-      panel shows and what a search has to model.
+      From strong lensing to waveform distortions. A galaxy splits the source
+      into two macroimages separated by a time delay. One of those images lands
+      on a field of stars, which forms a network of critical curves on very
+      small scales — the middle panel. Each image arrives carrying a different
+      wave-optics distortion, shown in the right panel.
     source: "application_plots, plots/microlensing/microlensing_master_3_web_dark"
 
 - id: data-analysis

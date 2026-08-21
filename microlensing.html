@@ -4,15 +4,17 @@ nav: science
 title: "Microlensing"
 eyebrow: "Science"
 lede: >-
-  A real lens is not one object. Stars and remnants in the lensing galaxy each add their own diffraction, on top of the magnification of the galaxy itself. Modelling that population is what makes a search possible.
+  Real lenses are far more complex than an isolated, symmetric mass. Many stars and remnants in the lensing galaxy contribute to the total diffraction pattern, on top of the magnification by the galaxy's macroscopic potential. This "microlens" population needs to be understood and modeled.
 description: >-
-  Stars and remnants in a lensing galaxy each add their own diffraction. How a stochastic population becomes a search for lensed gravitational waves.
+  Stars and remnants in a lensing galaxy contribute collectively to the diffraction of a lensed signal. How a stochastic population becomes a search for lensed gravitational waves.
 # Cited on this page, in order of first appearance -- and that order is
 # the numbering. Pulled from _data/references.yml, which several pages
 # share; the numbers here are this page's own.
 refs:
+  - cheung-stellar-microlensing
+  - shan-microlens-field
+  - zumalacarregui-stochastic
   - mishra-microlensing
-  - glow-code
 topic_id: microlensing
 ---
 
@@ -21,44 +23,48 @@ topic_id: microlensing
 {% include topicnav.html %}
 
 {% include topic-figure.html topic=t %}
-<section class="section" id="population" aria-labelledby="population-heading">
-  <h2 id="population-heading">A lens is a population, not an object</h2>
+<section class="section" id="stochastic" aria-labelledby="stochastic-heading">
+  <h2 id="stochastic-heading">Stochastic diffraction</h2>
   <p>
-    When a gravitational wave is strongly lensed by a galaxy, the galaxy is not
-    the whole story. The image forms somewhere in that galaxy, and that place
-    contains stars, stellar remnants and dark substructure — each one a lens in
-    its own right, each adding its own
-    <a href="{{ '/wave-optics.html' | relative_url }}">diffraction</a> to the
-    signal. At the frequencies ground-based detectors observe, the objects that
-    matter most weigh tens to hundreds of solar masses, which makes them rare
-    enough that their number along any given line of sight is a matter of luck.
+    When a galaxy acts as a telescope, small-scale objects become impurities on
+    the lens. The image forms somewhere in that galaxy, and that place contains
+    stars, stellar remnants and dark substructure — each one a lens contributing
+    its own <a href="{{ '/wave-optics.html' | relative_url }}">diffraction</a> to
+    the signal. At the frequencies ground-based detectors observe, the objects
+    that matter most weigh tens to hundreds of solar
+    masses,{% include cite.html key="cheung-stellar-microlensing" %} but
+    collective contributions from smaller-scale objects can also produce
+    observable distortions.{% include cite.html key="shan-microlens-field" %}
   </p>
   <p>
-    That stochasticity is the defining difficulty. There is no single
-    microlensing waveform to search for, because the answer depends on a
-    particular random arrangement of objects that nobody will ever measure. What
-    can be predicted is the <em>statistics</em>: the distribution of distortions
-    produced by a population of a given density and mass function.
+    Stochasticity is a defining difficulty. There is no single microlensing
+    waveform to search for, because the answer depends on a particular random
+    arrangement of objects that nobody will ever measure. What can be predicted
+    is the <em>statistics</em>: the distribution of distortions produced by a
+    population of a given density and mass function.
   </p>
   <p>
-    Which is also why microlensing is not only an astrophysical nuisance. The
-    statistics depend on what the population is made of, so the same framework
-    that describes stars in a lens galaxy describes a population of
+    This is also why microlensing is not only an astrophysical nuisance. The
+    statistics depend on the population itself — its masses, its number density —
+    which observations of wave-optics distortions may in turn constrain.
+    Moreover, the same framework that describes stars in a lens galaxy describes
+    a population of
     <a href="{{ '/dark-matter.html' | relative_url }}">dark-matter objects</a>
-    along the line of sight — compact objects producing faint repetitions of a
+    along the line of sight: compact objects producing faint repetitions of a
     signal, or low-mass halos whose collective distortion carries the imprint of
-    the whole population. The lenses differ; the mathematics does not.
+    the whole population.{% include cite.html key="zumalacarregui-stochastic" %}
+    The lenses differ; the mathematics does not.
   </p>
 </section>
 
-<section class="section" id="environment" aria-labelledby="environment-heading">
-  <h2 id="environment-heading">The environment cannot be separated out</h2>
+<section class="section" id="multiscale" aria-labelledby="multiscale-heading">
+  <h2 id="multiscale-heading">Multi-scale lensing</h2>
   <p>
     A microlens does not act alone either. It sits inside the potential of the
-    host galaxy, which magnifies the image it distorts. As the magnification
-    produced by the galaxy rises, the same microlens imprints a far stronger
-    signature. Highly magnified images — the ones most likely to be detected —
-    are also the ones most strongly affected by
+    host galaxy, which magnifies the image that the microlens is distorting. As
+    the magnification produced by the galaxy rises, the same microlens imprints
+    a far stronger signature. Highly magnified images — the ones most likely to
+    be detected — are also the ones most strongly affected by
     microlensing.{% include cite.html key="mishra-microlensing" %}
   </p>
 
@@ -70,37 +76,40 @@ topic_id: microlensing
       <source src="{{ '/media/microlensing.mp4' | relative_url }}" type="video/mp4">
     </video>
     <figcaption>
-      The middle panel of the figure above, with the galaxy's grip tightening.
-      The strength of the external potential increases, taking the macro
-      magnification from 2.5 to 25, and a microlens embedded in a more strongly
-      magnified image distorts the signal far more — which is why the
-      environment of the macroimage cannot be separated from the microlensing.
+      Lensing by a point mass in an external potential. The external potential
+      grows through the animation, increasing the size of the caustic curve, the
+      overall amplification, and the strength of the wave-optics distortions
+      associated with the system; the macro magnification spans the range
+      2.5–25. This is what it means to say that the environment cannot be
+      separated out.
     </figcaption>
   </figure>
   <p>
     So the macroscopic lens model and the microscopic population have to be
-    fitted together. That is what makes the problem hard, and it is also what
-    makes a detection informative: the distortion measures the environment as
-    well as the objects.
+    fitted together, connecting physics on vastly different scales. That makes
+    inference harder, but also more informative: the distortion constrains the
+    external potential, and hence the macroscopic magnification. The idea was
+    demonstrated on real data in the analysis of
+    <a href="https://inspirehep.net/arxiv/2512.17631" rel="noopener">GW231123</a>,
+    and it may allow
+    <a href="{{ '/sources.html' | relative_url }}">high-redshift sources</a> to
+    be identified from their diffraction patterns.
   </p>
 </section>
 
-<section class="section" id="searching" aria-labelledby="searching-heading">
-  <h2 id="searching-heading">Turning statistics into a search</h2>
+<section class="section" id="modeling" aria-labelledby="modeling-heading">
+  <h2 id="modeling-heading">Modeling microlensed waves</h2>
   <p>
     The route from stochastic physics to a usable search is compression.
     Simulating many realizations of a stellar field produces many amplification
-    curves; those curves are not arbitrary, and a small number of modes captures
-    almost all of the variation between them. Fitting the coefficients of those
-    modes turns an unpredictable lens into a handful of parameters, and the
-    distribution of coefficients across realizations supplies a physically
-    motivated prior for them.
-  </p>
-  <p>
-    This is the reduced-order model the project's searches are built
-    on.{% include cite.html key="glow-code" %} It has
-    already been applied to real data: GW231123 is the first compelling
-    candidate for a magnified and diffracted black-hole merger.
+    curves. Stochastic though they are, those curves are not arbitrary: they
+    carry internal structure, and at finite detector sensitivity a small number
+    of modes forms an effective basis for them. Fitting the coefficients of
+    those modes turns an unpredictable lens into a handful of parameters, and
+    the distribution of coefficients across realizations supplies a physically
+    motivated prior for them. That is the
+    <a href="https://inspirehep.net/arxiv/2606.17765" rel="noopener">reduced-order
+    model</a> the project's searches are built on.
   </p>
 </section>
 
