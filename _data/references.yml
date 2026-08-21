@@ -181,3 +181,21 @@
   title: "Dark energy after GW170817: dead ends and the road ahead"
   where: "Phys. Rev. Lett. 119, 251304 (2017)"
   url: "https://arxiv.org/abs/1710.05901"
+
+- id: gondan-echoes
+  authors: "L. Gondán, B. Kocsis"
+  title: "Astrophysical gravitational-wave echoes from galactic nuclei"
+  where: "Mon. Not. Roy. Astron. Soc. 515, 3299 (2022)"
+  url: "https://arxiv.org/abs/2110.09540"
+
+- id: cheung-priors
+  authors: "M. H.-Y. Cheung, D. Wadekar, M. Zaldarriaga, T. Venumadhav"
+  title: "The diffraction-lensing interpretation of GW231123 with astrophysical priors"
+  where: "arXiv preprint (2026)"
+  url: "https://arxiv.org/abs/2607.21834"
+
+- id: oancea-strong-field
+  authors: "M. A. Oancea, R. Stiskalek, M. Zumalacárregui"
+  title: "Frequency- and polarization-dependent lensing of gravitational waves in strong gravitational fields"
+  where: "Phys. Rev. D 109, 124045 (2024)"
+  url: "https://arxiv.org/abs/2209.06459"

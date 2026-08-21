@@ -13,6 +13,10 @@ description: >-
 refs:
   - wierda-rates
   - smith-rates
+  - cheung-priors
+  - gondan-echoes
+  - oancea-strong-field
+  - ezquiaga-dark-energy
 topic_id: sources
 ---
 
@@ -77,6 +81,18 @@ topic_id: sources
     coherent sources.
   </p>
   <p>
+    Diffraction and magnification have an instructive interplay, and
+    <a href="https://inspirehep.net/arxiv/2512.17631" rel="noopener">GW231123</a>
+    is where the project has worked it out. The event is the first compelling
+    candidate for a magnified and diffracted black-hole merger: the diffraction
+    imprint is what separates that reading from an ordinary unlensed source, and
+    it is also what says where on the magnification track above the source
+    actually sits. How firmly it does so depends on what is assumed about the
+    source population before the data are seen, which remains an open question
+    for this event.{% include cite.html key="cheung-priors" %}
+  </p>
+
+  <p>
     The role of diffraction is enhanced when microlensing and high magnification
     happen together. An external potential leading to high magnification
     increases the Einstein radii of stars and microlenses, making them much more
@@ -87,52 +103,62 @@ topic_id: sources
   </p>
 </section>
 
-{%- comment -%}
-  "Towards multi-messenger lensing" -- a section the owner opened in the prose
-  review but which has no prose yet. It is held here, unrendered, rather than
-  shipped as a heading with nothing under it: the page is live, and an empty
-  section reads as a bug. The brief is carried in _data/review_notes.yml so it
-  comes back in the next review document instead of being retyped.
-
-  The argument to write, in the owner's words: lensed neutron stars are highly
-  magnified, therefore more subject to diffraction distortions, and hard to find
-  without the tools. It needs a microlensing diffraction theory (-> microlensing)
-  and accelerated lensing (-> data analysis, dingo) in low-latency searches.
-  Discovering a lensed multi-messenger event opens a new window: time-delay
-  cosmography with millisecond accuracy, and microlensing uncertainties
-  mitigated because wave optics plus geometric optics gives a long lever arm on
-  the microlens population. A detection is ambitious but valuable enough that
-  LSST has an approved target of opportunity for it.
-
-  Writing it turns on citations that are not yet in _data/references.yml -- the
-  LSST target-of-opportunity paper among them -- so it is not drafted here.
-{%- endcomment -%}
+<section class="section" id="multimessenger" aria-labelledby="multimessenger-heading">
+  <h2 id="multimessenger-heading">Towards multi-messenger lensing</h2>
+  <p>
+    A lensed binary neutron star would be the most valuable of these events and
+    the hardest to find. The magnifications that bring one within reach are
+    large, and large magnification is exactly the regime where microlensing by
+    the lens galaxy's stars distorts the waveform most — so the signal that most
+    deserves to be found is also the one least likely to match a template built
+    for an undistorted source. Finding it needs both halves of this project at
+    once: a theory of
+    <a href="{{ '/microlensing.html' | relative_url }}">microlensing
+    diffraction</a> accurate enough to model the distortion, and
+    <a href="{{ '/data-analysis.html' | relative_url }}">inference fast
+    enough</a> to apply it in a low-latency search, while telescopes can still
+    be pointed.
+  </p>
+  <p>
+    The reward is a measurement neither messenger makes alone. An
+    electromagnetic counterpart fixes the arrival time of each image to
+    milliseconds rather than to the width of a light curve, which turns the
+    delay between images into a cosmological measurement far sharper than
+    image-based time-delay cosmography can reach. And because the same signal
+    carries both a geometric-optics arrival time and a wave-optics distortion,
+    the microlensing that usually limits such measurements is constrained by the
+    data itself rather than marginalized over — the two regimes together give a
+    long lever arm on the population of microlenses.
+  </p>
+  <p>
+    A detection is ambitious. It is also valuable enough that the Vera Rubin
+    Observatory has an approved target-of-opportunity programme for exactly this
+    case.{% include cite.html key="smith-rates" %}
+  </p>
+</section>
 
 <section class="section" id="strong" aria-labelledby="strong-heading">
   <h2 id="strong-heading">Where the standard picture stops applying</h2>
   <p>
-    The usual treatment of lensing assumes a great deal: that the field is weak,
-    that deflections are small, that the lens is thin, and that the background
-    it sits on is otherwise flat. Those assumptions hold for a wave passing a
-    galaxy at a comfortable distance. They do not hold for a source in the
-    vicinity of a supermassive black hole, where the wave is generated and lensed
-    within the same strongly curved region.
+    The same reasoning about multiple images applies to a source close to the
+    lens rather than far behind it. Binaries that form and merge in the disc of
+    an active galactic nucleus can be carried close to the central supermassive
+    black hole by migration traps, and the black hole then lenses the wave its
+    own neighbourhood produced: some of these mergers should arrive as repeated
+    images.{% include cite.html key="gondan-echoes" %}
   </p>
   <p>
-    Two things change there. The deflection is no longer a small correction to a
-    straight path, so images can appear well inside the regime where the standard
-    formalism was derived. And at first order beyond geometric optics the wave's
-    polarization couples to the background curvature, so the two polarizations no
-    longer follow quite the same trajectory — the arrival time acquires a
-    dependence on both frequency and polarization. Sources near a supermassive
-    black hole are therefore not simply brighter versions of ordinary ones; they
-    are a different calculation.
-  </p>
-  <p>
-    This is the strong-field end of the project, and it is deliberately narrow:
-    what the grant commits to is finding these events and interpreting them with
-    a formalism that does not quietly assume the weak-field limit, rather than a
-    programme of strong-field lensing in its own right.
+    That close in, the weak-field description stops being safe. The wave is
+    generated and lensed within the same strongly curved region, and effects
+    that vanish in the weak-field limit — birefringence between the two
+    polarizations, and a dependence of the arrival time on frequency — become
+    part of the signal.{% include cite.html key="oancea-strong-field" %} Those
+    are also the signatures that beyond-general-relativity theories of dark
+    energy predict for propagation over cosmological
+    distances,{% include cite.html key="ezquiaga-dark-energy" %} which is what
+    makes the multiple images useful: an effect carried by one image and not
+    another is telling you about the strong-field region, while one common to
+    all of them is telling you about the theory.
   </p>
 </section>
 
