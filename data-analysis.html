@@ -90,6 +90,24 @@ topic_id: data-analysis
     and the distinction between them is drawn afterwards, from the population
     the coefficients imply.
   </p>
+
+  {%- comment -%}
+    From microlensing_surrogate, animations/rosd_basis -- the web dark variant.
+    On demand rather than looping: it is a sequence with an end, the ensemble
+    first and the catalog after, and the generator already posters on
+    ("end", 0), the finished catalog beside the band, which is what
+    figure-ondemand.html needs.
+  {%- endcomment -%}
+  {%- capture rosd_caption -%}
+    Ten thousand simulated stellar fields give ten thousand distortion curves,
+    which collapse into a mean and a one-sigma band. Each mode of the basis is
+    then shown oscillating in that band and archived beside it; the first six
+    carry 89% of the variance.
+  {%- endcapture -%}
+  {% include figure-ondemand.html
+             stem="rosd-basis" width="1560" height="520"
+             alt="Animation: microlensing distortion curves accumulate one by one and then in a burst, collapsing into a mean with a one-sigma band as the axes zoom in. The panels then slide right and a basis panel enters from the left, where each mode is demonstrated in the band before being archived as a labelled row with its energy fraction."
+             caption=rosd_caption %}
 </section>
 
 <section class="section" id="global" aria-labelledby="global-heading">
