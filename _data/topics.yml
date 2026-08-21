@@ -127,7 +127,7 @@
     file: microlensing-chain
     static: true
     width: 2000
-    height: 606
+    height: 608
     alt: >-
       Three panels. Left: a galaxy splits a source into two images with a time
       delay between them. Centre: a zoom into one image showing a pc-scale
