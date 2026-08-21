@@ -186,7 +186,7 @@ for anyone reading without the image.
 
 ### Figures and animations
 
-`media/` holds both: animations as `<stem>.webm` + `<stem>.mp4` + a poster, and
+`media/` holds both: animations as `<stem>.webm` + a poster, and
 static plots as a single `.png`. They get the same frame on the page and the
 same naming rule, and **`media` in `topics.yml` always means the page's opening
 figure** — set `static: true` when that opener is a plot. Three topics open on
@@ -195,9 +195,21 @@ before the project's version of it; the animation then follows in the section
 that needs it. Static plots come from `~/code/application_plots/plots/`
 — take the `_dark` variant, and downscale anything much wider than 2000px.
 
-Animations live in `media/` as `<stem>.webm`, `<stem>.mp4` and
-`<stem>_still.png`, where `<stem>` is `topics.yml`'s `media.file` or, failing
-that, the topic id. Set `media.file` whenever the render is not specific to one
+Animations live in `media/` as `<stem>.webm` and `<stem>_still.png`, where
+`<stem>` is `topics.yml`'s `media.file` or, failing that, the topic id.
+
+**WebM only, since 2026-08-21.** The generators encode one format per geometry —
+`webm` for `web`, `mp4` for `talk` — because the two contexts want opposite
+things. This site lists `<source>` webm first, so every browser it supports took
+the webm anyway and the mp4 was fallback weight for browsers that never visit;
+slide decks are the reverse, since PowerPoint does not embed WebM at all. There
+is therefore no web mp4 to point at, and a `<source>` line for one would serve
+whatever stale file survived the old two-format renders — worse than no
+fallback, because it is a page quietly showing the previous version of a figure
+to exactly the browsers that cannot check. The floor this sets: Safari gained
+WebM in 14.1 (macOS) and iOS 17.4; older ones hold on the poster, which is a real
+frame of the animation. The `.mp4` files already in `media/` are left in place;
+they are simply no longer referenced. Set `media.file` whenever the render is not specific to one
 topic, so the filename says what the video shows.
 
 **Never reuse a filename for different content.** Returning visitors get the old

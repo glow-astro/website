@@ -89,7 +89,15 @@ topic_id: dark-matter
            poster="{{ '/media/stochastic-diffraction_still.png' | relative_url }}"
            aria-label="Animation: as the frequency rises, the Fresnel volume around the line of sight shrinks and the number of dark-matter halos inside it falls from thousands to a handful, while the real and imaginary parts of the amplification factor trace out their frequency dependence.">
       <source src="{{ '/media/stochastic-diffraction.webm' | relative_url }}" type="video/webm">
-      <source src="{{ '/media/stochastic-diffraction.mp4' | relative_url }}" type="video/mp4">
+      {%- comment -%}
+        WebM only.  The generators encode one format per geometry as of 2026-08-21
+        -- webm for `web`, mp4 for `talk` -- so there is no web mp4 to point at any
+        more, and a <source> line for one would serve whatever stale file survived
+        the old two-format renders.  That is worse than no fallback: a page quietly
+        showing the previous version of a figure to exactly the browsers that cannot
+        check.  Floor this sets: Safari gained WebM in 14.1 (macOS) and iOS 17.4;
+        older ones hold on the poster, which is a real frame and says most of it.
+      {%- endcomment -%}
     </video>
     <figcaption>
       A frequency sweep through one realization of 2502 cold-dark-matter halos

@@ -123,7 +123,15 @@ sections:
            poster="{{ '/media/diffraction_still.png' | relative_url }}"
            aria-label="Animation: light of a single colour passes through a small circular hole and casts a bright core ringed by fainter circles. As the colour sweeps from red to violet the rings contract and the core brightens.">
       <source src="{{ '/media/diffraction.webm' | relative_url }}" type="video/webm">
-      <source src="{{ '/media/diffraction.mp4' | relative_url }}" type="video/mp4">
+      {%- comment -%}
+        WebM only.  The generators encode one format per geometry as of 2026-08-21
+        -- webm for `web`, mp4 for `talk` -- so there is no web mp4 to point at any
+        more, and a <source> line for one would serve whatever stale file survived
+        the old two-format renders.  That is worse than no fallback: a page quietly
+        showing the previous version of a figure to exactly the browsers that cannot
+        check.  Floor this sets: Safari gained WebM in 14.1 (macOS) and iOS 17.4;
+        older ones hold on the poster, which is a real frame and says most of it.
+      {%- endcomment -%}
     </video>
     <figcaption>
       A diffraction pattern in visible light. A circular hole 200&nbsp;µm

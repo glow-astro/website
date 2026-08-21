@@ -73,7 +73,15 @@ topic_id: microlensing
            poster="{{ '/media/microlensing_still.png' | relative_url }}"
            aria-label="Animation: as the magnification produced by the host galaxy is increased, the caustic structure around a microlens expands and the distortion it imprints on the signal grows.">
       <source src="{{ '/media/microlensing.webm' | relative_url }}" type="video/webm">
-      <source src="{{ '/media/microlensing.mp4' | relative_url }}" type="video/mp4">
+      {%- comment -%}
+        WebM only.  The generators encode one format per geometry as of 2026-08-21
+        -- webm for `web`, mp4 for `talk` -- so there is no web mp4 to point at any
+        more, and a <source> line for one would serve whatever stale file survived
+        the old two-format renders.  That is worse than no fallback: a page quietly
+        showing the previous version of a figure to exactly the browsers that cannot
+        check.  Floor this sets: Safari gained WebM in 14.1 (macOS) and iOS 17.4;
+        older ones hold on the poster, which is a real frame and says most of it.
+      {%- endcomment -%}
     </video>
     <figcaption>
       Lensing by a point mass in an external potential. The external potential
