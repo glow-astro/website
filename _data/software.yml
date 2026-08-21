@@ -27,8 +27,8 @@ tools:
       singular Fermat potential, and it is fast enough to sit inside a
       parameter-estimation loop. The project will extend it to populations of
       microlenses, which is the central methodological development of WP1-A.
-    repo: "https://github.com/miguelzuma/GLoW_public"
-    docs: "https://miguelzuma.github.io/GLoW_public/index.html"
+    repo: "https://github.com/glow-astro/GLoW"
+    docs: "https://glow-astro.github.io/GLoW/"
     papers:
       - short: "Villarrubia-Rojo et al., arXiv:2409.04606"
         url: "https://inspirehep.net/literature/2826315"
