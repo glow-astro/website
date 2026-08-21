@@ -104,13 +104,26 @@ topic_id: sources
   {%- comment -%}
     The multiple images this section argues from, drawn as one object rather
     than three. From application_plots, animations/wavefront_caustics -- the web
-    dark variant, whose poster is deliberately the LAST frame: the front has
-    gone by then, but that is the frame carrying the result, with the caustic
-    closed and both image-count regions labelled. It is what a reader who asks
-    for reduced motion keeps, so it has to stand alone.
+    dark variant.
+
+    THE ONE VIDEO ON THIS SITE THAT DOES NOT AUTOPLAY OR LOOP. Do not "restore
+    consistency" here: it is a 20-second argument with five deliberate pauses in
+    it, not a seamless loop, and a reader who arrives mid-sweep sees a red line
+    in the middle of nowhere. So it waits to be asked, plays once, and stops.
+
+    That works because the poster is the generator's LAST frame, not its first.
+    The front has gone by then, but that frame carries the whole result --
+    caustic closed, three image paths up, both image-count regions labelled --
+    so the figure says something complete before it is played and settles back
+    onto the same picture when it ends. It is also, unchanged, what a reader who
+    asks for reduced motion is left with.
+
+    `controls` is the affordance, so this is not caught by
+    assets/js/reduced-motion.js, which only rewrites video[autoplay]. Nothing
+    moves here until someone asks, which is what that setting is for.
   {%- endcomment -%}
   <figure class="topic-figure">
-    <video width="1560" height="780" autoplay muted loop playsinline
+    <video width="1560" height="780" controls preload="metadata" playsinline
            poster="{{ '/media/wavefront-caustics_still.png' | relative_url }}"
            aria-label="Animation: a red wavefront sweeps past a lens and kinks, with blue rays trailing behind it and a gold caustic unzipping outwards from a cusp. Three teal ray paths reach an off-axis observer one after another. At the end the region inside the caustic is shaded as reaching three images and the region outside it as reaching one.">
       <source src="{{ '/media/wavefront-caustics.webm' | relative_url }}" type="video/webm">

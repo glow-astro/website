@@ -347,7 +347,11 @@ Other rules worth keeping:
   its position in flow.
 - Match stacked logos on **width**, not height, when their aspect ratios differ.
 - A `prefers-reduced-motion` block pauses autoplaying video and exposes
-  controls. Honour it in any new animation.
+  controls. Honour it in any new animation. A figure that is an argument rather
+  than a loop can instead ship with `controls` and no `autoplay` — see the
+  caustic animation on `sources.html`, which plays on request and holds its last
+  frame. That form needs no reduced-motion handling at all, because nothing
+  moves until the reader asks.
 - There is a print stylesheet. Check any new page prints sensibly.
 
 Accessibility is not optional: real `alt` text on anything informative and

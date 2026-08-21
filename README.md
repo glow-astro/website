@@ -203,11 +203,24 @@ topic, so the filename says what the video shows.
 **Never reuse a filename for different content.** Returning visitors get the old
 video out of cache, which looks exactly like the page rendering the wrong
 animation — or the same one twice — while the file on disk is right. This has
-already cost one round of debugging. `media` is **optional** in `topics.yml` — `sources` has no
-render, and `topic-figure.html` emits nothing rather than a broken `/media/.webm`
-when the key is absent. They are **not** generated here — each comes from the repo
+already cost one round of debugging. `media` is **optional** in `topics.yml`: `topic-figure.html`
+emits nothing rather than a broken `/media/.webm` when the key is absent. Every
+topic happens to have one at the moment — `sources` was the exception until it
+gained the lensed-population plot — so the guard is untested by the current
+content and worth keeping for that reason. They are **not** generated here — each comes from the repo
 that owns the physics, indexed in `~/code/application_plots/ANIMATIONS.md`, and
 each topic records which family it took in `topics.yml`'s `media.source`.
+
+**One video does not autoplay.** `media/wavefront-caustics.*`, at the end of
+`sources.html`, has `controls` and neither `autoplay` nor `loop`: it is a
+twenty-second argument with five deliberate pauses in it, not a seamless loop,
+so a reader arriving mid-sweep would see a red line in the middle of nowhere.
+It waits to be asked, plays once, and stops. That works only because its poster
+is the generator's **last** frame rather than its first — the figure therefore
+says something complete before it is played and settles back onto the same
+picture when it ends. Do not restore consistency here. It is also why
+`assets/js/reduced-motion.js` does not touch it: that script rewrites
+`video[autoplay]`, and nothing moves in this one until someone asks.
 
 Take the `_web_dark` variant: this site is dark-only. Renders are not all the
 same shape, so `media.width`/`media.height` carry each one's real pixel size —
