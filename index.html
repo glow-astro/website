@@ -83,6 +83,40 @@ description: >-
     </div>
   </section>
 
+  <!-- ============ News ============
+       First section after the hero, matching the personal site and the hi_class
+       page — a project site is checked for what has happened lately, and the
+       reader should not have to scroll past the science to find out.
+
+       From _data/news.yml, newest first. The "New" flag is driven by the item's
+       own date against FRESH_DAYS below, so it expires by itself at the next
+       site build — which here means the next tools/deploy_review.sh, since the
+       site is built locally and uploaded rather than built by the host. -->
+  {%- assign FRESH_DAYS = 90 %}
+  {%- assign fresh_window = FRESH_DAYS | times: 86400 %}
+  {%- assign fresh_after = site.time | date: '%s' | plus: 0 | minus: fresh_window %}
+  {%- assign news = site.data.news | sort: 'date' | reverse %}
+  <section class="section" aria-labelledby="news-heading">
+    <h2 id="news-heading">News</h2>
+    <ul class="news">
+      {%- for n in news limit: 4 %}
+      {%- assign stamp = n.date | date: '%s' | plus: 0 %}
+      <li>
+        <time class="news-date" datetime="{{ n.date | date: '%Y-%m' }}">{{ n.date | date: '%b %Y' }}</time>
+        <p class="news-body">
+          {%- if stamp > fresh_after %}<span class="news-flag">New</span>{% endif -%}
+          {{ n.text }}
+          {%- if n.links %}
+          <span class="news-links">
+            {%- for l in n.links %}<a href="{{ l.url }}" rel="noopener">{{ l.text }}</a>{% unless forloop.last %} &middot; {% endunless %}{% endfor -%}
+          </span>
+          {%- endif %}
+        </p>
+      </li>
+      {%- endfor %}
+    </ul>
+  </section>
+
   <!-- ============ Objectives ============ -->
   <section class="section" aria-labelledby="objectives-heading">
     <h2 id="objectives-heading">What the project sets out to do</h2>
@@ -156,35 +190,6 @@ description: >-
               allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen></iframe>
     </div>
-  </section>
-
-  <!-- ============ News ============
-       From _data/news.yml, newest first. The "New" flag is driven by the item's
-       own date against FRESH_DAYS below, so it expires by itself at the next
-       site build — which for GitHub Pages means the next push. -->
-  {%- assign FRESH_DAYS = 90 %}
-  {%- assign fresh_window = FRESH_DAYS | times: 86400 %}
-  {%- assign fresh_after = site.time | date: '%s' | plus: 0 | minus: fresh_window %}
-  {%- assign news = site.data.news | sort: 'date' | reverse %}
-  <section class="section" aria-labelledby="news-heading">
-    <h2 id="news-heading">News</h2>
-    <ul class="news">
-      {%- for n in news limit: 4 %}
-      {%- assign stamp = n.date | date: '%s' | plus: 0 %}
-      <li>
-        <time class="news-date" datetime="{{ n.date | date: '%Y-%m' }}">{{ n.date | date: '%b %Y' }}</time>
-        <p class="news-body">
-          {%- if stamp > fresh_after %}<span class="news-flag">New</span>{% endif -%}
-          {{ n.text }}
-          {%- if n.links %}
-          <span class="news-links">
-            {%- for l in n.links %}<a href="{{ l.url }}" rel="noopener">{{ l.text }}</a>{% unless forloop.last %} &middot; {% endunless %}{% endfor -%}
-          </span>
-          {%- endif %}
-        </p>
-      </li>
-      {%- endfor %}
-    </ul>
   </section>
 
   <!-- ============ Work packages ============ -->
