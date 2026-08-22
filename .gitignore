@@ -3,7 +3,12 @@ _site/
 .jekyll-metadata
 Gemfile.lock
 vendor/
-glow-site-text*
+# The prose-review documents are NOT ignored. They are the owner's own edits --
+# tracked changes, hand-rewritten paragraphs -- and the round-by-round history of
+# them, which is the one part of this repository that cannot be rebuilt from
+# anything else. 424 KB in total. What keeps them out of the *built site* is the
+# `exclude` list in _config.yml, which is a different mechanism; this file was
+# briefly doing that job too (2ed180f) and should not have been.
 .~lock*
 
 # Scratch directory used by tools/preview.sh while a build is in progress.
