@@ -204,20 +204,10 @@
       lensed black holes, annotated as tracking star formation. A dashed
       magnification track runs from a marker at low redshift up through the pink
       contour for GW231123 and on into the lensed black-hole region.
-    caption: >-
-      Lensing takes a detector beyond its nominal capabilities. The grey curve
-      shows the “detector horizon”, the maximum distance at which sources are
-      observable. Every merger detected so far (grey points show median values)
-      sits below it. The green regions show where lensed black holes and neutron
-      stars (magnification > 2) are expected. Black holes are typically observed
-      around and beyond the detector horizon, assuming the merger history
-      follows star formation. Neutron stars are expected well beyond the
-      detector horizon, subject to large magnification factors and wave-optics
-      distortions, and with observable electromagnetic counterparts. GW231123 in
-      the standard analysis is highlighted (pink diamond), along with its true
-      mass/source under gravitational magnification (dashed line) and the 90%
-      confidence regions inferred from the lensed analysis.
-    cite: smith-rates
+    # No `caption` or `cite` here on purpose. This figure combines a forecast
+    # (Smith et al.) with the project's own GW231123 analysis, and the two have
+    # to be credited to different clauses, which a data-file caption cannot do.
+    # The caption is written in sources.html and passed to topic-figure.html.
     source: "application_plots, plots/gw231123/population_lensing"
 
 - id: dark-matter

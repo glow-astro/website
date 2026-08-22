@@ -63,7 +63,24 @@
     comma-separated list) that the page already declares in its `refs:`. The
     caption itself is data, so a citation cannot be written into the YAML --
     Liquid in a data file is not executed.
+
+    That puts the citation at the very END of the caption, which is only right
+    when one source covers the whole figure. When a figure combines sources --
+    a forecast from one paper, a measurement from another -- the page can pass
+    its own caption instead, and then citations and links can sit mid-sentence
+    where they attribute the right clause:
+
+        {%- capture cap -%}
+          Forecast{% include cite.html key="..." %}, measurement from
+          <a href="...">the project's own analysis</a>.
+        {%- endcapture -%}
+        {% include topic-figure.html topic=t caption=cap %}
+
+    The override replaces `media.cite` too, so the caption should carry every
+    citation the figure needs. Keep the caption in topics.yml when you can:
+    an overridden one lives in the page, and a copy left behind in the data
+    file is a copy that will drift.
   {%- endcomment -%}
-  <figcaption>{{ t.media.caption }}{% if t.media.cite %}{% include cite.html key=t.media.cite %}{% endif %}</figcaption>
+  <figcaption>{% if include.caption %}{{ include.caption }}{% else %}{{ t.media.caption }}{% if t.media.cite %}{% include cite.html key=t.media.cite %}{% endif %}{% endif %}</figcaption>
 </figure>
 {%- endif -%}

@@ -11,8 +11,8 @@ description: >-
 # the numbering. Pulled from _data/references.yml, which several pages
 # share; the numbers here are this page's own.
 refs:
-  - wierda-rates
   - smith-rates
+  - wierda-rates
   - lvk-lensing-gwtc4
   - cheung-priors
   - andreoni-too
@@ -25,7 +25,30 @@ topic_id: sources
 
 {% include topicnav.html %}
 
-{% include topic-figure.html topic=t %}
+{%- comment -%}
+  The caption is written here rather than in topics.yml because this figure has
+  two sources and they attribute different parts of it: the forecast regions are
+  Smith et al., while everything about GW231123 -- the marker, the magnification
+  track and the contours -- is the project's own analysis. A single citation at
+  the end of the caption, which is what `media.cite` gives, would have credited
+  the measurement to the forecast paper.
+{%- endcomment -%}
+{%- capture sources_caption -%}
+  Lensing takes a detector beyond its nominal capabilities. The grey curve shows
+  the “detector horizon”, the maximum distance at which sources are observable,
+  and every merger detected so far (grey points show median values) sits below
+  it. The green regions show where lensed black holes and neutron stars
+  (magnification&nbsp;&gt;&nbsp;2) are expected: black holes around and beyond
+  the detector horizon, assuming the merger history follows star formation;
+  neutron stars well beyond it, subject to large magnification factors and
+  wave-optics distortions, and with observable electromagnetic
+  counterparts.{% include cite.html key="smith-rates" %} GW231123 in the standard analysis is highlighted (pink diamond),
+  along with its true mass/source under gravitational magnification (dashed
+  line) and the 90% confidence regions inferred from the lensed analysis of
+  <a href="https://inspirehep.net/arxiv/2512.17631" rel="noopener">Goyal,
+  Villarrubia-Rojo &amp; Zumalacárregui</a>.
+{%- endcapture -%}
+{% include topic-figure.html topic=t caption=sources_caption %}
 
 <section class="section" id="telescopes" aria-labelledby="telescopes-heading">
   <h2 id="telescopes-heading">Gravitational lenses as telescopes</h2>
