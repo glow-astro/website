@@ -67,7 +67,14 @@ description: >-
       <div class="btn-row">
         <a class="btn btn-primary" href="{{ '/science.html' | relative_url }}">The science case</a>
         <a class="btn" href="{{ '/work-packages.html' | relative_url }}">Work packages</a>
+        {%- comment -%}
+          Same condition as the menu item in _includes/header.html: this button
+          appears only while a call is open. Two buttons is a fine row.
+        {%- endcomment -%}
+        {%- assign open_positions = site.data.positions | default: empty -%}
+        {%- if open_positions.size > 0 %}
         <a class="btn" href="{{ '/join.html' | relative_url }}">Join the project</a>
+        {%- endif %}
       </div>
     </div>
     <div class="hero-media">

@@ -10,8 +10,21 @@
       <img class="brand-mark" src="{{ '/favicon.svg' | relative_url }}" alt="" width="32" height="32">
       <span>GLOW</span>
     </a>
+    {%- comment -%}
+      Join is in the menu only while a call is actually open. _data/positions.yml
+      holds open calls and nothing else -- see its header -- so an empty file is
+      the normal state, and a permanent "Join" pointing at a page that says there
+      is nothing to apply for spends a menu slot on a disappointment.
+
+      Conditional on the data, not on a flag: the item comes back by itself the
+      moment an entry is added, with nothing to remember. The page stays where it
+      is either way, linked from the footer and from team.html, because it also
+      says how to get in touch when nothing is advertised.
+    {%- endcomment -%}
+    {%- assign open_positions = site.data.positions | default: empty -%}
     <nav class="site-nav" aria-label="Main">
       {%- for item in site.data.nav %}
+      {%- if item.id == 'join' and open_positions.size == 0 %}{% continue %}{% endif %}
       <a href="{{ item.url | relative_url }}"{% if page.nav == item.id %} aria-current="page"{% endif %}>{{ item.title }}</a>
       {%- endfor %}
     </nav>
