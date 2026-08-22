@@ -1,0 +1,157 @@
+#!/usr/bin/env bash
+#
+# Build the site and publish it to the access-controlled review host, so
+# collaborators can read it before anything is public.
+#
+#   tools/deploy_review.sh              # build, check, upload
+#   tools/deploy_review.sh -n           # build and check only, no upload
+#   tools/deploy_review.sh -h           # options
+#
+# The site goes to Cloudflare Pages as a *preview* deployment, at
+#
+#     https://<branch>.<project>.pages.dev
+#
+# and Cloudflare Access sits in front of it: a reader has to be on an email
+# allowlist and confirm a one-time code before Cloudflare serves them a single
+# byte. That is real authentication at the edge, not a JavaScript password
+# prompt -- which would be worthless here, since a static site has already
+# shipped its prose to the browser by the time any prompt could appear.
+#
+# Preview rather than production because Cloudflare's one-click Access toggle in
+# the Pages dashboard covers preview deployments on *.pages.dev; protecting the
+# production hostname means attaching a custom domain first. Nothing here needs
+# a domain, which is the point -- glow-erc.org stays unspent while the naming
+# question is open.
+#
+# This uploads the BUILT SITE only. No source, no git history, no remote, no CI:
+# the repository still has no remote and does not need one, and the review host
+# never sees the ODT review documents or anything else outside _site.
+#
+# See §11 of docs/SITE_CONVENTIONS.md for the one-time setup.
+
+if [ -z "${BASH_VERSION:-}" ]; then
+  exec bash "$0" "$@"
+fi
+
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+
+# Both overridable from the environment, because the project name is only fixed
+# once someone creates it -- *.pages.dev is a single global namespace, so the
+# obvious name may be taken. Whatever is chosen, set it here and it will match.
+PROJECT="${GLOW_PAGES_PROJECT:-glow-erc-review}"
+BRANCH="${GLOW_REVIEW_BRANCH:-review}"
+
+BUILD_DIR="$ROOT/_review_site"
+URL="https://${BRANCH}.${PROJECT}.pages.dev"
+DRY_RUN=0
+
+usage() {
+  cat <<'USAGE'
+Usage: tools/deploy_review.sh [options]
+
+  -n, --dry-run        build and run the checks, but do not upload
+  -h, --help           this message
+
+Environment:
+  GLOW_PAGES_PROJECT   Cloudflare Pages project name (default: glow-erc-review)
+  GLOW_REVIEW_BRANCH   preview branch name        (default: review)
+USAGE
+}
+
+while [ $# -gt 0 ]; do
+  case "$1" in
+    -n|--dry-run) DRY_RUN=1; shift ;;
+    -h|--help)    usage; exit 0 ;;
+    *)            echo "unknown option: $1" >&2; usage >&2; exit 2 ;;
+  esac
+done
+
+die() { echo "deploy_review: $*" >&2; exit 1; }
+
+# ---------------------------------------------------------------------------
+# Build
+# ---------------------------------------------------------------------------
+# A separate directory from _site on purpose. The review build carries a
+# different `url:` and a Disallow-everything robots.txt, and leaving that
+# sitting in _site is how someone eventually publishes it.
+echo "==> building review site"
+rm -rf "$BUILD_DIR"
+SITE_URL="$URL" ruby "$ROOT/tools/jekyll_build.rb" \
+  "$ROOT" "$BUILD_DIR" _config.review.yml
+
+# ---------------------------------------------------------------------------
+# Checks
+# ---------------------------------------------------------------------------
+# Each of these has a specific failure in mind. They cost a second and they run
+# before anything leaves the machine.
+echo "==> checking the build"
+
+[ -f "$BUILD_DIR/index.html" ] || die "no index.html -- the build produced nothing"
+
+# The production domain must not appear anywhere. If SITE_URL failed to take,
+# every canonical link, the OpenGraph image and the JSON-LD would advertise
+# glow-erc.org -- seeding the wrong canonical for a site that is not there yet,
+# and handing anyone who copies a link an address that will not resolve.
+if grep -rl "glow-erc\.org" "$BUILD_DIR" >/dev/null 2>&1; then
+  echo "   files mentioning the production domain:" >&2
+  grep -rl "glow-erc\.org" "$BUILD_DIR" | sed 's/^/     /' >&2
+  die "production domain leaked into the review build"
+fi
+
+# ... and the review address must actually be in there, which is the same check
+# from the other side: a typo'd SITE_URL would pass the test above by accident.
+grep -q "$URL" "$BUILD_DIR/index.html" \
+  || die "review URL $URL not found in index.html"
+
+# Belt and braces for the window before Access is switched on.
+grep -q "^Disallow: /$" "$BUILD_DIR/robots.txt" \
+  || die "robots.txt does not disallow crawling -- is _config.review.yml applied?"
+
+# The review ODTs are the whole site's prose in one file, with open questions
+# and tracked changes in it. _config.yml excludes them; verify rather than trust.
+if find "$BUILD_DIR" \( -name 'glow-site-text*' -o -name '*.odt' \) -print -quit | grep -q .; then
+  die "a review document reached the build directory"
+fi
+
+PAGES="$(find "$BUILD_DIR" -name '*.html' | wc -l)"
+echo "   ok -- $PAGES html files, url $URL, crawling disallowed"
+
+if [ "$DRY_RUN" -eq 1 ]; then
+  echo "==> dry run, not uploading. Built site is in $BUILD_DIR"
+  exit 0
+fi
+
+# ---------------------------------------------------------------------------
+# Upload
+# ---------------------------------------------------------------------------
+if command -v wrangler >/dev/null 2>&1; then
+  WRANGLER=(wrangler)
+elif command -v npx >/dev/null 2>&1; then
+  # No global install needed; npx fetches it into its own cache.
+  WRANGLER=(npx --yes wrangler@latest)
+else
+  die "neither wrangler nor npx found. Install Node, or see §11 of docs/SITE_CONVENTIONS.md"
+fi
+
+echo "==> uploading to Cloudflare Pages project '$PROJECT', branch '$BRANCH'"
+# --commit-dirty because this repo's working tree is often mid-edit and the
+# warning is noise: what is uploaded is $BUILD_DIR, not the checkout.
+"${WRANGLER[@]}" pages deploy "$BUILD_DIR" \
+  --project-name "$PROJECT" \
+  --branch "$BRANCH" \
+  --commit-dirty=true
+
+cat <<EOF
+
+==> done. The site is at
+      $URL
+
+    If this is the first deploy, it is PUBLIC until you turn Access on:
+      Cloudflare dashboard -> Workers & Pages -> $PROJECT
+        -> Settings -> General -> Access policy -> "Enable"
+      then Zero Trust -> Access -> Applications -> $PROJECT preview
+        -> add the collaborators' email addresses to the policy.
+    Confirm it works by opening $URL in a private window.
+EOF

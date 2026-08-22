@@ -8,3 +8,7 @@ glow-site-text*
 
 # Scratch directory used by tools/preview.sh while a build is in progress.
 .preview-build/
+
+# Built by tools/deploy_review.sh. Kept out of _site so a review build --
+# different url, robots.txt Disallow -- can never be published by mistake.
+_review_site/

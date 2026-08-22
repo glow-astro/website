@@ -1,7 +1,20 @@
 ---
 sitemap: false
 ---
+{%- comment -%}
+  The review host (see §11 of docs/SITE_CONVENTIONS.md) is behind Cloudflare
+  Access, so no crawler ever gets far enough to read this. It is here for the
+  window between deploying and turning Access on, and because a review build
+  that is one forgotten toggle away from being indexed is not worth the risk.
+{%- endcomment -%}
+{%- if site.review -%}
+
+User-agent: *
+Disallow: /
+{%- else -%}
+
 User-agent: *
 Allow: /
 
 Sitemap: {{ '/sitemap.xml' | absolute_url }}
+{%- endif %}

@@ -1,0 +1,23 @@
+# Overlay for the access-controlled review host. Not a standalone config:
+# it is merged on top of _config.yml, later winning.
+#
+#   ruby tools/jekyll_build.rb . _review_site _config.review.yml
+#
+# though in practice tools/deploy_review.sh does that for you, and also sets
+# SITE_URL to the review address. See §11 of docs/SITE_CONVENTIONS.md.
+#
+# Everything else about the build is deliberately identical to production. A
+# review build that differs from what will be published is a review of the
+# wrong thing; the only differences here are the two that MUST differ.
+
+# Read by robots.txt, and available to any template that ever needs to know it
+# is not on the public site. Nothing else branches on it today -- keep it that
+# way if you can.
+review: true
+
+# A fallback address, used only if SITE_URL is unset. The real one is
+# https://<branch>.<project>.pages.dev and is not known until the Pages project
+# exists, so the deploy script derives it rather than hardcoding it here where
+# it would rot. This value keeps a bare `jekyll_build.rb ... _config.review.yml`
+# from silently emitting canonical links to the public domain.
+url: "https://review.invalid"

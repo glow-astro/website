@@ -443,3 +443,99 @@ that line once the new site is live, and cross-link the two.
 colour would be reasonable — the GLOW logo is warm orange against this site's
 violet — but change it as a token in one place, and keep the rule that the
 accent means "link".
+
+---
+
+## 11. The review host (GLOW)
+
+The site is read by collaborators before it is read by anyone else. That needs
+real authentication, not a hidden URL: a static site has already delivered its
+prose, its figures and its unpublished claims to the browser by the time any
+JavaScript password prompt could appear, and `curl` never sees the prompt at
+all.
+
+Two things it must **not** be:
+
+- **GitHub Pages from a private repository.** The repository is private; the
+  published site is not. Access control for Pages is a GitHub Enterprise Cloud
+  feature. Making the source private and sharing the Pages link publishes the
+  whole site.
+- **An unguessable URL.** One forwarded mail, one link in a talk, one crawler
+  following a referrer, and it is public. Fine for a screenshot, not for the
+  project's unreleased science.
+
+### How it works
+
+**Cloudflare Pages** hosts the built site; **Cloudflare Access** stands in front
+of it. A reader must be on an email allowlist and enter a one-time code before
+Cloudflare serves a byte. Free: Pages hosting is free, Zero Trust is free to 50
+users. Per-person, so no shared password circulates and someone can be removed
+later.
+
+It is a *preview* deployment, at `https://<branch>.<project>.pages.dev`, because
+Cloudflare's one-click Access toggle covers previews on `pages.dev`; protecting a
+production hostname means attaching a custom domain first. Nothing here needs a
+domain, which is deliberate — `glow-erc.org` stays unspent while the naming
+question is open (see the `glow-astro` discussion).
+
+Deployment is **direct upload of the built site**. No remote, no CI, no source
+leaves the machine — consistent with §9: the owner builds, reads, and decides.
+
+```sh
+tools/deploy_review.sh -n      # build and check, upload nothing
+tools/deploy_review.sh         # ... and upload
+```
+
+### One-time setup
+
+1. Create a Cloudflare account, then a Pages project. The first
+   `tools/deploy_review.sh` offers to create it; or make it in the dashboard
+   under **Workers & Pages → Create → Pages → Direct Upload**.
+2. `*.pages.dev` is one global namespace, so the name may be taken. Whatever it
+   ends up as, export it — the script derives the URL from it, and the build
+   bakes that URL into every canonical link:
+
+   ```sh
+   export GLOW_PAGES_PROJECT=glow-erc-review
+   ```
+3. **Turn Access on.** Until this is done the deployment is public.
+   *Settings → General → Access policy → Enable*, then *Zero Trust → Access →
+   Applications →* the preview app, and add each collaborator's email to the
+   policy.
+4. Check it from a private window, signed out. If the page loads without asking
+   for a code, Access is not on.
+
+### What differs from a production build
+
+Only two things, and only two on purpose: a review build that differs from what
+will be published is a review of the wrong thing.
+
+- `url:` points at the review host. Otherwise `_includes/head.html` would stamp
+  every canonical link, the OpenGraph image and the JSON-LD with
+  `https://glow-erc.org` — seeding the wrong canonical for a site that does not
+  exist yet, and handing anyone who copies a link a dead address.
+- `robots.txt` becomes `Disallow: /`, via `site.review`. Redundant behind Access,
+  and kept for the window before the toggle is flipped.
+
+`_config.review.yml` carries both. `tools/jekyll_build.rb` takes overlay config
+files as extra arguments and honours `SITE_URL` from the environment; the review
+address lives in neither file, because it is unknown until the Pages project
+exists and would rot if hardcoded.
+
+The build goes to `_review_site`, never `_site` — a build with a Disallow
+robots.txt and the wrong canonical sitting in the production output directory is
+how it eventually gets published.
+
+### The checks
+
+`deploy_review.sh` runs these before anything leaves the machine, and each has a
+specific failure in mind:
+
+- the production domain appears **nowhere** in the output — it appears in 17
+  files of a normal build, so this fires loudly if `SITE_URL` fails to take;
+- the review URL *does* appear in `index.html`, which catches a typo'd
+  `SITE_URL` that the first check would pass by accident;
+- `robots.txt` disallows crawling;
+- no `glow-site-text*` or `*.odt` reached the build — `_config.yml` excludes
+  them, but that file is the whole site's prose with tracked changes and open
+  questions in it, so verify rather than trust.
