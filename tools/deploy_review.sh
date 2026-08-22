@@ -126,13 +126,27 @@ fi
 # ---------------------------------------------------------------------------
 # Upload
 # ---------------------------------------------------------------------------
+# Pinned, not @latest: wrangler 4.87.0 raised its floor to Node 22 and this
+# machine has Node 20.20.2, so `wrangler@latest` aborts before it does anything
+# -- including before `login` can open a browser, which looks exactly like the
+# browser failing to open. 4.86.0 is the last release that accepts Node 20, and
+# it accepts Node 22 too, so the pin is safe to keep after an upgrade; drop it
+# once `node --version` is 22 or later and you want the newer releases.
+WRANGLER_VERSION="4.86.0"
+
 if command -v wrangler >/dev/null 2>&1; then
   WRANGLER=(wrangler)
 elif command -v npx >/dev/null 2>&1; then
   # No global install needed; npx fetches it into its own cache.
-  WRANGLER=(npx --yes wrangler@latest)
+  WRANGLER=(npx --yes "wrangler@${WRANGLER_VERSION}")
 else
   die "neither wrangler nor npx found. Install Node, or see §11 of docs/SITE_CONVENTIONS.md"
+fi
+
+# Cloudflare credentials live in ~/.config/.wrangler, written by `wrangler login`.
+if [ ! -d "$HOME/.config/.wrangler" ] && [ -z "${CLOUDFLARE_API_TOKEN:-}" ]; then
+  die "not logged in to Cloudflare. Run:
+    npx --yes wrangler@${WRANGLER_VERSION} login"
 fi
 
 echo "==> uploading to Cloudflare Pages project '$PROJECT', branch '$BRANCH'"

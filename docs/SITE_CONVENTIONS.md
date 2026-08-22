@@ -491,21 +491,33 @@ tools/deploy_review.sh         # ... and upload
 
 ### One-time setup
 
-1. Create a Cloudflare account, then a Pages project. The first
-   `tools/deploy_review.sh` offers to create it; or make it in the dashboard
-   under **Workers & Pages → Create → Pages → Direct Upload**.
-2. `*.pages.dev` is one global namespace, so the name may be taken. Whatever it
+1. Create a Cloudflare account, then log in from the terminal:
+
+   ```sh
+   npx --yes wrangler@4.86.0 login
+   ```
+
+   **Pin the version.** Wrangler 4.87.0 raised its floor to Node 22 and this
+   machine has Node 20; `wrangler@latest` aborts on the version check before it
+   can open a browser, which is indistinguishable from the browser failing to
+   open. 4.86.0 is the last release that takes Node 20. `deploy_review.sh` pins
+   the same version.
+2. Create the Pages project. The first `tools/deploy_review.sh` offers to create
+   it; or make it in the dashboard under **Workers & Pages → Create → Pages →
+   Direct Upload**. Set the production branch to `main`, so that `review` stays
+   a preview branch and the one-click Access toggle covers it.
+3. `*.pages.dev` is one global namespace, so the name may be taken. Whatever it
    ends up as, export it — the script derives the URL from it, and the build
    bakes that URL into every canonical link:
 
    ```sh
    export GLOW_PAGES_PROJECT=glow-erc-review
    ```
-3. **Turn Access on.** Until this is done the deployment is public.
+4. **Turn Access on.** Until this is done the deployment is public.
    *Settings → General → Access policy → Enable*, then *Zero Trust → Access →
    Applications →* the preview app, and add each collaborator's email to the
    policy.
-4. Check it from a private window, signed out. If the page loads without asking
+5. Check it from a private window, signed out. If the page loads without asking
    for a code, Access is not on.
 
 ### What differs from a production build
