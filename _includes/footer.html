@@ -2,10 +2,27 @@
   <div class="wrap">
     <div class="footer-grid">
 
+      {%- comment -%}
+        The six topic pages are otherwise reachable only from science.html and
+        from each other: _includes/topicnav.html renders on the seven science
+        pages and nowhere else, so from the eight other pages more than half the
+        site does not exist. This column is the fix. It reads `short` and `id`
+        from _data/topics.yml -- the same fields the topic bar uses, so the two
+        cannot drift, and a new topic appears in both at once.
+      {%- endcomment -%}
+      <div>
+        <h2>Science</h2>
+        <ul>
+          <li><a href="{{ '/science.html' | relative_url }}">Overview</a></li>
+          {%- for t in site.data.topics %}
+          <li><a href="{{ '/' | append: t.id | append: '.html' | relative_url }}">{{ t.short }}</a></li>
+          {%- endfor %}
+        </ul>
+      </div>
+
       <div>
         <h2>The project</h2>
         <ul>
-          <li><a href="{{ '/science.html' | relative_url }}">Scientific case</a></li>
           <li><a href="{{ '/work-packages.html' | relative_url }}">Work packages</a></li>
           <li><a href="{{ '/publications.html' | relative_url }}">Publications &amp; talks</a></li>
           <li><a href="{{ '/software.html' | relative_url }}">Software &amp; data</a></li>
