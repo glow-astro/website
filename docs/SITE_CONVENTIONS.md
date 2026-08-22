@@ -106,10 +106,13 @@ for t in topics:
     for a in t['papers']:
         if a not in arxiv: print('TOPIC PAPER UNKNOWN', t['id'], a)
     # media is OPTIONAL; `media.file` overrides the stem, and `media.static`
-    # means a plot (one .png) rather than an animation (webm + mp4 + poster)
+    # means a plot (one .png) rather than an animation (webm + poster). WebM
+    # only since 2026-08-21: the generators encode one format per geometry,
+    # and there is no web mp4 any more -- see README on why a stale fallback
+    # is worse than none.
     if 'media' in t:
         stem = t['media'].get('file', t['id'])
-        for suffix in (('.png',) if t['media'].get('static') else ('.webm', '.mp4', '_still.png')):
+        for suffix in (('.png',) if t['media'].get('static') else ('.webm', '_still.png')):
             if not os.path.exists(f"media/{stem}{suffix}"):
                 print('MISSING MEDIA', t['id'], stem + suffix)
 for cell, n in cells.items():

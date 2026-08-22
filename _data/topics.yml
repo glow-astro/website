@@ -31,7 +31,7 @@
 #
 # Schema
 #   id       slug; the page is <id>.html and, if `media` is present, the video
-#            is media/<id>.{webm,mp4} plus media/<id>_still.png
+#            is media/<id>.webm plus media/<id>_still.png
 #   title    page title and diagram card title
 #   short    label in the topic bar, where there is no room for the full title
 #   row      `top` or `bottom` -- which band of the diagram the card sits in

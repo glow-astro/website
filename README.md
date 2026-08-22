@@ -208,9 +208,12 @@ whatever stale file survived the old two-format renders — worse than no
 fallback, because it is a page quietly showing the previous version of a figure
 to exactly the browsers that cannot check. The floor this sets: Safari gained
 WebM in 14.1 (macOS) and iOS 17.4; older ones hold on the poster, which is a real
-frame of the animation. The `.mp4` files already in `media/` are left in place;
-they are simply no longer referenced. Set `media.file` whenever the render is not specific to one
-topic, so the filename says what the video shows.
+frame of the animation. The leftover `.mp4` files were deleted from `media/`
+on 2026-08-22, once nothing referenced them; git still has them if a
+`web`-geometry mp4 is ever wanted again.
+
+Set `media.file` whenever the render is not specific to one topic, so the
+filename says what the video shows.
 
 **Never reuse a filename for different content.** Returning visitors get the old
 video out of cache, which looks exactly like the page rendering the wrong
