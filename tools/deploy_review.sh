@@ -43,6 +43,19 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 PROJECT="${GLOW_PAGES_PROJECT:-glow-erc-review}"
 BRANCH="${GLOW_REVIEW_BRANCH:-review}"
 
+# Cloudflare's one-click Access toggle covers PREVIEW deployments -- every
+# *.<project>.pages.dev host. It does not cover the production hostname,
+# <project>.pages.dev, which is a separate origin with no policy on it.
+# Deploying to the production branch would therefore publish the site.
+case "$BRANCH" in
+  main|master|production|prod)
+    echo "deploy_review: '$BRANCH' is a production branch name." >&2
+    echo "  A production deployment lands on ${PROJECT}.pages.dev, which the" >&2
+    echo "  preview Access policy does NOT protect -- the site would be public." >&2
+    echo "  Use a preview branch (the default is 'review')." >&2
+    exit 1 ;;
+esac
+
 BUILD_DIR="$ROOT/_review_site"
 URL="https://${BRANCH}.${PROJECT}.pages.dev"
 DRY_RUN=0
@@ -157,15 +170,50 @@ echo "==> uploading to Cloudflare Pages project '$PROJECT', branch '$BRANCH'"
   --branch "$BRANCH" \
   --commit-dirty=true
 
+# Verify rather than assume. This is the only check that tests the thing that
+# actually matters -- that a signed-out stranger cannot read the site -- and it
+# tests it from outside, against the live URL, rather than inferring it from a
+# dashboard setting. An unauthenticated request must be bounced to the Access
+# login; a 200 means the prose is being served to anyone who has the link.
+echo "==> checking that Access is in front of it"
+sleep 2
+redirect="$(curl -s -o /dev/null -w '%{redirect_url}' "$URL/")"
+status="$(curl -s -o /dev/null -w '%{http_code}' "$URL/")"
+
+case "$redirect" in
+  *cloudflareaccess.com*)
+    echo "   ok -- signed-out requests are sent to the Access login" ;;
+  *)
+    cat >&2 <<WARN
+
+   ############################################################
+   #  WARNING: THE REVIEW SITE IS PUBLIC                      #
+   ############################################################
+
+   $URL/ answered HTTP $status without an Access challenge.
+   Anyone with the link can read the whole site right now.
+
+   Turn Access on:
+     dashboard -> Workers & Pages -> $PROJECT
+       -> Settings -> General -> Access policy -> Enable
+
+   Or roll it back immediately:
+     npx --yes wrangler@${WRANGLER_VERSION} pages deployment list \\
+       --project-name $PROJECT
+
+WARN
+    exit 1 ;;
+esac
+
+# The check above proves a stranger is locked out. It cannot prove the right
+# people are let IN -- that is the policy's email list, and it is only visible
+# to a token with Zero Trust scope, which the wrangler OAuth token is not.
 cat <<EOF
 
 ==> done. The site is at
       $URL
 
-    If this is the first deploy, it is PUBLIC until you turn Access on:
-      Cloudflare dashboard -> Workers & Pages -> $PROJECT
-        -> Settings -> General -> Access policy -> "Enable"
-      then Zero Trust -> Access -> Applications -> $PROJECT preview
-        -> add the collaborators' email addresses to the policy.
-    Confirm it works by opening $URL in a private window.
+    Collaborators must be on the Access policy by email:
+      Zero Trust -> Access -> Applications -> the $PROJECT preview app
+    Someone not on that list gets refused, not a login they can complete.
 EOF

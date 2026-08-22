@@ -554,3 +554,20 @@ specific failure in mind:
 - no `glow-site-text*` or `*.odt` reached the build — `_config.yml` excludes
   them, but that file is the whole site's prose with tracked changes and open
   questions in it, so verify rather than trust.
+
+And two about the protection itself, because a review host that is quietly
+public is worse than no review host — it feels safe:
+
+- **the branch is not a production branch.** Access covers *preview*
+  deployments, meaning every `*.<project>.pages.dev` host. It does not cover
+  `<project>.pages.dev`, which is a separate origin with no policy on it, so a
+  deployment to `main` would publish the site. The script refuses.
+- **after uploading, a signed-out request to the live URL is bounced to the
+  Access login.** Tested from outside against the real URL rather than inferred
+  from a dashboard setting; a `200` here aborts with a loud warning, because it
+  means the prose is being served to anyone holding the link.
+
+What that check cannot prove is that the right people get *in*. The email list
+lives in the Access policy, readable only to a token with Zero Trust scope,
+which the `wrangler login` OAuth token does not have. Confirm with a
+collaborator, once.
