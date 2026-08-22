@@ -10,6 +10,10 @@ routine, design tokens and voice — are in
 structural changes. §11 covers the access-controlled review host that
 collaborators read the site on before it is public.
 
+Design questions the owner has deliberately parked — and what was already tried
+and rejected for each — are in
+[`docs/OPEN_QUESTIONS.md`](docs/OPEN_QUESTIONS.md).
+
 The project's *other* addresses — the GitHub organization, the GLoW code and
 documentation URLs printed in the published paper, and the decisions still open
 about all of them — are in

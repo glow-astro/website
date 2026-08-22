@@ -23,9 +23,11 @@
 # a domain, which is the point -- glow-erc.org stays unspent while the naming
 # question is open.
 #
-# This uploads the BUILT SITE only. No source, no git history, no remote, no CI:
-# the repository still has no remote and does not need one, and the review host
-# never sees the ODT review documents or anything else outside _site.
+# This uploads the BUILT SITE only -- no source, no git history, no CI. The
+# repository does have a remote now (glow-astro/website, private), but it is a
+# backup and nothing here depends on it: the review host is fed from the local
+# build, so a deploy never needs a push first, and never sees the ODT review
+# documents or anything else outside the build directory.
 #
 # See §11 of docs/SITE_CONVENTIONS.md for the one-time setup.
 

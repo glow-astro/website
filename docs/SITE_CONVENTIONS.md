@@ -401,7 +401,11 @@ These came from the site's owner. They matter more than the code.
 - Commit in small, coherent steps with a real subject line and a body saying
   *why*. The git log is documentation.
 - **Do not push without being asked.** The owner reads all prose before
-  publishing.
+  publishing. This still holds now that `origin` exists — it is
+  `glow-astro/website`, private, a backup rather than a publication, and the
+  owner confirmed on 2026-08-22 that they want to keep being asked anyway. So
+  commits accumulate locally until asked; say how many are unpushed when
+  finishing a piece of work.
 - Comments explain the non-obvious — why a float needs `clear`, why a Liquid
   workaround exists — not what the next line does.
 - When the owner supplies edited text, apply it as written, fix only outright
@@ -481,8 +485,10 @@ production hostname means attaching a custom domain first. Nothing here needs a
 domain, which is deliberate — `glow-erc.org` stays unspent while the naming
 question is open (see the `glow-astro` discussion).
 
-Deployment is **direct upload of the built site**. No remote, no CI, no source
-leaves the machine — consistent with §9: the owner builds, reads, and decides.
+Deployment is **direct upload of the built site**. No CI, and no source leaves
+the machine — consistent with §9: the owner builds, reads, and decides. The
+`glow-astro/website` remote is a private backup and plays no part in this; a
+deploy never needs a push first.
 
 ```sh
 tools/deploy_review.sh -n      # build and check, upload nothing
