@@ -7,7 +7,13 @@ Plain Jekyll, no theme, one hand-written stylesheet, two small scripts. The
 conventions this site is built to — stack, data-driven content, verification
 routine, design tokens and voice — are in
 [`docs/SITE_CONVENTIONS.md`](docs/SITE_CONVENTIONS.md). Read that before making
-structural changes.
+structural changes. §11 covers the access-controlled review host that
+collaborators read the site on before it is public.
+
+The project's *other* addresses — the GitHub organization, the GLoW code and
+documentation URLs printed in the published paper, and the decisions still open
+about all of them — are in
+[`docs/NAMESPACE_AND_REDIRECTS.md`](docs/NAMESPACE_AND_REDIRECTS.md).
 
 ## Local preview
 
