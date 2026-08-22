@@ -95,6 +95,39 @@ description: >-
     </dl>
   </section>
 
+  <!-- ============ Science topics ============ -->
+  {%- comment -%}
+    The six topic pages are 58% of the site and the home page never named one
+    of them: "Science" in the top menu is a single word standing in for seven
+    pages, so a visitor could form a whole model of the project without
+    learning the science section has a shape.
+
+    `card` rather than `blurb` -- ~15 words, written for exactly this job and
+    already used by the skymap, so the wording stays in one place. Order is
+    _data/topics.yml's, which is the topic bar's order too.
+
+    This does not reproduce the skymap. That figure argues something this grid
+    cannot -- where on the light path each topic acts -- and duplicating it
+    here would weaken it in the one place it argues hardest, on top of a home
+    page that already carries the hero animation and the logo lock-up.
+  {%- endcomment -%}
+  <section class="section" aria-labelledby="topics-heading">
+    <h2 id="topics-heading">The science</h2>
+    <p class="lede">
+      Six topics, from the optics of the lens itself to the analysis that finds
+      a lensed signal in real data.
+    </p>
+
+    <div class="grid grid-3">
+      {%- for t in site.data.topics %}
+      <a class="card card-link" href="{{ '/' | append: t.id | append: '.html' | relative_url }}">
+        <p class="card-title">{{ t.title }}</p>
+        <p>{{ t.card | strip_newlines | strip }}</p>
+      </a>
+      {%- endfor %}
+    </div>
+  </section>
+
   <!-- ============ Intro video ============
        youtube-nocookie rather than youtube.com: the privacy-enhanced host sets
        no tracking cookie until the viewer presses play, which is the more
@@ -191,6 +224,48 @@ description: >-
         </div>
       </dl>
       <p><a href="{{ site.project.cordis }}" rel="noopener">Project record on CORDIS</a></p>
+    </div>
+  </section>
+
+  <!-- ============ The rest of the project ============ -->
+  {%- comment -%}
+    Team, Software & data and Publications are three of the seven items in the
+    top menu, and until this section the home page named none of them: a reader
+    who never scrolled to the footer would take the project for its science
+    case, its work packages and its grant.
+
+    The team count is computed rather than written down, so it cannot go stale
+    the way a number in prose does. Deliberately the only count here -- the
+    others are 3 papers and 2 packages, honest but unflattering for a project
+    that started in 2026, and a row of small numbers would argue against the
+    point this section is making.
+  {%- endcomment -%}
+  {%- assign team_size = site.data.people.current | size | plus: 1 %}
+  <section class="section" aria-labelledby="more-heading">
+    <h2 id="more-heading">People, code and results</h2>
+
+    <div class="grid grid-3">
+      <a class="card card-link" href="{{ '/team.html' | relative_url }}">
+        <p class="card-title">Team</p>
+        <p>
+          {{ team_size }} people across the two host institutes, with external
+          collaborators on individual work packages.
+        </p>
+      </a>
+      <a class="card card-link" href="{{ '/software.html' | relative_url }}">
+        <p class="card-title">Software &amp; data</p>
+        <p>
+          The GLoW wave-optics code, machine-learning inference for lensed
+          signals, and the data behind the project's results.
+        </p>
+      </a>
+      <a class="card card-link" href="{{ '/publications.html' | relative_url }}">
+        <p class="card-title">Publications &amp; talks</p>
+        <p>
+          Papers, preprints and recorded talks, each linked to its INSPIRE
+          record and any accompanying release.
+        </p>
+      </a>
     </div>
   </section>
 
