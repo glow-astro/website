@@ -86,6 +86,37 @@ sections:
 </section>
 {%- endfor %}
 
+{%- comment -%}
+  Externally funded projects, from _data/external_projects.yml. Here rather than
+  on the team page because what is shared with them is the work, not the people:
+  a project turns up against the tasks it touches, while the team page is a list
+  of individuals and their roles.
+
+  Distinct from a task's `partners`, which names the people on one task. A
+  project outlives any single task, so it is listed once here rather than
+  repeated under each.
+
+  The section is not in `sections:` above, so it stays out of the subnav -- the
+  same choice already made for "Data and collaboration" below it. That bar is
+  for the three work packages; adding the tail sections would bury them.
+{%- endcomment -%}
+{%- if site.data.external_projects %}
+<section class="section" aria-labelledby="projects-heading">
+  <h2 id="projects-heading">Projects we work with</h2>
+  <div class="grid grid-2">
+    {%- for p in site.data.external_projects %}
+    <div class="card">
+      <p class="card-title"><a href="{{ p.url }}" rel="noopener">{{ p.name }}</a></p>
+      {%- if p.full %}
+      <p class="card-meta">{{ p.full }}</p>
+      {%- endif %}
+      <p>{{ p.what | strip_newlines | strip }}</p>
+    </div>
+    {%- endfor %}
+  </div>
+</section>
+{%- endif %}
+
 <section class="section" aria-labelledby="data-heading">
   <h2 id="data-heading">Data and collaboration</h2>
   <p>

@@ -1,0 +1,23 @@
+# Externally funded projects GLOW works with. Not people -- _data/people.yml has
+# the collaborators, and work_packages.yml has per-task `partners` for the named
+# individuals on a specific task. This file is for the projects themselves, which
+# outlive any one task and are worth linking to.
+#
+# Schema
+#   name   what it is called, short. The link text.
+#   full   the project's own full title, if the short name is an acronym.
+#   url    the project's site. Checked before it goes in.
+#   what   one or two sentences: what the project is, and what GLOW does with it.
+#          Say the relationship -- "shares a node with", "supplies", "we
+#          contribute" -- rather than leaving a reader to infer it.
+#
+# Order is deliberate, not alphabetical: closest collaboration first.
+
+- name: "GWSky"
+  full: "Making Sense of the Unexpected in the Gravitational-Wave Sky"
+  url: "https://gwsky.org/"
+  what: >-
+    An ERC Synergy Grant building the theoretical framework and tools to
+    interpret gravitational-wave observations, from the current LIGO–Virgo–KAGRA
+    network to Einstein Telescope, Cosmic Explorer and LISA. One of its four
+    nodes is the AEI Potsdam, where part of the GLOW team is based.
