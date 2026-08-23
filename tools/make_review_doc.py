@@ -32,6 +32,11 @@ DEFAULT_OUT = "/tmp/glow-site-text.odt"
 # the six topics it points at, then the plan, then the people and the outputs.
 PAGES = [
     ("index.html",          "Home"),
+    # The news archive. Its items are the same ones the home page shows, so
+    # most of it is a second read of prose already above -- but the heading and
+    # lede are its own, and the generator is right that a page nobody reviews
+    # is a page nobody reviews.
+    ("news.html",           "News archive"),
     ("science.html",        "Science — the case"),
     ("sources.html",        "Science — distant and strong-field sources"),
     ("dark-matter.html",    "Science — dark matter and small scales"),

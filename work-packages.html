@@ -18,6 +18,8 @@ sections:
     label: "WP2 · Discovery"
   - id: wp3
     label: "WP3 · Fundamental physics"
+  - id: external
+    label: "External collaborations"
 ---
 
 {% include subnav.html %}
@@ -96,9 +98,10 @@ sections:
   project outlives any single task, so it is listed once here rather than
   repeated under each.
 
-  The section is not in `sections:` above, so it stays out of the subnav -- the
-  same choice already made for "Data and collaboration" below it. That bar is
-  for the three work packages; adding the tail sections would bury them.
+  In the subnav via `sections:` above, so the bar reads WP1, WP2, WP3 and this.
+  The bar was the three work packages alone until 2026-08-23; a fourth item is
+  what the owner asked for, and with "Data and collaboration" gone this is the
+  only section below WP3, so nothing is buried by it.
 {%- endcomment -%}
 {%- if site.data.external_collaborations %}
 <section class="section" id="external" aria-labelledby="external-heading">
@@ -116,19 +119,3 @@ sections:
   </div>
 </section>
 {%- endif %}
-
-<section class="section" aria-labelledby="data-heading">
-  <h2 id="data-heading">Data and collaboration</h2>
-  <p>
-    The methods are demonstrated on publicly available catalogs — those released
-    by LIGO–Virgo–KAGRA and those produced by independent groups — so that the
-    analyses can be reproduced from outside the project.
-  </p>
-  <p>
-    GLOW does not join the LIGO–Virgo–KAGRA collaboration. An independent
-    analysis strengthens the credibility of a lensing discovery, and staying
-    outside preserves the freedom to question conventional assumptions. The
-    project does collaborate with LVK on validating its software tools, in
-    particular the DINGO-based inference intended for low-latency alerts.
-  </p>
-</section>
