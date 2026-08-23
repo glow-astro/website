@@ -529,18 +529,26 @@ main { padding-bottom: 3rem; }
 	margin-top: 0.6rem;
 }
 
-/* Beneath the lock-up and clearly second to it: two thirds the width, and set
-   off by a rule rather than by sitting flush, so it reads as a funder credit
-   and not as a second mark. The emblem's own proportions are fixed by the EU
-   rules, so width is capped and height follows. */
+/* Beneath the lock-up and clearly second to it: two thirds the width, centred
+   under it, and set off by a rule rather than sitting flush, so it reads as a
+   funder credit and not as a second mark.
+
+   The rule is on the wrapper, not on the image, so it spans the column rather
+   than stopping at the emblem's edges -- a rule exactly as wide as the thing
+   under it underlines rather than separates. The emblem's own proportions are
+   fixed by the EU rules, so width is capped and height follows. */
 .hero-eu {
+	margin-top: 1.1rem;
+	padding-top: 1.1rem;
+	border-top: 1px solid var(--border);
+}
+
+.hero-eu img {
 	width: 66%;
 	max-width: 200px;
 	height: auto;
 	display: block;
-	margin-top: 1.1rem;
-	padding-top: 1.1rem;
-	border-top: 1px solid var(--border);
+	margin: 0 auto;
 }
 
 /* ---- Roles strip ----------------------------------------------------- */

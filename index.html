@@ -97,8 +97,10 @@ description: >-
         emblem rules require to accompany it -- the disclaimer stays in the
         footer rather than being repeated here.
       {%- endcomment -%}
-      <img class="hero-eu" src="{{ site.eu.emblem | relative_url }}"
-           alt="{{ site.eu.emblem_alt }}" width="260" height="55">
+      <div class="hero-eu">
+        <img src="{{ site.eu.emblem | relative_url }}"
+             alt="{{ site.eu.emblem_alt }}" width="260" height="55">
+      </div>
     </div>
   </section>
 

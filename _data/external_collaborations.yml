@@ -1,4 +1,4 @@
-# Externally funded projects GLOW works with. Not people -- _data/people.yml has
+# External collaborations: the funded projects GLOW works with. Not people -- _data/people.yml has
 # the collaborators, and work_packages.yml has per-task `partners` for the named
 # individuals on a specific task. This file is for the projects themselves, which
 # outlive any one task and are worth linking to.
