@@ -9,24 +9,6 @@
 # Items newer than the freshness window (set in index.html) carry a "New" flag,
 # which expires on its own at the next site build.
 
-- date: 2025-11-01
-  text: >-
-    GLOW was selected for funding in the 2025 ERC Consolidator Grant call.
-  links:
-    - text: "ERC 2025 Consolidator results"
-      url: "https://erc.europa.eu/news-events/news/erc-2025-consolidator-grants-results"
-    - text: "AEI announcement"
-      url: "https://www.aei.mpg.de/1359867/erc-consolidator-grant-for-miguel-zumalac-rregui"
-
-- date: 2026-02-01
-  text: >-
-    Black holes as telescopes, on finding supermassive black-hole binaries
-    through quasi-periodic lensed starlight, was published in Physical Review
-    Letters as an Editors' Suggestion.
-  links:
-    - text: "PRL 136, 061403"
-      url: "https://dx.doi.org/10.1103/1sfl-87t4"
-
 # CHECK THE MONTH: dated to the acceptance. August is an assumption carried over
 # from the personal site -- the preprint went out in December 2025.
 - date: 2026-08-01
