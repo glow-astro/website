@@ -22,32 +22,43 @@ description: >-
   {%- endcomment -%}
   <figure class="hero-banner">
     {%- comment -%}
-      Deliberately not `loop`. The clip is the "breathe" render: it runs once
-      from the longest wavelength to the shortest, and the last 2.5 s drift the
-      wavelength a little either side of where that landed. Looping the whole
-      thing would dissolve the name and re-form it every few seconds, throwing
-      away the point of the sweep.
+      Two clips, not one. The name resolves once and then breathes, and those
+      are different jobs: the reveal must never repeat, the breathing must never
+      stop. A single clip cannot do both -- `loop` would replay the reveal, and
+      seeking past it does not work either, because the encoder gives a clip one
+      keyframe for its whole length (`-g` = frame count, in
+      application_plots/utils/anim_encode.py), so a seek into the middle lands
+      back at the start. That was tried and it replayed the reveal every six
+      seconds.
 
-      `data-loop-from` is where the drift begins, as a fraction of the clip --
-      frame 84 of 146. assets/js/hero-loop.js seeks back there when the video
-      ends, so the breathing continues but the reveal happens once. Without
-      that script the video stops on the word, which is what it did before.
+      So: glow-word.webm plays once, then assets/js/hero-loop.js swaps to
+      glow-word-loop.webm, which loops natively. The last frame of the first and
+      the first frame of the second are the same wavelength -- 400 nm, where the
+      reveal lands -- so the change is invisible. The second is preloaded when
+      the first starts, five seconds before it is needed.
+
+      Without JavaScript the first clip plays and stops on the word, and the
+      second never loads. That is the behaviour the site had before the
+      breathing existed.
     {%- endcomment -%}
-    <video width="1560" height="780" autoplay muted playsinline
-           data-loop-from="0.5753"
-           poster="{{ '/media/glow-word-breathe_still.png' | relative_url }}"
-           aria-label="Animation: the word GLoW, formed by light passing through letter-shaped openings. It begins as a blur of orange and red interference fringes and sharpens until the word is legible, after which the fringes along the letters keep shifting slightly.">
-      <source src="{{ '/media/glow-word-breathe.webm' | relative_url }}" type="video/webm">
+    <div class="hero-stack" data-hero-loop>
+      <video width="1560" height="780" autoplay muted playsinline
+             poster="{{ '/media/glow-word_still.png' | relative_url }}"
+             aria-label="Animation: the word GLoW, formed by light passing through letter-shaped openings. It begins as a blur of orange and red interference fringes and sharpens until the word is legible, after which the fringes along the letters keep shifting slightly.">
+        <source src="{{ '/media/glow-word.webm' | relative_url }}" type="video/webm">
+      </video>
       {%- comment -%}
-        WebM only.  The generators encode one format per geometry as of 2026-08-21
-        -- webm for `web`, mp4 for `talk` -- so there is no web mp4 to point at any
-        more, and a <source> line for one would serve whatever stale file survived
-        the old two-format renders.  That is worse than no fallback: a page quietly
-        showing the previous version of a figure to exactly the browsers that cannot
-        check.  Floor this sets: Safari gained WebM in 14.1 (macOS) and iOS 17.4;
-        older ones hold on the poster, which is a real frame and says most of it.
+        No `autoplay`: it must not start until the reveal has finished, and
+        leaving it off also keeps reduced-motion.js away from it -- that script
+        matches video[autoplay], so under reduced motion it pauses the reveal
+        and this one is simply never shown. aria-hidden because it is the same
+        word continuing to move; the label above already describes it.
       {%- endcomment -%}
-    </video>
+      <video class="hero-breathe" width="1560" height="780" loop muted playsinline
+             preload="none" aria-hidden="true" tabindex="-1">
+        <source src="{{ '/media/glow-word-loop.webm' | relative_url }}" type="video/webm">
+      </video>
+    </div>
     <figcaption>
       The project's name as a diffraction pattern: simulated light shot through
       an opening with the project's acronym and projected on a screen
@@ -127,7 +138,7 @@ description: >-
 
   <!-- ============ Objectives ============ -->
   <section class="section" aria-labelledby="objectives-heading">
-    <h2 id="objectives-heading">What the project sets out to do</h2>
+    <h2 id="objectives-heading">Project goals</h2>
     <dl class="roles">
       <div>
         <dt>Discover lensed gravitational waves</dt>

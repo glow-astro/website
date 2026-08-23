@@ -510,6 +510,26 @@ main { padding-bottom: 3rem; }
 	.hero-banner video { max-height: 190px; }
 }
 
+/* The two hero clips occupy one box: the reveal sizes it, the breathing loop
+   lies on top of it. Stacked rather than swapped in place so the second is
+   already decoded when it is needed -- replacing the src of one element shows
+   a gap while the new file is fetched, and this hero is the first thing on the
+   page. Both end and begin on the same frame, so the crossover is invisible. */
+.hero-stack { position: relative; }
+
+.hero-breathe {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+}
+
+/* Swapped by assets/js/hero-loop.js when the reveal ends. No transition: the
+   two frames are identical, so a fade would only make the change visible. */
+.hero-stack.is-looping .hero-breathe { opacity: 1; }
+.hero-stack.is-looping > video:first-child { opacity: 0; }
+
 .hero-banner figcaption {
 	margin-top: 0.7rem;
 	font-size: 0.86rem;

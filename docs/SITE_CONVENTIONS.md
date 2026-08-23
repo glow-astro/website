@@ -264,11 +264,14 @@ Everything degrades: with JavaScript off, the site is fully readable.
 - `reduced-motion.js` — under `prefers-reduced-motion`, pauses autoplaying
   figures and exposes controls, so the setting hands the content over rather
   than removing it.
-- `hero-loop.js` — replays only the tail of a video carrying
-  `data-loop-from`. The hero animation forms the project's name once and then
-  breathes; looping the whole clip would dissolve and re-form the name every
-  few seconds. Runs after `reduced-motion.js` and checks the same query, so a
-  paused video is left paused.
+- `hero-loop.js` — hands a hero animation over from its one-shot clip to its
+  looping one. Two `<video>` elements stacked in `[data-hero-loop]`: the first
+  autoplays once, the second loops, and they meet on the same frame so swapping
+  opacity shows nothing. **Two files, not one with a seek** — the animation
+  encoder gives a clip a single keyframe for its whole length, so seeking past
+  the reveal resolves to the start and the reveal replays. That was built and
+  it did exactly that. Runs after `reduced-motion.js` and checks the same
+  query, so a paused video is left paused.
 
 (The personal site also has `anchor-aliases.js`, redirecting its old dead
 fragments. This site has no old fragments to redirect and does not carry it.)
