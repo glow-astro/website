@@ -1,0 +1,24 @@
+---
+layout: page
+nav: news
+title: "News"
+eyebrow: "News"
+lede: >-
+  Everything the project has announced, newest first.
+description: >-
+  News from the GLOW project: grant milestones, published results and
+  releases, with links to the papers and announcements behind them.
+---
+
+{%- comment -%}
+  The full archive. The home page shows the most recent few and links here when
+  there are more than it shows; this page never truncates.
+
+  Not in the top menu on purpose -- the menu is for the parts of the project,
+  and news is a stream rather than a part. The footer carries it, which is
+  where a reader looks for a page that is not a section.
+{%- endcomment -%}
+<section class="section" aria-labelledby="all-news-heading">
+  <h2 id="all-news-heading">All news</h2>
+  {% include news-list.html %}
+</section>

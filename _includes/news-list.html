@@ -1,0 +1,40 @@
+{%- comment -%}
+  The dated news list, from _data/news.yml, newest first. Shared by the home
+  page and news.html so the markup and the freshness rule cannot drift between
+  them -- which they would, since the flag logic is four lines of date
+  arithmetic that nobody would think to update twice.
+
+      {% include news-list.html limit=4 %}    the most recent four
+      {% include news-list.html %}            everything
+
+  The "New" flag is driven by the item's own date against FRESH_DAYS, so it
+  expires by itself at the next site build -- which here means the next
+  tools/deploy_review.sh, since the site is built locally and uploaded rather
+  than built by the host.
+{%- endcomment -%}
+{%- assign FRESH_DAYS = 90 -%}
+{%- assign fresh_window = FRESH_DAYS | times: 86400 -%}
+{%- assign fresh_after = site.time | date: '%s' | plus: 0 | minus: fresh_window -%}
+{%- assign all_news = site.data.news | sort: 'date' | reverse -%}
+{%- if include.limit -%}
+  {%- assign shown = all_news | slice: 0, include.limit -%}
+{%- else -%}
+  {%- assign shown = all_news -%}
+{%- endif -%}
+<ul class="news">
+  {%- for n in shown %}
+  {%- assign stamp = n.date | date: '%s' | plus: 0 %}
+  <li>
+    <time class="news-date" datetime="{{ n.date | date: '%Y-%m' }}">{{ n.date | date: '%b %Y' }}</time>
+    <p class="news-body">
+      {%- if stamp > fresh_after %}<span class="news-flag">New</span>{% endif -%}
+      {{ n.text }}
+      {%- if n.links %}
+      <span class="news-links">
+        {%- for l in n.links %}<a href="{{ l.url }}" rel="noopener">{{ l.text }}</a>{% unless forloop.last %} &middot; {% endunless %}{% endfor -%}
+      </span>
+      {%- endif %}
+    </p>
+  </li>
+  {%- endfor %}
+</ul>

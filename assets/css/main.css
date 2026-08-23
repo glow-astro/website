@@ -729,6 +729,14 @@ figure.float-left {
 	font-size: 0.92rem;
 }
 
+/* Link to the archive, under the list. Sized with .news-links rather than with
+   body text: it is an exit from the section, not another item in it. Only
+   rendered when the archive holds more than the home page shows. */
+.news-more {
+	margin: 0.9rem 0 0;
+	font-size: 0.92rem;
+}
+
 /* Only items inside the freshness window carry this, and the template stops
    emitting it once they age out — so the motion always means something. It
    cycles between the two accents rather than the old site's yellow and pink,

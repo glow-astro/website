@@ -88,33 +88,20 @@ description: >-
        page — a project site is checked for what has happened lately, and the
        reader should not have to scroll past the science to find out.
 
-       From _data/news.yml, newest first. The "New" flag is driven by the item's
-       own date against FRESH_DAYS below, so it expires by itself at the next
-       site build — which here means the next tools/deploy_review.sh, since the
-       site is built locally and uploaded rather than built by the host. -->
-  {%- assign FRESH_DAYS = 90 %}
-  {%- assign fresh_window = FRESH_DAYS | times: 86400 %}
-  {%- assign fresh_after = site.time | date: '%s' | plus: 0 | minus: fresh_window %}
-  {%- assign news = site.data.news | sort: 'date' | reverse %}
+       The list itself is _includes/news-list.html, shared with news.html. -->
+  {%- assign NEWS_SHOWN = 4 %}
   <section class="section" aria-labelledby="news-heading">
     <h2 id="news-heading">News</h2>
-    <ul class="news">
-      {%- for n in news limit: 4 %}
-      {%- assign stamp = n.date | date: '%s' | plus: 0 %}
-      <li>
-        <time class="news-date" datetime="{{ n.date | date: '%Y-%m' }}">{{ n.date | date: '%b %Y' }}</time>
-        <p class="news-body">
-          {%- if stamp > fresh_after %}<span class="news-flag">New</span>{% endif -%}
-          {{ n.text }}
-          {%- if n.links %}
-          <span class="news-links">
-            {%- for l in n.links %}<a href="{{ l.url }}" rel="noopener">{{ l.text }}</a>{% unless forloop.last %} &middot; {% endunless %}{% endfor -%}
-          </span>
-          {%- endif %}
-        </p>
-      </li>
-      {%- endfor %}
-    </ul>
+    {% include news-list.html limit=NEWS_SHOWN %}
+    {%- comment -%}
+      The archive link appears only once there is something the home page is
+      not already showing. Until then it would be a link to the same list,
+      which teaches a reader that following it is not worth doing.
+    {%- endcomment -%}
+    {%- assign news_total = site.data.news | size %}
+    {%- if news_total > NEWS_SHOWN %}
+    <p class="news-more"><a href="{{ '/news.html' | relative_url }}">All news</a></p>
+    {%- endif %}
   </section>
 
   <!-- ============ Objectives ============ -->
