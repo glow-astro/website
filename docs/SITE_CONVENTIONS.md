@@ -247,19 +247,31 @@ Escaping LaTeX from Liquid has three traps, all solved in
 If you build the same thing for GLOW (a PDF and a page from one source), copy
 these three includes wholesale rather than rediscovering the traps.
 
-## 6. JavaScript: three scripts, each doing one thing
+## 6. JavaScript: five scripts, each doing one thing
 
 Everything degrades: with JavaScript off, the site is fully readable.
 
+- `sticky-bars.js` — measures the header and the topic bar into `--header-h`
+  and `--topicnav-h`, so whatever sits below them knows where to start. The
+  bars are `position: sticky` in CSS with fallback values, not positioned here.
 - `subnav.js` — the sticky in-page section bar. Measures the header height
   rather than hard-coding it, and marks the section in view with
   `aria-current`. At the foot of the page it marks the last section, because a
   short final section never reaches the cutoff.
-- `anchor-aliases.js` — redirects the old site's dead fragments
-  (`research.html#pbh` → `#main-program`) so external links keep working.
 - `external-links.js` — gives off-site links and the site's own PDFs
   `target="_blank"` and `rel="noopener"`. One rule beats two hundred attributes
   scattered across pages and data files.
+- `reduced-motion.js` — under `prefers-reduced-motion`, pauses autoplaying
+  figures and exposes controls, so the setting hands the content over rather
+  than removing it.
+- `hero-loop.js` — replays only the tail of a video carrying
+  `data-loop-from`. The hero animation forms the project's name once and then
+  breathes; looping the whole clip would dissolve and re-form the name every
+  few seconds. Runs after `reduced-motion.js` and checks the same query, so a
+  paused video is left paused.
+
+(The personal site also has `anchor-aliases.js`, redirecting its old dead
+fragments. This site has no old fragments to redirect and does not carry it.)
 
 ## 7. Design
 

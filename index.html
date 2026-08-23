@@ -22,15 +22,22 @@ description: >-
   {%- endcomment -%}
   <figure class="hero-banner">
     {%- comment -%}
-      Deliberately not `loop`. This is the one-way "reveal" render: it runs from
-      the longest wavelength to the shortest and ends held on the readable word.
-      Looping it would spend most of the time on the unreadable end and throw
+      Deliberately not `loop`. The clip is the "breathe" render: it runs once
+      from the longest wavelength to the shortest, and the last 2.5 s drift the
+      wavelength a little either side of where that landed. Looping the whole
+      thing would dissolve the name and re-form it every few seconds, throwing
       away the point of the sweep.
+
+      `data-loop-from` is where the drift begins, as a fraction of the clip --
+      frame 84 of 146. assets/js/hero-loop.js seeks back there when the video
+      ends, so the breathing continues but the reveal happens once. Without
+      that script the video stops on the word, which is what it did before.
     {%- endcomment -%}
     <video width="1560" height="780" autoplay muted playsinline
-           poster="{{ '/media/glow-word_still.png' | relative_url }}"
-           aria-label="Animation: the word GLoW, formed by light passing through letter-shaped openings. It begins as a blur of orange and red interference fringes and sharpens until the word is legible.">
-      <source src="{{ '/media/glow-word.webm' | relative_url }}" type="video/webm">
+           data-loop-from="0.5753"
+           poster="{{ '/media/glow-word-breathe_still.png' | relative_url }}"
+           aria-label="Animation: the word GLoW, formed by light passing through letter-shaped openings. It begins as a blur of orange and red interference fringes and sharpens until the word is legible, after which the fringes along the letters keep shifting slightly.">
+      <source src="{{ '/media/glow-word-breathe.webm' | relative_url }}" type="video/webm">
       {%- comment -%}
         WebM only.  The generators encode one format per geometry as of 2026-08-21
         -- webm for `web`, mp4 for `talk` -- so there is no web mp4 to point at any
@@ -45,7 +52,8 @@ description: >-
       The project's name as a diffraction pattern: simulated light shot through
       an opening with the project's acronym and projected on a screen
       100&nbsp;mm behind them. The wavelength sweeps down until the word
-      resolves.
+      resolves, then drifts either side of that value &mdash; enough to keep the
+      fringes moving, not enough to lose the word.
     </figcaption>
   </figure>
 
@@ -80,6 +88,17 @@ description: >-
     <div class="hero-media">
       <img class="hero-logo" src="{{ '/imgs/GLOW_Extended_Logo_Full_Color_for_Dark_Backgrounds_RGB.png' | relative_url }}"
            alt="" width="6250" height="3064">
+      {%- comment -%}
+        The EU emblem, subordinate to the lock-up above it: smaller, and second.
+        The obligation is already met by the footer, which carries the emblem
+        and the disclaimer on every page; this is the same emblem placed where
+        it is seen without scrolling. The file is the white-wordmark variant and
+        so carries "Funded by the European Union" itself, which is what the
+        emblem rules require to accompany it -- the disclaimer stays in the
+        footer rather than being repeated here.
+      {%- endcomment -%}
+      <img class="hero-eu" src="{{ site.eu.emblem | relative_url }}"
+           alt="{{ site.eu.emblem_alt }}" width="260" height="55">
     </div>
   </section>
 
