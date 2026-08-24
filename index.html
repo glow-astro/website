@@ -14,7 +14,7 @@ description: >-
   <!-- ============ Hero ============ -->
   {%- comment -%}
     The project's name written by the effect the project studies: the letters
-    GLoW used as an aperture, with the wavelength swept until the word stops
+    GLOW used as an aperture, with the wavelength swept until the word stops
     being legible. It sits above the hero rather than replacing the logo in it
     -- the lock-up is the official mark and has its own rules -- and it carries
     a caption, because on this site a picture that only decorates is a picture
@@ -31,19 +31,20 @@ description: >-
       back at the start. That was tried and it replayed the reveal every six
       seconds.
 
-      So: glow-word-v2.webm plays once, then assets/js/hero-loop.js swaps to
-      glow-word-loop-v2.webm, which loops natively. The last frame of the first and
+      So: glow-word-v3.webm plays once, then assets/js/hero-loop.js swaps to
+      glow-word-loop-v3.webm, which loops natively. The last frame of the first and
       the first frame of the second are the same wavelength -- 400 nm, where the
       reveal lands -- and both are *stationary* there: the reveal decelerates
       into it and the breathing tail starts on a turning point of its own
       oscillation, so the hand-over has no step in velocity either. The second
       is preloaded when the first starts, six seconds before it is needed.
 
-      The `-v2` in the names is the cache rule in section 3 of
-      docs/SITE_CONVENTIONS.md: these two files were re-rendered on 2026-08-24
-      and a returning visitor holding the old ones would have been served the
-      previous timing out of cache -- which is exactly the thing the re-render
-      fixed, so it would have looked like the fix had not landed.
+      The version suffix is the cache rule in section 3 of
+      docs/SITE_CONVENTIONS.md. Same name with new content serves a returning
+      visitor the old clip out of cache, which looks exactly like the change
+      not having landed. Both files were re-rendered twice on 2026-08-24 --
+      once for the timing, once for GLOW in capitals and a wider swing -- so
+      they are at -v3.
 
       Without JavaScript the first clip plays and stops on the word, and the
       second never loads. That is the behaviour the site had before the
@@ -51,9 +52,9 @@ description: >-
     {%- endcomment -%}
     <div class="hero-stack" data-hero-loop>
       <video width="1560" height="780" autoplay muted playsinline
-             poster="{{ '/media/glow-word-v2_still.png' | relative_url }}"
-             aria-label="Animation: the word GLoW, formed by light passing through letter-shaped openings. It begins as a blur of orange and red interference fringes and sharpens until the word is legible, after which the fringes along the letters keep shifting slightly.">
-        <source src="{{ '/media/glow-word-v2.webm' | relative_url }}" type="video/webm">
+             poster="{{ '/media/glow-word-v3_still.png' | relative_url }}"
+             aria-label="Animation: the word GLOW, formed by light passing through letter-shaped openings. It begins as a blur of orange and red interference fringes and sharpens until the word is legible, after which the fringes along the letters keep shifting slightly.">
+        <source src="{{ '/media/glow-word-v3.webm' | relative_url }}" type="video/webm">
       </video>
       {%- comment -%}
         No `autoplay`: it must not start until the reveal has finished, and
@@ -64,15 +65,16 @@ description: >-
       {%- endcomment -%}
       <video class="hero-breathe" width="1560" height="780" loop muted playsinline
              preload="none" aria-hidden="true" tabindex="-1">
-        <source src="{{ '/media/glow-word-loop-v2.webm' | relative_url }}" type="video/webm">
+        <source src="{{ '/media/glow-word-loop-v3.webm' | relative_url }}" type="video/webm">
       </video>
     </div>
     <figcaption>
       The project's name as a diffraction pattern: simulated light shot through
       an opening with the project's acronym and projected on a screen
       100&nbsp;mm behind them. The wavelength sweeps down until the word
-      resolves, then drifts a tenth longer and back, once every four seconds
-      &mdash; enough to keep the fringes moving, not enough to lose the word.
+      resolves, then drifts a fifth longer and back every three and a half
+      seconds &mdash; enough to keep the fringes moving, not enough to lose the
+      word.
     </figcaption>
   </figure>
 

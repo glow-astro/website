@@ -13,7 +13,7 @@
    opacity at the join shows nothing.
 
    The second is fetched when the first starts playing, which is about six and a
-   half seconds of head start for 0.6 MB, rather than at page load where it
+   half seconds of head start for 0.9 MB, rather than at page load where it
    would compete with the clip actually on screen.
 
    Degrades to the first clip playing once and stopping on the word -- what the
