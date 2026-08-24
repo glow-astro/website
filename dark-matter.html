@@ -4,16 +4,23 @@ nav: science
 title: "Dark matter & small scales"
 eyebrow: "Science"
 lede: >-
-  Diffraction is sensitive to structure on scales no image can resolve, which makes coherent sources one of the few probes of dark matter below the size of a galaxy.
+  Diffraction is sensitive to structure on scales that are dark but pristine, where baryons are neither a contaminant nor a window — which makes coherent sources an excellent probe of dark matter.
 description: >-
-  Diffraction is sensitive to structure no image can resolve, which makes coherent sources a probe of dark matter below the scale of a galaxy.
+  Diffraction reaches dark-matter structure below the scale a telescope can resolve, from individual halo profiles to the collective imprint of a whole population.
 # Cited on this page, in order of first appearance -- and that order is
 # the numbering. Pulled from _data/references.yml, which several pages
 # share; the numbers here are this page's own.
 refs:
-  - nadler-small-scale
   - carr-pbh
+  - nadler-small-scale
+  - bringmann-power-spectrum
+  - jow-pta-scintillation
+  - tambalo-halo-properties
+  - savastano-weakly-lensed
+  - kaplinghat-sidm
+  - zumalacarregui-stochastic
   - lisa-definition
+  - urrutia-dark-timbre
 topic_id: dark-matter
 ---
 
@@ -22,21 +29,35 @@ topic_id: dark-matter
 {% include topicnav.html %}
 
 {% include topic-figure.html topic=t %}
-<section class="section" id="problem" aria-labelledby="problem-heading">
-  <h2 id="problem-heading">The scales where the problem lives</h2>
+<section class="section" id="scales" aria-labelledby="scales-heading">
+  <h2 id="scales-heading">Accessing dark and pristine scales</h2>
   <p>
-    On large scales, cold dark matter works: the distribution of galaxies and
-    the cosmic microwave background are described by it to remarkable precision.
-    The questions that distinguish between candidates — whether dark matter is a
-    particle, a field, or a population of compact objects — live on much smaller
-    scales, where the predictions of different models diverge and observations
-    run out.{% include cite.html key="nadler-small-scale" %}
+    The cosmological abundance of dark matter is known to sub-per-cent accuracy,
+    but its distribution is only directly observed down to sub-galactic scales.
+    Below about 10<sup>6</sup>&nbsp;M<sub>☉</sub> halos go dark: their
+    gravitational potentials are too shallow to hold enough baryons to form
+    stars. That is a curse and a blessing at once — it makes light dark-matter
+    halos a pristine testbed of dark-matter properties, insensitive to the
+    complicated astrophysics that shapes larger structures.
   </p>
   <p>
-    The obstacle is that these scales are, by construction, hard to see. Objects
-    below the mass of a dwarf galaxy contain few stars or none at all, and
-    conventional lensing cannot resolve them: an image cannot show structure
-    smaller than the telescope can resolve.
+    Small scales are also where dark-matter scenarios are most easily told
+    apart. Theories are selected to explain observations on large scales, and
+    that leaves them considerable freedom below the size of a galaxy, where
+    their predictions diverge — some suppressing small-scale structure
+    (ultra-light and warm dark matter), others enhancing it (self-interacting
+    particles, or primordial black holes{% include cite.html key="carr-pbh" %}).
+    New probes of dark halos therefore have great potential to advance
+    fundamental physics.{% include cite.html key="nadler-small-scale" %}
+  </p>
+  <p>
+    Beyond the nature of dark matter itself, diffraction gives access to the
+    initial conditions of the very early Universe. Many scenarios for the
+    formation of cosmic structure — within the inflationary paradigm, for
+    instance — predict an enhancement of the primordial fluctuations, which
+    would leave small-scale halos denser and more
+    abundant.{% include cite.html key="bringmann-power-spectrum" %} Any
+    observation in that regime is a look into the Universe's earliest moments.
   </p>
 
   {%- comment -%}
@@ -51,37 +72,66 @@ topic_id: dark-matter
          width="1893" height="761" loading="lazy"
          alt="Fraction of dark matter in compact objects against object mass, from 10 to the minus 18 up to 10 to the 7 solar masses. Thin grey lines are individual limits, each labelled — evaporation, HSC, stars, quasars, gravitational waves from O3, supernovae, radio and dynamics. A single bright line traces the strongest limit at each mass, with everything above it shaded as excluded. Coloured bands along the bottom label which messenger reaches which mass range, from X-rays through visible and infrared to FRBs, ground-based gravitational waves and LISA.">
     <figcaption>
-      How much of the dark matter could be compact objects of a given mass.
-      Each thin grey line is one limit, from a different observation; the bright
-      line running across them is the envelope — the strongest constraint at
-      every mass — and everything above it is ruled out. What is left below is
-      what remains possible, and it is not small: around 10<sup>−9</sup> and
-      again above a solar mass, a per-cent-level fraction of the dark matter
-      could still be compact objects. The coloured bands underneath say which
-      signal reaches which mass, each set by its own wavelength. Gravitational
-      waves already contribute one of these limits, from the O3 observing run.
+      Limits on the abundance of compact objects as a function of their mass,
+      normalized by the dark-matter density. Thin grey lines are current
+      limits, compiled in
+      <a href="https://github.com/bradkav/PBHbounds" rel="noopener">PBHbounds</a>;
+      everything above them is ruled out. The coloured bands indicate the masses
+      probed by each spectral range or observatory.
     </figcaption>
   </figure>
 </section>
 
-<section class="section" id="probe" aria-labelledby="probe-heading">
-  <h2 id="probe-heading">Why diffraction reaches them</h2>
+<section class="section" id="microscopes" aria-labelledby="microscopes-heading">
+  <h2 id="microscopes-heading">Coherent waves as microscopes</h2>
   <p>
-    Diffraction is not limited by resolution. A wave is sensitive to any mass
-    within the Fresnel scale of its path, and that scale is set by the
-    wavelength, not by an instrument. An object that no telescope could image
-    still leaves a frequency-dependent imprint on a wave that passes it closely
-    enough.
+    The sensitivity of diffraction is set by the wavelength of the coherent
+    source, and each band reaches a different mass. Ground-based
+    gravitational-wave detectors probe stellar- to intermediate-mass objects;
+    space-borne detectors are ideal for sub-galactic halos. At the longest
+    wavelengths, the nanohertz waves seen by pulsar-timing arrays raise the
+    possibility of “microlensing by
+    galaxies”.{% include cite.html key="jow-pta-scintillation" %} Radio sources
+    are sensitive to planetary masses, with the potential not only to probe dark
+    matter but to find extragalactic planets. At optical frequencies and above,
+    wave optics becomes essential for asteroid-mass objects — a window in which
+    all of the dark matter could still be compact objects.
   </p>
   <p>
-    This is the project's own version of that argument, computed rather than
-    drawn. As the frequency rises, the region around the line of sight that
-    contributes shrinks, and the number of halos inside it falls from thousands
-    to a handful. Low frequencies aggregate the whole population into a
-    collective distortion; high frequencies are shaped by the few objects that
-    remain. One signal therefore carries information about a range of masses,
-    and the way the distortion changes across the band is what distinguishes
-    many light lenses from one heavy one.
+    What makes diffraction a distinctive probe is the richness of its signal.
+    Because the source's frequency is measured, a diffraction pattern carries an
+    unambiguous imprint of the lens's mass scale. It is also sensitive to how
+    that mass is distributed, so observations can distinguish dark-matter
+    profiles — the presence of a core in a
+    halo,{% include cite.html key="tambalo-halo-properties" %} or substructure
+    within an object.{% include cite.html key="savastano-weakly-lensed" %} Some
+    of those properties map directly onto theories: self-interacting dark matter
+    predicts cores whose density is set by the interaction
+    cross-section.{% include cite.html key="kaplinghat-sidm" %} A coherent
+    source can characterize an individual halo, much as a diffraction pattern
+    characterizes a single slit — the figure at the top of this page.
+  </p>
+  <p>
+    A different regime emerges when halos are treated collectively, as
+    <a href="{{ '/microlensing.html' | relative_url }}">microlensing</a> treats
+    populations of stars. The result is stochastic
+    diffraction:{% include cite.html key="zumalacarregui-stochastic" %}
+    amplitude and phase fluctuations imprinted on every gravitational-wave
+    event, whose statistical properties encode the properties of the halo
+    population. Those fluctuations can be captured by an effective description
+    and separated from the parameters of the source, which would let
+    LISA{% include cite.html key="lisa-definition" %} probe halos between
+    10 and 10<sup>4</sup>&nbsp;M<sub>☉</sub> — far below the mass of any
+    individually detectable object, as forecast by
+    <a href="https://inspirehep.net/arxiv/2607.11887" rel="noopener">Choi,
+    Urrutia &amp; Zumalacárregui</a>.
+  </p>
+  <p>
+    Stochastic diffraction is present in every gravitational-wave signal. That
+    is the sense in which the Universe has a dark
+    timbre:{% include cite.html key="urrutia-dark-timbre" %} gravitational waves
+    carry information about dark matter in the way a concert sounds different in
+    an open-air stage and a concert hall.
   </p>
 
   <figure class="topic-figure">
@@ -100,38 +150,14 @@ topic_id: dark-matter
       {%- endcomment -%}
     </video>
     <figcaption>
-      A frequency sweep through one realization of 2502 cold-dark-matter halos
-      along the line of sight to a source at redshift 3. The Fresnel volume
-      shrinks as the frequency rises, so thousands of halos contribute at low
-      frequency and only a few dozen at high frequency — which is why a single
-      signal probes a range of masses at once. On the right, the real and
-      imaginary parts of the amplification factor they produce.
+      Stochastic diffraction and the dark timbre. A frequency sweep through one
+      realization of 2502 cold-dark-matter halos along the line of sight to a
+      source at redshift 3. Stochastic diffraction probes mainly the halos
+      within the Fresnel volume, highlighted here, which shrinks as the
+      frequency rises. On the right, the real and imaginary parts of the
+      amplification factor they produce.
     </figcaption>
   </figure>
-</section>
-
-<section class="section" id="targets" aria-labelledby="targets-heading">
-  <h2 id="targets-heading">What the project is looking for</h2>
-  <p>
-    Two regimes, on different instruments. With ground-based detectors the
-    targets are individual dense objects — the kind predicted by
-    self-interacting and ultra-light dark matter, or by primordial black holes
-    that have accreted a halo{% include cite.html key="carr-pbh" %} —
-    and the immediate task is to distinguish them
-    from stars and stellar remnants, which produce
-    <a href="{{ '/microlensing.html' | relative_url }}">similar signatures</a>
-    and are the dominant astrophysical systematic.
-  </p>
-
-  <p>
-    With LISA{% include cite.html key="lisa-definition" %} the target is the
-    population itself. Thousands of low-mass halos
-    along the line of sight to a massive black-hole binary leave a collective
-    diffraction imprint whose fluctuations, rather than any individual feature,
-    carry the signal. Making LISA's inference robust to that imprint, and then
-    turning it into a measurement of cold-dark-matter substructure, is one of
-    the project's principal goals.
-  </p>
 </section>
 
 <section class="section" id="references" aria-labelledby="references-heading">

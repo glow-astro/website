@@ -241,3 +241,39 @@
   title: "GWTC-4.0: searches for gravitational-wave lensing signatures"
   where: "arXiv preprint (2025)"
   url: "https://arxiv.org/abs/2512.16347"
+
+- id: bringmann-power-spectrum
+  authors: "T. Bringmann, D. Croon, S. Sevillano Muñoz"
+  title: "Updated constraints on the primordial power spectrum at sub-Mpc scales"
+  where: "Phys. Rev. Lett. 137, 061002 (2026)"
+  url: "https://arxiv.org/abs/2506.20704"
+
+- id: jow-pta-scintillation
+  authors: "D. L. Jow, U.-L. Pen"
+  title: "Measuring cosmic expansion with diffractive gravitational scintillation of nanohertz gravitational waves"
+  where: "Phys. Rev. Lett. 134, 131001 (2025)"
+  url: "https://arxiv.org/abs/2407.03214"
+
+- id: tambalo-halo-properties
+  authors: "G. Tambalo, M. Zumalacárregui, L. Dai, M. H.-Y. Cheung"
+  title: "Gravitational wave lensing as a probe of halo properties and dark matter"
+  where: "Phys. Rev. D 108, 103529 (2023)"
+  url: "https://arxiv.org/abs/2212.11960"
+
+- id: savastano-weakly-lensed
+  authors: "S. Savastano, G. Tambalo, H. Villarrubia-Rojo, M. Zumalacárregui"
+  title: "Weakly lensed gravitational waves: probing cosmic structures with wave-optics features"
+  where: "Phys. Rev. D 108, 103532 (2023)"
+  url: "https://arxiv.org/abs/2306.05282"
+
+- id: kaplinghat-sidm
+  authors: "M. Kaplinghat, S. Tulin, H.-B. Yu"
+  title: "Dark matter halos as particle colliders: unified solution to small-scale structure puzzles from dwarfs to clusters"
+  where: "Phys. Rev. Lett. 116, 041302 (2016)"
+  url: "https://arxiv.org/abs/1508.03339"
+
+- id: urrutia-dark-timbre
+  authors: "J. Urrutia, V. Vaskonen"
+  title: "Dark timbre of gravitational waves"
+  where: "Phys. Rev. D 111, 123047 (2025)"
+  url: "https://arxiv.org/abs/2402.16849"

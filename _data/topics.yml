@@ -217,12 +217,12 @@
   column: 2
   tint: lens
   card: >-
-    Halos and compact objects below 10<sup>6</sup> M<sub>☉</sub>, on scales
-    no image can resolve.
+    Halos and compact objects below 10<sup>6</sup> M<sub>☉</sub>, where baryons
+    no longer trace the mass.
   blurb: >-
-    Diffraction is sensitive to structure on scales no image can resolve, which
-    makes coherent sources one of the few probes of dark matter below the size
-    of a galaxy.
+    Diffraction is sensitive to structure on scales that are dark but pristine,
+    where baryons are neither a contaminant nor a window — which makes coherent
+    sources an excellent probe of dark matter.
   wps: ["WP3-A"]
   papers: ["2607.11887"]
   # Deliberately the simplest statement on the page, not the project's own
@@ -240,11 +240,9 @@
     caption: >-
       A diffraction pattern carries the shape of what made it, not just its
       size. An opening morphs through a circle, triangle, square, pentagon and
-      hexagon at fixed area, and the pattern grows spikes to match -- n of them
-      for an even-sided polygon and 2n for an odd-sided one, because opposite
-      parallel edges radiate into the same line. That sensitivity is what lets a
-      diffracted gravitational wave say whether a lens was a point mass or an
-      extended halo, rather than only how heavy it was.
+      hexagon at fixed area, and the pattern imprinted changes with it. The same
+      applies to dark-matter halos: diffraction probes not only a halo's mass
+      but the way that mass is distributed.
     source: "application_plots, family diffraction_shape_glow"
 
 - id: testing-gravity
