@@ -12,9 +12,9 @@
    autoplays once, the second loops. They meet on the same frame, so swapping
    opacity at the join shows nothing.
 
-   The second is fetched when the first starts playing, which is about five
-   seconds of head start, rather than at page load where it would compete with
-   the clip actually on screen.
+   The second is fetched when the first starts playing, which is about six and a
+   half seconds of head start for 0.6 MB, rather than at page load where it
+   would compete with the clip actually on screen.
 
    Degrades to the first clip playing once and stopping on the word -- what the
    page did before the breathing existed. Reduced motion is left alone:
