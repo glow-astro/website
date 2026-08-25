@@ -12,7 +12,9 @@
 #   url      INSPIRE record; arXiv link is built from `arxiv`
 #   date     YYYY-MM-DD, for ordering. Day is only for ties within a month.
 #   status   "preprint" | "accepted" | "published"
-#   journal  optional, only once there is one
+#   journal  optional, only once there is one. While "accepted" it is just
+#            the journal name, which the template prefixes; once "published"
+#            it carries the full reference, because the template prints it bare
 #   wps      work packages the paper belongs to
 #   summary  one sentence: what the paper does, not how well it was received
 #
@@ -30,8 +32,8 @@ papers:
     arxiv: "2512.17631"
     url: "https://inspirehep.net/arxiv/2512.17631"
     date: 2025-12-01
-    status: accepted
-    journal: "The Astrophysical Journal Letters"
+    status: published
+    journal: "The Astrophysical Journal Letters 1008, L12 (2026)"
     wps: ["WP2-A"]
     summary: >-
       A parameter-estimation analysis of GW231123 under lensed and unlensed

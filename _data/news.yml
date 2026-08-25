@@ -18,15 +18,23 @@
     - text: "AEI announcement"
       url: "https://www.aei.mpg.de/1359867/erc-consolidator-grant-for-miguel-zumalac-rregui"
 
-# CHECK THE MONTH: dated to the acceptance. August is an assumption carried over
-# from the personal site -- the preprint went out in December 2025.
-- date: 2026-08-01
+# Dated to publication, not acceptance: ApJL 1008, L12 (2026), published
+# 25 August 2026 (Crossref, DOI 10.3847/2041-8213/ae93b1). This settles the
+# month that used to be guessed here from the personal site -- August was
+# right, but for the wrong event.
+#
+# The AEI press release is embargoed until 26 August 2026. It is linked here
+# from 25 August, so the site must not be made public before the embargo
+# lifts. The review host is behind Access and is not public.
+- date: 2026-08-25
   text: >-
     The analysis of GW231123 as a magnified and diffracted black-hole merger,
-    the first compelling candidate of its kind, was accepted in
+    the first compelling candidate of its kind, was published in
     The Astrophysical Journal Letters.
   links:
     - text: "arXiv:2512.17631"
       url: "https://arxiv.org/abs/2512.17631"
+    - text: "AEI press release"
+      url: "https://www.aei.mpg.de/1490509/do-black-holes-pretend-to-have-large-masses"
     - text: "Cosmology Talk"
       url: "https://youtu.be/ZGqOpDTL8k4"
