@@ -206,6 +206,12 @@
   where: "arXiv preprint (2026)"
   url: "https://arxiv.org/abs/2607.19293"
 
+- id: desi-dr2-bao
+  authors: "DESI Collaboration, M. Abdul Karim et al."
+  title: "DESI DR2 results II: measurements of baryon acoustic oscillations and cosmological constraints"
+  where: "Phys. Rev. D 112, 083515 (2025)"
+  url: "https://arxiv.org/abs/2503.14738"
+
 - id: gondan-echoes
   authors: "L. Gondán, B. Kocsis"
   title: "Astrophysical gravitational-wave echoes from galactic nuclei"
