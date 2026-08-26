@@ -3,12 +3,20 @@ _site/
 .jekyll-metadata
 Gemfile.lock
 vendor/
-# The prose-review documents are NOT ignored. They are the owner's own edits --
-# tracked changes, hand-rewritten paragraphs -- and the round-by-round history of
-# them, which is the one part of this repository that cannot be rebuilt from
-# anything else. 424 KB in total. What keeps them out of the *built site* is the
-# `exclude` list in _config.yml, which is a different mechanism; this file was
-# briefly doing that job too (2ed180f) and should not have been.
+# The prose-review documents ARE ignored, as of 2026-08-26, at the owner's
+# request -- fifteen rounds had accumulated in the working tree. This reverses
+# the policy the previous comment here argued for, and the argument was not
+# wrong: an edited .odt is the owner's own hand and cannot be rebuilt from
+# anything else. What makes ignoring them safe is that nothing is lost -- every
+# round up to 2026-08-31 stays in git history, and the edits themselves were
+# read back into the site before the files were removed.
+#
+# A round's document is generated to /tmp by tools/make_review_doc.py and now
+# stays there. Copy one in only if the owner asks for it, and expect it to be
+# untracked. What keeps these out of the *built site* is the `exclude` list in
+# _config.yml, a different mechanism; this file was briefly doing that job too
+# (2ed180f) and should not have been.
+*.odt
 .~lock*
 
 # Scratch directory used by tools/preview.sh while a build is in progress.

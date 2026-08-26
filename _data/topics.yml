@@ -255,9 +255,9 @@
     Distortions on propagating waves that can't be produced in Einstein's
     theory.
   blurb: >-
-    A lensed gravitational wave is a controlled experiment in how gravity
-    propagates. Theories that modify it predict distortions no lens made of
-    ordinary matter can produce.
+    A lensed gravitational wave is an experiment in how gravity propagates on a
+    non-trivial space-time. Theories beyond Einstein predict distortions that no
+    lens made of ordinary matter can produce.
   wps: ["WP3-B"]
   papers: []
   media:
@@ -268,12 +268,20 @@
       as a snapshot in space; below, the two polarizations drift apart in time,
       and the detector would record a waveform scrambled relative to the
       prediction of general relativity.
+    # `cite` puts the marker at the very end of the caption, which is where the
+    # owner's "Adapted from" credit wants it -- one source covers the whole
+    # figure, so the caption can stay here rather than being overridden in the
+    # page.
+    cite: ezquiaga-birefringence
     caption: >-
-      Gravitational-wave birefringence. Top: a Vainshtein-screened lens crossing
-      the signal, which is drawn where it is in space — the low-frequency
-      inspiral leading, the merger at the packet and the ringdown trailing. The
-      lens gives the two polarizations slightly different speeds, so they pull
-      apart, here by 50 ms. Below: what a detector records. The delay is short
-      enough that the two copies overlap, so the waveform is scrambled rather
-      than repeated — and no electromagnetic counterpart is needed to see it.
+      Gravitational-wave birefringence. Top: the signal crosses a
+      Vainshtein-screened lens, with a non-trivial scalar-field configuration —
+      note that the low-frequency inspiral is emitted earlier and is shown
+      leading. The lens gives the two polarizations slightly different speeds,
+      which also differ from the speed of light. The lower panels show the
+      signal as recorded in the detector, split by polarization (middle) and the
+      combined signal (bottom). The delay is short enough that the two copies
+      overlap, so the waveform is scrambled rather than repeated — and no
+      electromagnetic counterpart is needed to see it. Adapted from Ezquiaga &
+      Zumalacárregui.
     source: "gw_birefringence, family birefringence_scramble"

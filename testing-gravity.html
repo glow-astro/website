@@ -4,14 +4,17 @@ nav: science
 title: "Testing gravity and dark energy"
 eyebrow: "Science"
 lede: >-
-  A lensed gravitational wave is a controlled experiment in how gravity propagates. Theories that modify it predict distortions no lens made of ordinary matter can produce.
+  A lensed gravitational wave is an experiment in how gravity propagates on a non-trivial space-time. Theories beyond Einstein predict distortions that no lens made of ordinary matter can produce.
 description: >-
   Lensed gravitational waves as a test of how gravity propagates, and what that says about theories of dark energy.
 # Cited on this page, in order of first appearance -- and that order is
 # the numbering. Pulled from _data/references.yml, which several pages
 # share; the numbers here are this page's own.
 refs:
+  - ezquiaga-birefringence
   - gw150914
+  - ezquiaga-multimessenger
+  - lvk-tgr-gwtc5
   - menadeo-propagation
   - ezquiaga-dark-energy
 topic_id: testing-gravity
@@ -26,16 +29,32 @@ topic_id: testing-gravity
   <h2 id="why-heading">A lens as an experiment on gravity</h2>
   <p>
     Gravitational waves are a direct probe of gravity in a way light is
-    not:{% include cite.html key="gw150914" %} they are gravity, propagating. Watching one travel across the Universe and
-    past a lens tests the theory that describes both the propagation and the
-    lensing, in one measurement.
+    not:{% include cite.html key="gw150914" %} they are gravity, and their
+    propagation is directly determined by the dynamics of the gravitational
+    sector. In contrast, the way light responds to gravity is very constrained,
+    the main effect on modified theories being how light deflection responds to
+    matter.
   </p>
   <p>
-    The observation that a lensed gravitational wave arrives at all is already
-    weakly informative, but it is not a demanding test — most alternatives to
-    general relativity predict lensing too. The interesting question is whether
-    the wave is distorted in ways that a lens made of ordinary matter cannot
-    produce, obeying general relativity.
+    A gravitational wave traveling across the Universe can be subject to a
+    wealth of additional effects: non-standard gravitational dynamics can affect
+    the amplitude, and even the speed, of gravitational
+    waves.{% include cite.html key="ezquiaga-multimessenger" %} Deviations are
+    routinely searched for, as a valuable test of the cosmological properties of
+    gravity.{% include cite.html key="lvk-tgr-gwtc5" %}
+  </p>
+  <p>
+    Gravitational waves will be lensed also in alternative theories. But the
+    presence of a lens dramatically increases the effects that dark energy and
+    modified gravity impart to observations of binary mergers:
+  </p>
+  <p>
+    The presence of a lens dramatically expands the imprints that non-standard
+    gravity can impart on GWs. Alternative theories feature additional fields,
+    which acquire non-trivial configurations in the presence of a lens, allowing
+    signatures that depend on the signal's polarization and frequency. This
+    allows lenses to split the two components of a GW like an anisotropic
+    crystal, or disperse them by frequency like a prism forming a rainbow.
   </p>
 </section>
 
@@ -45,21 +64,30 @@ topic_id: testing-gravity
     Theories that modify gravity generally introduce extra fields, and those
     fields respond to the mass of a lens. A wave passing through the region
     where a lens has excited such a field need not keep its polarization
-    structure intact.
+    structure intact: the non-trivial field configuration allows for different
+    properties of the two gravitational polarizations.
   </p>
   <p>
     The animation shows one example: <strong>birefringence</strong>. If the two
     polarization states travel at slightly different speeds, one pulls ahead of
-    the other. When the delay is long, the detector sees an echo; when it is
+    the other. When the delay is long, the signal is split into two; when it is
     short, the two copies overlap and the waveform is scrambled into something
-    no unlensed source produces. Related effects give the propagation a
-    frequency dependence that ordinary lensing does
-    not.{% include cite.html key="menadeo-propagation" %}
+    no unlensed source
+    produces.{% include cite.html key="ezquiaga-birefringence" %}
   </p>
   <p>
-    These are qualitatively distinct signatures, not small corrections to a
-    known shape, which is what makes them worth looking for even when the
-    expected effect is small.
+    Related effects give the propagation a frequency dependence that ordinary
+    matter in Einstein's theory can not
+    produce.{% include cite.html key="menadeo-propagation" %} The
+    frequency-dependent propagation stems from very simple interaction with any
+    new gravitational field (zero derivatives): we expect it to be a universal
+    signature of any non-minimal theory beyond Einstein.
+  </p>
+  <p>
+    These are qualitatively distinct signatures, not effects that can be easily
+    mistaken by changes in the source's properties. And because they distort the
+    signal, these tests can be performed on the entire sample of GW events, not
+    just rare multi-messenger events.
   </p>
 
   <!-- Adapted from the table in Menadeo & Zumalacarregui, which the grant
@@ -141,17 +169,20 @@ topic_id: testing-gravity
   <h2 id="cosmology-heading">Connecting to dark energy</h2>
   <p>
     The same extra fields that would modify how a wave propagates past a lens
-    are the ones invoked to explain the accelerating expansion of the Universe.
-    A constraint on gravitational-wave propagation is therefore a constraint on
-    dark-energy theories,{% include cite.html key="ezquiaga-dark-energy" %} and
-    it applies where cosmological observations are
-    weakest — on the scales of individual lenses rather than of the Universe as
-    a whole.
+    are often invoked to explain the accelerating expansion of the Universe. A
+    decisive advantage of GW propagation tests is their capacity to constrain
+    dark-energy theories,{% include cite.html key="ezquiaga-dark-energy" %}
+    offering routes complementary to supernovae, the cosmic microwave background
+    or galaxy surveys. In contrast, tests of GW emission are often limited to
+    theories that modify gravity in strong fields, the opposite regime than is
+    required to alter cosmological dynamics.
   </p>
   <p>
     The project will release these constraints as likelihoods usable with
-    Einstein–Boltzmann solvers, so that they can be combined with cosmological
-    data rather than quoted beside it.
+    Einstein–Boltzmann solvers, like the
+    <a href="https://hiclass-code.net/" rel="noopener">hi-class code</a>, so
+    that they can be combined with cosmological data rather than quoted beside
+    it.
   </p>
 </section>
 
