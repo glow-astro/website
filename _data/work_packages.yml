@@ -10,6 +10,9 @@
 #              title    short title
 #              body     what the task does. Prose, no markup.
 #              outputs  optional list of concrete deliverables
+#              papers   optional [{short, url}] -- the method a task builds on,
+#                       rendered like the method paper of a tool on the
+#                       software page
 #   partners optional list of named external collaborators, as "Name (Institution)"
 
 - id: wp1
@@ -23,36 +26,29 @@
     - code: "WP1-A"
       title: "Microlensing diffraction"
       body: >-
-        Quantify how populations of microlenses and the external potential of a
-        host galaxy — magnification, proximity to caustics — shape a lensed
-        signal. Reaching the required performance means substantially extending
-        the public GLoW code: a two-dimensional tree algorithm for the lensing
-        potential and its derivatives, which improves the scaling with the number
-        of microlenses from the number of stars to its logarithm; contour
-        integration combined with adaptive brute-force sampling near the
-        macroimage; and optional GPU support. Semi-analytical approximations,
-        separating the contributions of heavy, intermediate and light microlenses,
-        provide both speed and insight. Results will be cross-validated against
-        independent codes.
+        Quantify how populations of microlenses and the macroscopic potential of
+        their host galaxy — magnification, proximity to caustics — shape a lensed
+        signal. Reaching the required performance means developing new algorithms
+        that can reliably tackle a large microlens population. Explore the role of
+        microlens populations in astrophysical predictions.
       outputs:
-        - "Public microlensing extension of the GLoW code"
+        - "Public microlensing extensions of the GLoW code"
         - "Cross-validation against independent wave-optics codes"
     - code: "WP1-B"
       title: "Plasma lensing"
       body: >-
-        Extend the framework to lensing by ionized matter, including the
-        multi-plane case. Plasma lensing is chromatic in its own right and is the
-        route by which fast radio bursts probe otherwise elusive baryonic matter,
-        with applications to pulsar timing and the interstellar medium.
-      partners:
-        - "Dylan Jow (Stanford)"
-        - "Ue-Li Pen (CITA, Academia Sinica; PI of BURSTT)"
+        Extend the framework to lensing by ionized matter. Plasma lensing produces
+        dispersive terms by which fast radio bursts probe otherwise elusive
+        baryonic matter, with applications to pulsar timing and the interstellar
+        medium. Develop methods for multi-plane lensing that can account for
+        deflection and dispersion at the location of the main lens, as well as the
+        source's galaxy and the Milky Way.
 
 - id: wp2
   code: "WP2"
   title: "Discovery and interpretation of lensed gravitational waves"
   lede: >-
-    Turning the theory into a search. Waveform models for microlensing
+    Turning the theory into search results. Waveform models for microlensing
     signatures, population-level analyses, and accelerated inference to keep up
     with upcoming data.
   tasks:
@@ -60,26 +56,26 @@
       title: "Microlensing searches"
       body: >-
         Search for lensing signatures in gravitational-wave data through
-        microlensed waveforms and through population analyses with astrophysical
-        priors. The waveform models parameterize the amplification factor — the
-        ratio of the diffracted to the unlensed waveform in the frequency domain
-        — in a basis of functions whose coefficients are fitted to data, so that
-        microlensing significance follows from their posteriors. Because
-        microlensing is stochastic, the models target macroscopic quantities: the
-        density and mass function of the lenses and the external potential. The
-        low-density limit, where each lens contributes at least one image or
-        wave-optics feature, admits semi-analytical predictions and can be
-        validated directly against the public GLoW code.
+        microlensed waveforms. The waveform models account for stochastic
+        fluctuations of the amplification and their correlation with macroscopic
+        quantities (density and mass function of the lenses and the external
+        potential). Develop methods to incorporate lensing signatures into a
+        coherent population analysis.
       outputs:
         - "Microlensed waveform models tested against public LVK catalogs"
-        - "Analysis of subthreshold triggers, where diffraction can suppress significance"
+        - "Population model with lensing effects"
     - code: "WP2-B"
       title: "Accelerated inference"
       body: >-
         Lensing analyses multiply the parameter space, and the number of events
         is growing. Machine-learning inference — building on DINGO — makes joint
-        and low-latency analyses tractable, including validation with the
-        LIGO–Virgo–KAGRA collaboration for low-latency alerts.
+        and low-latency analyses tractable, allowing efficient inference over
+        large source catalogs.
+      outputs:
+        - "Trained network for rapid analysis and identification of lensed signals"
+      papers:
+        - short: "Dax et al., arXiv:2106.12594"
+          url: "https://inspirehep.net/literature/1870159"
 
 - id: wp3
   code: "WP3"
@@ -93,25 +89,21 @@
       title: "Dark-matter searches"
       body: >-
         Characterize diffraction by dark-matter objects and subhalos, and produce
-        lensing constraints from available data. The targets are well-motivated
-        scenarios that predict dense objects — self-interacting and ultra-light
-        dark matter, dressed primordial black holes — including the effects of
-        ellipticity and of the external potential. Increasing the density of
-        objects brings in collective effects, which is what determines whether
-        extended dark-matter objects can be distinguished from stars and stellar
-        remnants: the main astrophysical systematic for ground-based detectors.
-        Results also translate into limits on the primordial power spectrum. For
-        LISA, the work is twofold: making inference robust to enhanced dark-matter
-        substructure, and devising a strategy to detect diffraction by cold
-        dark-matter subhalos.
+        lensing constraints from available data. Connect the theory and analysis
+        results to well-motivated dark-matter theories — self-interacting and
+        ultra-light dark matter, dressed primordial black holes — including
+        collective effects and addressing the distinguishability from stellar
+        fields. Results also translate into limits on the primordial power
+        spectrum.
       outputs:
         - "Lensing constraints on dark-matter objects from current data"
         - "Entries in the community repository of extended dark-matter object limits"
     - code: "WP3-B"
       title: "Gravity and dark energy"
       body: >-
-        Test gravitational-wave propagation on inhomogeneous space-times and
-        confront dark-energy theories with lensed signals. Lensed propagation
-        offers tests of general relativity that go well beyond confirming that
-        lensing happens at all. The resulting likelihoods will be released in a
-        form usable with Einstein–Boltzmann solvers.
+        Develop the theory of gravitational-wave propagation on inhomogeneous
+        space-times beyond Einstein's theory. Extract new constraints from public
+        data and use them to set new limits on theories of dark energy.
+      outputs:
+        - "A parameterized framework for modified gravitational-wave lensing"
+        - "Public likelihoods for cosmological analyses"

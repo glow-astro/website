@@ -38,10 +38,9 @@ pi:
     url: "https://miguelzuma.github.io/"
     orcid: "0000-0002-9943-6490"
     bio: >-
-      Leads the project and oversees all work packages, working directly on
-      microlensed waveform models and on the theory of dark-matter diffraction,
-      and closely involved in the wave-optics frameworks and the student
-      projects.
+      Wave optics in gravitational lensing, and what lensed gravitational waves
+      reveal about the small-scale distribution of dark matter and the nature of
+      gravity.
 
 current:
   # Postdocs the grant pays for, first.
@@ -59,7 +58,7 @@ current:
     years: "2026–"
     incoming: true
     starts: "October 2026"
-    topic: "Lead developer of the GLoW code; wave-optics methods for gravitational lensing. Previously a Margarita Salas Fellow in the group (2022–2024)."
+    topic: "Lead developer of the GLoW code; wave-optics methods for gravitational lensing."
 
   # Then those on the project but paid by another grant. See the note on
   # `role` in the schema above: the ordering is the point, not decoration.
@@ -133,6 +132,15 @@ current:
 former: []
 
 collaborators:
+  - name: "Srashti Goyal"
+    role: "Postdoc, IUCAA"
+    wps: ["WP1-A", "WP2-A", "WP2-B"]
+  - name: "Nicola Menadeo"
+    role: "Postdoc, Humboldt University"
+    wps: ["WP3-B"]
+  - name: "Serena Giardino"
+    role: "Postdoc, Imperial College"
+    wps: ["WP3-B"]
   - name: "Dylan Jow"
     role: "Postdoc, Stanford University"
     wps: ["WP1-B"]

@@ -5,8 +5,8 @@ title: "Work packages"
 eyebrow: "Methodology"
 lede: >-
   GLOW is organized into three work packages: the theory of wave-optics lensing,
-  the search for lensed gravitational waves, and the fundamental physics that
-  follows from them.
+  the search for lensed gravitational waves, and their application to
+  fundamental physics.
 description: >-
   The three GLOW work packages — wave-optics theory, discovery and
   interpretation of lensed gravitational waves, and fundamental physics — with
@@ -25,16 +25,16 @@ sections:
 {% include subnav.html %}
 
 <p>
-  The work packages are not sequential. WP1 supplies the lens models that WP2
-  searches for and WP3 interprets; results from the searches feed back into which
-  approximations the theory needs to get right.
+  The work packages run in parallel. WP1 supplies the lens models that WP2
+  searches for and WP3 interprets; the loop closes by informing back the
+  necessary theoretical developments.
 </p>
 
 <p>
-  This page is the plan: what the project will build, in what order, and with
-  whom. For the physics behind it — what these phenomena are and what they can
-  measure — see the <a href="{{ '/science.html' | relative_url }}">science
-  topics</a>, which each task links to below.
+  This page outlines the plan: what the project is set to do and how. For the
+  physics behind it — what these phenomena are and what they can measure — see
+  the <a href="{{ '/science.html' | relative_url }}">science topics</a>, which
+  each task links to.
 </p>
 
 {%- for wp in site.data.work_packages %}
@@ -55,6 +55,15 @@ sections:
       <li>{{ o }}</li>
       {%- endfor %}
     </ul>
+    {%- endif %}
+
+    {%- if task.papers %}
+    <p class="card-meta">Method paper{% if task.papers.size > 1 %}s{% endif %}</p>
+    <p>
+      {%- for p in task.papers %}
+      <a href="{{ p.url }}" rel="noopener">{{ p.short }}</a>
+      {%- unless forloop.last %} &middot; {% endunless %}{% endfor %}
+    </p>
     {%- endif %}
 
     {%- comment -%}

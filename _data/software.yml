@@ -21,11 +21,11 @@ tools:
     purpose: >-
       GLoW computes the amplification factor for gravitational waves propagating
       through a gravitational lens, in the wave-optics regime where diffraction
-      and interference matter. It handles general matter distributions — not only
-      the handful of symmetric lenses with closed-form solutions — by combining
+      and interference matter. It handles general matter distributions — built
+      from a library of lenses that can be added freely — by combining
       contour-integration and time-domain methods with careful treatment of the
-      singular Fermat potential, and it is fast enough to sit inside a
-      parameter-estimation loop. The project will extend it to populations of
+      singular Fermat potential, and it is fast enough for Bayesian parameter
+      inference. The project will extend it to populations of
       microlenses, which is the central methodological development of WP1-A.
     repo: "https://github.com/glow-astro/GLoW"
     docs: "https://glow-astro.github.io/GLoW/"
@@ -39,11 +39,12 @@ tools:
     status: in development
     wps: ["WP2-B"]
     purpose: >-
-      Lensing enlarges the parameter space of a gravitational-wave signal at the
-      same time as the number of detections is growing. Simulation-based
-      inference built on DINGO makes joint and low-latency lensing analyses
-      tractable. Validation for low-latency alerts is carried out together with
-      the LIGO–Virgo–KAGRA collaboration.
+      Simulation-based inference built on DINGO makes large-scale lensing
+      analyses tractable. A model currently exists for the isolated point lens.
+    papers:
+      - short: "Caldarola et al., arXiv:2511.08486"
+        url: "https://inspirehep.net/literature/3081783"
+    contributors: "Srashti Goyal (lead developer)."
     repo: "https://github.com/dingo-gw/dingo"
 
 # Companion code and archived data behind individual papers. Distinct from
@@ -68,14 +69,8 @@ releases:
       url: "https://arxiv.org/abs/2512.17631"
     body: >-
       The parameter-estimation results behind the analysis of GW231123 as a
-      magnified and diffracted black-hole merger: eleven bilby posterior sets
-      covering every model and waveform combination in the paper — unlensed,
-      isolated point lens, and point lens with external shear closed by an
-      isothermal-sphere macromodel, each for NRSur7dq4, IMRPhenomXPHM and
-      SEOBNRv5PHM. The companion code reproduces the paper's tables and its
-      waveform-systematics figure from the archived record alone. The GW231123
-      strain and power spectral densities are not redistributed; they come from
-      GWOSC.
+      magnified and diffracted black-hole merger: bilby posteriors and companion
+      code to reproduce the results.
     doi: "10.5281/zenodo.21725667"
     links:
       - text: "Companion code"
@@ -91,11 +86,8 @@ releases:
     body: >-
       Lens stochastic diffraction is the Poisson-distributed series of faint
       repetitions that follows a gravitational-wave event when compact objects
-      along the line of sight produce additional images; the amplitude and
-      time-delay distribution encode the mass and abundance of the lenses. The
-      notebooks compute the time-delay density, draw realizations, and forecast
-      constraints on the compact dark-matter fraction for LVK O4 and O5, the
-      Einstein Telescope and Cosmic Explorer.
+      along the line of sight produce additional images. The notebooks reproduce
+      all the plots in the paper.
     links:
       - text: "Notebooks"
         url: "https://github.com/miguelzuma/lsd-gw-notebooks"
@@ -103,7 +95,7 @@ releases:
 # Commitments about what gets released and when. These are obligations, not
 # aspirations: state only what the project will actually do.
 policy:
-  - "Software developed by the project is released publicly, under an open licence."
+  - "Software developed by the project will be released publicly after its validation and initial scientific exploitation."
   - "Analyses are demonstrated on publicly available catalogs, so that they can be reproduced independently."
   - "Constraints on dark-matter objects are contributed to the community repository of extended-object limits."
   - "Likelihoods for gravitational-wave propagation are released in a form usable with Einstein–Boltzmann solvers."
