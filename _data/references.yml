@@ -188,6 +188,18 @@
   where: "Phys. Rev. D 111, 104022 (2025)"
   url: "https://arxiv.org/abs/2411.07164"
 
+- id: ezquiaga-birefringence
+  authors: "J. M. Ezquiaga, M. Zumalacárregui"
+  title: "Gravitational wave lensing beyond general relativity: birefringence, echoes and shadows"
+  where: "Phys. Rev. D 102, 124048 (2020)"
+  url: "https://arxiv.org/abs/2009.12187"
+
+- id: goyal-birefringence-data
+  authors: "S. Goyal, A. Vijaykumar, J. M. Ezquiaga, M. Zumalacárregui"
+  title: "Probing lens-induced gravitational-wave birefringence as a test of general relativity"
+  where: "Phys. Rev. D 108, 024052 (2023)"
+  url: "https://arxiv.org/abs/2301.04826"
+
 - id: gondan-echoes
   authors: "L. Gondán, B. Kocsis"
   title: "Astrophysical gravitational-wave echoes from galactic nuclei"

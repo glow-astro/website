@@ -13,6 +13,8 @@ description: >-
 refs:
   - gw150914
   - menadeo-propagation
+  - ezquiaga-birefringence
+  - goyal-birefringence-data
   - ezquiaga-dark-energy
 topic_id: testing-gravity
 ---
@@ -61,6 +63,83 @@ topic_id: testing-gravity
     known shape, which is what makes them worth looking for even when the
     expected effect is small.
   </p>
+
+  <!-- Table 1 of the grant proposal (\label{tab:tgr}), rebuilt in HTML. The
+       columns are an expansion of the lensed signal in frequency and the rows
+       are what each order of it does, so the table is read both ways; the
+       styling for that is .matrix in main.css.
+
+       Two departures from the LaTeX. The proposal illustrates the analogy row
+       with a photograph per column -- calcite, a neutrino oscillation diagram,
+       a prism, a single slit -- which are other people's images under licences
+       that would each need an attribution line on a public page; the analogy
+       survives as four words. And the last row said "GLOW (this proposal)",
+       which on the project's own site is just GLOW.
+
+       The bold cells are the proposal's own: the argument of the table is that
+       the number of derivatives falls to the right, and that everything to the
+       right of the first column is the project's to do. -->
+  <div class="table-scroll" tabindex="0" role="group"
+       aria-labelledby="tgr-caption">
+    <table class="matrix">
+      <caption id="tgr-caption">
+        Lensing tests of gravity, ordered by how strongly the effect depends on
+        frequency. &ldquo;Interactions tested&rdquo; counts the derivatives the
+        underlying interaction involves: the fewer it needs, the wider the class
+        of theories in which the effect appears, which is what makes the
+        dispersive term close to
+        universal.{% include cite.html key="menadeo-propagation" %}
+      </caption>
+      <thead>
+        <tr>
+          <th class="matrix-corner" rowspan="2" scope="col">Modified<br>GW lensing</th>
+          <th class="colgroup-head" colspan="3" scope="colgroup">Geometric optics (WP3&#8209;A)</th>
+          <th class="colgroup-head" scope="colgroup">Wave optics (WP3&#8209;B)</th>
+        </tr>
+        <tr>
+          <th scope="col">f<sup>2</sup></th>
+          <th scope="col">f<sup>0</sup></th>
+          <th scope="col">f<sup>&minus;2</sup></th>
+          <th scope="col">any&nbsp;f</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Effect</th>
+          <td>speed</td>
+          <td>amplitude</td>
+          <td>phase</td>
+          <td>all</td>
+        </tr>
+        <tr>
+          <th scope="row">Observable</th>
+          <td>birefringence</td>
+          <td>oscillations</td>
+          <td>dispersion</td>
+          <td>diffraction</td>
+        </tr>
+        <tr>
+          <th scope="row">Analogy</th>
+          <td>birefringent crystal</td>
+          <td>neutrino oscillations</td>
+          <td>prism</td>
+          <td>single slit</td>
+        </tr>
+        <tr>
+          <th scope="row">Interactions tested</th>
+          <td>2 derivatives</td>
+          <td>1 derivative</td>
+          <td><strong>0 derivatives</strong></td>
+          <td><strong>all</strong></td>
+        </tr>
+        <tr>
+          <th scope="row">Developed in</th>
+          <td>Refs.{% include cite.html key="ezquiaga-birefringence,goyal-birefringence-data" %}</td>
+          <td colspan="3"><strong>GLOW</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </section>
 
 <section class="section" id="cosmology" aria-labelledby="cosmology-heading">

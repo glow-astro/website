@@ -151,9 +151,13 @@ def flatten(path, title, notes=()):
             c.decompose()
 
     pending = list(notes)
-    for el in main.find_all(["h1", "h2", "h3", "h4", "p", "li", "figcaption", "dt", "dd"]):
+    for el in main.find_all(["h1", "h2", "h3", "h4", "p", "li", "figcaption",
+                             "dt", "dd", "table"]):
         # Nested blocks are reached through their parent; do not emit twice.
-        if el.find_parent(["li", "figcaption"]):
+        # `table` is in that list because its cells are prose too -- a row label
+        # and four one-word cells are as much reviewable text as a paragraph is,
+        # and before this they were silently absent from the document.
+        if el.find_parent(["li", "figcaption", "table"]):
             continue
         text = " ".join(el.get_text(" ", strip=True).split())
         if not text:
@@ -177,7 +181,25 @@ def flatten(path, title, notes=()):
 
         cls = set(el.get("class") or [])
         name = el.name
-        if name == "figcaption":
+        if name == "table":
+            # Flattened to one line per row rather than reproduced as a table.
+            # What is under review here is the wording of the labels and the
+            # caption, not the ruling; and an ODT table that the owner edits in
+            # place would be far harder to read changes back out of than a list.
+            cap = el.find("caption")
+            if cap is not None:
+                out.append('<p class="cap">[table] '
+                           + cap.decode_contents() + '</p>')
+            for tr in el.find_all("tr"):
+                cells = [" ".join(c.get_text(" ", strip=True).split())
+                         for c in tr.find_all(["th", "td"])]
+                cells = [c for c in cells if c]
+                if not cells:
+                    continue
+                out.append("<li><b>" + cells[0] + "</b> &mdash; "
+                           + " &middot; ".join(cells[1:]) + "</li>"
+                           if len(cells) > 1 else f"<li>{cells[0]}</li>")
+        elif name == "figcaption":
             out.append(f'<p class="cap">[figure] {frag}</p>')
         elif name == "li":
             out.append(f"<li>{frag}</li>")
