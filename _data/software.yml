@@ -21,8 +21,8 @@ tools:
     purpose: >-
       GLoW computes the amplification factor for gravitational waves propagating
       through a gravitational lens, in the wave-optics regime where diffraction
-      and interference matter. It handles general matter distributions — built
-      from a library of lenses that can be added freely — by combining
+      and interference matter. It handles general matter distributions (built
+      from a library of lenses that can be added freely) by combining
       contour-integration and time-domain methods with careful treatment of the
       singular Fermat potential, and it is fast enough for Bayesian parameter
       inference. The project will extend it to populations of

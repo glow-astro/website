@@ -30,7 +30,7 @@ topic_id: wave-optics
     geometric optics: each path between source and observer behaves as a ray, a
     well-defined trajectory that is deflected, magnified and delayed by the
     lenses along the way. A lens can split a source into multiple images.
-    Resolving those images is another matter — most astronomical sources are
+    Resolving those images is another matter: most astronomical sources are
     extended and fairly static, so only configurations with large angular
     separations or long time delays can be told apart, and what is left in most
     cases is an overall magnification.
@@ -43,9 +43,9 @@ topic_id: wave-optics
   </p>
   <p>
     The wave-optics regime begins when the lensing time delays are comparable to
-    the period of the signal — equivalently, when the wavelength approaches the
+    the period of the signal, equivalently when the wavelength approaches the
     gravitational radius of the lens, λ&nbsp;∼&nbsp;GM/c². Diffraction there
-    cannot be read as a finite number of well-defined images at all; the source
+    cannot be read as a finite number of well-defined images at all. The source
     is smeared across the lens plane instead. At much longer wavelengths
     (λ&nbsp;≫&nbsp;GM/c²) the wave travels around the lens essentially
     undisturbed. The figure below shows these regimes, together with the
@@ -55,9 +55,9 @@ topic_id: wave-optics
   </p>
   <p>
     What the detector records is then the unlensed signal multiplied by an
-    <strong>amplification factor</strong> — a complex, frequency-dependent
+    <strong>amplification factor</strong>: a complex, frequency-dependent
     function that encodes the lens. Its oscillations are the interference
-    between paths; their spacing measures time delays, and their envelope
+    between paths. Their spacing measures time delays, and their envelope
     measures how the mass is distributed. This quantity fully specifies
     wave-optics lensing.
   </p>
@@ -101,27 +101,26 @@ topic_id: wave-optics
   <p>
     Diffraction sets its own scale, and for an isolated lens that scale is the
     ratio of the signal's wavelength to the lens's gravitational radius. This
-    fixes a characteristic redshifted lens mass for each band — the mass whose
+    fixes a characteristic redshifted lens mass for each band: the mass whose
     time delay matches one period of the wave. It is of order
     10<sup>7</sup>–10<sup>8</sup>&nbsp;M<sub>☉</sub> for LISA at millihertz
     frequencies, tens to hundreds of M<sub>☉</sub> for LIGO–Virgo–KAGRA, and
-    around 10<sup>−5</sup>&nbsp;M<sub>☉</sub> — a few tens of Earth masses — for
+    around 10<sup>−5</sup>&nbsp;M<sub>☉</sub> (a few tens of Earth masses) for
     fast radio bursts at gigahertz frequencies. An isolated lens far below its
-    band's mass is invisible; one far above it is back in the geometric-optics
+    band's mass is invisible. One far above it is back in the geometric-optics
     regime.
   </p>
   <p>
     These effects grow as the alignment between source and lens tightens, and
     near caustics, where the geometric-optics magnification diverges. Wave
-    optics is what keeps a prediction finite and continuous across a caustic —
-    the animation below crosses one.
+    optics is what keeps a prediction finite and continuous across a caustic. The animation below crosses one.
   </p>
   <p>
     Two consequences follow, and both matter for coherent sources. A single
     signal probes a <em>range</em> of scales at once, because it spans a range
     of frequencies. And the scales it reaches are set by the wavelength rather
     than by spatial resolution, which is how a gravitational wave can be
-    sensitive to objects far too small and too dark to image — the subject of
+    sensitive to objects far too small and too dark to image: the subject of
     <a href="{{ '/dark-matter.html' | relative_url }}">dark matter</a>.
   </p>
   <p>
@@ -155,7 +154,7 @@ topic_id: wave-optics
     </video>
     <figcaption>
       The impact parameter falls from 2.0 to 0.1 Einstein radii and the source
-      crosses a caustic mid-sweep; as the alignment tightens, the amplification
+      crosses a caustic mid-sweep. As the alignment tightens, the amplification
       factor acquires the oscillations that are the signature of diffraction.
     </figcaption>
   </figure>
@@ -170,14 +169,14 @@ topic_id: wave-optics
     gas is structured on small enough scales the same wave-optics treatment
     applies. This is <strong>plasma lensing</strong>, and for fast radio bursts
     it is not a correction but a probe in its own
-    right{% include cite.html key="cordes-plasma" %} — a way of weighing
+    right{% include cite.html key="cordes-plasma" %}: a way of weighing
     ionized matter that is otherwise close to invisible.
   </p>
   <p>
     The physics differs in one instructive way. Gravitational lensing is
     achromatic in the geometric limit, so all its frequency dependence comes
-    from diffraction; plasma lensing is chromatic to begin with, because the
-    refractive index of a plasma depends on frequency — much as it does in the
+    from diffraction. Plasma lensing is chromatic to begin with, because the
+    refractive index of a plasma depends on frequency, much as it does in the
     water droplets that make a rainbow. The two therefore leave distinguishable
     signatures, and a lens that contains both can be taken apart.
   </p>
@@ -201,7 +200,7 @@ topic_id: wave-optics
   <p>
     Computing wave-optics lensing is numerically hard. The amplification factor
     is an integral of a highly oscillatory function whose convergence is poorly
-    behaved, and only a handful of idealized lenses — a point mass among them —
+    behaved, and only a handful of idealized lenses (a point mass among them)
     give a closed-form expression for it. Realistic configurations, such as
     fields of stars and remnants, need better methods, and those methods have to
     be fast enough to be used in

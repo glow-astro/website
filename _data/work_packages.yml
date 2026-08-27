@@ -27,7 +27,7 @@
       title: "Microlensing diffraction"
       body: >-
         Quantify how populations of microlenses and the macroscopic potential of
-        their host galaxy — magnification, proximity to caustics — shape a lensed
+        their host galaxy (magnification, proximity to caustics) shape a lensed
         signal. Reaching the required performance means developing new algorithms
         that can reliably tackle a large microlens population. Explore the role of
         microlens populations in astrophysical predictions.
@@ -68,7 +68,7 @@
       title: "Accelerated inference"
       body: >-
         Lensing analyses multiply the parameter space, and the number of events
-        is growing. Machine-learning inference — building on DINGO — makes joint
+        is growing. Machine-learning inference, building on DINGO, makes joint
         and low-latency analyses tractable, allowing efficient inference over
         large source catalogs.
       outputs:
@@ -90,8 +90,8 @@
       body: >-
         Characterize diffraction by dark-matter objects and subhalos, and produce
         lensing constraints from available data. Connect the theory and analysis
-        results to well-motivated dark-matter theories — self-interacting and
-        ultra-light dark matter, dressed primordial black holes — including
+        results to well-motivated dark-matter theories (self-interacting and
+        ultra-light dark matter, dressed primordial black holes) including
         collective effects and addressing the distinguishability from stellar
         fields. Results also translate into limits on the primordial power
         spectrum.

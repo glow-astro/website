@@ -89,13 +89,13 @@
     alt: >-
       Animation: light of a single colour passes through a rectangular opening
       that grows, shrinks, and then stretches. The pattern on the screen behind
-      it moves the opposite way — tightening as the opening widens, and
+      it moves the opposite way: tightening as the opening widens, and
       stretching across as the opening stretches down.
     caption: >-
       Diffraction patterns carry information about the objects they probe. Here
       simulated monochromatic light is shot through a single opening whose size
-      and shape change (top right). The pattern it casts — in full at left, and
-      as a cut through the middle at bottom right — follows the size of that
+      and shape change (top right). The pattern it casts (in full at left, and
+      as a cut through the middle at bottom right) follows the size of that
       opening: widen it and the pattern tightens, stretch it one way and the
       pattern stretches the other.
     source: "application_plots, family diffraction_size_glow"
@@ -109,8 +109,8 @@
   card: >-
     Stars and remnants in the lensing galaxy, treated collectively.
   blurb: >-
-    A lens is rarely one object. Populations of compact objects — stars,
-    remnants, or dark matter — contribute collectively to the diffraction, and
+    A lens is rarely one object. Populations of compact objects (stars,
+    remnants, or dark matter) contribute collectively to the diffraction, and
     what a signal carries is the statistics of the population rather than any
     single lens.
   wps: ["WP1-A", "WP2-A", "WP3-A"]
@@ -138,7 +138,7 @@
       From strong lensing to waveform distortions. A galaxy splits the source
       into two macroimages separated by a time delay. One of those images lands
       on a field of stars, which forms a network of critical curves on very
-      small scales — the middle panel. Each image arrives carrying a different
+      small scales: the middle panel. Each image arrives carrying a different
       wave-optics distortion, shown in the right panel.
     source: "application_plots, plots/microlensing/microlensing_master_3_web_dark"
 
@@ -151,7 +151,7 @@
   card: >-
     Waveform models, population analyses, and simulation-based inference.
   blurb: >-
-    Lensing predictions have to become searches over real data — effective
+    Lensing predictions have to become searches over real data: effective
     models for stochastic lenses, population analyses, and inference fast enough
     to keep up with the detectors.
   wps: ["WP2-A", "WP2-B"]
@@ -167,7 +167,7 @@
       Parameter estimation compares the data with the predictions of a model
       across parameter space. The exploration is shown here for a two-parameter
       example: on the left, each point is a value of the lens mass and the
-      external shear; on the right, the time-domain response that pair predicts,
+      external shear. On the right, the time-domain response that pair predicts,
       bouncing around the best fit. The upper panel shows the total response and
       the lower one the wave-optics contribution. The samples are ordered by
       likelihood, so they close in on the best fit as the animation runs.
@@ -221,7 +221,7 @@
     no longer trace the mass.
   blurb: >-
     Diffraction is sensitive to structure on scales that are dark but pristine,
-    where baryons are neither a contaminant nor a window — which makes coherent
+    where baryons are neither a contaminant nor a window, which makes coherent
     sources an excellent probe of dark matter.
   wps: ["WP3-A"]
   papers: ["2607.11887"]
@@ -275,13 +275,13 @@
     cite: ezquiaga-birefringence
     caption: >-
       Gravitational-wave birefringence. Top: the signal crosses a
-      Vainshtein-screened lens, with a non-trivial scalar-field configuration —
-      note that the low-frequency inspiral is emitted earlier and is shown
+      Vainshtein-screened lens, with a non-trivial scalar-field configuration.
+      Note that the low-frequency inspiral is emitted earlier and is shown
       leading. The lens gives the two polarizations slightly different speeds,
       which also differ from the speed of light. The lower panels show the
       signal as recorded in the detector, split by polarization (middle) and the
       combined signal (bottom). The delay is short enough that the two copies
-      overlap, so the waveform is scrambled rather than repeated — and no
+      overlap, so the waveform is scrambled rather than repeated, and no
       electromagnetic counterpart is needed to see it. Adapted from Ezquiaga &
       Zumalacárregui.
     source: "gw_birefringence, family birefringence_scramble"
