@@ -35,7 +35,26 @@ sections:
       {%- if p.wps %} &middot; {{ p.wps | join: ", " }}{% endif %}
     </p>
     <p>{{ p.summary }}</p>
-    <p><a href="https://arxiv.org/abs/{{ p.arxiv }}" rel="noopener">arXiv:{{ p.arxiv }}</a></p>
+    {%- comment -%}
+      One line of links per paper. The preprint is always there; the journal
+      version appears once the paper has a DOI, and anything else the paper
+      picked up -- a press release, coverage -- comes from `links`.
+
+      The DOI is written out as `doi:10.…` rather than hidden behind "published
+      version": it is the same shape as `arXiv:2512.17631` beside it, it says
+      exactly where the link goes, and the human-readable journal reference is
+      already on the card-meta line above, so naming it again here would be the
+      same words twice.
+    {%- endcomment -%}
+    <p>
+      <a href="https://arxiv.org/abs/{{ p.arxiv }}" rel="noopener">arXiv:{{ p.arxiv }}</a>
+      {%- if p.doi %} &middot;
+      <a href="https://doi.org/{{ p.doi }}" rel="noopener">doi:{{ p.doi }}</a>
+      {%- endif %}
+      {%- for l in p.links %} &middot;
+      <a href="{{ l.url }}" rel="noopener">{{ l.text }}</a>
+      {%- endfor %}
+    </p>
   </div>
   {%- endfor %}
   <p>

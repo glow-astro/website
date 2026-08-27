@@ -12,6 +12,12 @@
 #   url      INSPIRE record; arXiv link is built from `arxiv`
 #   date     YYYY-MM-DD, for ordering. Day is only for ties within a month.
 #   status   "preprint" | "accepted" | "published"
+#   doi      optional, bare -- "10.3847/..." -- once the paper has one. The
+#            template links it beside the arXiv id; do not include the
+#            https://doi.org/ prefix, which the template adds
+#   links    optional [{text, url}] for anything the paper picked up beyond the
+#            preprint and the journal: a press release, coverage. Not the talk
+#            about it -- talks have their own list below
 #   journal  optional, only once there is one. While "accepted" it is just
 #            the journal name, which the template prefixes; once "published"
 #            it carries the full reference, because the template prints it bare
@@ -34,6 +40,10 @@ papers:
     date: 2025-12-01
     status: published
     journal: "The Astrophysical Journal Letters 1008, L12 (2026)"
+    doi: "10.3847/2041-8213/ae93b1"
+    links:
+      - text: "AEI press release"
+        url: "https://www.aei.mpg.de/1490509/do-black-holes-pretend-to-have-large-masses"
     wps: ["WP2-A"]
     summary: >-
       A parameter-estimation analysis of GW231123 under lensed and unlensed
@@ -50,9 +60,9 @@ papers:
     wps: ["WP1-A", "WP2-A"]
     summary: >-
       Microlensing amplification curves from simulated stellar fields are
-      compressed into an orthonormal basis for the distortion, together with a
+      compressed into an orthonormal basis, with a
       distribution for its coefficients that serves as a realization-based prior.
-      This is the reduced-order model the microlensing searches are built on.
+      The basis can be used for microlensing searches in data.
 
   - title: "Signatures of 10–10⁴ M☉ dark-matter halos in LISA via stochastic diffraction"
     authors: ["Choi", "Urrutia", "Zumalacárregui"]
