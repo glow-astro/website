@@ -6,10 +6,21 @@ description: >-
   and fast radio bursts.
 
 # The site is built to be served at the root of its own domain, so baseurl stays
-# empty and every internal link is a plain absolute path. The domain was
-# registered 2026-08-19; on GitHub Pages it needs a CNAME file in this directory
-# as well, which is deliberately not committed until the domain is final.
-url: "https://glow-erc.org"
+# empty and every internal link is a plain absolute path.
+#
+# glow-astro.org, decided 2026-08-27. One namespace for everything: the code,
+# this repository and the domain.
+#
+# glow-erc.org was acquired during the naming back and forth and will redirect
+# here, but the owner may not renew it past 2027-08-19. It is temporary by
+# intention -- it must never appear here, never be a canonical, and nothing may
+# assume it resolves.
+#
+# The CNAME file beside this one is the other half: GitHub Pages reads it to
+# claim the domain. It is excluded from the review build in _config.review.yml,
+# because deploy_review.sh refuses to ship anything containing the production
+# domain and CNAME is nothing but the production domain.
+url: "https://glow-astro.org"
 baseurl: ""
 lang: en
 

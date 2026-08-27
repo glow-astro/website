@@ -20,8 +20,8 @@
 # Preview rather than production because Cloudflare's one-click Access toggle in
 # the Pages dashboard covers preview deployments on *.pages.dev; protecting the
 # production hostname means attaching a custom domain first. Nothing here needs
-# a domain, which is the point -- glow-erc.org stays unspent while the naming
-# question is open.
+# a domain, which is the point -- glow-astro.org stays unspent until the site is
+# actually published.
 #
 # This uploads the BUILT SITE only -- no source, no git history, no CI. The
 # repository does have a remote now (glow-astro/website, private), but it is a
@@ -107,11 +107,14 @@ echo "==> checking the build"
 
 # The production domain must not appear anywhere. If SITE_URL failed to take,
 # every canonical link, the OpenGraph image and the JSON-LD would advertise
-# glow-erc.org -- seeding the wrong canonical for a site that is not there yet,
-# and handing anyone who copies a link an address that will not resolve.
-if grep -rl "glow-erc\.org" "$BUILD_DIR" >/dev/null 2>&1; then
+# glow-astro.org -- seeding the wrong canonical for a site that is not there
+# yet, and handing anyone who copies a link an address that will not resolve.
+#
+# This string has to track `url:` in _config.yml. It was glow-erc.org until
+# 2026-08-27; a stale one here does not fail loudly, it just stops checking.
+if grep -rl "glow-astro\.org" "$BUILD_DIR" >/dev/null 2>&1; then
   echo "   files mentioning the production domain:" >&2
-  grep -rl "glow-erc\.org" "$BUILD_DIR" | sed 's/^/     /' >&2
+  grep -rl "glow-astro\.org" "$BUILD_DIR" | sed 's/^/     /' >&2
   die "production domain leaked into the review build"
 fi
 

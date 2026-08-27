@@ -15,6 +15,27 @@
 # way if you can.
 review: true
 
+# CNAME is a GitHub Pages file and means nothing to Cloudflare Pages, but it
+# contains the production domain and the deploy script refuses to upload a build
+# that mentions it -- a guard worth keeping sharp, since its real job is to catch
+# a SITE_URL that failed to take.
+#
+# This list REPLACES the one in _config.yml rather than adding to it: Jekyll
+# merges configs shallowly, so a later array wins outright. Every entry below
+# has to be kept in step with _config.yml by hand, and CNAME is the only line
+# here that is not already there. If something starts appearing in the review
+# build that production excludes, this divergence is why.
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .jekyll-cache
+  - tools
+  - docs
+  - "glow-site-text*"
+  - CNAME
+
 # A fallback address, used only if SITE_URL is unset. The real one is
 # https://<branch>.<project>.pages.dev and is not known until the Pages project
 # exists, so the deploy script derives it rather than hardcoding it here where
