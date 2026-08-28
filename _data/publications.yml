@@ -46,26 +46,24 @@
 #
 # talks
 #   Talks given by anyone on the project, not only the PI, which is why
-#   `speaker` is required rather than assumed. A talk with a `url` is a
+#   `speakers` is a list rather than an assumed name. A talk with a `url` is a
 #   recording and appears in "Recorded talks" as well as in "All talks";
 #   without one it appears only in "All talks".
 #
-#   The seminars and conference talks come from the PI's CV, which records the
-#   host and the kind of talk but not, for a seminar, its title. `title` is
-#   therefore optional: with one, it leads; without one, the event does.
-#
-#   title    optional -- the talk's own title, where there is one
-#   event    the meeting, seminar series or host institution
-#   location "Madrid, Spain", or "Online"
-#   kind     "Colloquium", "Plenary talk", "Invited talk", "Seminar", and so on
-#   invited  optional true, rendered as ", invited". Leave it off when
-#            `kind` already says so ("Invited talk"), or the line reads
-#            "Invited talk, invited". The CV marks these with a star
-#   speaker  full name, and the reason this field exists
-#   with     optional co-presenters
-#   date     required YYYY-MM-DD. The list sorts by it and groups by its
-#            year. Exact dates come from the CV comments named above
-#   url      optional recording. Its presence is what makes a talk "recorded"
+#   title       required, as given
+#   event       optional -- the meeting or seminar series
+#   institution optional -- the host institution
+#   city        optional
+#   country     optional
+#   online      optional true, shown in place of a city and country
+#   speakers    required list. **Alphabetical by surname, always**, and every
+#               speaker in the same list: an earlier version wrote the PI
+#               first and the others as "with ...", which reads as a billing
+#               order rather than a list of the people who gave the talk
+#   date        required YYYY-MM-DD. Orders the list; never displayed
+#   url         optional recording. Its presence is what makes a talk
+#               "recorded", and it is why no field records that a talk was
+#               recorded
 #
 #   Scope: the grant began in 2026, so this list starts in 2026. The PI has
 #   given over 130 talks since 2012 and the earlier ones belong on a personal
@@ -159,86 +157,88 @@ papers:
       computed first in general relativity and then in scalar-tensor theories.
 
 talks:
-  # Titles and exact dates come from the PI's CV, where they live as
+  # Titles and dates come from the PI's CV, where they live as
   # "% AEI talks DB: <date> | <title>" comments above each row:
   # ~/Dropbox/Apps/Overleaf/CV & Application materials/CV_Miguel_Zuma.tex
-  # Titles are his, verbatim, including their capitalization. Four of these
-  # are the same colloquium given in four places, which is why the list is
-  # ordered and identified by date and event rather than by title.
+  # Titles are his, verbatim, capitalization included.
+  #
+  # `date` orders the list and nothing else: it is not displayed (owner,
+  # 2026-08-28, "the date of the talk is not important, other than to order
+  # it"). Four of these are the same colloquium given in four places, so the
+  # event and the place are what tell them apart.
+  #
+  # Everything is rendered in one fixed order, also his: title, event,
+  # institution, city, country, speakers. Whatever a talk has of those is
+  # shown, in that order, and nothing else. There is deliberately no field for
+  # the kind of talk: "invited", "plenary" and "recorded webinar" were dropped
+  # on 2026-08-28 as noise on a project page, the recording being evident from
+  # the link. That information lives in the CV, which is where it counts.
   - title: "Probing Low Mass Dark Matter Halos with LISA"
     event: "Cosmology Talks"
-    location: "Online"
-    kind: "Recorded webinar"
-    speaker: "Miguel Zumalacárregui"
-    with: "Han-Gil Choi and Juan Urrutia"
+    online: true
+    speakers: ["Han-Gil Choi", "Juan Urrutia", "Miguel Zumalacárregui"]
     date: 2026-07-29
     url: "https://www.youtube.com/watch?v=a5lIDTDRo4c"
 
   - title: "Gravitational Lensing of Waves: a new window into astrophysics, dark matter and gravity"
     event: "Dark Matter & Stars"
-    location: "Southampton, UK"
-    kind: "Plenary talk"
-    invited: true
-    speaker: "Miguel Zumalacárregui"
+    city: "Southampton"
+    country: "UK"
+    speakers: ["Miguel Zumalacárregui"]
     date: 2026-07-13
 
   - title: "Gravitational Lensing of Waves: a new window into astrophysics, dark matter and gravity"
-    event: "IPARCOS, Universidad Complutense de Madrid"
-    location: "Madrid, Spain"
-    kind: "Colloquium"
-    invited: true
-    speaker: "Miguel Zumalacárregui"
+    institution: "IPARCOS, Universidad Complutense de Madrid"
+    city: "Madrid"
+    country: "Spain"
+    speakers: ["Miguel Zumalacárregui"]
     date: 2026-06-25
     url: "https://www.youtube.com/watch?v=VsK5Omc99DU"
 
   - title: "Gravitational Lensing of Waves: a new window into astrophysics, dark matter and gravity"
     event: "EREP 2026"
-    location: "Murcia, Spain"
-    kind: "Plenary talk"
-    invited: true
-    speaker: "Miguel Zumalacárregui"
+    city: "Murcia"
+    country: "Spain"
+    speakers: ["Miguel Zumalacárregui"]
     date: 2026-05-25
 
   - title: "Gravitational Lensing of Waves: a new window into astrophysics, dark matter and gravity"
-    event: "University of Barcelona"
-    location: "Barcelona, Spain"
-    kind: "Cosmology seminar"
-    speaker: "Miguel Zumalacárregui"
+    institution: "University of Barcelona"
+    city: "Barcelona"
+    country: "Spain"
+    speakers: ["Miguel Zumalacárregui"]
     date: 2026-05-22
 
   - title: "Novel tests of gravitational-wave propagation"
     event: "Dark Energy from Home"
-    location: "Online"
-    kind: "Invited talk"
-    speaker: "Miguel Zumalacárregui"
+    online: true
+    speakers: ["Miguel Zumalacárregui"]
     date: 2026-04-22
     url: "https://youtu.be/1k0o0QiL288"
 
   - title: "Quasi-periodic lensing of starlight"
-    event: "Institute for Advanced Study"
-    location: "Princeton, US"
-    kind: "Astro coffee"
-    speaker: "Miguel Zumalacárregui"
+    institution: "Institute for Advanced Study"
+    city: "Princeton"
+    country: "US"
+    speakers: ["Miguel Zumalacárregui"]
     date: 2026-04-22
 
   - title: "Across the Universe: GW231123 as a diffracted and magnified black hole merger"
-    event: "Princeton University"
-    location: "Princeton, US"
-    kind: "IAS/PU gravitational-wave seminar"
-    speaker: "Miguel Zumalacárregui"
+    institution: "Princeton University"
+    city: "Princeton"
+    country: "US"
+    speakers: ["Miguel Zumalacárregui"]
     date: 2026-04-21
 
   - title: "Gravitational Lensing of Waves: a new window into astrophysics, dark matter and gravity"
-    event: "University of Virginia"
-    location: "Online"
-    kind: "Gravity seminar"
-    speaker: "Miguel Zumalacárregui"
+    institution: "University of Virginia"
+    online: true
+    speakers: ["Miguel Zumalacárregui"]
     date: 2026-03-09
 
   - title: "A Magnified and Diffracted Black Hole Merger (GW231123)"
     event: "Cosmology Talks"
-    location: "Online"
-    kind: "Recorded webinar"
-    speaker: "Miguel Zumalacárregui"
+    online: true
+    speakers: ["Miguel Zumalacárregui"]
     date: 2026-01-27
     url: "https://youtu.be/ZGqOpDTL8k4"

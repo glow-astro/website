@@ -879,75 +879,30 @@ figure.float-left {
 	font-style: italic;
 }
 
-/* One line per talk, asked for on 2026-08-28.
+/* A talk is a title followed by everything else, dimmed and running on from
+   it. Compact rather than one line at any cost: the owner asked for a single
+   line on 2026-08-28 and then, seeing what it cost, said a second line is fine
+   when it is needed. So nothing is truncated here.
 
-   Four of the 2026 talks share the same 86-character colloquium title, so a
-   line carrying the title AND the event, kind, place and speaker cannot fit at
-   any reasonable width. The title is therefore the part that gives way: it
-   shrinks and ends in an ellipsis, while the meta after it stays whole,
-   because the meta is what tells four identically-titled talks apart. Nothing
-   is actually lost -- CSS truncation does not touch textContent, so the filter
-   still matches the full title, and it is on the element's `title` attribute
-   for a hover.
-
-   The date leads, in its own column, for the same reason: it is the shortest
-   thing that identifies which of the four a row is. */
+   The date is not rendered at all. It orders the list and nothing more. */
 .talk-list .talk-row {
-	display: grid;
-	grid-template-columns: 4.2rem 1fr;
-	gap: 0 0.9rem;
-	padding: 0.3rem 0;
+	padding: 0.35rem 0;
 	font-size: 0.93rem;
-	align-items: baseline;
-}
-
-.talk-date {
-	font-size: 0.78rem;
-	color: var(--text-mute);
-	font-variant-numeric: tabular-nums;
-	white-space: nowrap;
-}
-
-.talk-line {
-	display: flex;
-	align-items: baseline;
-	gap: 0.45em;
-	min-width: 0;
-}
-
-/* The title yields; the meta does not. */
-.talk-line > a,
-.talk-title {
-	flex: 0 1 auto;
-	min-width: 4rem;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
+	line-height: 1.45;
 }
 
 .talk-title { color: var(--text); }
 
 .talk-where {
-	flex: 0 0 auto;
 	font-size: 0.83rem;
 	color: var(--text-mute);
-	white-space: nowrap;
 }
 
 .talk-where::before { content: "· "; }
 
-/* Below this width one line stops being readable rather than merely tight, so
-   the row stacks and the title is shown in full again. */
 @media (max-width: 720px) {
-	.talk-list .talk-row {
-		grid-template-columns: 1fr;
-		gap: 0;
-		padding: 0.5rem 0;
-	}
-	.talk-line { display: block; }
-	.talk-line > a,
-	.talk-title { overflow: visible; white-space: normal; }
-	.talk-where { display: block; white-space: normal; }
+	.talk-list .talk-row { padding: 0.5rem 0; }
+	.talk-where { display: block; }
 	.talk-where::before { content: none; }
 }
 

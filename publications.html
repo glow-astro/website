@@ -103,12 +103,8 @@ sections:
     {%- for t in talks %}
     {%- if t.url %}
     <li>
-      <a href="{{ t.url }}" rel="noopener">{% if t.title %}{{ t.title | escape }}{% else %}{{ t.event | escape }}{% endif %}</a>
-      <span class="talk-meta">
-        {%- if t.title %}{{ t.event | escape }}, {% endif %}{{ t.location | escape }} &middot;
-        {{ t.date | date: "%-d %B %Y" }} &middot; {{ t.speaker | escape }}
-        {%- if t.with %}, with {{ t.with | escape }}{% endif %}
-      </span>
+      <a href="{{ t.url }}" rel="noopener">{{ t.title | escape }}</a>
+      <span class="talk-meta">{% include talk-meta.html talk=t %}</span>
     </li>
     {%- endif %}
     {%- endfor %}
@@ -159,9 +155,7 @@ sections:
 <section class="section" id="all-talks" aria-labelledby="all-talks-heading">
   <h2 id="all-talks-heading">All talks</h2>
   <p>
-    Full list of presentations by project members. Talks given before the grant
-    began are on the
-    <a href="{{ site.pi.site }}" rel="noopener">PI's own page</a>.
+    Full list of presentations by project members.
   </p>
 
   <div class="pub-index" data-search data-search-noun="talks">
@@ -174,13 +168,14 @@ sections:
     </div>
 
     {%- comment -%}
-      One line per talk, asked for on 2026-08-28: the two-line entry was too
-      tall once the list stopped being four items long. The date leads, in its
-      own column, because four of these talks share a title and the date and
-      place are what tell them apart. Everything after the title is dimmed and
-      runs on the same line, so a long title pushes the meta onto a second
-      visual line rather than being truncated -- nothing is hidden, and the
-      filter still reads the whole entry.
+      One entry per talk, in a fixed order the owner set on 2026-08-28: title,
+      event, institution, city, country, speakers. Whatever a talk has of those
+      is shown, in that order, and nothing else.
+
+      The date is not displayed. It orders the list and groups it by year, and
+      that is all it is for. An entry may run to a second line when it needs
+      to; an earlier version truncated the title to force one line, which the
+      owner did not want.
     {%- endcomment -%}
     {%- assign talk_years = talks | group_by_exp: "t", "t.date | date: '%Y'" %}
     {%- for group in talk_years %}
@@ -188,21 +183,13 @@ sections:
       <h3 class="pub-year-head">{{ group.name }}</h3>
       <ul class="pub-list talk-list">
         {%- for t in group.items %}
-        <li class="talk-row" data-search-item{% if t.title %} title="{{ t.title | escape }}"{% endif %}>
-          <time class="talk-date" datetime="{{ t.date | date: '%Y-%m-%d' }}">{{ t.date | date: "%-d %b" }}</time>
-          <span class="talk-line">
-            {%- if t.url %}
-            <a href="{{ t.url }}" rel="noopener">{% if t.title %}{{ t.title | escape }}{% else %}{{ t.event | escape }}{% endif %}</a>
-            {%- else %}
-            <span class="talk-title">{% if t.title %}{{ t.title | escape }}{% else %}{{ t.event | escape }}{% endif %}</span>
-            {%- endif %}
-            <span class="talk-where">
-              {%- if t.title %}{{ t.event | escape }} &middot; {% endif %}
-              {{- t.kind | escape }}{% if t.invited %}, invited{% endif %} &middot;
-              {{ t.location | escape }} &middot; {{ t.speaker | escape }}
-              {%- if t.with %}, with {{ t.with | escape }}{% endif %}
-            </span>
-          </span>
+        <li class="talk-row" data-search-item>
+          {%- if t.url %}
+          <a href="{{ t.url }}" rel="noopener">{{ t.title | escape }}</a>
+          {%- else %}
+          <span class="talk-title">{{ t.title | escape }}</span>
+          {%- endif %}
+          <span class="talk-where">{% include talk-meta.html talk=t %}</span>
         </li>
         {%- endfor %}
       </ul>

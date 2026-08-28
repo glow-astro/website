@@ -1,0 +1,29 @@
+{%- comment -%}
+  Everything about a talk except its title, in the one order the owner set on
+  2026-08-28: event, institution, city, country, speakers. Shared by both talk
+  lists so the two cannot drift apart.
+
+  Middots separate the groups; commas join within one. City and country are a
+  place, not two facts ("Madrid, Spain"), and speakers are a list ("Choi,
+  Urrutia, Zumalacárregui"), so both read as commas while the boundaries
+  between event, place and people stay visible.
+
+  Speakers are listed alphabetically by surname in the data file, all of them
+  in the same list. Nothing here says whether a talk was recorded: the link on
+  the title already does.
+{%- endcomment -%}
+{%- assign bits = "" | split: "" -%}
+{%- if include.talk.event %}{% assign bits = bits | push: include.talk.event %}{% endif -%}
+{%- if include.talk.institution %}{% assign bits = bits | push: include.talk.institution %}{% endif -%}
+{%- if include.talk.city and include.talk.country -%}
+  {%- capture place %}{{ include.talk.city }}, {{ include.talk.country }}{% endcapture -%}
+  {%- assign bits = bits | push: place -%}
+{%- elsif include.talk.city -%}
+  {%- assign bits = bits | push: include.talk.city -%}
+{%- elsif include.talk.country -%}
+  {%- assign bits = bits | push: include.talk.country -%}
+{%- endif -%}
+{%- if include.talk.online %}{% assign bits = bits | push: "Online" %}{% endif -%}
+{%- assign speakers = include.talk.speakers | join: ", " -%}
+{%- assign bits = bits | push: speakers -%}
+{%- for b in bits %}{% unless forloop.first %} &middot; {% endunless %}{{ b | escape }}{% endfor -%}
