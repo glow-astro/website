@@ -216,17 +216,21 @@ sections:
     Building the arrival-time response of the best-fitting lens for
     <a href="https://inspirehep.net/arxiv/2512.17631" rel="noopener">GW231123</a>,
     a point mass in an external shear. Left: isochrones of the Fermat potential
-    sweeping the lens plane, with the source, the microlens and the images
-    marked. Right: the response <em>I</em>(τ) as it is built, and below it the
-    wave-optics part left once the images are removed. The sweep stops three
-    times. Two of the stops are images, at τ = 0 and τ = 2.98, where an
-    isochrone is born and where one reconnects around the saddle. The third,
-    at τ = 0.90, is not an image at all: the isochrone is simply deflected
-    around the microlens, and it is the largest feature of the whole response.
+    sweeping the lens plane, coloured by how much of the response each stretch
+    of curve is accumulating, so the bright parts are where the lens is holding
+    the isochrone up. Right: the response <em>I</em>(τ) as it is built, and
+    below it the wave-optics part left once the images are removed. The
+    animation starts stopped, on the global minimum, and stops twice more. At
+    τ = 2.98 an image: the contour reconnects and a closed loop appears around
+    the saddle. At τ = 0.90 no image at all, and the largest feature of the
+    whole response: the isochrone is drawn out into a bright lobe around the
+    microlens. That feature has no single delay. It is spread along a stretch
+    of curve, which is why the peak in <em>I</em>(τ) is broad where the image
+    gives a spike.
   {%- endcapture -%}
   {% include figure-ondemand.html
              stem="wave-optics-feature" width="1560" height="520"
-             alt="Animation: curves of constant arrival time expand across the lens plane from the first image. As they grow, the arrival-time response is drawn beside them. The sweep pauses three times: twice where an image forms and a new curve appears or reconnects, and once where the curve is merely deflected around the microlens and the response shows a broad peak with no image behind it."
+             alt="Animation: curves of constant arrival time expand across the lens plane from the first image, brightening where they contribute most to the response. As they grow, the arrival-time response is drawn beside them. The animation begins stopped on the global minimum and pauses twice more: once where a curve reconnects around a second image, and once where the curve is merely drawn out into a bright lobe around the microlens and the response shows a broad peak with no image behind it."
              caption=wolf_caption %}
 </section>
 
