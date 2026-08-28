@@ -63,8 +63,8 @@
 #            "Invited talk, invited". The CV marks these with a star
 #   speaker  full name, and the reason this field exists
 #   with     optional co-presenters
-#   year     required, and what the list is grouped by
-#   date     optional YYYY-MM-DD, for ordering within a year where it is known
+#   date     required YYYY-MM-DD. The list sorts by it and groups by its
+#            year. Exact dates come from the CV comments named above
 #   url      optional recording. Its presence is what makes a talk "recorded"
 #
 #   Scope: the grant began in 2026, so this list starts in 2026. The PI has
@@ -138,19 +138,18 @@ papers:
       of concept that lensed events can be identified rapidly enough to keep up
       with large catalogs.
 
-  # No journal reference or DOI yet. The owner says this is published in 2026
-  # (2026-08-28) but INSPIRE, Crossref and the arXiv record all still carry it
-  # as a preprint, so the reference and the DOI have to come from him. `date`
-  # is a placeholder that fixes the year and nothing finer -- correct it when
-  # the reference arrives.
+  # Accepted in JCAP, not yet published (owner, 2026-08-28); the full reference
+  # is still to come, and `journal` carries the bare journal name until it
+  # arrives, which is what the template expects while a paper is "accepted".
+  # `date` is therefore still the preprint date: only publication supersedes it.
   - title: "Gravitational-wave dispersion over inhomogeneous space-times: General relativity, screened theories of gravity and non-minimal dark energy"
     authors: ["Menadeo", "Giardino", "Zumalacárregui"]
     arxiv: "2511.08023"
     url: "https://inspirehep.net/literature/3081772"
-    date: 2026-01-01
-    preprint_date: 2025-11-11
+    date: 2025-11-11
     featured: false
-    status: published
+    status: accepted
+    journal: "JCAP"
     wps: ["WP3-B"]
     summary: >-
       A massive object breaks homogeneity and lets different gravitational-wave
@@ -160,77 +159,86 @@ papers:
       computed first in general relativity and then in scalar-tensor theories.
 
 talks:
-  # ---- Conferences and workshops -------------------------------------------
-  - event: "Dark Matter & Stars"
-    location: "Southampton, UK"
-    kind: "Plenary talk"
-    invited: true
-    speaker: "Miguel Zumalacárregui"
-    year: 2026
-
-  - title: "Tests of gravitational-wave propagation"
-    event: "Dark Energy from Home"
-    location: "Online"
-    kind: "Invited talk"
-    speaker: "Miguel Zumalacárregui"
-    year: 2026
-    url: "https://youtu.be/1k0o0QiL288"
-
-  - event: "EREP 2026"
-    location: "Murcia, Spain"
-    kind: "Plenary talk"
-    invited: true
-    speaker: "Miguel Zumalacárregui"
-    year: 2026
-
-  # ---- Seminars and colloquia ----------------------------------------------
-  - title: "Gravitational lensing of waves"
-    event: "IPARCOS, Universidad Complutense de Madrid"
-    location: "Madrid, Spain"
-    kind: "Colloquium"
-    invited: true
-    speaker: "Miguel Zumalacárregui"
-    year: 2026
-    date: 2026-06-25
-    url: "https://www.youtube.com/watch?v=VsK5Omc99DU"
-
-  - event: "Princeton University"
-    location: "Princeton, US"
-    kind: "IAS/PU gravitational-wave seminar"
-    speaker: "Miguel Zumalacárregui"
-    year: 2026
-
-  - event: "Institute for Advanced Study"
-    location: "Princeton, US"
-    kind: "Astro coffee"
-    speaker: "Miguel Zumalacárregui"
-    year: 2026
-
-  - title: "A magnified and diffracted black-hole merger (GW231123)"
-    event: "Cosmology Talks"
-    location: "Online"
-    kind: "Recorded webinar"
-    speaker: "Miguel Zumalacárregui"
-    year: 2026
-    url: "https://youtu.be/ZGqOpDTL8k4"
-
-  - event: "University of Virginia"
-    location: "Online"
-    kind: "Gravity seminar"
-    speaker: "Miguel Zumalacárregui"
-    year: 2026
-
-  - title: "Probing low-mass dark-matter halos with LISA"
+  # Titles and exact dates come from the PI's CV, where they live as
+  # "% AEI talks DB: <date> | <title>" comments above each row:
+  # ~/Dropbox/Apps/Overleaf/CV & Application materials/CV_Miguel_Zuma.tex
+  # Titles are his, verbatim, including their capitalization. Four of these
+  # are the same colloquium given in four places, which is why the list is
+  # ordered and identified by date and event rather than by title.
+  - title: "Probing Low Mass Dark Matter Halos with LISA"
     event: "Cosmology Talks"
     location: "Online"
     kind: "Recorded webinar"
     speaker: "Miguel Zumalacárregui"
     with: "Han-Gil Choi and Juan Urrutia"
-    year: 2026
+    date: 2026-07-29
     url: "https://www.youtube.com/watch?v=a5lIDTDRo4c"
 
-  - event: "University of Barcelona"
+  - title: "Gravitational Lensing of Waves: a new window into astrophysics, dark matter and gravity"
+    event: "Dark Matter & Stars"
+    location: "Southampton, UK"
+    kind: "Plenary talk"
+    invited: true
+    speaker: "Miguel Zumalacárregui"
+    date: 2026-07-13
+
+  - title: "Gravitational Lensing of Waves: a new window into astrophysics, dark matter and gravity"
+    event: "IPARCOS, Universidad Complutense de Madrid"
+    location: "Madrid, Spain"
+    kind: "Colloquium"
+    invited: true
+    speaker: "Miguel Zumalacárregui"
+    date: 2026-06-25
+    url: "https://www.youtube.com/watch?v=VsK5Omc99DU"
+
+  - title: "Gravitational Lensing of Waves: a new window into astrophysics, dark matter and gravity"
+    event: "EREP 2026"
+    location: "Murcia, Spain"
+    kind: "Plenary talk"
+    invited: true
+    speaker: "Miguel Zumalacárregui"
+    date: 2026-05-25
+
+  - title: "Gravitational Lensing of Waves: a new window into astrophysics, dark matter and gravity"
+    event: "University of Barcelona"
     location: "Barcelona, Spain"
     kind: "Cosmology seminar"
     speaker: "Miguel Zumalacárregui"
-    year: 2026
+    date: 2026-05-22
+
+  - title: "Novel tests of gravitational-wave propagation"
+    event: "Dark Energy from Home"
+    location: "Online"
+    kind: "Invited talk"
+    speaker: "Miguel Zumalacárregui"
+    date: 2026-04-22
+    url: "https://youtu.be/1k0o0QiL288"
+
+  - title: "Quasi-periodic lensing of starlight"
+    event: "Institute for Advanced Study"
+    location: "Princeton, US"
+    kind: "Astro coffee"
+    speaker: "Miguel Zumalacárregui"
+    date: 2026-04-22
+
+  - title: "Across the Universe: GW231123 as a diffracted and magnified black hole merger"
+    event: "Princeton University"
+    location: "Princeton, US"
+    kind: "IAS/PU gravitational-wave seminar"
+    speaker: "Miguel Zumalacárregui"
+    date: 2026-04-21
+
+  - title: "Gravitational Lensing of Waves: a new window into astrophysics, dark matter and gravity"
+    event: "University of Virginia"
+    location: "Online"
+    kind: "Gravity seminar"
+    speaker: "Miguel Zumalacárregui"
+    date: 2026-03-09
+
+  - title: "A Magnified and Diffracted Black Hole Merger (GW231123)"
+    event: "Cosmology Talks"
+    location: "Online"
+    kind: "Recorded webinar"
+    speaker: "Miguel Zumalacárregui"
+    date: 2026-01-27
+    url: "https://youtu.be/ZGqOpDTL8k4"
