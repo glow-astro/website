@@ -20,6 +20,22 @@ refs:
   - cranmer-sbi
   - caldarola-dingo
 topic_id: data-analysis
+# In-page section bar, added 2026-08-28 so every science page has one.
+# Labels are short because the bar is a single wrapping row; the headings
+# themselves are longer and stay so.
+sections:
+  - id: discovery
+    label: "Discovery"
+  - id: effective
+    label: "Effective theory"
+  - id: global
+    label: "Global evidence"
+  - id: speed
+    label: "Speed"
+  - id: references
+    label: "References"
+  - id: more
+    label: "Where this is done"
 ---
 
 {% include topicnav.html %}
@@ -27,6 +43,8 @@ topic_id: data-analysis
 {%- assign t = site.data.topics | where: "id", page.topic_id | first %}
 
 {% include topic-figure.html topic=t %}
+
+{% include subnav.html %}
 
 <section class="section" id="discovery" aria-labelledby="discovery-heading">
   <h2 id="discovery-heading">Discovering lensed signals</h2>

@@ -19,6 +19,22 @@ refs:
   - ezquiaga-dark-energy
   - desi-dr2-bao
 topic_id: testing-gravity
+# In-page section bar, added 2026-08-28 so every science page has one.
+# Labels are short because the bar is a single wrapping row; the headings
+# themselves are longer and stay so.
+sections:
+  - id: propagation
+    label: "Propagation"
+  - id: beyond
+    label: "Beyond deflection"
+  - id: prism
+    label: "Gravitational prism"
+  - id: cosmology
+    label: "Dark energy"
+  - id: references
+    label: "References"
+  - id: more
+    label: "Where this is done"
 ---
 
 {%- assign t = site.data.topics | where: "id", page.topic_id | first %}
@@ -26,6 +42,8 @@ topic_id: testing-gravity
 {% include topicnav.html %}
 
 {% include topic-figure.html topic=t %}
+
+{% include subnav.html %}
 <section class="section" id="propagation" aria-labelledby="propagation-heading">
   <h2 id="propagation-heading">Hearing gravity propagate</h2>
   <p>

@@ -12,9 +12,18 @@
   and not a kind, and it can show two topics acting in the same place. A row of
   text labels cannot do either.
 
-  This replaces the per-page section bar on topic pages rather than sitting
-  above it. Three levels of navigation on a short page is more chrome than
-  content, and which topic you are in matters more than which paragraph.
+  This sits above the per-page section bar rather than replacing it. It used to
+  replace it, on the argument that three levels of navigation on a short page is
+  more chrome than content -- but science.html carried all three anyway, and the
+  topic pages the rule called short run 760 to 1400 words against that page's
+  1395, so the premise was wrong about its own example. Every science page has
+  had a section bar since 2026-08-28.
+
+  Three sticky bars are only three on a wide screen. Below 620px the CSS makes
+  this bar static and sticky-bars.js reports 0 for its height, so the section
+  bar closes the gap and a phone carries the same 98px of sticky chrome as any
+  other page. That behaviour was already written for science.html; the topic
+  pages simply reach it now too.
 
   Plain links, no JavaScript, no disclosure widget: seven items still fit on one
   line at the site's measure, so hiding them behind a control would cost a click
