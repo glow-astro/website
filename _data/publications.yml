@@ -20,8 +20,13 @@
 #            appeared in the journal. Keep the preprint date in
 #            `preprint_date` when it is superseded, so the record is not lost
 #            and the arXiv year can still be recovered. Day is only for ties.
-#   preprint_date  optional YYYY-MM-DD, set only once `date` has moved to the
-#            publication date. Nothing renders it today; it is the record.
+#   preprint_date  optional YYYY-MM-DD, set whenever `date` has moved off the
+#            preprint date. Nothing renders it; it is the record, so the arXiv
+#            year can still be recovered.
+#   date_provisional  optional true, when `date` is an assumption rather than
+#            a fact -- a paper accepted but not yet out, dated by the month it
+#            is expected. The verification prints these, so a guess cannot
+#            quietly become the record. Remove it with the real date.
 #   status   "preprint" | "accepted" | "published"
 #   doi      optional, bare -- "10.3847/..." -- once the paper has one. The
 #            template links it beside the arXiv id; do not include the
@@ -136,15 +141,22 @@ papers:
       of concept that lensed events can be identified rapidly enough to keep up
       with large catalogs.
 
-  # Accepted in JCAP, not yet published (owner, 2026-08-28); the full reference
-  # is still to come, and `journal` carries the bare journal name until it
-  # arrives, which is what the template expects while a paper is "accepted".
-  # `date` is therefore still the preprint date: only publication supersedes it.
+  # Accepted in JCAP in 2026; the full reference is still owed by the owner
+  # (2026-08-28), and `journal` carries the bare journal name until it arrives,
+  # which is what the template expects while a paper is "accepted".
+  #
+  # `date` is A GUESS: the owner asked to assume publication in September 2026,
+  # so this is the first of that month, and `date_provisional` says so. It is
+  # not a fact about the world and nothing may be inferred from the day. The
+  # verification prints every provisional date, so this cannot be quietly
+  # forgotten -- replace both lines when the reference arrives.
   - title: "Gravitational-wave dispersion over inhomogeneous space-times: General relativity, screened theories of gravity and non-minimal dark energy"
     authors: ["Menadeo", "Giardino", "Zumalacárregui"]
     arxiv: "2511.08023"
     url: "https://inspirehep.net/literature/3081772"
-    date: 2025-11-11
+    date: 2026-09-01
+    date_provisional: true
+    preprint_date: 2025-11-11
     featured: false
     status: accepted
     journal: "JCAP"
