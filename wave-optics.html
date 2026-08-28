@@ -13,6 +13,8 @@ description: >-
 refs:
   - leung-wave-mechanics
   - shan-microlens-field
+  - savastano-weakly-lensed
+  - zumalacarregui-stochastic
   - cordes-plasma
   - glow-code
 topic_id: wave-optics
@@ -24,6 +26,8 @@ sections:
     label: "Chromatic distortions"
   - id: scales
     label: "Lens scales"
+  - id: features
+    label: "Lens features"
   - id: plasma
     label: "Plasma"
   - id: computing
@@ -176,6 +180,54 @@ sections:
       factor acquires the oscillations that are the signature of diffraction.
     </figcaption>
   </figure>
+</section>
+
+<section class="section" id="features" aria-labelledby="features-heading">
+  <h2 id="features-heading">Wave-optics lens features</h2>
+  <p>
+    The natural unit of wave-optics lensing is the feature, not the image. A
+    lens writes its imprint into the arrival-time response of a coherent
+    signal, the amplitude the detector receives as a function of delay, and
+    that response is a sequence of localized features. Some of them sit at the
+    delay of a geometric image. Many do not.
+  </p>
+  <p>
+    The response is built by sweeping the lens plane. Curves of constant
+    arrival time, the isochrones of the Fermat potential, expand outward from
+    the first image, and what they enclose as they grow is the response itself.
+    An image is where that sweep does something abrupt: a new isochrone is
+    born, or an existing one reconnects, and the response answers with a jump
+    or a divergence. A mass that is not quite able to form an image still bends
+    the isochrone as it passes, and the response answers with a smooth peak
+    instead.
+  </p>
+  <p>
+    That peak is a <strong>wave-optics lens feature</strong> (WOLF): the smooth
+    counterpart of a geometric
+    image.{% include cite.html key="savastano-weakly-lensed,zumalacarregui-stochastic" %}
+    It carries the same kind of information that an image would, the mass of
+    the object that made it and where along the line of sight it sits, and it
+    survives in a regime where the object is too light to produce an image at
+    all. Counting features rather than images is what extends lensing down to
+    the masses this project is after.
+  </p>
+
+  {%- capture wolf_caption -%}
+    Building the arrival-time response of the best-fitting lens for
+    <a href="https://inspirehep.net/arxiv/2512.17631" rel="noopener">GW231123</a>,
+    a point mass in an external shear. Left: isochrones of the Fermat potential
+    sweeping the lens plane, with the source, the microlens and the images
+    marked. Right: the response <em>I</em>(τ) as it is built, and below it the
+    wave-optics part left once the images are removed. The sweep stops three
+    times. Two of the stops are images, at τ = 0 and τ = 2.98, where an
+    isochrone is born and where one reconnects around the saddle. The third,
+    at τ = 0.90, is not an image at all: the isochrone is simply deflected
+    around the microlens, and it is the largest feature of the whole response.
+  {%- endcapture -%}
+  {% include figure-ondemand.html
+             stem="wave-optics-feature" width="1560" height="520"
+             alt="Animation: curves of constant arrival time expand across the lens plane from the first image. As they grow, the arrival-time response is drawn beside them. The sweep pauses three times: twice where an image forms and a new curve appears or reconnects, and once where the curve is merely deflected around the microlens and the response shows a broad peak with no image behind it."
+             caption=wolf_caption %}
 </section>
 
 <section class="section" id="plasma" aria-labelledby="plasma-heading">
