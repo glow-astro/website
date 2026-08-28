@@ -35,21 +35,16 @@ sections:
   section of its own rather than a subheading inside one "Team" block, so the
   page can be entered at any rank from the bar above.
 
-  The person card is one shape used by every group -- see the `member` markup
-  repeated below. Liquid has no macros, so the repetition is the price of not
-  adding an include for eleven lines of markup.
+  The person card is one shape used by every group, and since 2026-08-28 it is
+  one include, _includes/person-card.html, rather than the same markup written
+  out four times. The avatar is what tipped it: a photo-or-initials fallback
+  copied four times is four places for it to go wrong.
 {%- endcomment -%}
 
 <section class="section" id="pi" aria-labelledby="pi-heading">
   <h2 id="pi-heading">Principal Investigator</h2>
   {%- for p in site.data.people.pi %}
-  <div class="card">
-    <p class="card-title">
-      {%- if p.url %}<a href="{{ p.url }}" rel="noopener">{{ p.name }}</a>{% else %}{{ p.name }}{% endif -%}
-    </p>
-    <p class="card-meta">{{ p.role }}{% if p.wps %} · {{ p.wps | join: ", " }}{% endif %}</p>
-    <p>{{ p.bio }}</p>
-  </div>
+  {% include person-card.html person=p %}
   {%- endfor %}
 </section>
 
@@ -59,17 +54,7 @@ sections:
   {%- if postdocs.size > 0 %}
   <div class="grid grid-2">
     {%- for p in postdocs %}
-    <div class="card">
-      <p class="card-title">
-        {%- if p.url %}<a href="{{ p.url }}" rel="noopener">{{ p.name }}</a>{% else %}{{ p.name }}{% endif -%}
-      </p>
-      <p class="card-meta">
-        {{ p.role }}{% if p.location %}, {{ p.location }}{% endif %} &middot; {{ p.years }}
-        {%- if p.wps %} &middot; {{ p.wps | join: ", " }}{% endif -%}
-      </p>
-      {%- if p.incoming %}<p class="tags"><span class="tag tag-accent">Starts {{ p.starts }}</span></p>{% endif %}
-      {%- if p.topic %}<p>{{ p.topic }}</p>{% endif %}
-    </div>
+    {% include person-card.html person=p %}
     {%- endfor %}
   </div>
   {%- else %}
@@ -83,17 +68,7 @@ sections:
   {%- if students.size > 0 %}
   <div class="grid grid-2">
     {%- for p in students %}
-    <div class="card">
-      <p class="card-title">
-        {%- if p.url %}<a href="{{ p.url }}" rel="noopener">{{ p.name }}</a>{% else %}{{ p.name }}{% endif -%}
-      </p>
-      <p class="card-meta">
-        {{ p.role }}{% if p.location %}, {{ p.location }}{% endif %} &middot; {{ p.years }}
-        {%- if p.wps %} &middot; {{ p.wps | join: ", " }}{% endif -%}
-      </p>
-      {%- if p.incoming %}<p class="tags"><span class="tag tag-accent">Starts {{ p.starts }}</span></p>{% endif %}
-      {%- if p.topic %}<p>{{ p.topic }}</p>{% endif %}
-    </div>
+    {% include person-card.html person=p %}
     {%- endfor %}
   </div>
   {%- else %}
@@ -107,17 +82,7 @@ sections:
   <h2 id="masters-heading">Master's students</h2>
   <div class="grid grid-2">
     {%- for p in masters %}
-    <div class="card">
-      <p class="card-title">
-        {%- if p.url %}<a href="{{ p.url }}" rel="noopener">{{ p.name }}</a>{% else %}{{ p.name }}{% endif -%}
-      </p>
-      <p class="card-meta">
-        {{ p.role }}{% if p.location %}, {{ p.location }}{% endif %} &middot; {{ p.years }}
-        {%- if p.wps %} &middot; {{ p.wps | join: ", " }}{% endif -%}
-      </p>
-      {%- if p.incoming %}<p class="tags"><span class="tag tag-accent">Starts {{ p.starts }}</span></p>{% endif %}
-      {%- if p.topic %}<p>{{ p.topic }}</p>{% endif %}
-    </div>
+    {% include person-card.html person=p %}
     {%- endfor %}
   </div>
 </section>

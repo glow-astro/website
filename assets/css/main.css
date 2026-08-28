@@ -831,6 +831,55 @@ figure.float-left {
 	color: var(--accent-dim);
 }
 
+/* ---- Person cards ---------------------------------------------------- */
+
+/* A photograph or, for anyone without one, their initials. Both are the same
+   circle at the same size, so a group where only some people have supplied a
+   photograph still reads as one row of cards rather than as a list with holes
+   in it. Initials carry the accent because they are type, not an image; a
+   grey monogram on a grey ground reads as a missing asset. */
+.person {
+	display: flex;
+	gap: 0.85rem;
+	align-items: flex-start;
+}
+
+.person-avatar {
+	width: 72px;
+	height: 72px;
+	border-radius: 50%;
+	flex: 0 0 auto;
+	border: 1px solid var(--border-strong);
+}
+
+img.person-avatar {
+	object-fit: cover;
+	/* The box is reserved by width/height, so the card does not reflow when a
+	   lazily-loaded photograph arrives. */
+	background: var(--bg-raised);
+}
+
+.person-initials {
+	display: grid;
+	place-items: center;
+	background: var(--bg-raised);
+	color: var(--accent);
+	font-weight: 620;
+	font-size: 1.05rem;
+	letter-spacing: 0.03em;
+}
+
+/* Without this the flex item refuses to shrink and a long name pushes the
+   card wider than its grid column. */
+.person-body { min-width: 0; }
+
+.person-body > :last-child { margin-bottom: 0; }
+
+@media (max-width: 480px) {
+	.person-avatar { width: 56px; height: 56px; }
+	.person-initials { font-size: 0.9rem; }
+}
+
 /* ---- Filterable indexes (publications, talks) ------------------------ */
 
 /* The toolbar carries `hidden` in the markup and assets/js/search.js removes

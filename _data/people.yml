@@ -23,6 +23,13 @@
 #   location  optional, when the person is not based with the rest of the team
 #   years     e.g. "2026–"
 #   topic     one sentence on what the person works on
+#   photo     optional filename in assets/img/people/. A square crop, 224x224,
+#             shown in a circle. Without one the card shows the person's
+#             initials instead, so a missing photo is a fallback rather than a
+#             hole -- nobody has to supply one. Originals live in the group's
+#             Dropbox (Documentos/IFT Group/photos/profile pics) and are
+#             cropped down before they are committed; do not commit a 2 MB
+#             original for a 72-pixel circle.
 #   incoming  true -> the card shows a "starts <starts>" badge
 #   starts    e.g. "October 2026"
 #   wps       optional work-package task codes.
@@ -43,6 +50,7 @@ pi:
 current:
   # Postdocs the grant pays for, first.
   - name: "Han-Gil Choi"
+    photo: "han-gil-choi.jpg"
     url: "https://inspirehep.net/authors/1852430"
     stage: postdoc
     role: "Postdoctoral researcher"
@@ -78,6 +86,7 @@ current:
     topic: "Lensing of gravitational waves by stellar fields and effective descriptions of diffraction."
 
   - name: "Juan Urrutia"
+    photo: "juan-urrutia.jpg"
     url: "https://inspirehep.net/authors/2049477"
     stage: postdoc
     role: "Affiliated postdoctoral researcher"

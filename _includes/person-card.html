@@ -1,0 +1,45 @@
+{%- comment -%}
+  One person card, used by every group on team.html: the PI, postdocs,
+  doctoral and Master's students. Until 2026-08-28 this markup was repeated
+  four times in the page, on the reasoning that eleven lines did not justify an
+  include. Adding the avatar took it past that: four copies of a photo-or-
+  initials fallback is four places for the fallback to be got wrong.
+
+  The avatar is a photograph when `photo` is set and the person's initials when
+  it is not. Initials are a fallback, not a placeholder to be filled in later:
+  nobody has to supply a photograph, and a card without one is finished.
+
+  Initials are the first letter of the first and last words of the name, which
+  is the same rule the personal site uses. It is wrong for some names and right
+  for most; a person who wants different initials should get an explicit field
+  rather than a cleverer rule.
+
+  `bio` is the PI's longer line and `topic` everyone else's. A card renders
+  whichever it has.
+{%- endcomment -%}
+{%- assign p = include.person -%}
+<div class="card">
+  <div class="person">
+    {%- if p.photo %}
+    <img class="person-avatar"
+         src="{{ '/assets/img/people/' | append: p.photo | relative_url }}"
+         alt="" loading="lazy" decoding="async" width="72" height="72">
+    {%- else %}
+    {%- assign parts = p.name | split: " " -%}
+    <div class="person-avatar person-initials" aria-hidden="true">{{ parts.first | slice: 0 }}{{ parts.last | slice: 0 }}</div>
+    {%- endif %}
+    <div class="person-body">
+      <p class="card-title">
+        {%- if p.url %}<a href="{{ p.url }}" rel="noopener">{{ p.name }}</a>{% else %}{{ p.name }}{% endif -%}
+      </p>
+      <p class="card-meta">
+        {{ p.role }}{% if p.location %}, {{ p.location }}{% endif %}
+        {%- if p.years %} &middot; {{ p.years }}{% endif %}
+        {%- if p.wps %} &middot; {{ p.wps | join: ", " }}{% endif -%}
+      </p>
+      {%- if p.incoming %}<p class="tags"><span class="tag tag-accent">Starts {{ p.starts }}</span></p>{% endif %}
+      {%- if p.bio %}<p>{{ p.bio }}</p>{% endif %}
+      {%- if p.topic %}<p>{{ p.topic }}</p>{% endif %}
+    </div>
+  </div>
+</div>
