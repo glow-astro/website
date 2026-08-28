@@ -831,6 +831,90 @@ figure.float-left {
 	color: var(--accent-dim);
 }
 
+/* ---- Filterable indexes (publications, talks) ------------------------ */
+
+/* The toolbar carries `hidden` in the markup and assets/js/search.js removes
+   it. Without JavaScript there is no input, and the list below is complete. */
+.filter {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 0.6rem 1rem;
+	margin: 0 0 1.4rem;
+}
+
+.filter[hidden] { display: none; }
+
+.filter input[type="search"] {
+	flex: 1 1 18rem;
+	min-width: 0;
+	background: var(--bg-raised);
+	border: 1px solid var(--border);
+	border-radius: 6px;
+	color: var(--text);
+	font: inherit;
+	font-size: 0.92rem;
+	padding: 0.5em 0.75em;
+}
+
+.filter input[type="search"]::placeholder { color: var(--text-mute); }
+
+.filter input[type="search"]:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: 1px;
+	border-color: var(--border-strong);
+}
+
+.filter-count {
+	margin: 0;
+	font-size: 0.85rem;
+	color: var(--text-mute);
+	white-space: nowrap;
+}
+
+.filter-count b { color: var(--text); font-weight: 600; }
+
+.filter-empty {
+	color: var(--text-mute);
+	font-style: italic;
+}
+
+.pub-year { margin: 0 0 1.6rem; }
+
+.pub-year-head {
+	font-size: 0.82rem;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--text-mute);
+	font-weight: 600;
+	margin: 0 0 0.6rem;
+	padding-bottom: 0.35rem;
+	border-bottom: 1px solid var(--border);
+}
+
+.pub-list { list-style: none; padding: 0; margin: 0; }
+
+.pub-entry {
+	padding: 0.55rem 0;
+	font-size: 0.95rem;
+	border-bottom: 1px solid var(--border);
+}
+
+.pub-entry:last-child { border-bottom: 0; }
+
+.pub-entry-title { color: var(--text); }
+
+/* The second line of an entry: everything that is not the title. Dimmed so a
+   list of thirty scans by title, and still searchable, since the filter reads
+   the entry's whole textContent. */
+.pub-entry-meta,
+.talk-meta {
+	display: block;
+	font-size: 0.83rem;
+	color: var(--text-mute);
+	margin-top: 0.15rem;
+}
+
 /* ---- Section framing ------------------------------------------------- */
 
 .section { margin: 2.8rem 0; }

@@ -247,7 +247,7 @@ Escaping LaTeX from Liquid has three traps, all solved in
 If you build the same thing for GLOW (a PDF and a page from one source), copy
 these three includes wholesale rather than rediscovering the traps.
 
-## 6. JavaScript: five scripts, each doing one thing
+## 6. JavaScript: six scripts, each doing one thing
 
 Everything degrades: with JavaScript off, the site is fully readable.
 
@@ -272,6 +272,18 @@ Everything degrades: with JavaScript off, the site is fully readable.
   the reveal resolves to the start and the reveal replays. That was built and
   it did exactly that. Runs after `reduced-motion.js` and checks the same
   query, so a paused video is left paused.
+
+- `search.js` — filters a long list down to a query. One container per
+  filterable list, addressed entirely through `data-search*` attributes, so
+  the same script serves the articles index and the talks index on
+  `publications.html`. Copied in shape from the hi_class publication filter:
+  no index, no library, no fuzzy matching, just each entry's own
+  `textContent` lowercased and cached once, then `indexOf`. Two details are
+  load-bearing. **The toolbar is `hidden` in the markup and unhidden by the
+  script**, so JavaScript being off leaves a complete list rather than a
+  search box that cannot work. And **every total is counted from the DOM**,
+  never written into the template, so the count cannot drift from
+  `_data/publications.yml`.
 
 (The personal site also has `anchor-aliases.js`, redirecting its old dead
 fragments. This site has no old fragments to redirect and does not carry it.)

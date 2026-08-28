@@ -24,18 +24,44 @@
 #   wps      work packages the paper belongs to
 #   summary  one sentence: what the paper does, not how well it was received
 #
+#   featured whether the paper appears in "Featured articles", the annotated
+#            list at the top of the page. Every paper appears in "All
+#            articles" regardless. Today all of them are featured, which is
+#            honest for a project with three papers: the two lists diverge as
+#            the group's output grows, and that is the point of having both
+#
 # talks
-#   title    as given
-#   venue    the series or meeting
-#   year
-#   url      recording
+#   Talks given by anyone on the project, not only the PI, which is why
+#   `speaker` is required rather than assumed. A talk with a `url` is a
+#   recording and appears in "Recorded talks" as well as in "All talks";
+#   without one it appears only in "All talks".
+#
+#   The seminars and conference talks come from the PI's CV, which records the
+#   host and the kind of talk but not, for a seminar, its title. `title` is
+#   therefore optional: with one, it leads; without one, the event does.
+#
+#   title    optional -- the talk's own title, where there is one
+#   event    the meeting, seminar series or host institution
+#   location "Madrid, Spain", or "Online"
+#   kind     "Colloquium", "Plenary talk", "Invited talk", "Seminar", and so on
+#   invited  optional true, rendered as ", invited". Leave it off when
+#            `kind` already says so ("Invited talk"), or the line reads
+#            "Invited talk, invited". The CV marks these with a star
+#   speaker  full name, and the reason this field exists
 #   with     optional co-presenters
-#   summary  optional
+#   year     required, and what the list is grouped by
+#   date     optional YYYY-MM-DD, for ordering within a year where it is known
+#   url      optional recording. Its presence is what makes a talk "recorded"
+#
+#   Scope: the grant began in 2026, so this list starts in 2026. The PI has
+#   given over 130 talks since 2012 and the earlier ones belong on a personal
+#   page, not on the output list of this project.
 
 papers:
   - title: "Across the Universe: GW231123 as a magnified and diffracted black hole merger"
     authors: ["Goyal", "Villarrubia-Rojo", "Zumalacárregui"]
     arxiv: "2512.17631"
+    featured: true
     url: "https://inspirehep.net/arxiv/2512.17631"
     date: 2025-12-01
     status: published
@@ -54,6 +80,7 @@ papers:
   - title: "Effective description of lensed gravitational waves diffracted by stellar fields"
     authors: ["Zumalacárregui", "Shan"]
     arxiv: "2606.17765"
+    featured: true
     url: "https://inspirehep.net/arxiv/2606.17765"
     date: 2026-06-01
     status: preprint
@@ -67,6 +94,7 @@ papers:
   - title: "Signatures of 10–10⁴ M☉ dark-matter halos in LISA via stochastic diffraction"
     authors: ["Choi", "Urrutia", "Zumalacárregui"]
     arxiv: "2607.11887"
+    featured: true
     url: "https://inspirehep.net/arxiv/2607.11887"
     date: 2026-07-01
     status: preprint
@@ -78,23 +106,77 @@ papers:
       by LISA.
 
 talks:
-  - title: "Gravitational lensing of waves"
-    venue: "IPARCOS colloquium, Universidad Complutense de Madrid"
+  # ---- Conferences and workshops -------------------------------------------
+  - event: "Dark Matter & Stars"
+    location: "Southampton, UK"
+    kind: "Plenary talk"
+    invited: true
+    speaker: "Miguel Zumalacárregui"
     year: 2026
+
+  - title: "Tests of gravitational-wave propagation"
+    event: "Dark Energy from Home"
+    location: "Online"
+    kind: "Invited talk"
+    speaker: "Miguel Zumalacárregui"
+    year: 2026
+    url: "https://youtu.be/1k0o0QiL288"
+
+  - event: "EREP 2026"
+    location: "Murcia, Spain"
+    kind: "Plenary talk"
+    invited: true
+    speaker: "Miguel Zumalacárregui"
+    year: 2026
+
+  # ---- Seminars and colloquia ----------------------------------------------
+  - title: "Gravitational lensing of waves"
+    event: "IPARCOS, Universidad Complutense de Madrid"
+    location: "Madrid, Spain"
+    kind: "Colloquium"
+    invited: true
+    speaker: "Miguel Zumalacárregui"
+    year: 2026
+    date: 2026-06-25
     url: "https://www.youtube.com/watch?v=VsK5Omc99DU"
 
+  - event: "Princeton University"
+    location: "Princeton, US"
+    kind: "IAS/PU gravitational-wave seminar"
+    speaker: "Miguel Zumalacárregui"
+    year: 2026
+
+  - event: "Institute for Advanced Study"
+    location: "Princeton, US"
+    kind: "Astro coffee"
+    speaker: "Miguel Zumalacárregui"
+    year: 2026
+
   - title: "A magnified and diffracted black-hole merger (GW231123)"
-    venue: "Cosmology Talks"
+    event: "Cosmology Talks"
+    location: "Online"
+    kind: "Recorded webinar"
+    speaker: "Miguel Zumalacárregui"
     year: 2026
     url: "https://youtu.be/ZGqOpDTL8k4"
 
-  - title: "Probing low-mass dark-matter halos with LISA"
-    venue: "Cosmology Talks"
+  - event: "University of Virginia"
+    location: "Online"
+    kind: "Gravity seminar"
+    speaker: "Miguel Zumalacárregui"
     year: 2026
+
+  - title: "Probing low-mass dark-matter halos with LISA"
+    event: "Cosmology Talks"
+    location: "Online"
+    kind: "Recorded webinar"
+    speaker: "Miguel Zumalacárregui"
     with: "Han-Gil Choi and Juan Urrutia"
+    year: 2026
     url: "https://www.youtube.com/watch?v=a5lIDTDRo4c"
 
-  - title: "Tests of gravitational-wave propagation"
-    venue: "Dark Energy from Home"
+  - event: "University of Barcelona"
+    location: "Barcelona, Spain"
+    kind: "Cosmology seminar"
+    speaker: "Miguel Zumalacárregui"
     year: 2026
-    url: "https://youtu.be/1k0o0QiL288"

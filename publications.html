@@ -4,24 +4,51 @@ nav: publications
 title: "Publications and talks"
 eyebrow: "Output"
 lede: >-
-  Papers and recorded talks that acknowledge the grant. Everything here is
-  freely readable, and the data behind the analyses is released with them.
+  Papers and talks that acknowledge the grant. Everything here is freely
+  readable, and the data behind the analyses is released with them.
 description: >-
-  Papers and recorded talks produced by the GLOW project, with links to the
-  preprints, the INSPIRE records and the accompanying data releases.
+  Papers and talks produced by the GLOW project, with links to the preprints,
+  the INSPIRE records and the accompanying data releases.
 sections:
-  - id: papers
-    label: "Papers"
-  - id: talks
-    label: "Talks"
+  - id: featured
+    label: "Featured"
+  - id: recorded
+    label: "Recorded talks"
+  - id: articles
+    label: "All articles"
+  - id: all-talks
+    label: "All talks"
 ---
 
 {% include subnav.html %}
 
-<section class="section" id="papers" aria-labelledby="papers-heading">
-  <h2 id="papers-heading">Papers</h2>
-  {%- assign papers = site.data.publications.papers | sort: "date" | reverse %}
-  {%- for p in papers %}
+{%- comment -%}
+  Four sections, in the order the owner asked for on 2026-08-28: the two
+  annotated lists first, then the two complete ones.
+
+  The split earns its keep in different ways on each side. For articles the
+  featured list is the annotated one and the complete list is the plain index,
+  so today they hold the same three papers and will diverge as the group
+  publishes. For talks the division is a real property of the entry rather
+  than a choice: a talk is in "Recorded talks" if it has a recording to link.
+
+  Both complete lists carry a filter, built from _data/publications.yml and
+  filtered by assets/js/search.js. With JavaScript off the filter is not
+  rendered at all and both lists are complete on the page, which is why the
+  toolbar is `hidden` in the markup and unhidden by the script.
+{%- endcomment -%}
+
+{%- assign papers = site.data.publications.papers | sort: "date" | reverse %}
+{%- assign talks = site.data.publications.talks %}
+
+<section class="section" id="featured" aria-labelledby="featured-heading">
+  <h2 id="featured-heading">Featured articles</h2>
+  <p>
+    Papers the project considers its main results, with a note on what each one
+    does. The complete list is <a href="#articles">below</a>.
+  </p>
+  {%- assign featured = papers | where: "featured", true %}
+  {%- for p in featured %}
   <div class="card">
     <p class="card-title">
       <a href="{{ p.url }}" rel="noopener">{{ p.title }}</a>
@@ -38,7 +65,7 @@ sections:
     {%- comment -%}
       One line of links per paper. The preprint is always there; the journal
       version appears once the paper has a DOI, and anything else the paper
-      picked up -- a press release, coverage -- comes from `links`.
+      picked up (a press release, coverage) comes from `links`.
 
       The DOI is written out as `doi:10.…` rather than hidden behind "published
       version": it is the same shape as `arXiv:2512.17631` beside it, it says
@@ -66,18 +93,110 @@ sections:
   </p>
 </section>
 
-<section class="section" id="talks" aria-labelledby="talks-heading">
-  <h2 id="talks-heading">Recorded talks</h2>
+<section class="section" id="recorded" aria-labelledby="recorded-heading">
+  <h2 id="recorded-heading">Recorded talks</h2>
   <p>
-    Talks on the project's results, aimed at researchers rather than at a
-    general audience.
+    Talks with a recording, aimed at researchers rather than at a general
+    audience.
   </p>
   <ul class="arrow-list">
-    {%- for t in site.data.publications.talks %}
+    {%- for t in talks %}
+    {%- if t.url %}
     <li>
-      <a href="{{ t.url }}" rel="noopener">{{ t.title }}</a>
-      — {{ t.venue }} ({{ t.year }}{% if t.with %}, with {{ t.with }}{% endif %})
+      <a href="{{ t.url }}" rel="noopener">{% if t.title %}{{ t.title }}{% else %}{{ t.event }}{% endif %}</a>
+      <span class="talk-meta">
+        {%- if t.title %}{{ t.event }}, {% endif %}{{ t.location }}
+        ({{ t.year }}) &middot; {{ t.speaker }}
+        {%- if t.with %}, with {{ t.with }}{% endif %}
+      </span>
     </li>
+    {%- endif %}
     {%- endfor %}
   </ul>
+</section>
+
+<section class="section" id="articles" aria-labelledby="articles-heading">
+  <h2 id="articles-heading">All articles</h2>
+  <p>
+    Every paper related to the grant, newest first.
+  </p>
+
+  <div class="pub-index" data-search data-search-noun="articles">
+    <div class="filter" data-search-ui hidden>
+      <label class="skip-link" for="filter-articles">Filter articles</label>
+      <input type="search" id="filter-articles" data-search-input
+             placeholder="Filter by title, author, journal or arXiv number…"
+             autocomplete="off" spellcheck="false">
+      <p class="filter-count" data-search-count aria-live="polite" role="status"></p>
+    </div>
+
+    {%- assign paper_years = papers | group_by_exp: "p", "p.date | date: '%Y'" %}
+    {%- for group in paper_years %}
+    <section class="pub-year" data-search-group>
+      <h3 class="pub-year-head">{{ group.name }}</h3>
+      <ul class="pub-list">
+        {%- for p in group.items %}
+        <li class="pub-entry" data-search-item>
+          <a href="{{ p.url }}" rel="noopener">{{ p.title }}</a>
+          <span class="pub-entry-meta">
+            {{ p.authors | join: ", " }} &middot;
+            {%- if p.status == "published" %} {{ p.journal }}
+            {%- elsif p.status == "accepted" %} accepted in {{ p.journal }}
+            {%- else %} preprint
+            {%- endif %} &middot;
+            <a href="https://arxiv.org/abs/{{ p.arxiv }}" rel="noopener">arXiv:{{ p.arxiv }}</a>
+          </span>
+        </li>
+        {%- endfor %}
+      </ul>
+    </section>
+    {%- endfor %}
+
+    <p class="filter-empty" data-search-empty hidden>No articles match that search.</p>
+  </div>
+</section>
+
+<section class="section" id="all-talks" aria-labelledby="all-talks-heading">
+  <h2 id="all-talks-heading">All talks</h2>
+  <p>
+    Talks given by members of the project since the grant began, whether or not
+    a recording exists. Earlier talks by the Principal Investigator are on the
+    <a href="{{ site.pi.site }}" rel="noopener">PI's own page</a>.
+  </p>
+
+  <div class="pub-index" data-search data-search-noun="talks">
+    <div class="filter" data-search-ui hidden>
+      <label class="skip-link" for="filter-talks">Filter talks</label>
+      <input type="search" id="filter-talks" data-search-input
+             placeholder="Filter by title, speaker, event or place…"
+             autocomplete="off" spellcheck="false">
+      <p class="filter-count" data-search-count aria-live="polite" role="status"></p>
+    </div>
+
+    {%- assign talk_years = talks | group_by: "year" | sort: "name" | reverse %}
+    {%- for group in talk_years %}
+    <section class="pub-year" data-search-group>
+      <h3 class="pub-year-head">{{ group.name }}</h3>
+      <ul class="pub-list">
+        {%- for t in group.items %}
+        <li class="pub-entry" data-search-item>
+          {%- if t.url %}
+          <a href="{{ t.url }}" rel="noopener">{% if t.title %}{{ t.title }}{% else %}{{ t.event }}{% endif %}</a>
+          {%- else %}
+          <span class="pub-entry-title">{% if t.title %}{{ t.title }}{% else %}{{ t.event }}{% endif %}</span>
+          {%- endif %}
+          <span class="pub-entry-meta">
+            {%- if t.title %}{{ t.event }} &middot; {% endif %}
+            {{- t.kind }}{% if t.invited %}, invited{% endif %} &middot;
+            {{ t.location }} &middot; {{ t.speaker }}
+            {%- if t.with %}, with {{ t.with }}{% endif %}
+          </span>
+        </li>
+        {%- endfor %}
+      </ul>
+    </section>
+    {%- endfor %}
+
+    <p class="filter-empty" data-search-empty hidden>No talks match that search.</p>
+  </div>
 </section>
