@@ -55,7 +55,7 @@ sections:
     </p>
     <p class="card-meta">
       {{ p.authors | join: ", " }} &middot;
-      {%- if p.status == "published" %} {{ p.journal }}
+      {%- if p.status == "published" %} {{ p.journal | default: "published" }}
       {%- elsif p.status == "accepted" %} accepted in {{ p.journal }}
       {%- else %} preprint
       {%- endif %}
@@ -140,7 +140,7 @@ sections:
           <a href="{{ p.url }}" rel="noopener">{{ p.title }}</a>
           <span class="pub-entry-meta">
             {{ p.authors | join: ", " }} &middot;
-            {%- if p.status == "published" %} {{ p.journal }}
+            {%- if p.status == "published" %} {{ p.journal | default: "published" }}
             {%- elsif p.status == "accepted" %} accepted in {{ p.journal }}
             {%- else %} preprint
             {%- endif %} &middot;

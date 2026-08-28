@@ -31,7 +31,10 @@
 #            about it -- talks have their own list below
 #   journal  optional, only once there is one. While "accepted" it is just
 #            the journal name, which the template prefixes; once "published"
-#            it carries the full reference, because the template prints it bare
+#            it carries the full reference, because the template prints it
+#            bare. A paper can be published before its reference is known to
+#            any database, so the template falls back to "published" rather
+#            than rendering an empty gap
 #   wps      work packages the paper belongs to
 #   summary  one sentence: what the paper does, not how well it was received
 #
@@ -116,6 +119,45 @@ papers:
       imprint whose fluctuations are captured by an orthogonal basis: the "dark
       timbre". Detectability is forecast for massive black-hole binaries observed
       by LISA.
+
+  - title: "Accelerated inference of microlensed gravitational waves with machine learning"
+    authors: ["Caldarola", "Goyal", "Gupte", "Green", "Zumalacárregui"]
+    arxiv: "2511.08486"
+    url: "https://inspirehep.net/literature/3081783"
+    # Published 29 May 2026 (Crossref, DOI 10.1103/lvwm-d7fm).
+    date: 2026-05-29
+    preprint_date: 2025-11-11
+    featured: false
+    status: published
+    journal: "Physical Review D 113, 104073 (2026)"
+    doi: "10.1103/lvwm-d7fm"
+    wps: ["WP2-B"]
+    summary: >-
+      Simulation-based inference with DINGO is trained on microlensed signals
+      and compared against standard Bayesian parameter estimation, as a proof
+      of concept that lensed events can be identified rapidly enough to keep up
+      with large catalogs.
+
+  # No journal reference or DOI yet. The owner says this is published in 2026
+  # (2026-08-28) but INSPIRE, Crossref and the arXiv record all still carry it
+  # as a preprint, so the reference and the DOI have to come from him. `date`
+  # is a placeholder that fixes the year and nothing finer -- correct it when
+  # the reference arrives.
+  - title: "Gravitational-wave dispersion over inhomogeneous space-times: General relativity, screened theories of gravity and non-minimal dark energy"
+    authors: ["Menadeo", "Giardino", "Zumalacárregui"]
+    arxiv: "2511.08023"
+    url: "https://inspirehep.net/literature/3081772"
+    date: 2026-01-01
+    preprint_date: 2025-11-11
+    featured: false
+    status: published
+    wps: ["WP3-B"]
+    summary: >-
+      A massive object breaks homogeneity and lets different gravitational-wave
+      polarizations interact, generalizing lensing beyond deflection. Every
+      non-minimal theory gives the wave an effective mass, producing a
+      frequency-dependent phase shift the paper calls lens-induced dispersion,
+      computed first in general relativity and then in scalar-tensor theories.
 
 talks:
   # ---- Conferences and workshops -------------------------------------------
