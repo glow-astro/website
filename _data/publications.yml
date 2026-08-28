@@ -1,16 +1,27 @@
-# Outputs that acknowledge the grant.
+# Outputs related to the grant.
 #
-# The test for inclusion is narrow and deliberate: a paper or talk belongs here
-# if it acknowledges grant 101230608. Work by the same people that does not
-# acknowledge GLOW belongs on their own pages, not on this one -- this list is
-# what the project reports as its output.
+# The test for inclusion is relatedness, not the acknowledgment line: a paper
+# or talk belongs here if it is part of the project's work, whether or not it
+# formally acknowledges grant 101230608. Loosened by the owner on 2026-08-28,
+# from a rule that turned on the acknowledgment alone -- that rule excluded
+# work that plainly belongs to the project and left the judgement to a string
+# in a PDF rather than to the person who knows. Unrelated work by the same
+# people still belongs on their own pages, not here.
 #
 # papers
 #   title    as published, in the paper's own spelling
 #   authors  in the paper's order, "Surname" only, joined by the template
 #   arxiv    bare identifier, e.g. "2512.17631"
 #   url      INSPIRE record; arXiv link is built from `arxiv`
-#   date     YYYY-MM-DD, for ordering. Day is only for ties within a month.
+#   date     YYYY-MM-DD. What the list sorts and groups by, and therefore
+#            the year shown against the paper. **Once a paper is published,
+#            this is the publication date, superseding the preprint date**
+#            (owner, 2026-08-28): a published paper belongs to the year it
+#            appeared in the journal. Keep the preprint date in
+#            `preprint_date` when it is superseded, so the record is not lost
+#            and the arXiv year can still be recovered. Day is only for ties.
+#   preprint_date  optional YYYY-MM-DD, set only once `date` has moved to the
+#            publication date. Nothing renders it today; it is the record.
 #   status   "preprint" | "accepted" | "published"
 #   doi      optional, bare -- "10.3847/..." -- once the paper has one. The
 #            template links it beside the arXiv id; do not include the
@@ -63,7 +74,8 @@ papers:
     arxiv: "2512.17631"
     featured: true
     url: "https://inspirehep.net/arxiv/2512.17631"
-    date: 2025-12-01
+    date: 2026-08-25
+    preprint_date: 2025-12-01
     status: published
     journal: "The Astrophysical Journal Letters 1008, L12 (2026)"
     doi: "10.3847/2041-8213/ae93b1"

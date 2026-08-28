@@ -109,7 +109,7 @@ Everything that repeats lives in `_data`, not in the templates:
 | `work_packages.yml` | WP1–WP3 and their lettered tasks |
 | `people.yml` | PI, team members, external collaborators |
 | `positions.yml` | **open calls only** — never what the project plans to recruit |
-| `publications.yml` | papers and talks that acknowledge the grant |
+| `publications.yml` | papers and talks related to the grant |
 | `references.yml` | works cited on the science page; **order is the numbering** |
 | `news.yml` | dated one-sentence items for the home page |
 | `software.yml` | tools, per-paper data releases, and the release policy |
