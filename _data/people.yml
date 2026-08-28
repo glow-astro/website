@@ -40,6 +40,7 @@
 
 pi:
   - name: "Miguel Zumalacárregui"
+    photo: "miguel-zumalacarregui.jpg"
     role: "Principal Investigator"
     wps: ["WP2-A", "WP3-A"]
     url: "https://miguelzuma.github.io/"
