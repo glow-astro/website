@@ -15,6 +15,8 @@ refs:
   - shan-microlens-field
   - savastano-weakly-lensed
   - zumalacarregui-stochastic
+  - tambalo-halo-properties
+  - ezquiaga-caustics
   - cordes-plasma
   - glow-code
 topic_id: wave-optics
@@ -185,46 +187,56 @@ sections:
 <section class="section" id="features" aria-labelledby="features-heading">
   <h2 id="features-heading">Wave-optics lens features</h2>
   <p>
-    The natural unit of wave-optics lensing is the feature, not the image. A
-    lens writes its imprint into the arrival-time response of a coherent
-    signal, the amplitude the detector receives as a function of delay, and
-    that response is a sequence of localized features. Some of them sit at the
-    delay of a geometric image. Many do not.
+    In the wave-optics regime, all paths connecting the source and the observer
+    contribute, but some do more than others: at high frequencies, the signal
+    propagates through a discrete set of trajectories, which are associated with
+    the images in the geometric-optics approximation. This is because of
+    <a href="https://en.wikipedia.org/wiki/Fermat%27s_principle" rel="noopener">Fermat's
+    principle</a>, stating that all but the stationary points of the time-delay
+    surface cause destructive interference. This picture becomes incomplete at
+    lower frequencies, when diffraction becomes important.
   </p>
   <p>
-    The response is built by sweeping the lens plane. Curves of constant
+    A coherent lensed signal can be described as the convolution of the unlensed
+    signal with a kernel, or response function,
+    <em>h</em>(<em>t</em>)&nbsp;=&nbsp;∫&nbsp;d<em>τ</em>
+    <em>G</em>(<em>τ</em>)&nbsp;<em>h</em><sub>0</sub>(<em>t</em>&nbsp;−&nbsp;<em>τ</em>)
+    with <em>G</em>&nbsp;=&nbsp;(2π)<sup>−1</sup>&nbsp;d<em>I</em>/d<em>τ</em>.{% include cite.html key="savastano-weakly-lensed" %}
+    This kernel can be evaluated by sampling the lens plane: curves of constant
     arrival time, the isochrones of the Fermat potential, expand outward from
     the first image, and what they enclose as they grow is the response itself.
-    An image is where that sweep does something abrupt: a new isochrone is
-    born, or an existing one reconnects, and the response answers with a jump
-    or a divergence. A mass that is not quite able to form an image still bends
-    the isochrone as it passes, and the response answers with a smooth peak
-    instead.
+    Images correspond to the points where families of contours are created or
+    destroyed. This translates into discontinuities or singularities in the
+    response function. In addition to these features, there are additional peaks
+    in the response function that have purely diffractive origin and can only be
+    observed in a certain frequency range.
   </p>
   <p>
-    That peak is a <strong>wave-optics lens feature</strong> (WOLF): the smooth
-    counterpart of a geometric
-    image.{% include cite.html key="savastano-weakly-lensed,zumalacarregui-stochastic" %}
-    It carries the same kind of information that an image would, the mass of
-    the object that made it and where along the line of sight it sits, and it
-    survives in a regime where the object is too light to produce an image at
-    all. Counting features rather than images is what extends lensing down to
-    the masses this project is after.
+    These peaks are <strong>wave-optics lens features</strong> (WOLFs): the
+    smooth counterparts of geometric images. Each gravitational lens felt by the
+    signal typically produces a
+    WOLF,{% include cite.html key="zumalacarregui-stochastic" %} whose shape
+    contains information about the lens total mass and its spatial profile: the
+    stochastic signal from many lenses along the signal's path provides means to
+    constrain <a href="{{ '/dark-matter.html' | relative_url }}">dark
+    matter</a>,{% include cite.html key="tambalo-halo-properties" %} as forecast
+    for LISA by
+    <a href="https://inspirehep.net/arxiv/2607.11887" rel="noopener">Choi,
+    Urrutia &amp; Zumalacárregui</a>. WOLFs become particularly strong in
+    configurations that are close to forming additional images, where the
+    geometric magnification becomes very
+    large:{% include cite.html key="ezquiaga-caustics" %} they may therefore be
+    crucial to discover
+    <a href="{{ '/sources.html#telescopes' | relative_url }}">distant and highly
+    magnified sources</a>.
   </p>
 
   {%- capture wolf_caption -%}
     Building the arrival-time response of the best-fitting lens for
     <a href="https://inspirehep.net/arxiv/2512.17631" rel="noopener">GW231123</a>,
-    a point mass in an external shear. Left: isochrones of the Fermat potential
-    sweeping the lens plane, coloured by how much of the response each stretch
-    of curve contributes. Right: the response <em>I</em>(τ), and below it the
-    wave-optics part left once the images are removed. Two of the three stops
-    are images, at τ = 0 and τ = 2.98. The third, at τ = 0.90, is not. Its
-    contribution comes from a whole region around the microlens rather than
-    from a point, which is why the peak is broad where an image gives a spike.
-    Once the isochrone grows far larger than the microlens only the external
-    shear is left, and the response settles at the square root of its
-    magnification.
+    a point mass in an external potential. Left: isochrones of the Fermat potential
+    sweeping the lens plane, colored by the local contribution to the response function. Right: the total response <em>I</em>(τ) (top), the
+    wave-optics part after images are removed (bottom). The movie stops when the two images and the WOLF form. 
   {%- endcapture -%}
   {% include figure-ondemand.html
              stem="wave-optics-feature" width="1560" height="520"

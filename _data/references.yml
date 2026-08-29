@@ -284,6 +284,12 @@
   where: "Phys. Rev. D 108, 103529 (2023)"
   url: "https://arxiv.org/abs/2212.11960"
 
+- id: ezquiaga-caustics
+  authors: "J. M. Ezquiaga, R. K. L. Lo, L. Vujeva"
+  title: "Diffraction around caustics in gravitational wave lensing"
+  where: "Phys. Rev. D 112, 043544 (2025)"
+  url: "https://arxiv.org/abs/2503.22648"
+
 - id: savastano-weakly-lensed
   authors: "S. Savastano, G. Tambalo, H. Villarrubia-Rojo, M. Zumalacárregui"
   title: "Weakly lensed gravitational waves: probing cosmic structures with wave-optics features"
