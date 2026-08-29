@@ -70,7 +70,9 @@ current:
   # Then those on the project but paid by another grant. See the note on
   # `role` in the schema above: the ordering is the point, not decoration.
   - name: "Daniel Ballard"
-    url: "https://inspirehep.net/authors/2648800"
+    # His own site rather than his INSPIRE record: where a person maintains a
+    # page about themselves, that is the better thing to send a reader to.
+    url: "https://www.dan-ballard.com/"
     stage: postdoc
     role: "Affiliated postdoctoral researcher"
     years: "2026–"
