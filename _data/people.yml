@@ -73,6 +73,7 @@ current:
     # His own site rather than his INSPIRE record: where a person maintains a
     # page about themselves, that is the better thing to send a reader to.
     url: "https://www.dan-ballard.com/"
+    photo: "daniel-ballard.jpg"
     stage: postdoc
     role: "Affiliated postdoctoral researcher"
     years: "2026–"
@@ -81,7 +82,10 @@ current:
     topic: "Lens modeling and analysis."
 
   - name: "Xikai Shan"
-    url: "https://inspirehep.net/authors/1837042"
+    # Faculty page at Tsinghua. Note the URL ends .htm, not .html: the
+    # .html form 404s.
+    url: "https://astro.tsinghua.edu.cn/en/info/1012/2483.htm"
+    photo: "xikai-shan.jpg"
     stage: postdoc
     role: "Affiliated postdoctoral researcher"
     location: "based at the AEI, Potsdam"
