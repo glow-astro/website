@@ -208,7 +208,7 @@
     # (Smith et al.) with the project's own GW231123 analysis, and the two have
     # to be credited to different clauses, which a data-file caption cannot do.
     # The caption is written in sources.html and passed to topic-figure.html.
-    source: "application_plots, plots/gw231123/population_lensing"
+    source: "application_plots, plots/populations/population_lensing"
 
 - id: dark-matter
   title: "Dark matter & small scales"
