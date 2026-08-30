@@ -64,14 +64,18 @@ sections:
     <p>{{ task.body }}</p>
 
     {%- comment -%}
-      An output is a plain string, or a map carrying what exists of it so far.
-      `o.text | default: o` covers both: a string has no `text`, so it falls
-      through to itself.
+      "Deliverables", not "Outputs": these are what the task is to produce, and
+      an output sounds like something already produced. Where the work stands
+      is carried by the status tag above and by a deliverable's own `progress`.
+
+      A deliverable is a plain string, or a map carrying what exists of it so
+      far. `o.text | default: o` covers both: a string has no `text`, so it
+      falls through to itself.
     {%- endcomment -%}
-    {%- if task.outputs %}
-    <p class="card-meta">Outputs</p>
+    {%- if task.deliverables %}
+    <p class="card-meta">Deliverables</p>
     <ul>
-      {%- for o in task.outputs %}
+      {%- for o in task.deliverables %}
       <li>
         {{ o.text | default: o }}
         {%- if o.progress %}

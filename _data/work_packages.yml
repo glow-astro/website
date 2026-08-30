@@ -24,8 +24,12 @@
 #                       restating a five-year plan. Keep it current: a stale
 #                       badge is worse than none.
 #              body     what the task does. Prose, no markup.
-#              outputs  optional list. Either a plain string, or a map with
-#                         text      the output
+#              deliverables
+#                       optional list of the concrete artifacts the task is to
+#                       produce. Not what exists: that is what `status` and a
+#                       deliverable's own `progress` are for. Each entry is
+#                       either a plain string, or a map with
+#                         text      the deliverable
 #                         progress  optional, what exists of it so far
 #                         url       optional, where that progress can be seen
 #                       Use progress only for something a reader can check.
@@ -51,7 +55,7 @@
         signal. Reaching the required performance means developing new algorithms
         that can reliably tackle a large microlens population. Explore the role of
         microlens populations in astrophysical predictions.
-      outputs:
+      deliverables:
         - "Public microlensing extensions of the GLoW code"
         - "Cross-validation against independent wave-optics codes"
     - code: "WP1-B"
@@ -83,7 +87,7 @@
         quantities (density and mass function of the lenses and the external
         potential). Develop methods to incorporate lensing signatures into a
         coherent population analysis.
-      outputs:
+      deliverables:
         - "Microlensed waveform models tested against public LVK catalogs"
         - "Population model with lensing effects"
     - code: "WP2-B"
@@ -94,7 +98,7 @@
         is growing. Machine-learning inference, building on DINGO, makes joint
         and low-latency analyses tractable, allowing efficient inference over
         large source catalogs.
-      outputs:
+      deliverables:
         - text: "Trained network for rapid analysis and identification of lensed signals"
           progress: "A model for the isolated point lens is public."
           url: "/software.html"
@@ -121,7 +125,7 @@
         collective effects and addressing the distinguishability from stellar
         fields. Results also translate into limits on the primordial power
         spectrum.
-      outputs:
+      deliverables:
         - "Lensing constraints on dark-matter objects from current data"
         - "Entries in the community repository of extended dark-matter object limits"
     - code: "WP3-B"
@@ -131,6 +135,6 @@
         Develop the theory of gravitational-wave propagation on inhomogeneous
         space-times beyond Einstein's theory. Extract new constraints from public
         data and use them to set new limits on theories of dark energy.
-      outputs:
+      deliverables:
         - "A parameterized framework for modified gravitational-wave lensing"
         - "Public likelihoods for cosmological analyses"
