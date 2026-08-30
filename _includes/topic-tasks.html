@@ -1,19 +1,18 @@
 {%- comment -%}
-  The "Where this is done" row on a topic page: the programme tasks this topic
-  feeds, from the topic's own `wps` list in _data/topics.yml.
+  The "Where this is done" row on a topic page: the work-package tasks this
+  topic feeds, from the topic's own `wps` list in _data/topics.yml.
 
   Shared by all six topic pages, which carried an identical copy of this block
   until 2026-08-30. One copy so the six cannot drift.
 
   The task is shown by its title, not by its code. "WP1-A" identifies a task
-  but does not say what it is, and the codes are proposal bookkeeping that a
-  reader has no reason to know. The code is still what everything joins on and
+  but does not say what it is. The code is still what everything joins on and
   still the anchor, so rewriting a task title changes nothing but the label.
 
   Takes: include.topic (a _data/topics.yml entry).
 {%- endcomment -%}
 <div>
-  <dt>Programme</dt>
+  <dt>Work packages</dt>
   <dd>
     {%- for code in include.topic.wps %}
     {%- assign task_title = code -%}

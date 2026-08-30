@@ -126,11 +126,13 @@ load-bearing:
   and how far each piece has got. Specialist audience, and unlike a topic page
   it goes stale: a task carries a `status` badge that has to be kept current.
 
-The page was `work-packages.html` until 2026-08-30. The proposal's division
-into three strands and its task codes (`WP1-A` and the rest) survive the rename
-because five data files join on the codes and the ERC reporting uses them, but
-"work package" is grant vocabulary and the page is not a deliverable schedule.
-The codes are shown as a small tag beside a task's title, never as its name.
+The page was `work-packages.html` until 2026-08-30. Only the page title, the
+menu item and the URL changed: "Work packages" as a top-level menu item read as
+a deliverable schedule, which the page is not. The term itself stays in the
+prose, defined as "work packages (WP)" at first use and then used bare, because
+the codes are standard and a great deal joins on them: five data files, the ERC
+reporting, and any job advert that names a task. What did change is that a code
+is no longer a task's name. It is a small tag beside the title.
 
 They cross-link in both directions, and both directions are derived from
 `topics.yml`'s `wps` field, so they cannot disagree. Cross-link; do not repeat.

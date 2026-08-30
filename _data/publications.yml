@@ -40,7 +40,7 @@
 #            bare. A paper can be published before its reference is known to
 #            any database, so the template falls back to "published" rather
 #            than rendering an empty gap
-#   wps      programme tasks the paper belongs to
+#   wps      work-package tasks the paper belongs to
 #   summary  one sentence: what the paper does, not how well it was received
 #
 #   featured whether the paper appears in "Featured articles", the annotated

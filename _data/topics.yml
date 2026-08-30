@@ -45,7 +45,7 @@
 #            it is set over a photograph on a translucent plate, and two
 #            sentences there are unreadable.
 #   blurb    one or two sentences; the topic's own summary, used in prose
-#   wps      programme tasks this topic feeds
+#   wps      work-package tasks this topic feeds
 #   papers   arXiv ids from publications.yml, for the "read more" line
 #   media    OPTIONAL -- the page's OPENING figure, where it has one. Set
 #            `static: true` for a plot instead of an animation; the file is

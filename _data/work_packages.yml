@@ -1,4 +1,4 @@
-# The three strands of the research programme.
+# The three work packages (WP) of the research programme.
 #
 # The division comes from the funded proposal, and the codes (WP1-A and the
 # rest) are kept because they are identifiers, not prose: five data files join
@@ -15,7 +15,7 @@
 #   id       anchor on programme.html; also used by team.yml assignments
 #   code     "WP1" etc., shown as the card eyebrow
 #   title    short title
-#   lede     one or two sentences: what the strand is for
+#   lede     one or two sentences: what the work package is for
 #   tasks    the lettered tasks. Each has:
 #              code     "WP1-A"
 #              title    short title
@@ -40,7 +40,7 @@
   lede: >-
     The theory and numerical methods for wave-optics lensing: diffraction by
     populations of microlenses, and lensing by ionized plasma. Everything the
-    other two strands need in order to model realistic lenses.
+    other two work packages need in order to model realistic lenses.
   tasks:
     - code: "WP1-A"
       status: underway
