@@ -32,7 +32,7 @@
 #             original for a 72-pixel circle.
 #   incoming  true -> the card shows a "starts <starts>" badge
 #   starts    e.g. "October 2026"
-#   wps       optional work-package task codes.
+#   wps       optional programme task codes.
 #
 # TODO: `wps` is deliberately empty. Which task each person leads is a fact
 # about the grant, not something to infer from a topic sentence -- fill it in

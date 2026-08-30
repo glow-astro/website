@@ -11,7 +11,7 @@
 #   title     what the position is about, in three or four words
 #   kind      "Postdoctoral researcher" | "PhD student"
 #   term      contract length
-#   focus     optional work-package task code, when the call names one
+#   focus     optional programme task code, when the call names one
 #   profile   what the person will work on and the background it calls for
 #   deadline  application deadline
 #   apply_url where to apply

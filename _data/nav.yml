@@ -4,9 +4,9 @@
   title: "Science"
   url: "/science.html"
 
-- id: work-packages
-  title: "Work packages"
-  url: "/work-packages.html"
+- id: programme
+  title: "Programme"
+  url: "/programme.html"
 
 - id: team
   title: "Team"

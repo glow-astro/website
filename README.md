@@ -115,15 +115,22 @@ Everything that repeats lives in `_data`, not in the templates:
 | `software.yml` | tools, per-paper data releases, and the release policy |
 | `review_notes.yml` | open questions from the prose review; **never built into the site** |
 
-### Science and work packages
+### Science and programme
 
 Two pages describe the same research from different angles, and the division is
 load-bearing:
 
 - a **topic page** explains the physics — what a phenomenon is and what it can
   measure. Durable, broad audience.
-- the **work-packages page** is the plan — what this grant builds, in what
-  order, who leads it. Specialist audience, expires with the grant.
+- the **programme page** (`programme.html`) says what the group is working on
+  and how far each piece has got. Specialist audience, and unlike a topic page
+  it goes stale: a task carries a `status` badge that has to be kept current.
+
+The page was `work-packages.html` until 2026-08-30. The proposal's division
+into three strands and its task codes (`WP1-A` and the rest) survive the rename
+because five data files join on the codes and the ERC reporting uses them, but
+"work package" is grant vocabulary and the page is not a deliverable schedule.
+The codes are shown as a small tag beside a task's title, never as its name.
 
 They cross-link in both directions, and both directions are derived from
 `topics.yml`'s `wps` field, so they cannot disagree. Cross-link; do not repeat.

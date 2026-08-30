@@ -93,7 +93,7 @@ description: >-
       </p>
       <div class="btn-row">
         <a class="btn btn-primary" href="{{ '/science.html' | relative_url }}">The science case</a>
-        <a class="btn" href="{{ '/work-packages.html' | relative_url }}">Work packages</a>
+        <a class="btn" href="{{ '/programme.html' | relative_url }}">Research programme</a>
         {%- comment -%}
           Same condition as the menu item in _includes/header.html: this button
           appears only while a call is open. Two buttons is a fine row.
@@ -219,23 +219,23 @@ description: >-
     </div>
   </section>
 
-  <!-- ============ Work packages ============ -->
+  <!-- ============ Research programme ============ -->
   <section class="section" aria-labelledby="wp-heading">
-    <h2 id="wp-heading">Work packages</h2>
+    <h2 id="wp-heading">Research programme</h2>
     <p class="lede">
-      Three work packages: the theory of wave-optics lensing, the search for
+      Three strands: the theory of wave-optics lensing, the search for
       lensed gravitational waves, and what the results say about the contents of
       the Universe.
     </p>
 
     {%- comment -%}
-      Three columns, not two: with three work packages a two-column grid leaves
+      Three columns, not two: with three strands a two-column grid leaves
       the third card alone on its own row beside a gap, which reads as an
       omission rather than as the shape of the project.
     {%- endcomment -%}
     <div class="grid grid-3">
       {%- for wp in site.data.work_packages %}
-      <a class="card card-link" href="{{ '/work-packages.html#' | append: wp.id | relative_url }}">
+      <a class="card card-link" href="{{ '/programme.html#' | append: wp.id | relative_url }}">
         <p class="eyebrow">{{ wp.code }}</p>
         <p class="card-title">{{ wp.title }}</p>
         <p>{{ wp.lede }}</p>
@@ -271,7 +271,7 @@ description: >-
     Team, Software & data and Publications are three of the seven items in the
     top menu, and until this section the home page named none of them: a reader
     who never scrolled to the footer would take the project for its science
-    case, its work packages and its grant.
+    case, its research programme and its grant.
 
     The team count is computed rather than written down, so it cannot go stale
     the way a number in prose does. Deliberately the only count here -- the

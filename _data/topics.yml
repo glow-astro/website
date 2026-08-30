@@ -3,7 +3,7 @@
 # a topic differently.
 #
 # The split this file sits on: a topic page explains the physics -- what the
-# phenomenon is and what it can measure. The work-packages page says what this
+# phenomenon is and what it can measure. The programme page says what this
 # grant will build and who leads it. Cross-link; do not repeat.
 #
 # The list is FLAT, and the topic bar stays flat. An earlier version grouped
@@ -45,7 +45,7 @@
 #            it is set over a photograph on a translucent plate, and two
 #            sentences there are unreadable.
 #   blurb    one or two sentences; the topic's own summary, used in prose
-#   wps      work-package tasks this topic feeds
+#   wps      programme tasks this topic feeds
 #   papers   arXiv ids from publications.yml, for the "read more" line
 #   media    OPTIONAL -- the page's OPENING figure, where it has one. Set
 #            `static: true` for a plot instead of an animation; the file is

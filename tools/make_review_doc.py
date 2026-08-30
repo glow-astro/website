@@ -13,7 +13,7 @@ footer repeated on every page.
 Round-tripping is the point, so every page carries a SOURCE line naming the
 files its text actually comes from. That matters more here than it looks: most
 of this site's prose lives in `_data/*.yml` rather than in the page that shows
-it, so "I changed this paragraph on work-packages" is not enough to find it
+it, so "I changed this paragraph on the programme page" is not enough to find it
 again. The data files are discovered by scanning each source page for
 `site.data.<name>`, so the line cannot go stale as pages change.
 
@@ -44,7 +44,7 @@ PAGES = [
     ("wave-optics.html",    "Science — wave optics"),
     ("microlensing.html",   "Science — microlensing"),
     ("data-analysis.html",  "Science — data analysis"),
-    ("work-packages.html",  "Work packages"),
+    ("programme.html",      "Research programme"),
     ("team.html",           "Team"),
     ("publications.html",   "Publications and talks"),
     ("software.html",       "Software and data"),

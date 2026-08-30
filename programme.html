@@ -1,23 +1,23 @@
 ---
 layout: page
-nav: work-packages
-title: "Work packages"
-eyebrow: "Methodology"
+nav: programme
+title: "Research programme"
+eyebrow: "What we are working on"
 lede: >-
-  GLOW is organized into three work packages: the theory of wave-optics lensing,
+  The programme runs along three strands: the theory of wave-optics lensing,
   the search for lensed gravitational waves, and their application to
   fundamental physics.
 description: >-
-  The three GLOW work packages (wave-optics theory, discovery and
+  The GLOW research programme (wave-optics theory, discovery and
   interpretation of lensed gravitational waves, and fundamental physics) with
-  their individual tasks.
+  its individual tasks and where each of them stands.
 sections:
   - id: wp1
-    label: "WP1 · Theory"
+    label: "Theory"
   - id: wp2
-    label: "WP2 · Discovery"
+    label: "Discovery"
   - id: wp3
-    label: "WP3 · Fundamental physics"
+    label: "Fundamental physics"
   - id: external
     label: "External collaborations"
 ---
@@ -25,16 +25,20 @@ sections:
 {% include subnav.html %}
 
 <p>
-  The work packages run in parallel. WP1 supplies the lens models that WP2
-  searches for and WP3 interprets. The loop closes by informing back the
-  necessary theoretical developments.
+  The three strands run in parallel. The first supplies the lens models that
+  the second searches for and the third interprets. The loop closes by
+  informing back the necessary theoretical developments.
 </p>
 
 <p>
-  This page outlines the plan: what the project is set to do and how. For the
-  physics behind it (what these phenomena are and what they can measure) see
-  the <a href="{{ '/science.html' | relative_url }}">science topics</a>, which
-  each task links to.
+  This page says what the project is working on and how far each piece has got.
+  The division into three strands and the task codes come from the funded
+  proposal, and they are kept because a great deal cross-references them, but
+  the research itself moves: expect the descriptions here to change as results
+  come in. For the physics behind them (what these phenomena are and what they
+  can measure) see the
+  <a href="{{ '/science.html' | relative_url }}">science topics</a>, which each
+  task links to.
 </p>
 
 {%- for wp in site.data.work_packages %}
@@ -45,14 +49,35 @@ sections:
 
   {%- for task in wp.tasks %}
   <div class="card" id="{{ task.code | downcase }}">
-    <p class="card-title">{{ task.code }} — {{ task.title }}</p>
+    {%- comment -%}
+      Title first, code second. The code is the join key across five data files
+      and the anchor other pages link to, so it has to be visible, but it is
+      not what the task is called.
+    {%- endcomment -%}
+    <p class="card-title">{{ task.title }}</p>
+    <p class="tags">
+      <span class="tag">{{ task.code }}</span>
+      {%- if task.status %}
+      <span class="tag{% if task.status == 'delivered' %} tag-accent{% endif %}">{{ task.status | capitalize }}</span>
+      {%- endif %}
+    </p>
     <p>{{ task.body }}</p>
 
+    {%- comment -%}
+      An output is a plain string, or a map carrying what exists of it so far.
+      `o.text | default: o` covers both: a string has no `text`, so it falls
+      through to itself.
+    {%- endcomment -%}
     {%- if task.outputs %}
     <p class="card-meta">Outputs</p>
     <ul>
       {%- for o in task.outputs %}
-      <li>{{ o }}</li>
+      <li>
+        {{ o.text | default: o }}
+        {%- if o.progress %}
+        <span class="small">{% if o.url %}<a href="{{ o.url | relative_url }}">{{ o.progress }}</a>{% else %}{{ o.progress }}{% endif %}</span>
+        {%- endif %}
+      </li>
       {%- endfor %}
     </ul>
     {%- endif %}
@@ -107,10 +132,10 @@ sections:
   project outlives any single task, so it is listed once here rather than
   repeated under each.
 
-  In the subnav via `sections:` above, so the bar reads WP1, WP2, WP3 and this.
-  The bar was the three work packages alone until 2026-08-23; a fourth item is
+  In the subnav via `sections:` above, so the bar reads the three strands and
+  this. The bar was the three strands alone until 2026-08-23; a fourth item is
   what the owner asked for, and with "Data and collaboration" gone this is the
-  only section below WP3, so nothing is buried by it.
+  only section below the third strand, so nothing is buried by it.
 {%- endcomment -%}
 {%- if site.data.external_collaborations %}
 <section class="section" id="external" aria-labelledby="external-heading">

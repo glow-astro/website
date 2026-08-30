@@ -234,14 +234,7 @@ sections:
 <section class="section" id="more" aria-labelledby="more-heading">
   <h2 id="more-heading">Where this is done</h2>
   <dl class="roles">
-    <div>
-      <dt>Work packages</dt>
-      <dd>
-        {%- for code in t.wps %}
-        <a href="{{ '/work-packages.html#' | append: code | downcase | relative_url }}">{{ code }}</a>
-        {%- unless forloop.last %} &middot; {% endunless %}{% endfor %}
-      </dd>
-    </div>
+    {% include topic-tasks.html topic=t %}
     {%- if t.papers.size > 0 %}
     <div>
       <dt>Papers</dt>

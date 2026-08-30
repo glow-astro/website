@@ -6,7 +6,7 @@
 #   name, subtitle, logo, logo_alt
 #   purpose      what it does, in prose
 #   status       "public" | "in development" | "planned"
-#   wps          work packages that develop or use it
+#   wps          programme tasks that develop or use it
 #   repo, docs   optional URLs
 #   papers       optional [{short, url}]
 #   contributors optional string

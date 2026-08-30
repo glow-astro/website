@@ -465,8 +465,8 @@ that is illegible on a dark background, and was recoloured to the white variant
 the emblem rules provide. Source files are in
 `~/Dropbox/Documentos/GLOW_ERC_project/Logos/`.
 
-**Content it will need that this site does not have:** work packages (WP1–WP3,
-listed in `_data/projects.yml`), team profiles with project assignments, open
+**Content it will need that this site does not have:** the research programme
+(WP1–WP3, listed in `_data/projects.yml`), team profiles with project assignments, open
 positions, deliverables and publications, and outreach. The personal site's
 GLOW card says a dedicated project site "is in preparation" — update or remove
 that line once the new site is live, and cross-link the two.
