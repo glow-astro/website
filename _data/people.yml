@@ -23,6 +23,9 @@
 #   location  optional, when the person is not based with the rest of the team
 #   years     e.g. "2026–"
 #   topic     one sentence on what the person works on
+#   initials  optional, overrides the initials shown when there is no photo.
+#             The default takes the first letter of the first and last words of
+#             the name, which is wrong for a two-part Spanish surname.
 #   photo     optional filename in assets/img/people/. A square crop, 224x224,
 #             shown in a circle. Without one the card shows the person's
 #             initials instead, so a missing photo is a fallback rather than a
@@ -119,6 +122,9 @@ current:
     topic: "Searches for lensed gravitational waves, and the data analysis behind them."
 
   - name: "Pablo Vega del Castillo"
+    # The default rule takes the first and last words of the name and would
+    # give "PC". Spanish surnames are two-part, and the one he goes by is Vega.
+    initials: "PV"
     stage: masters
     role: "Master's student, LMU"
     years: "2026"

@@ -9,10 +9,11 @@
   it is not. Initials are a fallback, not a placeholder to be filled in later:
   nobody has to supply a photograph, and a card without one is finished.
 
-  Initials are the first letter of the first and last words of the name, which
-  is the same rule the personal site uses. It is wrong for some names and right
-  for most; a person who wants different initials should get an explicit field
-  rather than a cleverer rule.
+  Initials default to the first letter of the first and last words of the name,
+  which is the same rule the personal site uses. It is right for most names and
+  wrong for some: a Spanish two-part surname gives "PC" for Pablo Vega del
+  Castillo, where "PV" is what he goes by. Rather than a cleverer rule, which
+  cannot know that, `initials` in _data/people.yml overrides it per person.
 
   `bio` is the PI's longer line and `topic` everyone else's. A card renders
   whichever it has.
@@ -26,7 +27,8 @@
          alt="" loading="lazy" decoding="async" width="72" height="72">
     {%- else %}
     {%- assign parts = p.name | split: " " -%}
-    <div class="person-avatar person-initials" aria-hidden="true">{{ parts.first | slice: 0 }}{{ parts.last | slice: 0 }}</div>
+    {%- capture derived %}{{ parts.first | slice: 0 }}{{ parts.last | slice: 0 }}{% endcapture -%}
+    <div class="person-avatar person-initials" aria-hidden="true">{{ p.initials | default: derived }}</div>
     {%- endif %}
     <div class="person-body">
       <p class="card-title">
