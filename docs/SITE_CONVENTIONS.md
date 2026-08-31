@@ -16,7 +16,7 @@ The last section covers what changes for GLOW.
 
 Plain **Jekyll**, no theme, no gem beyond `jekyll-sitemap`. GitHub Pages builds
 from `master`. There is no CSS framework, no build step for assets, and no
-JavaScript framework: one hand-written stylesheet and three small scripts.
+JavaScript framework: one hand-written stylesheet and seven small scripts.
 
 That choice is deliberate. An academic site is read for its content, changes a
 few times a year, and must still build in five years. Every dependency is a
@@ -29,7 +29,7 @@ _layouts/default.html  <html>, header, footer, script tags
 _layouts/page.html     default + eyebrow / h1 / lede block, for interior pages
 _includes/             head, header, footer, subnav, and the CV renderers
 assets/css/main.css    the whole stylesheet, ~1100 lines, sectioned by comment
-assets/js/             three scripts, described in §6
+assets/js/             seven scripts, described in §6
 *.html                 one file per page, front matter + markup
 cv.tex                 LaTeX CV generated from the same data as cv.html (§5)
 tools/                 build scripts (§3)
@@ -247,7 +247,7 @@ Escaping LaTeX from Liquid has three traps, all solved in
 If you build the same thing for GLOW (a PDF and a page from one source), copy
 these three includes wholesale rather than rediscovering the traps.
 
-## 6. JavaScript: six scripts, each doing one thing
+## 6. JavaScript: seven scripts, each doing one thing
 
 Everything degrades: with JavaScript off, the site is fully readable.
 
@@ -284,6 +284,18 @@ Everything degrades: with JavaScript off, the site is fully readable.
   search box that cannot work. And **every total is counted from the DOM**,
   never written into the template, so the count cannot drift from
   `_data/publications.yml`.
+
+- `video-play-badge.js` — sets `data-idle` on an on-demand figure whenever its
+  video is not running, which is all the CSS play badge needs (main.css,
+  `.video-frame`). Added 2026-08-31: native `controls` puts its bar along the
+  bottom edge of a figure a thousand pixels wide, where it reads as part of
+  the plot, and readers were taking those figures for static images. **The
+  obvious version needs no script at all**, `:has(video:paused)`, and works in
+  Firefox and Safari, but Chrome 151 does not support `:paused` — checked in
+  the browser, not assumed. The badge is also the click target, because Chrome
+  starts these only from its own control bar and a badge that merely pointed
+  at the real control would look like a button and do nothing. With JavaScript
+  off no badge appears at all, which is the behaviour it replaces.
 
 (The personal site also has `anchor-aliases.js`, redirecting its old dead
 fragments. This site has no old fragments to redirect and does not carry it.)

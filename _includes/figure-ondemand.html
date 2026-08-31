@@ -41,7 +41,10 @@
 
   `controls` is the affordance, and it is why assets/js/reduced-motion.js does
   not touch this: that script rewrites `video[autoplay]`, and nothing here moves
-  until a reader asks, which is what the setting is for. `alt` describes the
+  until a reader asks, which is what the setting is for. The `.video-frame`
+  wrapper exists only to hang a play badge over the still, because the browser's
+  own control bar sits at the bottom edge of a wide figure and is easy to read
+  as part of the plot. It is pure CSS and pure decoration: see main.css. `alt` describes the
   motion for a reader who cannot see it; the caption says what it means. They
   are different jobs and neither replaces the other -- and because the poster is
   the whole result, a reader who never presses play still has the figure.
@@ -49,6 +52,7 @@
   See docs/SITE_CONVENTIONS.md section 7 and the README's media section.
 {%- endcomment -%}
 <figure class="topic-figure">
+  <div class="video-frame">
   <video width="{{ include.width }}" height="{{ include.height }}"
          controls preload="metadata" playsinline
          poster="{{ '/media/' | append: include.stem | append: '_still.png' | relative_url }}"
@@ -64,5 +68,6 @@
       older ones hold on the poster, which is a real frame and says most of it.
     {%- endcomment -%}
   </video>
+  </div>
   <figcaption>{{ include.caption }}</figcaption>
 </figure>

@@ -673,6 +673,78 @@ figure.float-left {
 	background: var(--bg-card);
 }
 
+/* A play badge for the figures that wait to be asked (figure-ondemand.html).
+   Native `controls` is the affordance and stays; the browsers' own bar sits at
+   the bottom edge over a full-width still, where it is easy to miss, and a
+   reader can be left thinking a figure is a static plot. Owner, 2026-08-31.
+
+   Shown while `.video-frame` carries `data-idle`, which
+   assets/js/video-play-badge.js sets whenever the video is not running,
+   including when it ends: on these figures the last frame is the result, so
+   the badge returning over it reads as a replay cue. The obvious version of
+   this needs no script at all, `:has(video:paused)`, and works in Firefox and
+   Safari, but Chrome 151 does not support `:paused` (checked in the browser,
+   not assumed). Without JavaScript no badge appears, which is the behaviour
+   this replaces, so the fallback is the status quo, not a broken control.
+
+   Everything outside the disc is `pointer-events: none` so clicks fall through
+   to the video and its control bar. The disc itself takes pointer events, but
+   only while idle, and the script turns that click into a play: Chrome does
+   not start these from a click on the video body, only from its own control
+   bar, so a badge that merely pointed at the real control would look like a
+   button and do nothing. The fade is neutralised by the reduced-motion block
+   at the end of this file. */
+.video-frame {
+	position: relative;
+	display: block;
+}
+
+.video-frame::before,
+.video-frame::after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.18s ease;
+}
+
+.video-frame::before {
+	width: 72px;
+	height: 72px;
+	transform: translate(-50%, -50%);
+	border-radius: 50%;
+	background: rgba(10, 12, 18, 0.55);
+	border: 1px solid rgba(255, 255, 255, 0.55);
+}
+
+/* The triangle is nudged right of centre so its visual mass, not its bounding
+   box, sits in the middle of the disc. */
+.video-frame::after {
+	width: 0;
+	height: 0;
+	transform: translate(-35%, -50%);
+	border-left: 21px solid rgba(255, 255, 255, 0.94);
+	border-top: 13px solid transparent;
+	border-bottom: 13px solid transparent;
+}
+
+.video-frame[data-idle]::before,
+.video-frame[data-idle]::after {
+	opacity: 1;
+}
+
+.video-frame[data-idle]::before {
+	pointer-events: auto;
+	cursor: pointer;
+}
+
+.video-frame[data-idle]:hover::before {
+	background: rgba(10, 12, 18, 0.72);
+	border-color: rgba(255, 255, 255, 0.85);
+}
+
 .topic-figure figcaption {
 	margin-top: 0.7rem;
 	font-size: 0.88rem;

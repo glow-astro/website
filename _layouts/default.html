@@ -28,6 +28,14 @@
 <script src="{{ '/assets/js/search.js' | relative_url }}" defer></script>
 {%- endif %}
 <script src="{{ '/assets/js/reduced-motion.js' | relative_url }}" defer></script>
+
+{%- comment -%}
+  A no-op on every page without a `.video-frame`, which is all but the three
+  carrying an on-demand figure. Loaded unconditionally anyway: it is under a
+  kilobyte, and a per-page condition would be one more thing to remember when
+  a fourth figure is added.
+{%- endcomment %}
+<script src="{{ '/assets/js/video-play-badge.js' | relative_url }}" defer></script>
 {%- comment -%}
   After reduced-motion.js, which it checks the same media query as and defers
   to: a paused, controls-exposed video must not be seeked back into playing.

@@ -3,7 +3,7 @@
 Website for **GLOW — Gravitational Lensing of Waves**, an ERC Consolidator Grant
 project (grant agreement 101230608).
 
-Plain Jekyll, no theme, one hand-written stylesheet, two small scripts. The
+Plain Jekyll, no theme, one hand-written stylesheet, seven small scripts. The
 conventions this site is built to — stack, data-driven content, verification
 routine, design tokens and voice — are in
 [`docs/SITE_CONVENTIONS.md`](docs/SITE_CONVENTIONS.md). Read that before making
@@ -265,6 +265,12 @@ played and then rests somewhere else, which reads as a stuck video.
 `assets/js/reduced-motion.js` does not touch on-demand figures, and should not:
 it rewrites `video[autoplay]`, and nothing moves in these until a reader asks,
 which is what the setting is for.
+
+These figures do carry a play badge, because the browser's own control bar sits
+along the bottom edge of a wide still and is easy to read as part of the plot.
+It is CSS (`.video-frame` in main.css) plus `assets/js/video-play-badge.js`,
+which does nothing but say whether the video is running. See §6 of
+`docs/SITE_CONVENTIONS.md` for why that needs a script at all.
 
 Take the `_web_dark` variant: this site is dark-only. Renders are not all the
 same shape, so `media.width`/`media.height` carry each one's real pixel size —
