@@ -236,6 +236,17 @@ talks:
     date: 2026-04-22
     url: "https://youtu.be/1k0o0QiL288"
 
+  # DEfH 2026 ran 21-24 April, online, and the conference record does not say
+  # which day this talk fell on. The date only orders the list, so it sits
+  # beside the other talk from the same meeting. Title as given on the
+  # recording, less the "Nicola Menadeo - " the channel prefixes to it.
+  - title: "Lens Induced Dispersion in Gravitational Wave Propagation"
+    event: "Dark Energy from Home"
+    online: true
+    speakers: ["Nicola Menadeo"]
+    date: 2026-04-22
+    url: "https://youtu.be/AWDEvp4hXiE"
+
   - title: "Quasi-periodic lensing of starlight"
     institution: "Institute for Advanced Study"
     city: "Princeton"
