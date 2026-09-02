@@ -23,8 +23,13 @@
 {%- comment -%}
   Only on a page that has something to filter. The script is a no-op without
   a [data-search] container, but there is no reason to fetch it.
+
+  Keyed on `search: true` in a page's front matter since 2026-09-02. It used to
+  test `page.nav == "publications"`, which named one page where it meant one
+  capability, so the second page to carry a filter got the markup and no
+  script: the toolbar stayed `hidden` and the filter silently did not exist.
 {%- endcomment -%}
-{%- if page.nav == "publications" %}
+{%- if page.search %}
 <script src="{{ '/assets/js/search.js' | relative_url }}" defer></script>
 {%- endif %}
 <script src="{{ '/assets/js/reduced-motion.js' | relative_url }}" defer></script>

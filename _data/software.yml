@@ -3,17 +3,30 @@
 # GLoW, lowercase "o", is the code. GLOW is the project. Keep them apart.
 #
 # Schema
+#   id           short slug. The join key: _data/code_papers.yml points at a
+#                tool by id, and a package page filters that file on its own.
+#                Stable forever once set; the display name may change.
+#   inspire_seeds  optional [INSPIRE recids]. Papers citing any of these are
+#                candidates for the "papers using" list, which
+#                tools/fetch_code_papers.py collects. A citation is not a use,
+#                so every candidate arrives needing a human decision.
 #   name, subtitle, logo, logo_alt
 #   purpose      what it does, in prose
 #   status       "public" | "in development" | "planned"
 #   wps          work-package tasks that develop or use it
+#   language     optional, one line. What someone has to be able to read
+#   licence      optional, the SPDX-ish short name from the repo's LICENSE
 #   repo, docs   optional URLs
 #   papers       optional [{short, url}]
 #   contributors optional string
 
 tools:
-  - name: "GLoW"
+  - id: "glow"
+    name: "GLoW"
     subtitle: "Gravitational Lensing of Waves"
+    # The method paper and the first analysis built on it. Anything citing
+    # either might have used the code; nothing here assumes it did.
+    inspire_seeds: [2826315, 3094475]
     logo: "/imgs/GLoW_Code_Extended_Logo_Full_Color_for_Dark_Backgrounds_RBG.png"
     logo_alt: ""
     status: public
@@ -29,12 +42,19 @@ tools:
       microlenses, which is the central methodological development of WP1-A.
     repo: "https://github.com/glow-astro/GLoW"
     docs: "https://glow-astro.github.io/GLoW/"
+    # Both, as the code's own README asks: the method paper and the analysis
+    # that introduced the parameter-estimation machinery built on it.
     papers:
       - short: "Villarrubia-Rojo et al., arXiv:2409.04606"
         url: "https://inspirehep.net/literature/2826315"
+      - short: "Goyal et al., arXiv:2512.17631"
+        url: "https://inspirehep.net/literature/3094475"
+    language: "Python, with the numerical core in C behind a Cython wrapper"
+    licence: "GPL-3.0"
     contributors: "Héctor Villarrubia-Rojo (lead developer), Stefano Savastano, Lyla Choi, Srashti Goyal, Liang Dai, Giovanni Tambalo, Miguel Zumalacárregui."
 
-  - name: "DINGO for lensed signals"
+  - id: "dingo-lensing"
+    name: "DINGO for lensed signals"
     subtitle: "Machine-learning inference"
     status: in development
     wps: ["WP2-B"]

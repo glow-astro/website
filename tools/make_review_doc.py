@@ -48,6 +48,10 @@ PAGES = [
     ("team.html",           "Team"),
     ("publications.html",   "Publications and talks"),
     ("software.html",       "Software and data"),
+    # Unlinked on the site (2026-09-02), so a reader will not stumble on it,
+    # but it is prose the owner has to read before it goes anywhere. Listed
+    # here for that reason and not because the site navigates to it.
+    ("glow_code.html",      "Software — GLoW (unlinked draft)"),
     ("join.html",           "Join"),
     ("contact.html",        "Contact"),
     ("404.html",            "404"),

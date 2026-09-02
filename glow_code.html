@@ -1,0 +1,210 @@
+---
+layout: page
+nav: software
+search: true
+title: "GLoW"
+eyebrow: "Software"
+lede: >-
+  Wave-optics lensing of gravitational waves: the amplification factor for a
+  general matter distribution, fast enough to use inside parameter estimation.
+description: >-
+  GLoW, the project's open-source code for wave-optics gravitational lensing:
+  what it does, where to get it, how to cite it, and the papers that use it.
+sections:
+  - id: what
+    label: "What it does"
+  - id: get
+    label: "Get it"
+  - id: citing
+    label: "Citing GLoW"
+  - id: papers
+    label: "Papers using GLoW"
+---
+
+{%- comment -%}
+  NOT LINKED FROM ANYWHERE, deliberately, 2026-09-02. The owner asked for the
+  page to be prepared while the shape of a Software section is still being
+  discussed, so it is absent from _data/nav.yml, from the footer and from
+  software.html. It is reachable only by typing the address. Adding it to the
+  navigation is a separate decision, and needs software.html rewritten as an
+  overview at the same time.
+
+  This is meant as the template for every public code, not a one-off. Nothing
+  below names GLoW except through data: the tool comes from _data/software.yml
+  by its `id`, and the paper list from _data/code_papers.yml filtered on that
+  same id. A second code needs a copy of this file with one string changed,
+  and the day that happens the file becomes an include taking `code=` instead.
+
+  Structure and filter follow publications.html, which is itself the hi_class
+  publication list one generation on: same year-grouped `.pub-year` sections,
+  same `.pub-list`, same substring filter over each entry's own textContent.
+  The one improvement over hi_class kept here: the toolbar is `hidden` in the
+  markup and unhidden by assets/js/search.js, so with JavaScript off the page
+  shows the complete list rather than an input that cannot work.
+{%- endcomment -%}
+{%- assign code_id = "glow" -%}
+{%- assign tool = site.data.software.tools | where: "id", code_id | first -%}
+
+{% include subnav.html %}
+
+<section class="section" id="what" aria-labelledby="what-heading">
+  {%- comment -%}
+    The logo is the one asset that is the code's own identity rather than the
+    site's, so it leads. `.card-logo` already floats it and clears after
+    itself; `logo_alt` is empty in the data file because the wordmark repeats
+    the heading beside it, and reading it twice helps nobody.
+  {%- endcomment -%}
+  {%- if tool.logo %}
+  <img class="card-logo" src="{{ tool.logo | relative_url }}" alt="{{ tool.logo_alt }}">
+  {%- endif %}
+  {%- comment -%}
+    "What it does", not the tool's name: the page title one line above is
+    already the name, and the logo beside this says it a third time.
+  {%- endcomment -%}
+  <h2 id="what-heading">What it does</h2>
+  <p class="card-meta">{{ tool.subtitle }} &middot; {{ tool.status }}</p>
+  <p>{{ tool.purpose }}</p>
+
+  {%- comment -%}
+    `.code-facts` was written for exactly this and had never been used: a
+    label-and-value grid, so the facts about a code do not become a stack of
+    headed sections holding one line each.
+  {%- endcomment -%}
+  <dl class="code-facts">
+    {%- comment -%}
+      From the data file, never written here: both were read off the repository
+      (a Cython wrapper over C in wrapper/src, LICENSE is GPL-3.0) rather than
+      assumed, and a page that states them should not be where they live.
+    {%- endcomment -%}
+    {%- if tool.language %}
+    <div>
+      <dt>Language</dt>
+      <dd>{{ tool.language }}</dd>
+    </div>
+    {%- endif %}
+    {%- if tool.licence %}
+    <div>
+      <dt>Licence</dt>
+      <dd>{{ tool.licence }}</dd>
+    </div>
+    {%- endif %}
+    {%- if tool.wps %}
+    <div>
+      <dt>Developed under</dt>
+      <dd>
+        {%- for code in tool.wps %}
+        {%- assign task_title = code -%}
+        {%- for wp in site.data.work_packages -%}
+          {%- for task in wp.tasks -%}
+            {%- if task.code == code %}{% assign task_title = task.title %}{% endif -%}
+          {%- endfor -%}
+        {%- endfor -%}
+        <a href="{{ '/programme.html#' | append: code | downcase | relative_url }}">{{ task_title }}</a>
+        {%- unless forloop.last %} &middot; {% endunless %}{% endfor %}
+      </dd>
+    </div>
+    {%- endif %}
+    {%- if tool.contributors %}
+    <div>
+      <dt>Contributors</dt>
+      <dd>{{ tool.contributors }}</dd>
+    </div>
+    {%- endif %}
+  </dl>
+
+  <p>
+    The physics behind it is on the
+    <a href="{{ '/wave-optics.html' | relative_url }}">wave optics</a> and
+    <a href="{{ '/microlensing.html' | relative_url }}">microlensing</a> pages.
+  </p>
+</section>
+
+<section class="section" id="get" aria-labelledby="get-heading">
+  <h2 id="get-heading">Get it</h2>
+  <dl class="roles">
+    {%- if tool.repo %}
+    <div>
+      <dt>Repository</dt>
+      <dd><a href="{{ tool.repo }}" rel="noopener">{{ tool.repo | remove: "https://" }}</a></dd>
+    </div>
+    {%- endif %}
+    {%- if tool.docs %}
+    <div>
+      <dt>Documentation</dt>
+      <dd><a href="{{ tool.docs }}" rel="noopener">{{ tool.docs | remove: "https://" }}</a></dd>
+    </div>
+    {%- endif %}
+    <div>
+      <dt>Install</dt>
+      <dd>Clone the repository and follow the installation page in the documentation</dd>
+    </div>
+  </dl>
+</section>
+
+<section class="section" id="citing" aria-labelledby="citing-heading">
+  <h2 id="citing-heading">Citing GLoW</h2>
+  <p>
+    Work that uses the code should cite both papers, as the repository asks:
+    the method paper, and the analysis that introduced the parameter-estimation
+    machinery built on it.
+  </p>
+  <ul>
+    {%- for p in tool.papers %}
+    <li><a href="{{ p.url }}" rel="noopener">{{ p.short }}</a></li>
+    {%- endfor %}
+  </ul>
+</section>
+
+<section class="section" id="papers" aria-labelledby="papers-heading">
+  <h2 id="papers-heading">Papers using GLoW</h2>
+  <p>
+    Work by the group and by others that has used the code. If your paper is
+    missing, or is listed and should not be,
+    <a href="{{ '/contact.html' | relative_url }}">tell us</a> and it will be
+    corrected.
+  </p>
+
+  {%- comment -%}
+    Only entries marked `include: true` in _data/code_papers.yml, which is a
+    human's judgement rather than a query result. tools/fetch_code_papers.py
+    collects everything citing the code's seed records, but a citation is not a
+    use and nothing in INSPIRE tells them apart, so a candidate stays invisible
+    until somebody decides. Today 4 of 74 candidates have been decided.
+  {%- endcomment -%}
+  {%- assign used = site.data.code_papers | where: "include", true -%}
+  {%- assign used = used | where_exp: "p", "p.codes contains code_id" -%}
+  {%- assign used = used | sort: "date" | reverse -%}
+
+  <div class="pub-index" data-search data-search-noun="papers">
+    <div class="filter" data-search-ui hidden>
+      <label class="skip-link" for="filter-code-papers">Filter papers</label>
+      <input type="search" id="filter-code-papers" data-search-input
+             placeholder="Filter by title, author, journal or arXiv number…"
+             autocomplete="off" spellcheck="false">
+      <p class="filter-count" data-search-count aria-live="polite" role="status"></p>
+    </div>
+
+    {%- assign paper_years = used | group_by_exp: "p", "p.date | date: '%Y'" %}
+    {%- for group in paper_years %}
+    <section class="pub-year" data-search-group>
+      <h3 class="pub-year-head">{{ group.name }}</h3>
+      <ul class="pub-list">
+        {%- for p in group.items %}
+        <li class="pub-entry" data-search-item>
+          <a href="{{ p.url }}" rel="noopener">{{ p.title }}</a>
+          <span class="pub-entry-meta">
+            {{ p.authors }}
+            {%- if p.journal %} &middot; {{ p.journal }}{% endif -%}
+            {%- if p.arxiv %} &middot;
+            <a href="https://arxiv.org/abs/{{ p.arxiv }}" rel="noopener">arXiv:{{ p.arxiv }}</a>
+            {%- endif %}
+          </span>
+        </li>
+        {%- endfor %}
+      </ul>
+    </section>
+    {%- endfor %}
+
+    <p class="filter-empty" data-search-empty hidden>No papers match that search.</p>
+  </div>
+</section>
