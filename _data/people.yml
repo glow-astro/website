@@ -124,7 +124,10 @@ current:
   - name: "Pablo Vega del Castillo"
     # The default rule takes the first and last words of the name and would
     # give "PC". Spanish surnames are two-part, and the one he goes by is Vega.
+    # Kept although he now has a photograph: it costs nothing and stays right
+    # if the photograph is ever removed.
     initials: "PV"
+    photo: "pablo-vega-del-castillo.jpg"
     stage: masters
     role: "Master's student, LMU"
     years: "2026"
