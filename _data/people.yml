@@ -68,14 +68,15 @@ current:
     years: "2026–"
     incoming: true
     starts: "October 2026"
-    topic: "Lead developer of the GLoW code; wave-optics methods for gravitational lensing."
+    topic: "Wave-optics lensing methods, cosmology & dark energy, GLoW code lead."
 
   # Then those on the project but paid by another grant. See the note on
   # `role` in the schema above: the ordering is the point, not decoration.
   - name: "Daniel Ballard"
-    # His own site rather than his INSPIRE record: where a person maintains a
-    # page about themselves, that is the better thing to send a reader to.
-    url: "https://www.dan-ballard.com/"
+    # INSPIRE rather than his own site (dan-ballard.com), at the owner's
+    # instruction: the group links to INSPIRE records, and the exception here
+    # made him the odd one out among six people.
+    url: "https://inspirehep.net/authors/2648800"
     photo: "daniel-ballard.jpg"
     stage: postdoc
     role: "Affiliated postdoctoral researcher"
@@ -93,7 +94,7 @@ current:
     role: "Affiliated postdoctoral researcher"
     location: "based at the AEI, Potsdam"
     years: "2026–"
-    topic: "Lensing of gravitational waves by stellar fields and effective descriptions of diffraction."
+    topic: "Microlensing by stellar fields, data analysis, GW lensing astrophysics."
 
   - name: "Juan Urrutia"
     photo: "juan-urrutia.jpg"
