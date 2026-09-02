@@ -66,13 +66,30 @@ sections:
     between images separated by very small time delays becomes observable.
   </p>
   <p>
-    The wave-optics regime begins when the lensing time delays are comparable to
-    the period of the signal, equivalently when the wavelength approaches the
-    gravitational radius of the lens, λ&nbsp;∼&nbsp;GM/c². Diffraction there
-    cannot be read as a finite number of well-defined images at all. The source
-    is smeared across the lens plane instead. At much longer wavelengths
-    (λ&nbsp;≫&nbsp;GM/c²) the wave travels around the lens essentially
-    undisturbed. The figure below shows these regimes, together with the
+    Wave optics is the right description whenever the lensing time delays are
+    not long compared with the period of the signal, and its effects are most
+    pronounced when the two are comparable, equivalently when the wavelength
+    approaches the gravitational radius of the lens, λ&nbsp;∼&nbsp;GM/c².
+    Diffraction there cannot be read as a finite number of well-defined images
+    at all. The source is smeared across the lens plane instead.
+  </p>
+  {%- comment -%}
+    Rewritten 2026-09-02 after Han-Gil Choi pointed out that the page named a
+    third regime below the diffraction band, in which the wave was "essentially
+    undisturbed". There is no such boundary: F(w) tends to unity continuously
+    as w falls, so the low-frequency end is diffraction with the imprint
+    diluted, not the absence of it. The animation asserted the same thing in
+    its own labels and was re-rendered with the generator; see
+    application_plots/lensing_regimes_animation.py.
+  {%- endcomment -%}
+  <p>
+    Nothing switches off below that. Diffraction continues to every longer
+    wavelength with its imprint progressively diluted, until at
+    λ&nbsp;≫&nbsp;GM/c² the amplification factor tends to unity and the lens
+    leaves no measurable trace. The one real boundary sits at the other end,
+    where the delays grow long compared with the period and the description
+    collapses back to a finite set of images interfering in the ordinary way.
+    The figure below sweeps the whole range, together with the
     amplification factor in the frequency domain, its time-domain counterpart,
     and the waveform of a typical gravitational
     wave.{% include cite.html key="leung-wave-mechanics" %}
@@ -108,14 +125,14 @@ sections:
       {%- endcomment -%}
     </video>
     <figcaption>
-      The same lens in three regimes, in both domains at once. Nothing about the
-      lens changes across the sweep: what changes is the ratio between its
-      time-delay scale and the period of the wave. While the period is long, the
-      two images are not resolved and there is nothing to measure. As the ratio
-      grows the amplification factor develops the oscillations that
-      <em>are</em> diffraction. Once the delays are long compared with the
-      period, the images separate and interfere in the ordinary
-      geometric-optics way.
+      The same lens across the whole frequency range, in both domains at once.
+      Nothing about the lens changes across the sweep: what changes is the ratio
+      between its time-delay scale and the period of the wave. Wave optics
+      describes all of it but the last step. While the period is long the
+      imprint is too weak to measure, and as the ratio grows the amplification
+      factor develops the oscillations that carry the lens. Once the delays are
+      long compared with the period, the images separate and interfere in the
+      ordinary geometric-optics way.
     </figcaption>
   </figure>
 </section>
@@ -146,6 +163,25 @@ sections:
     than by spatial resolution, which is how a gravitational wave can be
     sensitive to objects far too small and too dark to image: the subject of
     <a href="{{ '/dark-matter.html' | relative_url }}">dark matter</a>.
+  </p>
+  {%- comment -%}
+    The Fresnel scale, added 2026-09-02 at Han-Gil Choi's suggestion. He
+    offered a passing mention on dark-matter.html as a compromise, but this
+    section is already built on the isolated-lens mass scale and already
+    concedes below that lensing cannot always be reduced to one object, so the
+    generalisation belongs here. dark-matter.html used "Fresnel volume" in a
+    figure caption while the term was defined nowhere on the site; that caption
+    now links here.
+  {%- endcomment -%}
+  <p>
+    That mass scale assumes a single, isolated lens. Where matter is spread
+    along the line of sight the relevant quantity is a length rather than a
+    mass: the <strong>Fresnel scale</strong>, the transverse distance over
+    which the paths reaching the observer stay in phase. It grows as the square
+    root of the wavelength, so a lower-frequency wave averages over a wider
+    region, and structure smaller than the Fresnel scale is smoothed over
+    rather than resolved. It is what sets the reach of a wave when there is no
+    single lens to point at.
   </p>
   <p>
     Lensing also cannot always be reduced to an isolated object. Collective
