@@ -48,3 +48,9 @@ _review_site/
 _data/review_notes.yml
 docs/NAMESPACE_AND_REDIRECTS.md
 glow-site-text_MZ.html
+
+# The prose-review rounds, extracted from git history on 2026-09-03 before that
+# history was purged of them. They are the owner's own edits, they are the only
+# copy outside the pre-purge bundle, and they were never meant to be published
+# with the source.
+review-rounds/
