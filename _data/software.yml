@@ -13,16 +13,67 @@
 #   name, subtitle, logo, logo_alt
 #   purpose      what it does, in prose
 #   status       "public" | "in development" | "planned"
-#   wps          work-package tasks that develop or use it
+#   wps          work-package tasks that develop or use it. NOTHING RENDERS
+#                THIS as of 2026-09-03: the package pages dropped the "developed
+#                under" row at the owner's request, since a code older than the
+#                grant should not point back at its task list on every page. It
+#                stays because it is true and because programme.html links the
+#                other way, from the task to the page
 #   language     optional, one line. What someone has to be able to read
 #   licence      optional, the SPDX-ish short name from the repo's LICENSE
 #   repo, docs   optional URLs
 #   papers       the papers to cite when the code is used, in the order the
 #                code's own README asks for them. [{short, url}] plus, for the
 #                package page's citation block, {title, authors, journal,
-#                arxiv}. `short` is what software.html shows and is enough on
-#                its own; the rest is what makes the block readable.
+#                arxiv}. `short` is the fallback when a paper has no `title`;
+#                the rest is what makes the citation block readable.
 #   contributors optional string
+
+# THE SECTION MAP. Software & data is laid out the way Science is: an overview
+# page, a sub-navigation bar across every page in the section, and one page per
+# thing. This list is what drives the bar and the cards on the overview, the way
+# _data/topics.yml drives the topic bar and the diagram, so the two can never
+# describe the section differently.
+#
+# It is a separate list from `tools` and `releases` below because not every page
+# is a tool: the notebooks page collects the per-paper releases, which are not
+# maintained software and never will be. `tool` names the entry in `tools` a
+# page draws its facts from, and is absent for a page that draws from elsewhere.
+#
+# Order here is the reading order, and the bar and the previous/next buttons
+# follow it: the code first, then what is built on it, then the frozen products
+# behind individual papers.
+#
+# Schema
+#   id     slug. A page marks itself current by setting `package_id` to this
+#   short  label in the section bar, where there is no room for a full title
+#   page   the page's URL. NOT derived from `id`: "/glow.html" on a site whose
+#          own name is GLOW would be a trap, and the file is glow-code.html
+#   card   ~15 words for the overview card, the way `card` works in topics.yml
+#   tool   optional, the id in `tools` this page is about
+section:
+  - id: glow
+    short: "GLoW"
+    page: "/glow-code.html"
+    tool: "glow"
+    card: >-
+      Wave optics for a general lens: the amplification factor, fast enough to
+      run inside parameter estimation.
+
+  - id: dingo-lensing
+    short: "DINGO models"
+    page: "/dingo-lensing.html"
+    tool: "dingo-lensing"
+    card: >-
+      Simulation-based inference for lensed signals, where the cost moves into
+      training and each event is then analysed in seconds.
+
+  - id: notebooks
+    short: "Notebooks & data"
+    page: "/notebooks.html"
+    card: >-
+      Companion code, notebooks and posterior samples that reproduce the results
+      of individual papers.
 
 tools:
   - id: "glow"

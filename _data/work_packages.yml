@@ -101,7 +101,7 @@
       deliverables:
         - text: "Trained network for rapid analysis and identification of lensed signals"
           progress: "A model for the isolated point lens is public."
-          url: "/software.html"
+          url: "/dingo-lensing.html"
       papers:
         - short: "Dax et al., arXiv:2106.12594"
           url: "https://inspirehep.net/literature/1870159"

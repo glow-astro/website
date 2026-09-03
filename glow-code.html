@@ -1,9 +1,10 @@
 ---
 layout: page
 nav: software
+package_id: glow
 search: true
 title: "GLoW"
-eyebrow: "Software"
+eyebrow: "Software & data"
 lede: >-
   Wave-optics lensing of gravitational waves: the amplification factor for a
   general matter distribution, fast enough to use inside parameter estimation.
@@ -19,15 +20,21 @@ sections:
     label: "Citing GLoW"
   - id: papers
     label: "Papers using GLoW"
+  - id: more
+    label: "Elsewhere in the section"
 ---
 
 {%- comment -%}
-  NOT LINKED FROM ANYWHERE, deliberately, 2026-09-03. The owner asked for the
-  page to be prepared while the shape of a Software section is still being
-  discussed, so it is absent from _data/nav.yml, from the footer and from
-  software.html. It is reachable only by typing the address. Adding it to the
-  navigation is a separate decision, and needs software.html rewritten as an
-  overview at the same time.
+  The GLoW page in the Software & data section, which is laid out the way
+  Science is: an overview, a bar across every page in the section, one page per
+  thing. `package_id` marks this page current in that bar; the entry it matches,
+  and this page's place in the previous/next order, are in `section` in
+  _data/software.yml.
+
+  The file is glow-code.html, not glow.html. The obvious slug is a trap on a
+  site whose own name is GLOW: the project is GLOW and the code is GLoW, a
+  distinction the overview page has a whole section about, and a URL cannot
+  carry a lowercase "o" as a load-bearing difference.
 
   Written for GLoW, not as a generic template, at the owner's instruction: a
   second code needs the `code_id` below changed and a few sentences rewritten,
@@ -45,6 +52,8 @@ sections:
 {%- endcomment -%}
 {%- assign code_id = "glow" -%}
 {%- assign tool = site.data.software.tools | where: "id", code_id | first -%}
+
+{% include packagenav.html %}
 
 {% include subnav.html %}
 
@@ -83,10 +92,11 @@ sections:
     <dd>{{ tool.licence }}</dd>
     {%- endif %}
     {%- comment -%}
-      No "Developed under" row. `tool.wps` is still in the data and still drives
-      software.html, but the owner does not want a page about a code tied back
+      No "Developed under" row. `tool.wps` stays in the data and nothing renders
+      it any more, because the owner does not want a page about a code tied back
       to the grant's task list at every turn: GLoW is older than the project and
-      is used by people with no interest in its work packages.
+      is used by people with no interest in its work packages. The link runs the
+      other way instead, from the task on programme.html to the page.
     {%- endcomment -%}
     {%- if tool.contributors %}
     <dt>Contributors</dt>
@@ -224,4 +234,15 @@ sections:
 
     <p class="filter-empty" data-search-empty hidden>No papers match that search.</p>
   </div>
+</section>
+
+<section class="section" id="more" aria-labelledby="more-heading">
+  <h2 id="more-heading">Elsewhere in the section</h2>
+  <p>
+    Inference built on GLoW has its own page, and the frozen products behind
+    individual papers have another. The
+    <a href="{{ '/software.html#policy' | relative_url }}">release policy</a>
+    says what the project commits to publishing, and when.
+  </p>
+  {% include package-links.html %}
 </section>

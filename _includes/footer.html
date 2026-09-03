@@ -20,13 +20,29 @@
         </ul>
       </div>
 
+      {%- comment -%}
+        And the same for the package pages, for the same reason: since
+        2026-09-03 Software & data has the layers Science has, so
+        _includes/packagenav.html renders on its four pages and nowhere else.
+        Reads `short` and `page` from the `section` list in _data/software.yml,
+        the same fields that bar uses, so the two cannot drift.
+      {%- endcomment -%}
+      <div>
+        <h2>Software &amp; data</h2>
+        <ul>
+          <li><a href="{{ '/software.html' | relative_url }}">Overview</a></li>
+          {%- for s in site.data.software.section %}
+          <li><a href="{{ s.page | relative_url }}">{{ s.short }}</a></li>
+          {%- endfor %}
+        </ul>
+      </div>
+
       <div>
         <h2>The project</h2>
         <ul>
           <li><a href="{{ '/news.html' | relative_url }}">News</a></li>
           <li><a href="{{ '/programme.html' | relative_url }}">Programme</a></li>
           <li><a href="{{ '/publications.html' | relative_url }}">Publications &amp; talks</a></li>
-          <li><a href="{{ '/software.html' | relative_url }}">Software &amp; data</a></li>
           <li><a href="{{ site.project.cordis }}" rel="noopener">CORDIS record</a></li>
         </ul>
       </div>
@@ -68,8 +84,9 @@
     <div class="footer-note">
       <p>
         <strong>GLOW</strong> is this ERC project; <strong>GLoW</strong>
-        (lowercase&nbsp;“o”) is the <a href="{{ '/software.html' | relative_url }}">software</a>
-        package. Both logos were designed by Ana Carvalho.
+        (lowercase&nbsp;“o”) is the
+        <a href="{{ '/glow-code.html' | relative_url }}">wave-optics code</a>.
+        Both logos were designed by Ana Carvalho.
       </p>
     </div>
   </div>

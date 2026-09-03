@@ -1,0 +1,30 @@
+{%- comment -%}
+  Previous / next / overview, at the foot of a package page. The science topic
+  pages write this row by hand, three links each, which is fine for six pages
+  written once and a standing invitation to get an arrow backwards. Here it is
+  computed from `section` in _data/software.yml, so reordering the section
+  reorders the buttons and nothing has to be remembered.
+
+  The ends are not wrapped: the first page has no previous and the last has no
+  next. A three-page section that loops would put "next" on the last page
+  pointing back at the first, which reads as a carousel rather than a document.
+{%- endcomment -%}
+{%- assign items = site.data.software.section -%}
+{%- assign here = -1 -%}
+{%- for s in items -%}
+  {%- if s.id == page.package_id %}{% assign here = forloop.index0 %}{% endif -%}
+{%- endfor -%}
+<div class="btn-row">
+  {%- if here > 0 %}
+  {%- assign prev_i = here | minus: 1 -%}
+  {%- assign prev = items[prev_i] -%}
+  <a class="btn" href="{{ prev.page | relative_url }}">&larr; {{ prev.short }}</a>
+  {%- endif %}
+  {%- assign last_i = items.size | minus: 1 -%}
+  {%- if here >= 0 and here < last_i %}
+  {%- assign next_i = here | plus: 1 -%}
+  {%- assign next = items[next_i] -%}
+  <a class="btn" href="{{ next.page | relative_url }}">{{ next.short }} &rarr;</a>
+  {%- endif %}
+  <a class="btn" href="{{ '/software.html' | relative_url }}">All software &amp; data</a>
+</div>

@@ -10,81 +10,68 @@ description: >-
   Software developed by the GLOW project (the public GLoW wave-optics lensing
   code and machine-learning inference tools) and the project's release policy.
 sections:
-  - id: tools
-    label: "Tools"
-  - id: releases
-    label: "Data releases"
+  - id: packages
+    label: "What we build"
   - id: policy
     label: "Release policy"
   - id: naming
     label: "GLOW and GLoW"
 ---
 
+{%- comment -%}
+  The overview of Software & data, rebuilt on 2026-09-03 to carry the same
+  layers as Science: a bar across the whole section, a map of what is in it, and
+  a page for each thing rather than a card for each thing. The cards below and
+  the bar both come from `section` in _data/software.yml, so neither can drift
+  from the other or from the pages themselves.
+
+  What is NOT here any more, and where it went: the tool cards, which were four
+  facts each and had nowhere to grow, are now glow-code.html and
+  dingo-lensing.html; the data releases are notebooks.html. What stays is what
+  belongs to the section as a whole rather than to one thing in it -- the map,
+  the release policy, and the naming note.
+
+  No diagram like the science skymap. That figure works because the topics sit
+  at places on a light path and the picture is of that path; three codes have no
+  such geometry, and drawing one would be decoration pretending to be an
+  argument. The cards are the map here.
+{%- endcomment -%}
+
+{% include packagenav.html %}
+
 {% include subnav.html %}
 
-<section class="section" id="tools" aria-labelledby="tools-heading">
-  <h2 id="tools-heading">Tools</h2>
-  {%- for t in site.data.software.tools %}
-  <div class="card">
-    {%- if t.logo %}
-    <img class="card-logo" src="{{ t.logo | relative_url }}" alt="{{ t.logo_alt }}">
-    {%- endif %}
-    <p class="card-title">{{ t.name }}</p>
-    <p class="card-meta">{{ t.subtitle }} · {{ t.status }}{% if t.wps %} · {{ t.wps | join: ", " }}{% endif %}</p>
-    <p>{{ t.purpose }}</p>
-    {%- if t.name contains "DINGO" %}
-    <p>Why this matters is explained under
-      <a href="{{ '/data-analysis.html' | relative_url }}">data analysis</a>.</p>
-    {%- endif %}
-
-    {%- if t.papers %}
-    <p class="card-meta">Method paper</p>
-    <ul>
-      {%- for p in t.papers %}
-      <li><a href="{{ p.url }}" rel="noopener">{{ p.short }}</a></li>
-      {%- endfor %}
-    </ul>
-    {%- endif %}
-
-    {%- if t.contributors %}
-    <p class="card-meta">Contributors</p>
-    <p>{{ t.contributors }}</p>
-    {%- endif %}
-
-    <p>
-      {%- if t.repo %}<a href="{{ t.repo }}" rel="noopener">Repository</a>{% endif -%}
-      {%- if t.repo and t.docs %} &middot; {% endif -%}
-      {%- if t.docs %}<a href="{{ t.docs }}" rel="noopener">Documentation</a>{% endif -%}
-    </p>
-  </div>
-  {%- endfor %}
-</section>
-
-<section class="section" id="releases" aria-labelledby="releases-heading">
-  <h2 id="releases-heading">Data releases and companion code</h2>
-  <p class="lede">
-    Products accompanying individual papers, to reproduce published results.
+<section class="section" id="packages" aria-labelledby="packages-heading">
+  <h2 id="packages-heading">What we build</h2>
+  <p>
+    Three kinds of thing, and they carry different obligations. A maintained
+    code has a version to install, documentation and an issue tracker. A model
+    in development has a method paper and a promise. A data release has a DOI
+    and never changes again. They have a page each.
   </p>
-  {%- for r in site.data.software.releases %}
-  <div class="card">
-    <p class="card-title">{{ r.name }}</p>
-    <p class="card-meta">
-      {{ r.subtitle }} &middot;
-      <a href="{{ r.paper.url }}" rel="noopener">{{ r.paper.short }}</a>
-    </p>
-    <p>{{ r.body }}</p>
-    {%- if r.doi %}
-    <p class="card-meta">Cite the version DOI for exact reproducibility: {{ r.doi }}</p>
-    {%- endif %}
-    <p>
-      {%- for l in r.links %}<a href="{{ l.url }}" rel="noopener">{{ l.text }}</a>{% unless forloop.last %} &middot; {% endunless %}{% endfor -%}
-    </p>
+
+  <div class="grid grid-3">
+    {%- for s in site.data.software.section %}
+    {%- assign tool = site.data.software.tools | where: "id", s.tool | first -%}
+    <a class="card card-link" href="{{ s.page | relative_url }}">
+      <p class="card-title">{{ tool.name | default: s.short }}</p>
+      {%- if tool %}
+      <p class="card-meta">{{ tool.subtitle }} &middot; {{ tool.status }}</p>
+      {%- else %}
+      <p class="card-meta">Companion products &middot; frozen</p>
+      {%- endif %}
+      <p>{{ s.card | strip_newlines | strip }}</p>
+    </a>
+    {%- endfor %}
   </div>
-  {%- endfor %}
 </section>
 
 <section class="section" id="policy" aria-labelledby="policy-heading">
   <h2 id="policy-heading">Release policy</h2>
+  <p>
+    These are obligations rather than aspirations. Each page in the section says
+    what it has released; this says what will be released and when.
+  </p>
   <ul>
     {%- for item in site.data.software.policy %}
     <li>{{ item }}</li>
@@ -98,6 +85,9 @@ sections:
     <strong>GLOW</strong>, all capitals, is this ERC project.
     <strong>GLoW</strong>, with a lowercase “o”, is the wave-optics lensing code.
     The code predates the grant and has its own authors and its own citation. The
-    project extends it. The distinction matters when citing either one.
+    project extends it. The distinction matters when citing either one, and it is
+    why the code's page is at
+    <a href="{{ '/glow-code.html' | relative_url }}">glow-code.html</a>: a URL
+    cannot carry a lowercase letter as a load-bearing difference.
   </p>
 </section>

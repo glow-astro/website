@@ -1,0 +1,92 @@
+---
+layout: page
+nav: software
+package_id: notebooks
+title: "Notebooks and data releases"
+eyebrow: "Software & data"
+lede: >-
+  Companion code and archived data behind individual papers. These are frozen
+  products tied to one result, published so the result can be reproduced, and
+  they are not maintained software.
+description: >-
+  Companion notebooks, analysis code and posterior samples released alongside
+  the project's papers, with the version DOI to cite for exact reproducibility.
+sections:
+  - id: releases
+    label: "Releases"
+  - id: using
+    label: "Using them"
+  - id: more
+    label: "Elsewhere in the section"
+---
+
+{%- comment -%}
+  The third page in the Software & data section: everything in
+  `releases` in _data/software.yml, which the overview used to render as a
+  second card list under the tools. Moving it here is the point of the
+  restructure. A maintained code and a frozen deposition are different kinds of
+  object with different obligations -- one has a version to install and issues
+  to file, the other has a DOI and never changes again -- and a single page that
+  listed them one after the other implied they were the same kind of thing.
+
+  Nothing here is written by hand. Adding a release is an entry in the data
+  file, exactly as it was before.
+{%- endcomment -%}
+
+{% include packagenav.html %}
+
+{% include subnav.html %}
+
+<section class="section" id="releases" aria-labelledby="releases-heading">
+  <h2 id="releases-heading">Releases</h2>
+  <p>
+    Each of these accompanies one paper and reproduces its published results.
+    Papers are on the
+    <a href="{{ '/publications.html' | relative_url }}">publications page</a>,
+    where the same releases are linked from the paper they belong to.
+  </p>
+  {%- for r in site.data.software.releases %}
+  <div class="card">
+    <p class="card-title">{{ r.name }}</p>
+    <p class="card-meta">
+      {{ r.subtitle }} &middot;
+      <a href="{{ r.paper.url }}" rel="noopener">{{ r.paper.short }}</a>
+    </p>
+    <p>{{ r.body }}</p>
+    {%- if r.doi %}
+    <p class="card-meta">Cite the version DOI for exact reproducibility: {{ r.doi }}</p>
+    {%- endif %}
+    <p>
+      {%- for l in r.links %}<a href="{{ l.url }}" rel="noopener">{{ l.text }}</a>{% unless forloop.last %} &middot; {% endunless %}{% endfor -%}
+    </p>
+  </div>
+  {%- endfor %}
+</section>
+
+<section class="section" id="using" aria-labelledby="using-heading">
+  <h2 id="using-heading">Using them</h2>
+  <p>
+    A release is pinned to the paper it came with, so cite the version DOI where
+    there is one: it names the exact deposit the numbers came from, which a link
+    to a repository cannot do once the repository moves on. The code in these
+    releases is not maintained and is not the place to start a new analysis. For
+    that, use <a href="{{ '/glow-code.html' | relative_url }}">GLoW</a>, which is
+    where the methods behind most of this work live in a form meant to be built
+    on.
+  </p>
+  <p>
+    Only what is actually public is listed here. A repository still private, or
+    a deposition still a draft, is absent rather than promised; the
+    <a href="{{ '/software.html#policy' | relative_url }}">release policy</a>
+    says when it appears.
+  </p>
+</section>
+
+<section class="section" id="more" aria-labelledby="more-heading">
+  <h2 id="more-heading">Elsewhere in the section</h2>
+  <p>
+    The maintained codes have their own pages: the wave-optics engine, and the
+    inference models built on it.
+  </p>
+  {% include package-links.html %}
+</section>

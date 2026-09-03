@@ -1,0 +1,34 @@
+{%- comment -%}
+  The Software & data submenu: every page in the section, on the overview and on
+  each package page. A page marks itself current by setting `package_id` in its
+  front matter; the overview sets none, so Overview is marked there instead.
+
+  Driven by `section` in _data/software.yml, which also draws the cards on the
+  overview, so the bar and the map cannot disagree about what the section holds.
+
+  Deliberately a sibling of topicnav.html rather than a parameter of it. The two
+  render the same component -- same `.topicnav` class, same styles, same
+  measurement in assets/js/sticky-bars.js, which queries `.topicnav` and not the
+  science page -- but they answer different questions about what is current, and
+  the thirty lines of reasoning in topicnav.html are all about the science
+  topics. Merging them would mean a shared include carrying both sets of
+  comments and neither page's argument. If a third section ever wants a bar,
+  that is the moment to parameterise, not now.
+
+  The `aria-label` differs from the science bar's on purpose: a screen-reader
+  user listing the landmarks on a page hears which section's bar this is.
+{%- endcomment -%}
+<nav class="topicnav" aria-label="Software and data">
+  <ul>
+    <li>
+      <a href="{{ '/software.html' | relative_url }}"
+         {% unless page.package_id %}aria-current="page"{% endunless %}>Overview</a>
+    </li>
+    {%- for s in site.data.software.section %}
+    <li>
+      <a href="{{ s.page | relative_url }}"
+         {% if page.package_id == s.id %}aria-current="page"{% endif %}>{{ s.short }}</a>
+    </li>
+    {%- endfor %}
+  </ul>
+</nav>

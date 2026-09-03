@@ -1,0 +1,157 @@
+---
+layout: page
+nav: software
+package_id: dingo-lensing
+title: "DINGO for lensed signals"
+eyebrow: "Software & data"
+lede: >-
+  Inference of wave-optics distortions enlarges the parameter space of every
+  event, at exactly the moment detectors start delivering thousands of them.
+  Simulation-based inference moves the cost into training and analyses each
+  event in seconds.
+description: >-
+  The project's machine-learning inference for lensed gravitational waves, built
+  on DINGO: what exists today, what it is for, and where the method is described.
+# Cited on this page, in order of first appearance -- and that order is the
+# numbering. Pulled from _data/references.yml, which several pages share.
+refs:
+  - lvk-plan
+  - cranmer-sbi
+  - caldarola-dingo
+sections:
+  - id: what
+    label: "Code purpose"
+  - id: get
+    label: "Get it"
+  - id: citing
+    label: "Citing it"
+  - id: references
+    label: "References"
+  - id: more
+    label: "Elsewhere in the section"
+---
+
+{%- comment -%}
+  The second page in the Software & data section, and the one that shows what
+  the structure is for: this is a model in development with one paper behind it,
+  and on the old single-page software.html it was a card of four facts wedged
+  under GLoW. It is not padded out here to match the GLoW page. What it says is
+  what is true today, and the page grows when the code does.
+
+  Same skeleton as glow-code.html: `code_id` picks the tool out of
+  _data/software.yml, and every fact comes from there. There is no "Papers
+  using" section, because nothing outside the project uses this yet, and an
+  empty list under a heading claims more than a missing heading does.
+{%- endcomment -%}
+{%- assign code_id = "dingo-lensing" -%}
+{%- assign tool = site.data.software.tools | where: "id", code_id | first -%}
+
+{% include packagenav.html %}
+
+{% include subnav.html %}
+
+<section class="section" id="what" aria-labelledby="what-heading">
+  <h2 id="what-heading">Code purpose</h2>
+  <p class="card-meta">{{ tool.subtitle }} &middot; {{ tool.status }}</p>
+  <p>{{ tool.purpose }}</p>
+
+  <dl class="code-facts">
+    {%- if tool.language %}
+    <dt>Language</dt>
+    <dd>{{ tool.language }}</dd>
+    {%- endif %}
+    {%- if tool.licence %}
+    <dt>Licence</dt>
+    <dd>{{ tool.licence }}</dd>
+    {%- endif %}
+    {%- if tool.contributors %}
+    <dt>Contributors</dt>
+    <dd>{{ tool.contributors }}</dd>
+    {%- endif %}
+  </dl>
+
+  <p>
+    Lensing searches face a growing computational problem. Every wave-optics
+    parameter added to a waveform enlarges the space an analysis has to explore,
+    and the detector network will soon deliver thousands of events a
+    year{% include cite.html key="lvk-plan" %}, with the cost rising again for
+    searches over pairs of events, where multiply-imaged candidates have to be
+    compared with one another. A network trained to map data directly to
+    posteriors amortizes that cost: the expense moves into training, and each
+    subsequent event is analyzed in
+    seconds.{% include cite.html key="cranmer-sbi" %}
+  </p>
+  <p>
+    The models are built on
+    <a href="{{ tool.repo }}" rel="noopener">DINGO</a>, which is maintained
+    elsewhere; what the project adds is the lensing. A model exists today for
+    the isolated point lens, trained on amplification factors computed with
+    <a href="{{ '/glow-code.html' | relative_url }}">GLoW</a>, and the two
+    pieces are meant to fit together: the wave-optics code supplies the training
+    data, the network supplies the speed. Why this matters for the searches
+    themselves is argued under
+    <a href="{{ '/data-analysis.html#speed' | relative_url }}">data analysis</a>.
+  </p>
+</section>
+
+<section class="section" id="get" aria-labelledby="get-heading">
+  <h2 id="get-heading">Get it</h2>
+  <dl class="roles">
+    {%- if tool.repo %}
+    <div>
+      <dt>DINGO</dt>
+      <dd><a href="{{ tool.repo }}" rel="noopener">{{ tool.repo | remove: "https://" }}</a></dd>
+    </div>
+    {%- endif %}
+    <div>
+      <dt>Lensing models</dt>
+      <dd>
+        Not yet released. Under the
+        <a href="{{ '/software.html#policy' | relative_url }}">release policy</a>
+        they are published once validated and scientifically exploited
+      </dd>
+    </div>
+  </dl>
+</section>
+
+<section class="section" id="citing" aria-labelledby="citing-heading">
+  <h2 id="citing-heading">Citing it</h2>
+  <p>
+    The paper that introduced the method and demonstrated it on an isolated
+    point lens.{% include cite.html key="caldarola-dingo" %}
+  </p>
+  {%- comment -%}
+    Same `.cite-list` component as the GLoW page, from the same field in
+    _data/software.yml, so the two pages present a citation the same way.
+  {%- endcomment -%}
+  <ul class="cite-list">
+    {%- for p in tool.papers %}
+    <li>
+      <a class="cite-title" href="{{ p.url }}" rel="noopener">{{ p.title | default: p.short }}</a>
+      {%- if p.authors or p.journal or p.arxiv %}
+      <span class="cite-meta">
+        {{- p.authors }}
+        {%- if p.journal %} &middot; <span class="cite-where">{{ p.journal }}</span>{% endif -%}
+        {%- if p.arxiv %} &middot;
+        <a href="https://arxiv.org/abs/{{ p.arxiv }}" rel="noopener">arXiv:{{ p.arxiv }}</a>
+        {%- endif %}
+      </span>
+      {%- endif %}
+    </li>
+    {%- endfor %}
+  </ul>
+</section>
+
+<section class="section" id="references" aria-labelledby="references-heading">
+  <h2 id="references-heading">References</h2>
+  {% include references.html %}
+</section>
+
+<section class="section" id="more" aria-labelledby="more-heading">
+  <h2 id="more-heading">Elsewhere in the section</h2>
+  <p>
+    The wave-optics code these models are trained on has its own page, and the
+    frozen products behind individual papers have another.
+  </p>
+  {% include package-links.html %}
+</section>
