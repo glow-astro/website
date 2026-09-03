@@ -1,16 +1,16 @@
 ---
 layout: page
 nav: software
-package_id: notebooks
-title: "Notebooks and data releases"
+package_id: supporting
+title: "Supporting code and data"
 eyebrow: "Software & data"
 lede: >-
-  Companion code and archived data behind individual papers. These are frozen
-  products tied to one result, published so the result can be reproduced, and
-  they are not maintained software.
+  Code and data released alongside individual papers. These are frozen products
+  tied to one result, published so that the result can be reproduced, and they
+  are not maintained software.
 description: >-
-  Companion notebooks, analysis code and posterior samples released alongside
-  the project's papers, with the version DOI to cite for exact reproducibility.
+  Companion code and archived data released alongside the project's papers,
+  with the version DOI to cite for exact reproducibility.
 sections:
   - id: releases
     label: "Releases"
@@ -23,7 +23,10 @@ sections:
 {%- comment -%}
   The third page in the Software & data section: everything in
   `releases` in _data/software.yml, which the overview used to render as a
-  second card list under the tools. Moving it here is the point of the
+  second card list under the tools. Named "Supporting code and data" rather
+  than "Notebooks" since 2026-09-03: of the two releases here one is a notebook
+  set and the other is companion code with posterior samples, and a page named
+  after the format of what it happens to hold today ages badly. Moving it here is the point of the
   restructure. A maintained code and a frozen deposition are different kinds of
   object with different obligations -- one has a version to install and issues
   to file, the other has a DOI and never changes again -- and a single page that

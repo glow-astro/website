@@ -36,7 +36,7 @@
 # describe the section differently.
 #
 # It is a separate list from `tools` and `releases` below because not every page
-# is a tool: the notebooks page collects the per-paper releases, which are not
+# is a tool: the supporting-code page collects the per-paper releases, which are not
 # maintained software and never will be. `tool` names the entry in `tools` a
 # page draws its facts from, and is absent for a page that draws from elsewhere.
 #
@@ -68,12 +68,15 @@ section:
       Simulation-based inference for lensed signals, where the cost moves into
       training and each event is then analysed in seconds.
 
-  - id: notebooks
-    short: "Notebooks & data"
-    page: "/notebooks.html"
+  # Renamed from "Notebooks & data" on 2026-09-03: some of these releases are
+  # notebooks and some are analysis pipelines, and naming the page after the
+  # format of the first one it happened to hold would date badly.
+  - id: supporting
+    short: "Supporting code & data"
+    page: "/supporting-code.html"
     card: >-
-      Companion code, notebooks and posterior samples that reproduce the results
-      of individual papers.
+      Companion code and archived data that reproduce the results of individual
+      papers.
 
 tools:
   - id: "glow"
@@ -139,9 +142,10 @@ tools:
     contributors: "Srashti Goyal (lead developer)."
     repo: "https://github.com/dingo-gw/dingo"
 
-# Companion code and archived data behind individual papers. Distinct from
-# `tools` above: these are frozen products tied to one result, not maintained
-# software.
+# Companion code and archived data behind individual papers, rendered on
+# supporting-code.html. Distinct from `tools` above: these are frozen products
+# tied to one result, not maintained software. What form a release takes is up
+# to the paper, so nothing here assumes notebooks.
 #
 # Schema
 #   name     the release, as a reader would search for it

@@ -50,7 +50,7 @@ PAGES = [
     ("software.html",       "Software and data"),
     ("glow-code.html",      "Software — GLoW"),
     ("dingo-lensing.html",  "Software — DINGO for lensed signals"),
-    ("notebooks.html",      "Software — notebooks and data releases"),
+    ("supporting-code.html", "Software — supporting code and data"),
     # Unlinked on the site (2026-09-02), so a reader will not stumble on it,
     # but it is prose the owner has to read before it goes anywhere. Listed
     # here for that reason and not because the site navigates to it.
