@@ -158,6 +158,12 @@
   where: "(2021)"
   url: "https://arxiv.org/abs/2102.03946"
 
+- id: dax-dingo
+  authors: "M. Dax, S. R. Green, J. Gair et al."
+  title: "Real-Time Gravitational Wave Science with Neural Posterior Estimation"
+  where: "Phys. Rev. Lett. 127, 241103 (2021)"
+  url: "https://arxiv.org/abs/2106.12594"
+
 - id: cranmer-sbi
   authors: "K. Cranmer, J. Brehmer, G. Louppe"
   title: "The frontier of simulation-based inference"

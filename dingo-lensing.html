@@ -17,12 +17,13 @@ description: >-
 refs:
   - lvk-plan
   - cranmer-sbi
+  - dax-dingo
   - caldarola-dingo
 sections:
   - id: what
     label: "Code purpose"
-  - id: get
-    label: "Get it"
+  - id: availability
+    label: "Availability"
   - id: citing
     label: "Citing it"
   - id: references
@@ -83,8 +84,10 @@ sections:
   </p>
   <p>
     The models are built on
-    <a href="{{ tool.repo }}" rel="noopener">DINGO</a>, which is maintained
-    elsewhere; what the project adds is the lensing. A model exists today for
+    <a href="{{ tool.repo }}" rel="noopener">DINGO</a>, a neural-posterior-estimation
+    framework for gravitational-wave inference{% include cite.html key="dax-dingo" %}
+    that is developed and maintained outside this project. What the project adds
+    is the lensing. A model exists today for
     the isolated point lens, trained on amplification factors computed with
     <a href="{{ '/glow-code.html' | relative_url }}">GLoW</a>, and the two
     pieces are meant to fit together: the wave-optics code supplies the training
@@ -94,31 +97,30 @@ sections:
   </p>
 </section>
 
-<section class="section" id="get" aria-labelledby="get-heading">
-  <h2 id="get-heading">Get it</h2>
-  <dl class="roles">
-    {%- if tool.repo %}
-    <div>
-      <dt>DINGO</dt>
-      <dd><a href="{{ tool.repo }}" rel="noopener">{{ tool.repo | remove: "https://" }}</a></dd>
-    </div>
-    {%- endif %}
-    <div>
-      <dt>Lensing models</dt>
-      <dd>
-        Not yet released. Under the
-        <a href="{{ '/software.html#policy' | relative_url }}">release policy</a>
-        they are published once validated and scientifically exploited
-      </dd>
-    </div>
-  </dl>
+<section class="section" id="availability" aria-labelledby="availability-heading">
+  <h2 id="availability-heading">Availability</h2>
+  {%- comment -%}
+    Not "Get it", which is the GLoW page's heading and the right one there.
+    There is no release to get here, and a section offering one under that name
+    would be a promise the project has not made. What can be linked is DINGO
+    itself, which is public and somebody else's.
+  {%- endcomment -%}
+  <p>
+    There is no official release of the lensing models. DINGO itself is public
+    and maintained outside the project, at
+    <a href="{{ tool.repo }}" rel="noopener">{{ tool.repo | remove: "https://" }}</a>,
+    and what the project adds to it lives with the papers below for now. The
+    <a href="{{ '/software.html#policy' | relative_url }}">release plans</a> say
+    what the intention is.
+  </p>
 </section>
 
 <section class="section" id="citing" aria-labelledby="citing-heading">
   <h2 id="citing-heading">Citing it</h2>
   <p>
-    The paper that introduced the method and demonstrated it on an isolated
-    point lens.{% include cite.html key="caldarola-dingo" %}
+    Work using these models should cite DINGO itself, and the paper that brought
+    the lensing in and demonstrated it on an isolated point
+    lens.{% include cite.html key="caldarola-dingo" %}
   </p>
   {%- comment -%}
     Same `.cite-list` component as the GLoW page, from the same field in

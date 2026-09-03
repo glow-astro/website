@@ -120,7 +120,16 @@ tools:
     purpose: >-
       Simulation-based inference built on DINGO makes large-scale lensing
       analyses tractable. A model currently exists for the isolated point lens.
+    # DINGO first, then the lensing paper: the tool is somebody else's and its
+    # own paper is the one a user of these models has to carry, whatever the
+    # lensing work adds on top.
     papers:
+      - short: "Dax et al., arXiv:2106.12594"
+        title: "Real-time gravitational wave science with neural posterior estimation"
+        authors: "M. Dax, S. R. Green, J. Gair et al."
+        journal: "Phys. Rev. Lett. 127, 241103 (2021)"
+        arxiv: "2106.12594"
+        url: "https://inspirehep.net/literature/1870159"
       - short: "Caldarola et al., arXiv:2511.08486"
         title: "Accelerated inference of microlensed gravitational waves with machine learning"
         authors: "M. Caldarola, S. Goyal, N. Gupte et al."
