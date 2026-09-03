@@ -82,20 +82,12 @@ sections:
     <dt>Licence</dt>
     <dd>{{ tool.licence }}</dd>
     {%- endif %}
-    {%- if tool.wps %}
-    <dt>Developed under</dt>
-    <dd>
-      {%- for code in tool.wps %}
-      {%- assign task_title = code -%}
-      {%- for wp in site.data.work_packages -%}
-        {%- for task in wp.tasks -%}
-          {%- if task.code == code %}{% assign task_title = task.title %}{% endif -%}
-        {%- endfor -%}
-      {%- endfor -%}
-      <a href="{{ '/programme.html#' | append: code | downcase | relative_url }}">{{ task_title }}</a>
-      {%- unless forloop.last %} &middot; {% endunless %}{% endfor %}
-    </dd>
-    {%- endif %}
+    {%- comment -%}
+      No "Developed under" row. `tool.wps` is still in the data and still drives
+      software.html, but the owner does not want a page about a code tied back
+      to the grant's task list at every turn: GLoW is older than the project and
+      is used by people with no interest in its work packages.
+    {%- endcomment -%}
     {%- if tool.contributors %}
     <dt>Contributors</dt>
     <dd>{{ tool.contributors }}</dd>
@@ -134,9 +126,8 @@ sections:
 <section class="section" id="citing" aria-labelledby="citing-heading">
   <h2 id="citing-heading">Citing GLoW</h2>
   <p>
-    Work that uses GLoW should cite both papers, as the repository asks: the
-    method paper, and the analysis that introduced the parameter-estimation
-    machinery built on it.
+    Work that uses GLoW should cite the method paper, which is what the
+    repository asks for.
   </p>
   {%- comment -%}
     `.cite-list`, not a bullet list: these are the references a user has to
@@ -165,12 +156,6 @@ sections:
 
 <section class="section" id="papers" aria-labelledby="papers-heading">
   <h2 id="papers-heading">Papers using GLoW</h2>
-  <p>
-    Work by the group and by others that has run the code. If your paper is
-    missing, or is listed and should not be,
-    <a href="{{ '/contact.html' | relative_url }}">tell us</a> and it will be
-    corrected.
-  </p>
 
   {%- comment -%}
     Only entries marked `include: true` in _data/code_papers.yml. The candidates
@@ -183,6 +168,29 @@ sections:
   {%- assign used = site.data.code_papers | where: "include", true -%}
   {%- assign used = used | where_exp: "p", "p.codes contains code_id" -%}
   {%- assign used = used | sort: "date" | reverse -%}
+  {%- comment -%}
+    The count first, as hi_class does it: a page that lists other people's work
+    should say how much of it there is before showing any. Counted in Liquid
+    from the same filtered list the section renders, so it cannot drift from
+    it, and the span comes off the ends of that list rather than being written
+    down anywhere. hi_class computes both in JavaScript; here the list is built
+    at build time, so a reader with no JavaScript still gets the number.
+  {%- endcomment -%}
+  {%- assign first_year = used | last -%}
+  {%- assign last_year = used | first -%}
+  <p class="count-headline">
+    <b>{{ used | size }}</b>
+    <span>
+      papers have used GLoW, spanning
+      {{ first_year.date | date: "%Y" }}&ndash;{{ last_year.date | date: "%Y" }}
+    </span>
+  </p>
+  <p>
+    Work by the group and by others that has run the code. If your paper is
+    missing, or is listed and should not be,
+    <a href="{{ '/contact.html' | relative_url }}">tell us</a> and it will be
+    corrected.
+  </p>
 
   <div class="pub-index" data-search data-search-noun="papers">
     <div class="filter" data-search-ui hidden>

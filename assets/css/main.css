@@ -444,6 +444,31 @@ main { padding-bottom: 3rem; }
 	.code-facts dd { margin-bottom: 0.2rem; }
 }
 
+/* ---- How many papers used the code ----------------------------------- */
+
+/* A page listing other people's work should say how much of it there is
+   before showing any, which is what hi_class does with its `.pub-headline`.
+   The number carries the weight and the sentence stays quiet beside it. */
+.count-headline {
+	margin: 1.2rem 0 0.4rem;
+	display: flex;
+	align-items: baseline;
+	gap: 0.55rem;
+	flex-wrap: wrap;
+}
+
+.count-headline b {
+	font-size: 2.4rem;
+	line-height: 1;
+	font-weight: 700;
+	color: var(--accent);
+}
+
+.count-headline span {
+	color: var(--text-soft);
+	font-size: 1rem;
+}
+
 /* ---- The papers to cite ---------------------------------------------- */
 
 /* Not a reading list. These are the references a paper using the code has to

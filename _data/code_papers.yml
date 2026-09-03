@@ -633,6 +633,18 @@
   codes:
   - glow
   include: false
+- arxiv: '2502.10758'
+  title: 'Gravitational wave lensing: probing Fuzzy Dark Matter with LISA'
+  authors: S. Singh, G. Brando de Oliveira, S. Savastano et al.
+  url: https://inspirehep.net/literature/2885963
+  date: '2025-02-15'
+  journal: JCAP 07, 025 (2025)
+  codes:
+  - glow
+  include: true
+  note: '"we leverage the Gravitational Lensing of Waves (GLoW) code, a Python library... For our analysis,
+    we utilize the SingleIntegral method." Found through the code''s own README, not through INSPIRE:
+    it does not cite the method paper, so no citation search could reach it.'
 - arxiv: '2501.02974'
   title: Surrogate modeling of gravitational waves microlensed by spherically symmetric potentials
   authors: U. Deka, G. Prabhu, M. A. Shaikh et al.
@@ -757,3 +769,16 @@
   codes:
   - glow
   include: false
+- arxiv: '2306.05282'
+  title: 'Weakly lensed gravitational waves: Probing cosmic structures with wave-optics features'
+  authors: S. Savastano, G. Tambalo, H. Villarrubia-Rojo et al.
+  url: https://inspirehep.net/literature/2667175
+  date: '2023-06-08'
+  journal: Phys.Rev.D 108, 103532 (2023)
+  codes:
+  - glow
+  include: false
+  note: 'The work whose algorithms became GLoW: "our algorithms will be integrated in the Gravitational
+    Lensing of Waves (GLoW) code for public use", with a footnote promising release in December 2023.
+    The code did not exist yet, so by the rule used here it is not a user of it. The GLoW README lists
+    it anyway, which is a fair thing for the authors to do and a decision for you.'

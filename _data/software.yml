@@ -45,8 +45,11 @@ tools:
       inference and to train models for simulation-based inference.
     repo: "https://github.com/glow-astro/GLoW"
     docs: "https://glow-astro.github.io/GLoW/"
-    # Both, as the code's own README asks: the method paper and the analysis
-    # that introduced the parameter-estimation machinery built on it.
+    # The method paper, and only the method paper. The GW231123 analysis was
+    # listed here for a while on the strength of a misreading of the README,
+    # which asks for one citation and then separately lists works the code has
+    # been used in. The owner confirmed on 2026-09-03 that it is not required.
+    # A second methods paper is expected and belongs here when it appears.
     papers:
       - short: "Villarrubia-Rojo et al., arXiv:2409.04606"
         title: "Gravitational lensing of waves: novel methods for wave-optics phenomena"
@@ -54,12 +57,6 @@ tools:
         journal: "Phys. Rev. D 111, 103539 (2025)"
         arxiv: "2409.04606"
         url: "https://inspirehep.net/literature/2826315"
-      - short: "Goyal et al., arXiv:2512.17631"
-        title: "Across the Universe: GW231123 as a magnified and diffracted black hole merger"
-        authors: "S. Goyal, H. Villarrubia-Rojo, M. Zumalacárregui"
-        journal: "Astrophys. J. Lett. 1008, L12 (2026)"
-        arxiv: "2512.17631"
-        url: "https://inspirehep.net/literature/3094475"
     language: "Python, with the numerical core in C behind a Cython wrapper"
     licence: "GPL-3.0"
     contributors: "Héctor Villarrubia-Rojo (lead developer), Stefano Savastano, Lyla Choi, Srashti Goyal, Liang Dai, Giovanni Tambalo, Miguel Zumalacárregui."
