@@ -16,8 +16,8 @@ and rejected for each — are in
 
 The project's *other* addresses — the GitHub organization, the GLoW code and
 documentation URLs printed in the published paper, and the decisions still open
-about all of them — are in
-[`docs/NAMESPACE_AND_REDIRECTS.md`](docs/NAMESPACE_AND_REDIRECTS.md).
+about all of them — are in `docs/NAMESPACE_AND_REDIRECTS.md`, which is kept
+locally and untracked (see `.gitignore`).
 
 ## Local preview
 

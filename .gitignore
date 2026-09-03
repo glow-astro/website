@@ -25,3 +25,26 @@ vendor/
 # Built by tools/deploy_review.sh. Kept out of _site so a review build --
 # different url, robots.txt Disallow -- can never be published by mistake.
 _review_site/
+
+# Untracked on 2026-09-03, ahead of making the repository public. All three
+# stay on disk and keep working; what changes is that they are no longer
+# published with the source.
+#
+#   _data/review_notes.yml        the owner's open questions, written for him
+#                                 rather than for a reader. tools/make_review_doc.py
+#                                 reads it from disk and does not care that it is
+#                                 untracked.
+#   docs/NAMESPACE_AND_REDIRECTS.md  domain and repository decisions, including
+#                                 the glow-erc.org non-renewal, a path into the
+#                                 owner's Overleaf project, and a conversation
+#                                 with a collaborator that has not happened yet.
+#   glow-site-text_MZ.html        the whole site's text in one file, already
+#                                 excluded from the build by `exclude` in
+#                                 _config.yml. Tracking it published a second
+#                                 copy of every page with none of the review.
+#
+# Untracking does NOT remove them from git history. See the note at the end of
+# this file.
+_data/review_notes.yml
+docs/NAMESPACE_AND_REDIRECTS.md
+glow-site-text_MZ.html

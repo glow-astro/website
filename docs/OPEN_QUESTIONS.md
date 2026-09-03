@@ -8,8 +8,9 @@ what would change the answer.
 Decided questions do not belong here; they belong in the code comment or the
 commit message at the place they affect. Two questions live elsewhere because
 they are large enough to need their own file:
-[`NAMESPACE_AND_REDIRECTS.md`](NAMESPACE_AND_REDIRECTS.md) holds the GLoW
-repository-location decision and the domain choice.
+`NAMESPACE_AND_REDIRECTS.md` holds the GLoW repository-location decision and
+the domain choice. That file is kept locally and untracked, so it is beside
+this one on the owner's machine and not in the repository.
 
 ---
 
