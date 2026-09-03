@@ -10,10 +10,10 @@ description: >-
   Software developed by the GLOW project (the public GLoW wave-optics lensing
   code and machine-learning inference tools) and the project's release policy.
 sections:
-  - id: packages
-    label: "What we build"
+  - id: codes
+    label: "Codes & releases"
   - id: policy
-    label: "Release policy"
+    label: "Release plans"
   - id: naming
     label: "GLOW and GLoW"
 ---
@@ -28,8 +28,14 @@ sections:
   What is NOT here any more, and where it went: the tool cards, which were four
   facts each and had nowhere to grow, are now glow-code.html and
   dingo-lensing.html; the data releases are notebooks.html. What stays is what
-  belongs to the section as a whole rather than to one thing in it -- the map,
-  the release policy, and the naming note.
+  belongs to the section as a whole rather than to one thing in it: the map,
+  the release plans, and the naming note.
+
+  The lead paragraph and the softened release plans are the owner's call,
+  2026-09-03. What stood here before opened on "three kinds of thing, and they
+  carry different obligations", which said in four sentences what his one
+  sentence says, and the release list was written as a set of promises when it
+  is a set of intentions.
 
   No diagram like the science skymap. That figure works because the topics sit
   at places on a light path and the picture is of that path; three codes have no
@@ -41,13 +47,14 @@ sections:
 
 {% include subnav.html %}
 
-<section class="section" id="packages" aria-labelledby="packages-heading">
-  <h2 id="packages-heading">What we build</h2>
+<section class="section" id="codes" aria-labelledby="codes-heading">
+  <h2 id="codes-heading">Codes and releases</h2>
   <p>
-    Three kinds of thing, and they carry different obligations. A maintained
-    code has a version to install, documentation and an issue tracker. A model
-    in development has a method paper and a promise. A data release has a DOI
-    and never changes again. They have a page each.
+    Below are the main software packages developed by the project, as well as
+    minor releases accompanying individual publications. GLoW is public and
+    maintained, the inference models built on it are still in development, and
+    the per-paper releases are frozen at the version that produced a given
+    result. Each has a page of its own.
   </p>
 
   <div class="grid grid-3">
@@ -67,10 +74,11 @@ sections:
 </section>
 
 <section class="section" id="policy" aria-labelledby="policy-heading">
-  <h2 id="policy-heading">Release policy</h2>
+  <h2 id="policy-heading">Release plans</h2>
   <p>
-    These are obligations rather than aspirations. Each page in the section says
-    what it has released; this says what will be released and when.
+    What each page in the section lists is already public. What follows is what
+    the project intends to release, and the timing follows the science rather
+    than a schedule.
   </p>
   <ul>
     {%- for item in site.data.software.policy %}

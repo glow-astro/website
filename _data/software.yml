@@ -175,10 +175,13 @@ releases:
       - text: "Notebooks"
         url: "https://github.com/miguelzuma/lsd-gw-notebooks"
 
-# Commitments about what gets released and when. These are obligations, not
-# aspirations: state only what the project will actually do.
+# What the project intends to release. Softened from promises to intentions on
+# 2026-09-03 at the owner's instruction: the page has no way to hold anyone to a
+# date, and a list of commitments on a website reads as one whether or not it
+# was meant that way. What is already released is on the pages themselves, where
+# a reader can go and get it, and that is where a claim belongs.
 policy:
-  - "Software developed by the project will be released publicly after its validation and initial scientific exploitation."
-  - "Analyses are demonstrated on publicly available catalogs, so that they can be reproduced independently."
-  - "Constraints on dark-matter objects are contributed to the community repository of extended-object limits."
-  - "Likelihoods for gravitational-wave propagation are released in a form usable with Einstein–Boltzmann solvers."
+  - "Software developed by the project is intended for public release, once it has been validated and used for a first scientific result."
+  - "Analyses aim to use publicly available catalogs, so that others can reproduce them independently."
+  - "Constraints on dark-matter objects are intended for the community repository of extended-object limits."
+  - "Likelihoods for gravitational-wave propagation are intended to be usable with Einstein–Boltzmann solvers."
