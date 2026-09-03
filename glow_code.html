@@ -9,10 +9,10 @@ lede: >-
   general matter distribution, fast enough to use inside parameter estimation.
 description: >-
   GLoW, the project's open-source code for wave-optics gravitational lensing:
-  what it does, where to get it, how to cite it, and the papers that use it.
+  what it is for, where to get it, how to cite it, and the papers that use it.
 sections:
   - id: what
-    label: "What it does"
+    label: "Code purpose"
   - id: get
     label: "Get it"
   - id: citing
@@ -22,18 +22,19 @@ sections:
 ---
 
 {%- comment -%}
-  NOT LINKED FROM ANYWHERE, deliberately, 2026-09-02. The owner asked for the
+  NOT LINKED FROM ANYWHERE, deliberately, 2026-09-03. The owner asked for the
   page to be prepared while the shape of a Software section is still being
   discussed, so it is absent from _data/nav.yml, from the footer and from
   software.html. It is reachable only by typing the address. Adding it to the
   navigation is a separate decision, and needs software.html rewritten as an
   overview at the same time.
 
-  This is meant as the template for every public code, not a one-off. Nothing
-  below names GLoW except through data: the tool comes from _data/software.yml
-  by its `id`, and the paper list from _data/code_papers.yml filtered on that
-  same id. A second code needs a copy of this file with one string changed,
-  and the day that happens the file becomes an include taking `code=` instead.
+  Written for GLoW, not as a generic template, at the owner's instruction: a
+  second code needs the `code_id` below changed and a few sentences rewritten,
+  and that is cheap enough that pretending the prose is reusable would cost
+  more than it saves. Everything factual still comes from _data/software.yml
+  and _data/code_papers.yml, so the facts have one home; only the sentences
+  around them name GLoW.
 
   Structure and filter follow publications.html, which is itself the hi_class
   publication list one generation on: same year-grouped `.pub-year` sections,
@@ -50,25 +51,22 @@ sections:
 <section class="section" id="what" aria-labelledby="what-heading">
   {%- comment -%}
     The logo is the one asset that is the code's own identity rather than the
-    site's, so it leads. `.card-logo` already floats it and clears after
-    itself; `logo_alt` is empty in the data file because the wordmark repeats
-    the heading beside it, and reading it twice helps nobody.
+    site's, so it leads, and at the larger `--page` size: this page is about
+    one code and nothing else. `logo_alt` is empty in the data file because the
+    wordmark repeats the heading beside it, and reading it twice helps nobody.
   {%- endcomment -%}
   {%- if tool.logo %}
-  <img class="card-logo" src="{{ tool.logo | relative_url }}" alt="{{ tool.logo_alt }}">
+  <img class="card-logo card-logo--page" src="{{ tool.logo | relative_url }}" alt="{{ tool.logo_alt }}">
   {%- endif %}
-  {%- comment -%}
-    "What it does", not the tool's name: the page title one line above is
-    already the name, and the logo beside this says it a third time.
-  {%- endcomment -%}
-  <h2 id="what-heading">What it does</h2>
+  <h2 id="what-heading">Code purpose</h2>
   <p class="card-meta">{{ tool.subtitle }} &middot; {{ tool.status }}</p>
   <p>{{ tool.purpose }}</p>
 
   {%- comment -%}
     `.code-facts` was written for exactly this and had never been used: a
     label-and-value grid, so the facts about a code do not become a stack of
-    headed sections holding one line each.
+    headed sections holding one line each. It lays out bare dt/dd pairs, so no
+    <div> wrappers here -- unlike `.roles` below, which grids the wrappers.
   {%- endcomment -%}
   <dl class="code-facts">
     {%- comment -%}
@@ -77,43 +75,35 @@ sections:
       assumed, and a page that states them should not be where they live.
     {%- endcomment -%}
     {%- if tool.language %}
-    <div>
-      <dt>Language</dt>
-      <dd>{{ tool.language }}</dd>
-    </div>
+    <dt>Language</dt>
+    <dd>{{ tool.language }}</dd>
     {%- endif %}
     {%- if tool.licence %}
-    <div>
-      <dt>Licence</dt>
-      <dd>{{ tool.licence }}</dd>
-    </div>
+    <dt>Licence</dt>
+    <dd>{{ tool.licence }}</dd>
     {%- endif %}
     {%- if tool.wps %}
-    <div>
-      <dt>Developed under</dt>
-      <dd>
-        {%- for code in tool.wps %}
-        {%- assign task_title = code -%}
-        {%- for wp in site.data.work_packages -%}
-          {%- for task in wp.tasks -%}
-            {%- if task.code == code %}{% assign task_title = task.title %}{% endif -%}
-          {%- endfor -%}
+    <dt>Developed under</dt>
+    <dd>
+      {%- for code in tool.wps %}
+      {%- assign task_title = code -%}
+      {%- for wp in site.data.work_packages -%}
+        {%- for task in wp.tasks -%}
+          {%- if task.code == code %}{% assign task_title = task.title %}{% endif -%}
         {%- endfor -%}
-        <a href="{{ '/programme.html#' | append: code | downcase | relative_url }}">{{ task_title }}</a>
-        {%- unless forloop.last %} &middot; {% endunless %}{% endfor %}
-      </dd>
-    </div>
+      {%- endfor -%}
+      <a href="{{ '/programme.html#' | append: code | downcase | relative_url }}">{{ task_title }}</a>
+      {%- unless forloop.last %} &middot; {% endunless %}{% endfor %}
+    </dd>
     {%- endif %}
     {%- if tool.contributors %}
-    <div>
-      <dt>Contributors</dt>
-      <dd>{{ tool.contributors }}</dd>
-    </div>
+    <dt>Contributors</dt>
+    <dd>{{ tool.contributors }}</dd>
     {%- endif %}
   </dl>
 
   <p>
-    The physics behind it is on the
+    The physics GLoW computes is described on the
     <a href="{{ '/wave-optics.html' | relative_url }}">wave optics</a> and
     <a href="{{ '/microlensing.html' | relative_url }}">microlensing</a> pages.
   </p>
@@ -144,13 +134,31 @@ sections:
 <section class="section" id="citing" aria-labelledby="citing-heading">
   <h2 id="citing-heading">Citing GLoW</h2>
   <p>
-    Work that uses the code should cite both papers, as the repository asks:
-    the method paper, and the analysis that introduced the parameter-estimation
+    Work that uses GLoW should cite both papers, as the repository asks: the
+    method paper, and the analysis that introduced the parameter-estimation
     machinery built on it.
   </p>
-  <ul>
+  {%- comment -%}
+    `.cite-list`, not a bullet list: these are the references a user has to
+    carry into their own bibliography, and the accent rule and tinted ground
+    say so. Copied in shape from the hi_class site's `.refs--cite`. Everything
+    but `short` is optional in the data, so a tool that has only a short form
+    still renders, with the short form standing in as the title.
+  {%- endcomment -%}
+  <ul class="cite-list">
     {%- for p in tool.papers %}
-    <li><a href="{{ p.url }}" rel="noopener">{{ p.short }}</a></li>
+    <li>
+      <a class="cite-title" href="{{ p.url }}" rel="noopener">{{ p.title | default: p.short }}</a>
+      {%- if p.authors or p.journal or p.arxiv %}
+      <span class="cite-meta">
+        {{- p.authors }}
+        {%- if p.journal %} &middot; <span class="cite-where">{{ p.journal }}</span>{% endif -%}
+        {%- if p.arxiv %} &middot;
+        <a href="https://arxiv.org/abs/{{ p.arxiv }}" rel="noopener">arXiv:{{ p.arxiv }}</a>
+        {%- endif %}
+      </span>
+      {%- endif %}
+    </li>
     {%- endfor %}
   </ul>
 </section>
@@ -158,18 +166,19 @@ sections:
 <section class="section" id="papers" aria-labelledby="papers-heading">
   <h2 id="papers-heading">Papers using GLoW</h2>
   <p>
-    Work by the group and by others that has used the code. If your paper is
+    Work by the group and by others that has run the code. If your paper is
     missing, or is listed and should not be,
     <a href="{{ '/contact.html' | relative_url }}">tell us</a> and it will be
     corrected.
   </p>
 
   {%- comment -%}
-    Only entries marked `include: true` in _data/code_papers.yml, which is a
-    human's judgement rather than a query result. tools/fetch_code_papers.py
-    collects everything citing the code's seed records, but a citation is not a
-    use and nothing in INSPIRE tells them apart, so a candidate stays invisible
-    until somebody decides. Today 4 of 74 candidates have been decided.
+    Only entries marked `include: true` in _data/code_papers.yml. The candidates
+    come from INSPIRE, through tools/fetch_code_papers.py, but a citation is not
+    a use and nothing in INSPIRE tells them apart, so each one was decided by
+    reading the paper: GLoW named in the text, in a code-availability statement
+    or in the acknowledgements counts, citing the method paper for its physics
+    does not.
   {%- endcomment -%}
   {%- assign used = site.data.code_papers | where: "include", true -%}
   {%- assign used = used | where_exp: "p", "p.codes contains code_id" -%}

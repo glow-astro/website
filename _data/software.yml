@@ -17,7 +17,11 @@
 #   language     optional, one line. What someone has to be able to read
 #   licence      optional, the SPDX-ish short name from the repo's LICENSE
 #   repo, docs   optional URLs
-#   papers       optional [{short, url}]
+#   papers       the papers to cite when the code is used, in the order the
+#                code's own README asks for them. [{short, url}] plus, for the
+#                package page's citation block, {title, authors, journal,
+#                arxiv}. `short` is what software.html shows and is enough on
+#                its own; the rest is what makes the block readable.
 #   contributors optional string
 
 tools:
@@ -37,17 +41,24 @@ tools:
       and interference matter. It handles general matter distributions (built
       from a library of lenses that can be added freely) by combining
       contour-integration and time-domain methods with careful treatment of the
-      singular Fermat potential, and it is fast enough for Bayesian parameter
-      inference. The project will extend it to populations of
-      microlenses, which is the central methodological development of WP1-A.
+      singular Fermat potential. GLoW is fast enough for Bayesian parameter
+      inference and to train models for simulation-based inference.
     repo: "https://github.com/glow-astro/GLoW"
     docs: "https://glow-astro.github.io/GLoW/"
     # Both, as the code's own README asks: the method paper and the analysis
     # that introduced the parameter-estimation machinery built on it.
     papers:
       - short: "Villarrubia-Rojo et al., arXiv:2409.04606"
+        title: "Gravitational lensing of waves: novel methods for wave-optics phenomena"
+        authors: "H. Villarrubia-Rojo, S. Savastano, M. Zumalacárregui et al."
+        journal: "Phys. Rev. D 111, 103539 (2025)"
+        arxiv: "2409.04606"
         url: "https://inspirehep.net/literature/2826315"
       - short: "Goyal et al., arXiv:2512.17631"
+        title: "Across the Universe: GW231123 as a magnified and diffracted black hole merger"
+        authors: "S. Goyal, H. Villarrubia-Rojo, M. Zumalacárregui"
+        journal: "Astrophys. J. Lett. 1008, L12 (2026)"
+        arxiv: "2512.17631"
         url: "https://inspirehep.net/literature/3094475"
     language: "Python, with the numerical core in C behind a Cython wrapper"
     licence: "GPL-3.0"
@@ -63,6 +74,10 @@ tools:
       analyses tractable. A model currently exists for the isolated point lens.
     papers:
       - short: "Caldarola et al., arXiv:2511.08486"
+        title: "Accelerated inference of microlensed gravitational waves with machine learning"
+        authors: "M. Caldarola, S. Goyal, N. Gupte et al."
+        journal: "Phys. Rev. D 113, 104073 (2026)"
+        arxiv: "2511.08486"
         url: "https://inspirehep.net/literature/3081783"
     contributors: "Srashti Goyal (lead developer)."
     repo: "https://github.com/dingo-gw/dingo"

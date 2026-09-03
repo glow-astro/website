@@ -99,7 +99,12 @@ def _journal(meta: dict) -> str | None:
         title = info.get("journal_title")
         if not title:
             continue
-        vol, page = info.get("journal_volume"), info.get("page_start")
+        # `artid` before `page_start`: the journals in this bibliography
+        # (PRD, ApJL, JCAP) number articles rather than pages, and INSPIRE
+        # records that in `artid`, leaving `page_start` empty. Reading only
+        # page_start dropped the article number from every modern reference.
+        vol = info.get("journal_volume")
+        page = info.get("artid") or info.get("page_start")
         year = info.get("year")
         ref = title + (f" {vol}" if vol else "")
         if page:

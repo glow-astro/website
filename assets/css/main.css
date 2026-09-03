@@ -423,7 +423,7 @@ main { padding-bottom: 3rem; }
 	display: grid;
 	grid-template-columns: max-content 1fr;
 	gap: 0.3rem 1rem;
-	margin: 1.2rem 0 0;
+	margin: 1.2rem 0 1.4rem;
 	font-size: 0.92rem;
 }
 
@@ -443,6 +443,47 @@ main { padding-bottom: 3rem; }
 	.code-facts dt { padding-top: 0.7em; }
 	.code-facts dd { margin-bottom: 0.2rem; }
 }
+
+/* ---- The papers to cite ---------------------------------------------- */
+
+/* Not a reading list. These are the references a paper using the code has to
+   carry, so they are set apart from ordinary links: accent rule, tinted
+   ground, title over a meta line. The shape is hi_class's `.refs--cite`, where
+   the same distinction is drawn between "further reading" and "put this in
+   your bibliography", and the weight is the whole point of the component. */
+.cite-list {
+	list-style: none;
+	margin: 1.3rem 0 0;
+	padding: 0;
+	display: grid;
+	gap: 0.8rem;
+}
+
+.cite-list > li {
+	border-left: 3px solid var(--accent);
+	background: var(--accent-wash);
+	border-radius: 0 var(--radius) var(--radius) 0;
+	padding: 0.7rem 1rem;
+}
+
+.cite-title {
+	display: block;
+	font-weight: 640;
+	line-height: 1.35;
+	font-size: 1rem;
+}
+
+.cite-meta {
+	display: block;
+	margin-top: 0.25rem;
+	font-size: 0.87rem;
+	color: var(--text-mute);
+	line-height: 1.5;
+}
+
+/* The journal reference is the part a reader copies, so it is the one thing in
+   the meta line that carries the accent. */
+.cite-where { color: var(--accent-dim); }
 
 /* ---- Tags ------------------------------------------------------------ */
 
@@ -1181,6 +1222,15 @@ h2 + .stage-heading { margin-top: 1.2rem; }
 	max-width: 300px;
 	width: auto;
 	margin: 0.15rem 0 1rem 1.6rem;
+}
+
+/* A package page leads with the code's logo rather than mentioning it, so the
+   130px card size is too timid there: on a page whose whole subject is one
+   code, the wordmark is the masthead. Height-limited like the base rule, so
+   the width follows from whatever aspect ratio the logo happens to have. */
+.card-logo--page {
+	max-height: 210px;
+	max-width: 460px;
 }
 
 /* Cards must contain the float, or it bleeds into the next card. */

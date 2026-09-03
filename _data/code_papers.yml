@@ -25,9 +25,25 @@
 #            method paper, many cite it for the physics and never ran it, and
 #            nothing in INSPIRE distinguishes them: not one of those 74 names
 #            GLoW in its abstract, which was checked rather than assumed. So
-#            the decision is a person's, and until someone makes it the entry
-#            does not appear on the site.
-
+#            the decision is a person's, made by reading the paper.
+#   note     optional, why the decision went the way it did. On a `true` it is
+#            the sentence in the paper that settles it, quoted; on a `false` it
+#            is there only where the paper is close enough to the line that a
+#            reader would wonder.
+#
+# HOW THE 2026-09-03 PASS WAS MADE
+#
+# Every candidate with a preprint (71 of 74) was fetched from arXiv, converted
+# to text, and searched for "GLoW" case-sensitively. Case matters: "GLOW" in
+# capitals is the ERC grant, and it appears in the acknowledgements of the
+# group's own papers, so a case-blind search marks a paper as a user of the
+# code on the strength of its funding line. Each hit outside the bibliography
+# was then read in context, because a code named in an introduction as prior
+# art is not a code that was run: the two are one sentence apart and no
+# automatic rule separates them. Of 71, 14 ran GLoW and 57 only cite it.
+#
+# The 3 records without a preprint (two theses and a journal-only paper) stay
+# `include: null`. Nothing was read, so nothing is claimed.
 - arxiv: '2608.07667'
   title: Probability of gravitational-wave lensing by intermediate-mass black holes and globular clusters
   authors: L. Vujeva, J. M. Ezquiaga, R. K. Lo et al.
@@ -36,7 +52,7 @@
   journal: null
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2607.24091'
   title: 'Gravitational Lensing of Gravitational Waves: Towards a Higher-order Geometric-optics Approach'
   authors: Z. Li, S. Hou, W. Zhao
@@ -45,7 +61,7 @@
   journal: null
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2607.24723'
   title: Beyond-eikonal diffraction integral in gravitational lensing
   authors: E. Bruyère, G. Cusin, C. Pitrou
@@ -54,7 +70,7 @@
   journal: null
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2607.22787'
   title: Probing Dark Matter Substructure with Wave-Optics Distortions of Strongly Lensed LISA Gravitational
     Waves
@@ -64,7 +80,7 @@
   journal: null
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2607.21834'
   title: The diffraction-lensing interpretation of GW231123 with astrophysical priors
   authors: M. H. Y. Cheung, D. Wadekar, M. Zaldarriaga et al.
@@ -73,7 +89,9 @@
   journal: null
   codes:
   - glow
-  include: null
+  include: false
+  note: 'Reimplemented rather than run: "we reimplement the GLoW point-mass lens computation in python
+    within the glworia package".'
 - arxiv: '2607.18441'
   title: Detection of cosmic strings by gravitational wave lensing. Predictions for Einstein Telescope
   authors: J. Szyndler, T. Bulik
@@ -82,7 +100,7 @@
   journal: null
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2607.11887'
   title: Signatures of 10-10⁴ M☉ Dark Matter halos in LISA via Stochastic Diffraction
   authors: H. G. Choi, J. Urrutia, M. Zumalacárregui
@@ -92,6 +110,8 @@
   codes:
   - glow
   include: true
+  note: '"We test the first directly against the development version of the GLoW code, which evaluates
+    the amplification factor F(f) using full-wave optics via 2D contour integration."'
 - arxiv: '2607.03885'
   title: Identifying lensed gravitational waves with physics-informed posterior learning
   authors: T. Y. Sun, X. Guo, J. F. Zhang et al.
@@ -100,7 +120,7 @@
   journal: null
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2606.31531'
   title: Probing globular clusters parameters through gravitational wave lensing with stellar-mass black
     hole binaries
@@ -110,7 +130,7 @@
   journal: null
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2606.30149'
   title: Wave Optics Effects from Gravitational Wave Propagation Through Dark Matter Halos
   authors: A. P. Shanmugaraj, R. Haas, E. Schnetter et al.
@@ -119,7 +139,7 @@
   journal: null
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2606.30144'
   title: Joint population and strong-lensing inference for resolved gravitational-wave events probes the
     black-hole merger rate beyond the peak of star formation
@@ -129,7 +149,7 @@
   journal: null
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2606.21519'
   title: Wave-optics imprints of dark matter subhalos on strongly lensed gravitational waves. II. Saddle
     images and detectability
@@ -139,7 +159,9 @@
   journal: null
   codes:
   - glow
-  include: null
+  include: true
+  note: '"We implement this profile directly as a native lens potential in the public WO solver GLoW,
+    by extending its built-in lens library."'
 - arxiv: '2606.17765'
   title: Effective description of lensed gravitational waves diffracted by stellar fields
   authors: M. Zumalacárregui, X. Shan
@@ -149,6 +171,8 @@
   codes:
   - glow
   include: true
+  note: '"We compute the analytic point-lens amplification factor using GLoW and construct the residual
+    dF."'
 - arxiv: '2606.15150'
   title: Eccentricity in Disguise? Insights from GW231123 and Numerically Simulated Binary Black Hole
     Merger Signals
@@ -158,7 +182,7 @@
   journal: null
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2606.14001'
   title: 'Efficient Evaluation of Gravitational Lensing Amplification Factors: A Deep Learning Framework'
   authors: F. Zhang, Q. Zhang, Q. Yang et al.
@@ -167,7 +191,8 @@
   journal: Astrophys.J.Suppl. 284, 48
   codes:
   - glow
-  include: null
+  include: false
+  note: Names GLoW in the introduction as one of the optimised codes their surrogate is meant to replace.
 - arxiv: '2606.03346'
   title: Model-Independent Search Discards Faint Lensed-Pairs of Gravitational Wave Events in the Sub-Threshold
     Candidates of GWTC-4
@@ -177,7 +202,7 @@
   journal: null
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2605.21584'
   title: Wave-optics gravitational wave lensing in modified gravity
   authors: A. Garoffolo, G. Tasinato
@@ -186,7 +211,7 @@
   journal: null
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2605.16425'
   title: Polarization Birefringence and Waveform Systematics in GW231123
   authors: T. Liu, C. Shao, K. Liao
@@ -195,7 +220,7 @@
   journal: null
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2605.10333'
   title: 'BB plot: A Tool for Accurate Model Selection Using Bayes factors'
   authors: A. Barsode
@@ -204,7 +229,7 @@
   journal: null
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2605.05563'
   title: How do the LIGO-Virgo-KAGRA's Heavy Black Holes Form? No evidence for core-collapse Intermediate-mass
     black holes in GWTC-4
@@ -214,7 +239,7 @@
   journal: null
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2604.25994'
   title: Properties of Black Hole Mergers in Disks of Active Galactic Nuclei
   authors: H. Tagawa, Z. Haiman, B. Kocsis
@@ -223,7 +248,7 @@
   journal: Astrophys.J. 1007, 67 (2026)
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2604.15431'
   title: 'Highly eccentric non-spinning binary black hole mergers: quadrupolar post-merger waveforms'
   authors: N. Rao, G. Carullo
@@ -232,7 +257,7 @@
   journal: null
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2604.15313'
   title: 'Gravitational-wave lensing beyond rays: a disordered-system approach'
   authors: R. Amoruso, G. Braga, A. Garoffolo et al.
@@ -241,7 +266,7 @@
   journal: null
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2604.13930'
   title: Bayesian Analysis of Gravitational Wave Microlensing Effects from Galactic Double White Dwarfs
   authors: Y. Sun, Y. Yuan, M. Du et al.
@@ -250,7 +275,8 @@
   journal: null
   codes:
   - glow
-  include: null
+  include: true
+  note: '"We use GLoW module to compute the amplification factor |F| and its phase."'
 - arxiv: '2604.02018'
   title: Case studies with GPBilby of glitch-contaminated transient gravitational waves
   authors: M. Emma, A. K. Malz, A. Dias et al.
@@ -259,7 +285,7 @@
   journal: null
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2603.12333'
   title: Fast Fourier transform evaluation of the Fresnel integral for gravitational-wave lensing
   authors: N. Ephremidze, M. Kamionkowski, C. Dvorkin
@@ -268,7 +294,9 @@
   journal: Phys.Rev.D 114 (2026)
   codes:
   - glow
-  include: null
+  include: true
+  note: '"we benchmark the performance of FIONA by comparing it to GLoW", timing its SingleIntegral C
+    function against their own.'
 - arxiv: '2603.09289'
   title: Mock Catalogs of Strongly Lensed Gravitational Waves via a Halo Model Approach with Ground-based
     Detectors
@@ -278,7 +306,7 @@
   journal: Astrophys.J.Suppl. 284, 56 (2026)
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2603.04267'
   title: Wave-Optics Imprints of Dark Matter Subhalos on Strongly Lensed Gravitational Waves
   authors: S. Ando
@@ -287,7 +315,8 @@
   journal: null
   codes:
   - glow
-  include: null
+  include: true
+  note: '"All WO lensing calculations are performed with the GLoW framework."'
 - arxiv: '2601.23019'
   title: Toward claiming a detection of gravitational memory
   authors: J. Zosso, L. Magaña Zertuche, S. Gasparotto et al.
@@ -296,7 +325,7 @@
   journal: Phys.Rev.D 113 (2026)
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2601.14303'
   title: Scalar quasinormal modes in black hole gravitational lensing
   authors: C. Yin, Z. Lin, J. h. He
@@ -305,7 +334,7 @@
   journal: Phys.Rev.D 113 (2026)
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2601.10239'
   title: Gravitational lensing beyond the eikonal approximation
   authors: E. Bruyère, C. Pitrou
@@ -314,7 +343,7 @@
   journal: Class.Quant.Grav. 43 (2026)
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2601.09678'
   title: Impact of waveform systematics and Gaussian noise on the interpretation of GW231123
   authors: S. Bini, K. Król, K. Chatziioannou et al.
@@ -323,7 +352,7 @@
   journal: Phys.Rev.D 113 (2026)
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2601.06024'
   title: 'Primordial black holes: constraints, potential evidence and prospects'
   authors: B. Carr, A. J. Iovino, G. Perna et al.
@@ -332,7 +361,7 @@
   journal: Riv.Nuovo Cim. 49, 225 (2026)
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2512.23933'
   title: 'Gravitational Lensing of Gravitational Waves: Spin-wave Optics through Black Hole Scattering'
   authors: Z. Li, S. Hou, W. Zhao
@@ -341,7 +370,7 @@
   journal: null
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2512.21370'
   title: Detection of Lensed Gravitational Waves in the Millihertz Band Using Frequency-Domain Lensing
     Feature Extraction Network
@@ -351,7 +380,8 @@
   journal: null
   codes:
   - glow
-  include: null
+  include: false
+  note: 'Future work: "Tools such as the GLoW package would support this expansion."'
 - arxiv: '2512.20060'
   title: Measuring eccentricity and addressing waveform systematics in GW231123
   authors: A. Jan, S. Nicolella, D. Shoemaker et al.
@@ -360,7 +390,7 @@
   journal: Phys.Rev.D 113 (2026)
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: null
   title: 'Evidence for Gravitational Lensing in FRB 20190320B: A Potential Lens Mass of ∼420 Solar Masses'
   authors: S. W. Xiong, S. Xiao, Z. H. Jiang et al.
@@ -378,7 +408,7 @@
   journal: Astrophys.J. 1003, 187 (2026)
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2512.17631'
   title: 'Across the Universe: GW231123 as a Magnified and Diffracted Black Hole Merger'
   authors: S. Goyal, H. Villarrubia-Rojo, M. Zumalacarregui
@@ -388,6 +418,8 @@
   codes:
   - glow
   include: true
+  note: '"interfacing the most recent version of Bilby with a modified version of the GLoW code for computing
+    lensed waveforms."'
 - arxiv: '2512.16916'
   title: 'Discovering gravitational waveform distortions from lensing: A deep dive into GW231123'
   authors: J. C. Chan, J. M. Ezquiaga, R. K. Lo et al.
@@ -396,7 +428,7 @@
   journal: Phys.Rev.D 114 (2026)
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: null
   title: Microlensing of gravitational waves as a new tool for astrophysics
   authors: U. Deka
@@ -415,7 +447,7 @@
   journal: null
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2511.23110'
   title: Strong-field gravitational-wave lensing in the Kerr background
   authors: M. Saketh, R. Ghosh, A. Mishra
@@ -424,7 +456,7 @@
   journal: Phys.Rev.D 113 (2026)
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2511.15797'
   title: Scattering perspective on gravitational lensing
   authors: M. Carrillo Gonzalez, V. De Luca, A. Garoffolo et al.
@@ -433,7 +465,7 @@
   journal: Phys.Rev.D 113 (2026)
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2511.09107'
   title: Detection of multiband lensed gravitational waves from dark matter halos with deep learning
   authors: M. Sun, J. Wu, Q. Hu et al.
@@ -442,7 +474,9 @@
   journal: Phys.Rev.D 113 (2026)
   codes:
   - glow
-  include: null
+  include: true
+  note: '"the amplification factors for the three dark matter halo lens models were computed using the
+    GLoW public library."'
 - arxiv: '2511.08486'
   title: Accelerated inference of microlensed gravitational waves with machine learning
   authors: M. Caldarola, S. Goyal, N. Gupte et al.
@@ -452,6 +486,7 @@
   codes:
   - glow
   include: true
+  note: '"We evaluate the amplification factor on the signals using GLoW for a point lens in the WO regime."'
 - arxiv: '2510.20442'
   title: Probing cosmic strings via gravitational-wave lensing
   authors: O. Bulashenko, N. Villanueva, R. B. Nerin et al.
@@ -460,7 +495,8 @@
   journal: Phys.Rev.D 113 (2026)
   codes:
   - glow
-  include: null
+  include: false
+  note: Listed among the tools available to search for microlensing signatures, not used.
 - arxiv: '2510.17125'
   title: 'From Stars to Waves: Non-deterministic Inference of Microlensed Gravitational Waves'
   authors: Z. Su, X. Shan, Z. Lyu et al.
@@ -469,7 +505,7 @@
   journal: null
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2510.14953'
   title: Dark Matter Subhalos and Higher Order Catastrophes in Gravitational Wave Lensing
   authors: L. Vujeva, J. M. Ezquiaga, D. Gilman et al.
@@ -478,7 +514,9 @@
   journal: null
   codes:
   - glow
-  include: null
+  include: true
+  note: '"the lensing code GLoW that is being used in this work"; the time-domain I(tau) figure is GLoW''s
+    own output.'
 - arxiv: '2509.01888'
   title: Bayesian Analysis of Wave-optics Gravitationally Lensed Massive Black Hole Binaries with a Space-based
     Gravitational-wave Detector
@@ -488,7 +526,9 @@
   journal: Astrophys.J. 997, 11 (2026)
   codes:
   - glow
-  include: null
+  include: true
+  note: '"With the help of the GLoW module, we efficiently compute the amplification factor |F| and its
+    phase."'
 - arxiv: '2508.17486'
   title: Weak-lensing Approximation of Wave-optics Effects from General Symmetric Lens Profiles
   authors: Z. F. Wu, O. A. Hannuksela, M. Hendry et al.
@@ -497,7 +537,7 @@
   journal: Astrophys.J. 996, 25 (2026)
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2508.13577'
   title: Constraints on Compact Dark Matter Population from Micro-lensing Effect of Gravitational Wave
     for the third-generation gravitational Wave Detector
@@ -507,7 +547,7 @@
   journal: null
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2506.18750'
   title: Identifying multiple images of gravitational-wave sources lensed by elliptical lensing potentials
   authors: S. Ali, M. Kesden, L. King
@@ -516,7 +556,7 @@
   journal: Phys.Rev.D 113 (2026)
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2506.07507'
   title: Multiband observation of lensed gravitational waves as a probe of small-mass dark matter halos
   authors: K. T. Abe, S. Arai, R. Inui et al.
@@ -525,7 +565,9 @@
   journal: Phys.Rev.D 113 (2026)
   codes:
   - glow
-  include: null
+  include: true
+  note: '"The unlensed and lensed signals are numerically calculated by the public packages PyCBC and
+    GLoW."'
 - arxiv: '2506.02430'
   title: 'Phase-magnitude relation in gravitational lensing: Reformulation and applications of the Kramers-Kronig
     relation'
@@ -535,7 +577,7 @@
   journal: Phys.Rev.D 112 (2025)
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2505.07114'
   title: Estimating the lensing probability for binary black hole mergers in AGN discs by using mismatch
     thresholds
@@ -545,7 +587,7 @@
   journal: Phys.Rev.D 113 (2026)
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2504.10128'
   title: 'Probing binary lens caustics with gravitational waves: A uniform approximation approach'
   authors: A. M. Serra, O. Bulashenko
@@ -554,7 +596,7 @@
   journal: Phys.Rev.D 112 (2025)
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2503.22648'
   title: Diffraction around caustics in gravitational wave lensing
   authors: J. M. Ezquiaga, R. K. Lo, L. Vujeva
@@ -563,7 +605,7 @@
   journal: Phys.Rev.D 112 (2025)
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2503.19973'
   title: Multi-messenger gravitational lensing
   authors: G. P. Smith, T. Baker, S. Birrer et al.
@@ -572,7 +614,7 @@
   journal: Phil.Trans.Roy.Soc.Lond.A 383 (2025)
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2502.14073'
   title: Lensing and wave optics in the strong field of a black hole
   authors: J. C. Chan, C. Dyson, M. Garcia et al.
@@ -581,7 +623,7 @@
   journal: Phys.Rev.D 112 (2025)
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2502.11488'
   title: Interference patterns for simple lens models in wave-optics regime
   authors: A. K. Meena
@@ -590,7 +632,7 @@
   journal: J.Astrophys.Astron. 46, 92 (2025)
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2501.02974'
   title: Surrogate modeling of gravitational waves microlensed by spherically symmetric potentials
   authors: U. Deka, G. Prabhu, M. A. Shaikh et al.
@@ -599,7 +641,7 @@
   journal: Phys.Rev.D 111 (2025)
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2501.02096'
   title: Effects of galaxy cluster structure on lensed gravitational waves
   authors: L. Vujeva, J. M. Ezquiaga, R. K. Lo et al.
@@ -608,7 +650,7 @@
   journal: Phys.Rev.D 112 (2025)
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: null
   title: 'Gravitational Waves in a Universe with Structures: Lensing, Kinematic and Clustering Anisotropies
     in Signals from Binaries'
@@ -627,7 +669,7 @@
   journal: Phys.Rev.D 111 (2025)
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2412.00566'
   title: Parameter estimation of microlensed gravitational waves with conditional variational autoencoders
   authors: R. Bada-Nerin, O. Bulashenko, O. Gramaxo Freitas et al.
@@ -636,7 +678,7 @@
   journal: Phys.Rev.D 111 (2025)
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2411.07164'
   title: 'Gravitational wave propagation beyond general relativity: Geometric optic expansion and lens-induced
     dispersion'
@@ -646,7 +688,7 @@
   journal: Phys.Rev.D 111 (2025)
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2410.16378'
   title: Modulations of gravitational waves due to non-static gravitational lenses
   authors: X. Y. Yang, T. Chen, R. G. Cai
@@ -655,7 +697,7 @@
   journal: JCAP 04, 069 (2025)
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2410.19804'
   title: 'wolensing: A Python package for computing the amplification factor for gravitational waves with
     wave-optics effects'
@@ -665,7 +707,8 @@
   journal: null
   codes:
   - glow
-  include: null
+  include: false
+  note: The wolensing release paper, which places GLoW among the neighbouring packages. No GLoW run.
 - arxiv: '2409.06747'
   title: 'Wave effect of gravitational waves intersected with a microlens field II: An adaptive hierarchical
     tree algorithm and population study'
@@ -675,7 +718,7 @@
   journal: Sci.China Phys.Mech.Astron. 68 (2025)
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2409.00145'
   title: Which gravitational lensing degeneracies are broken in wave-optics?
   authors: A. K. Meena
@@ -684,7 +727,7 @@
   journal: Phys.Rev.D 110 (2024)
   codes:
   - glow
-  include: null
+  include: false
 - arxiv: '2407.04052'
   title: Signatures of dark and baryonic structures on weakly lensed gravitational waves
   authors: G. Brando, S. Goyal, S. Savastano et al.
@@ -693,7 +736,8 @@
   journal: Phys.Rev.D 111 (2025)
   codes:
   - glow
-  include: null
+  include: true
+  note: '"In this work, the GLoW code will be employed for these numerical evaluations."'
 - arxiv: '2404.17405'
   title: 'Lens Stochastic Diffraction: A Signature of Compact Objects in Gravitational-Wave Data'
   authors: M. Zumalacárregui
@@ -702,7 +746,8 @@
   journal: null
   codes:
   - glow
-  include: null
+  include: true
+  note: '"This work relied on Gwfast, GLoW, PBHbounds, Astropy, Numpy and Scipy."'
 - arxiv: '2404.07782'
   title: Eikonal gravitational-wave lensing in Einstein-aether theory
   authors: J. Streibert, H. O. Silva, M. Zumalacárregui
@@ -711,4 +756,4 @@
   journal: Phys.Rev.D 112 (2025)
   codes:
   - glow
-  include: null
+  include: false
