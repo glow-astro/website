@@ -38,9 +38,11 @@
       </div>
 
       {%- comment -%}
-        The host and the partner used to have a column of their own, which made
-        five and pushed the grid to a fifth track. They sit here instead: where
-        the project is run is a fact about the project, and four columns hold.
+        The host used to have a column of its own, which made five and pushed
+        the grid to a fifth track. It sits here instead: where the project is
+        run is a fact about the project, and four columns hold. The partner
+        institute is not in the footer at all, and is named on the pages where
+        it does work.
       {%- endcomment -%}
       <div>
         <h2>The project</h2>
@@ -49,7 +51,6 @@
           <li><a href="{{ '/programme.html' | relative_url }}">Programme</a></li>
           <li><a href="{{ '/publications.html' | relative_url }}">Publications &amp; talks</a></li>
           <li><a href="{{ site.host.institute_url }}" rel="noopener">{{ site.host.institute }}</a></li>
-          <li><a href="{{ site.partner.url }}" rel="noopener">{{ site.partner.short }}</a></li>
           <li><a href="{{ site.project.cordis }}" rel="noopener">CORDIS record</a></li>
         </ul>
       </div>
