@@ -79,14 +79,24 @@ sections:
     <div class="figure-grid" data-search-group>
       {%- assign items = site.data.figures %}
         {%- for f in items %}
+        {%- comment -%}
+          `thumb` is what the card shows, `full` is what clicking it opens. For a
+          plot the two are the same file. For an animation the card has to show a
+          still (a poster frame, since a grid of sixteen autoplaying videos would
+          be unreadable and expensive), but the thing the reader clicked is the
+          animation, so the link goes to the WebM. The still is still reachable,
+          from "Still frame (PNG)" in the file list below.
+        {%- endcomment -%}
         {%- if f.kind == "animation" -%}
           {%- assign thumb = f.id | prepend: "/media/" | append: "_still.png" -%}
+          {%- assign full = f.id | prepend: "/media/" | append: ".webm" -%}
         {%- else -%}
           {%- assign thumb = f.id | prepend: "/media/" | append: ".png" -%}
+          {%- assign full = thumb -%}
         {%- endif -%}
         {%- assign target = site.pages | where: "url", f.page | first -%}
         <figure class="figure-card" data-search-item data-search-kind="{{ f.kind }}">
-          <a href="{{ thumb | relative_url }}">
+          <a href="{{ full | relative_url }}">
             <img src="{{ thumb | relative_url }}" alt="{{ f.title }}"
                  width="{{ f.width }}" height="{{ f.height }}" loading="lazy">
           </a>
@@ -104,7 +114,7 @@ sections:
             <p class="figure-credit">{{ f.credit }} &middot; CC BY 4.0</p>
             <p class="figure-files">
               {%- if f.kind == "animation" %}
-              <a href="{{ f.id | prepend: '/media/' | append: '.webm' | relative_url }}">Animation (WebM)</a>
+              <a href="{{ full | relative_url }}">Animation (WebM)</a>
               &middot;
               <a href="{{ thumb | relative_url }}">Still frame (PNG)</a>
               {%- else %}
