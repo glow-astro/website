@@ -47,6 +47,19 @@
       kind: "article"
       date: 2026-09-01
 
+    - outlet: "SKYCR"
+      title: "Did a cosmic lens make the biggest black hole merger look bigger than it is?"
+      url: "https://skycr.org/2026/09/03/gw231123-lensing-black-hole-merger/"
+      kind: "article"
+      date: 2026-09-03
+
+    - outlet: "scinexx"
+      title: "Ist das Geheimnis „übergewichtiger“ Schwarzer Löcher gelüftet?"
+      url: "https://www.scinexx.de/news/kosmos/ist-das-geheimnis-uebergewichtiger-schwarzer-loecher-gelueftet/"
+      kind: "article"
+      lang: "German"
+      date: 2026-09-02
+
     - outlet: "Phys.org"
       title: "The biggest black hole merger ever observed could be less massive than it appears"
       url: "https://phys.org/news/2026-09-biggest-black-hole-merger-massive.html"
@@ -66,6 +79,15 @@
     - outlet: "Albert Einstein Institute"
       title: "Do black holes pretend to have large masses?"
       url: "https://www.aei.mpg.de/1490509/do-black-holes-pretend-to-have-large-masses"
+      kind: "press release"
+      date: 2026-08-26
+
+    # The Max Planck Society runs the AEI's release under the same headline.
+    # Both are listed because they are the two institutional voices, and a
+    # reader following one will not find the other.
+    - outlet: "Max Planck Society"
+      title: "Do black holes pretend to have large masses?"
+      url: "https://www.mpg.de/26940743/do-black-holes-pretend-to-have-large-masses"
       kind: "press release"
       date: 2026-08-26
 
