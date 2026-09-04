@@ -53,7 +53,10 @@
       kind: "article"
       date: 2026-09-03
 
-    - outlet: "bild der wissenschaft"
+    # The magazine's own masthead is lowercase, "bild der wissenschaft". Written
+    # with capitals here at the owner's word (2026-09-04), so that it does not
+    # read as a typo on a page where every other outlet is capitalized.
+    - outlet: "Bild der Wissenschaft"
       title: "Rätsel um „übergewichtige“ Schwarze Löcher gelöst?"
       url: "https://wissenschaft.de/artikel/raetsel-um-uebergewichtige-schwarze-loecher-geloest"
       kind: "article"
