@@ -19,6 +19,12 @@
 #            on ...", using the page's own <title> via site.pages lookup.
 #   width    the render's real pixel size, off the poster frame. Emitted on the
 #   height   thumbnail so the grid does not reflow while images load.
+#   credit   who made the figure, as it should be credited: "M. Zumalacarregui",
+#            "H. Villarrubia-Rojo". Every item today is the owner's, and the
+#            field is written out on each one anyway rather than defaulted,
+#            because the first figure by somebody else must not inherit his name
+#            through a template default nobody remembers is there. Rendered on
+#            the card, next to the licence.
 #   source   optional. Which repository generated it, for the owner rather than
 #            for a reader: it is the only place on the site that records this,
 #            and ~/code/application_plots/FIGURES.md holds the full mapping.
@@ -35,7 +41,9 @@
 # here, because their terms are different: see the page.
 #
 # LICENCE. Everything in this list is CC BY 4.0, stated once on the page rather
-# than repeated per entry. If an item ever needs different terms it gains a
+# than repeated per entry. What is NOT shared is the attribution: each figure
+# names its own author, since the licence asks a reuser to credit whoever made
+# the thing they took. If an item ever needs different terms it gains a
 # `licence:` field and the page grows a condition, and that is the moment to
 # check whether the exception is worth the complication.
 
@@ -45,6 +53,7 @@
   caption: >-
     Simulated light passes through openings shaped like the letters GLOW and
     falls on a screen 100 mm behind them, resolving as the wavelength drops.
+  credit: "M. Zumalacárregui"
   page: /
   width: 1560
   height: 780
@@ -56,6 +65,7 @@
   caption: >-
     Visible light through a hole 200 micrometres across, one colour at a time:
     the rings contract as the wavelength falls.
+  credit: "M. Zumalacárregui"
   page: /science.html
   width: 1560
   height: 780
@@ -68,6 +78,7 @@
     The opening changes size and shape, and the pattern it casts changes with
     it, which is how a diffraction pattern carries information about the object
     that made it.
+  credit: "M. Zumalacárregui"
   page: /wave-optics.html
   width: 1560
   height: 780
@@ -79,6 +90,7 @@
   caption: >-
     A circle, triangle, square, pentagon and hexagon of equal area, each leaving
     a different imprint on the wave.
+  credit: "M. Zumalacárregui"
   page: /dark-matter.html
   width: 1560
   height: 780
@@ -90,6 +102,7 @@
   caption: >-
     Nothing about the lens changes through the sweep: what changes is the ratio
     between its time-delay scale and the period of the wave.
+  credit: "M. Zumalacárregui"
   page: /wave-optics.html
   width: 1560
   height: 780
@@ -102,6 +115,7 @@
     The impact parameter falls from 2.0 to 0.1 Einstein radii, the source
     crosses a caustic, and the amplification factor acquires the oscillations
     that are the signature of diffraction.
+  credit: "M. Zumalacárregui"
   page: /wave-optics.html
   width: 1560
   height: 520
@@ -114,6 +128,7 @@
     Isochrones of the Fermat potential sweep the lens plane for the
     best-fitting lens of GW231123, coloured by what each stretch contributes to
     the response.
+  credit: "M. Zumalacárregui"
   page: /wave-optics.html
   width: 1560
   height: 520
@@ -125,6 +140,7 @@
   caption: >-
     A wavefront is bent by a lens and folds back on itself, and the cusp where
     it intersects itself traces out a caustic.
+  credit: "M. Zumalacárregui"
   page: /sources.html
   width: 1560
   height: 780
@@ -137,6 +153,7 @@
     Where magnified sources sit relative to what current detectors can see, with
     GW231123 marked both as it is usually analysed and as the lensed analysis
     infers it.
+  credit: "M. Zumalacárregui"
   page: /sources.html
   width: 1800
   height: 1125
@@ -148,6 +165,7 @@
   caption: >-
     A galaxy splits the source into macroimages, one of which lands on a field
     of stars whose critical curves distort the signal.
+  credit: "M. Zumalacárregui"
   page: /microlensing.html
   width: 2000
   height: 608
@@ -159,6 +177,7 @@
   caption: >-
     The external potential grows, enlarging the caustic and strengthening the
     wave-optics distortions that come with it.
+  credit: "M. Zumalacárregui"
   page: /microlensing.html
   width: 1560
   height: 520
@@ -170,6 +189,7 @@
   caption: >-
     A frequency sweep through one realization of 2502 cold-dark-matter halos
     along the line of sight to a source at redshift 3.
+  credit: "M. Zumalacárregui"
   page: /dark-matter.html
   width: 1560
   height: 520
@@ -181,6 +201,7 @@
   caption: >-
     Existing bounds on the abundance of compact objects against their mass, with
     bands showing the masses each wave-optics probe reaches.
+  credit: "M. Zumalacárregui"
   page: /dark-matter.html
   width: 1893
   height: 761
@@ -192,6 +213,7 @@
   caption: >-
     A signal crossing a Vainshtein-screened lens, where the two polarizations
     travel differently and the waveform carries the difference.
+  credit: "M. Zumalacárregui"
   page: /testing-gravity.html
   width: 1560
   height: 975
@@ -203,6 +225,7 @@
   caption: >-
     A sampler exploring a two-parameter lens model, with each point a candidate
     and the posterior emerging from the ones that survive.
+  credit: "M. Zumalacárregui"
   page: /data-analysis.html
   width: 1560
   height: 520
@@ -214,6 +237,7 @@
   caption: >-
     Distortion curves from ten thousand simulated fields collapse into a mean
     and a one-sigma band, and the first six modes carry most of the variance.
+  credit: "M. Zumalacárregui"
   page: /data-analysis.html
   width: 1560
   height: 520

@@ -28,8 +28,8 @@ sections:
     Everything below is released under
     <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener">Creative
     Commons Attribution 4.0</a>. Use it in a talk, an article, a lecture or a
-    textbook, alter it if you need to, and credit it as
-    <b>GLOW / M.&nbsp;Zumalacárregui (CC&nbsp;BY&nbsp;4.0)</b>.
+    textbook, and alter it if you need to. Each figure names the person who made
+    it, and that is the name to credit: <b>GLOW / author name (CC BY 4.0)</b>.
   </p>
   <p>
     Animations are WebM, at the size they were rendered. Each one comes with the
@@ -88,6 +88,7 @@ sections:
             <a href="{{ f.page | relative_url }}">{{ target.title | default: f.page }}</a>
             {%- endif %}
           </p>
+          <p class="figure-credit">{{ f.credit }} &middot; CC BY 4.0</p>
           <p class="figure-files">
             {%- if f.kind == "animation" %}
             <a href="{{ f.id | prepend: '/media/' | append: '.webm' | relative_url }}">Animation (WebM)</a>

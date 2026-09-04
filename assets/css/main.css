@@ -1896,3 +1896,10 @@ a.skymap-card:focus-visible {
 	font-size: 0.87rem;
 	color: var(--text-mute);
 }
+
+/* The author line. Sits above the file links and reads a shade quieter than the
+   caption: a reuser needs it, a browsing reader does not. */
+.figure-credit {
+	font-size: 0.87rem;
+	color: var(--text-soft);
+}
