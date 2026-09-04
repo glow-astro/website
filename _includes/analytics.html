@@ -1,0 +1,37 @@
+{%- comment -%}
+  Visit counting, added 2026-09-04. GoatCounter, and nothing else.
+
+  The choice, so nobody has to relitigate it: the site is the public face of an
+  EU-funded project, so whatever counts visits has to be defensible under the
+  GDPR without a consent banner. GoatCounter sets no cookies, stores no IP
+  addresses and builds no cross-site profile, which is what keeps a banner
+  unnecessary. It is hosted in the EU, free for non-commercial use, and the
+  script is about 3 KB.
+
+  Google Analytics was not considered for long: it needs a consent banner, it
+  profiles readers across sites, and it would put the transfer question on a
+  project page for the sake of numbers nobody acts on.
+
+  Two switches:
+
+    site.analytics.goatcounter   the site code in _config.yml. Empty means
+                                 nothing is loaded at all, which is the state
+                                 the repository ships in.
+    site.review                  the review host never counts. Its traffic is
+                                 the owner and me, and mixing that into the
+                                 numbers makes them useless.
+
+  `data-goatcounter` points at the counting endpoint of the account, not at a
+  script on that account, so the site code is the only thing that changes if the
+  account is ever moved.
+
+  No fallback for readers with JavaScript disabled. GitHub Pages serves static
+  files and hands out no logs, so there is nothing server-side to count with,
+  and a noscript pixel would count a population too small to mean anything while
+  adding a request to every page.
+{%- endcomment -%}
+{%- assign gc = site.analytics.goatcounter -%}
+{%- if gc and gc != "" and site.review != true %}
+<script data-goatcounter="https://{{ gc }}.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+{%- endif -%}

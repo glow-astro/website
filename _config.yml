@@ -92,6 +92,15 @@ kramdown:
 sass:
   style: compressed
 
+# Visit counting. The value is the GoatCounter site code, so `glow-astro` here
+# means the account at glow-astro.goatcounter.com and the endpoint
+# glow-astro.goatcounter.com/count. Empty disables it outright: no script is
+# emitted at all, which is what _includes/analytics.html checks.
+#
+# The review host never counts, whatever this says. See the include.
+analytics:
+  goatcounter: ""
+
 plugins:
   - jekyll-sitemap
 
