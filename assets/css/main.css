@@ -1903,3 +1903,17 @@ a.skymap-card:focus-visible {
 	font-size: 0.87rem;
 	color: var(--text-soft);
 }
+
+/* Coverage grouped by the work it covers (outreach.html). The group heading is
+   the paper, so the pieces under it are a plain list rather than cards: the
+   unit a reader scans is the result, not the outlet. */
+.coverage-group { margin: 1.4rem 0 1.8rem; }
+.coverage-group h3 { margin: 0 0 0.2rem; }
+.coverage-group .card-meta { margin: 0 0 0.6rem; }
+
+.coverage-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.55rem; }
+.coverage-list > li {
+	border-left: 3px solid var(--border);
+	padding: 0.1rem 0 0.1rem 0.85rem;
+}
+.coverage-meta { display: block; font-size: 0.87rem; color: var(--text-mute); }

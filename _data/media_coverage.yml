@@ -1,43 +1,75 @@
-# Press and media coverage of the project's work, newest first.
+# Press and media coverage, grouped by the work being covered.
 #
-# What belongs here: something somebody else made about the work. A press
-# release from the host institute counts, an interview counts, a news article
-# counts. A talk the project gave does not, and neither does a paper: those are
-# on the publications page.
+# The list is groups, not pieces. Coverage arrives in a burst around one result
+# and then stops, so a flat reverse-chronological list of pieces buries the
+# thing they are all about and repeats its title on every row. A group names the
+# work once and hangs the coverage off it.
 #
-#   date    YYYY-MM-DD. Only the month is displayed. Orders the list.
+# GROUP
+#   paper   arXiv id of the paper covered. The title, the journal and the link
+#           are looked up in publications.yml, so nothing is retyped here and a
+#           corrected title propagates.
+#   label   for a group that is not about a paper (the grant announcement).
+#           Exactly one of `paper` or `label`.
+#   date    YYYY-MM-DD, the date the group is anchored to and sorted by. WHICH
+#           date is a judgement per group, not a rule: preprint appearance for
+#           work that was covered off the arXiv, journal publication for work
+#           covered when it appeared in a journal. GW231123 below is anchored to
+#           the ApJL publication (2026-08-25) because every piece followed it;
+#           its preprint went up on 2025-12-01, and if coverage of the preprint
+#           turns up, reconsider.
+#   items   the pieces.
+#
+# ITEM
 #   outlet  who published it, as a reader would name them.
 #   title   the piece's own title, not a description of it.
-#   url     absolute. Rendered with rel="noopener", like every external link.
-#   kind    article | video | press release | podcast. Rendered as a label, so
-#           keep the vocabulary small and add a new value only when an existing
-#           one would mislead.
-#   lang    optional ISO code, shown only when it is not English. A reader who
-#           follows a link into a language they do not read has been wasted.
-#   paper   optional arXiv id of the paper being covered. The page looks the
-#           paper up in publications.yml and links its title, so a change of
-#           title propagates and a wrong id shows up as a missing link.
+#   url     absolute, rendered with rel="noopener".
+#   kind    article | press release | video | podcast. Small vocabulary on
+#           purpose; add a value only when an existing one would mislead.
+#   lang    optional. Shown only when it is not English, because sending a
+#           reader into a language they do not read wastes their click.
+#   date    optional, orders items inside a group. NOT rendered: the group
+#           carries the date, and a second one on every row is noise.
 #
-# The list is short because the project started in 2026. Do not pad it: §8 of
-# docs/SITE_CONVENTIONS.md rules out anything written to impress, and three
-# honest entries say more than ten stretched ones.
+# WHAT IS NOT HERE
+#
+# Talks. The Cosmology Talks interview was listed here until 2026-09-04 and is
+# not coverage: it is the project explaining its own work, it is already in the
+# talks list on the publications page, and the outreach page links the recorded
+# talks instead.
 
-- date: 2026-08-26
-  outlet: "Albert Einstein Institute"
-  title: "Do black holes pretend to have large masses?"
-  url: "https://www.aei.mpg.de/1490509/do-black-holes-pretend-to-have-large-masses"
-  kind: "press release"
-  paper: "2512.17631"
+- paper: "2512.17631"
+  date: 2026-08-25
+  items:
+    - outlet: "Science"
+      title: "Extreme black hole merger may be a cosmic illusion"
+      url: "https://www.science.org/content/article/extreme-black-hole-merger-may-be-cosmic-illusion"
+      kind: "article"
+      date: 2026-09-01
 
-- date: 2026-08-25
-  outlet: "Cosmology Talks"
-  title: "GW231123: a magnified and diffracted black hole merger"
-  url: "https://youtu.be/ZGqOpDTL8k4"
-  kind: "video"
-  paper: "2512.17631"
+    - outlet: "Phys.org"
+      title: "The biggest black hole merger ever observed could be less massive than it appears"
+      url: "https://phys.org/news/2026-09-biggest-black-hole-merger-massive.html"
+      kind: "article"
+      date: 2026-09-03
 
-- date: 2025-11-01
-  outlet: "Albert Einstein Institute"
-  title: "ERC Consolidator Grant for Miguel Zumalacárregui"
-  url: "https://www.aei.mpg.de/1359867/erc-consolidator-grant-for-miguel-zumalac-rregui"
-  kind: "press release"
+    - outlet: "bild der wissenschaft"
+      title: "Rätsel um „übergewichtige“ Schwarze Löcher gelöst?"
+      url: "https://wissenschaft.de/artikel/raetsel-um-uebergewichtige-schwarze-loecher-geloest"
+      kind: "article"
+      lang: "German"
+      date: 2026-09-02
+
+    - outlet: "Albert Einstein Institute"
+      title: "Do black holes pretend to have large masses?"
+      url: "https://www.aei.mpg.de/1490509/do-black-holes-pretend-to-have-large-masses"
+      kind: "press release"
+      date: 2026-08-26
+
+- label: "The ERC grant"
+  date: 2025-11-01
+  items:
+    - outlet: "Albert Einstein Institute"
+      title: "ERC Consolidator Grant for Miguel Zumalacárregui"
+      url: "https://www.aei.mpg.de/1359867/erc-consolidator-grant-for-miguel-zumalac-rregui"
+      kind: "press release"

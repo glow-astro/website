@@ -25,39 +25,43 @@ sections:
 
 <section class="section" id="media" aria-labelledby="media-heading">
   <h2 id="media-heading">GLOW in the media</h2>
-  {%- assign coverage = site.data.media_coverage | sort: "date" | reverse %}
-  {%- if coverage.size > 0 %}
-  <ul class="news">
-    {%- for c in coverage %}
-    <li>
-      <time class="news-date" datetime="{{ c.date }}">{{ c.date | date: "%b %Y" }}</time>
-      <div class="news-body">
-        <p>
-          <a href="{{ c.url }}" rel="noopener">{{ c.title }}</a>
-          <span class="coverage-meta">
-            {{ c.outlet }} &middot; {{ c.kind }}{% if c.lang %} &middot; in {{ c.lang }}{% endif %}
-          </span>
-        </p>
-        {%- comment -%}
-          The paper is looked up rather than restated: a title typed twice is a
-          title that will disagree with itself. An id with no match renders
-          nothing, which is visible on the page as a missing line.
-        {%- endcomment -%}
-        {%- if c.paper %}
-        {%- assign paper = site.data.publications.papers | where: "arxiv", c.paper | first %}
-        {%- if paper %}
-        <p class="coverage-paper">
-          On <a href="{{ paper.url }}" rel="noopener">{{ paper.title }}</a>
-        </p>
-        {%- endif %}
-        {%- endif %}
-      </div>
-    </li>
-    {%- endfor %}
-  </ul>
-  {%- else %}
-  <p>Nothing yet.</p>
-  {%- endif %}
+  {%- comment -%}
+    Grouped by the work covered, newest work first, because coverage arrives in
+    a burst around one result: a flat list of pieces repeats that result's title
+    on every row and buries it. The group's date is chosen per group in
+    _data/media_coverage.yml, since some work is covered off the arXiv and some
+    when the journal version appears.
+  {%- endcomment -%}
+  {%- assign groups = site.data.media_coverage | sort: "date" | reverse %}
+  {%- for g in groups %}
+  {%- assign paper = site.data.publications.papers | where: "arxiv", g.paper | first %}
+  <div class="coverage-group">
+    <h3>
+      {%- if paper %}
+      <a href="{{ paper.url }}" rel="noopener">{{ paper.title }}</a>
+      {%- else %}
+      {{ g.label }}
+      {%- endif %}
+    </h3>
+    <p class="card-meta">
+      {%- if paper %}
+      {{ paper.journal | default: paper.status }} &middot;
+      {%- endif %}
+      {{ g.date | date: "%B %Y" }}
+    </p>
+    <ul class="coverage-list">
+      {%- assign items = g.items | sort: "date" | reverse %}
+      {%- for c in items %}
+      <li>
+        <a href="{{ c.url }}" rel="noopener">{{ c.title }}</a>
+        <span class="coverage-meta">
+          {{ c.outlet }} &middot; {{ c.kind }}{% if c.lang %} &middot; in {{ c.lang }}{% endif %}
+        </span>
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+  {%- endfor %}
 </section>
 
 {%- comment -%}
@@ -82,6 +86,10 @@ sections:
     Short pieces on what wave optics does to a gravitational wave, written for
     readers outside the field, are being prepared. In the meantime the
     <a href="{{ '/science.html' | relative_url }}">science case</a> provides explanations aimed for scientists.
+    Several results have been presented in
+    <a href="{{ '/publications.html#recorded' | relative_url }}">recorded talks</a>,
+    which are technical but go further than a paper does in explaining why the
+    work was done that way.
   </p>
   <p>
     Every figure and animation on this site is collected on one page and
