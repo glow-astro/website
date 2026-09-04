@@ -1407,14 +1407,16 @@ h2 + .stage-heading { margin-top: 1.2rem; }
 
 	.hero-logo { max-width: 260px; }
 
-	/* Portrait first would push the text down; keep text first, image after */
-	.hero-media { order: 2; }
-
-	/* Once the hero is one column the media block spans the full width, and a
-	   centred emblem floats away from the lock-up above it, which is capped at
-	   260px and sits left. Right-aligned it reads as attached to the block
-	   rather than adrift in the middle of the page. */
-	.hero-eu img { margin-left: auto; margin-right: 0; }
+	/* Once the hero is one column the media block spans the full width, and the
+	   two marks inside it drift apart: the lock-up is capped at 260px on the
+	   left, so an emblem centred (or, as it was until 2026-09-04, right-aligned)
+	   in a 450px column starts nowhere near it and reads as a layout mistake on
+	   a phone. Cap the block itself instead and align both marks and the rule
+	   above the emblem to the same left edge. */
+	/* order: 2 keeps the text first: the portrait ahead of it would push the
+	   opening paragraph below the fold. */
+	.hero-media { order: 2; max-width: 260px; }
+	.hero-eu img { margin-left: 0; margin-right: auto; }
 
 	h1 { font-size: 1.85rem; }
 	h2 { font-size: 1.35rem; }
