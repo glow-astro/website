@@ -82,7 +82,18 @@ eu:
     Union or the European Research Council Executive Agency. Neither the European
     Union nor the granting authority can be held responsible for them.
 
-og_image: "/imgs/GLOW_Extended_Logo_Full_Color_for_Dark_Backgrounds_RGB.png"
+# The card WhatsApp, Slack, Signal, Mastodon and the rest render beside a
+# shared link. It must be OPAQUE: the logo PNGs have transparent backgrounds,
+# and a chat app that composites them on white loses the white wordmark
+# entirely, leaving a sun and a red circle with no name attached. That is what
+# was shipping until 2026-09-04.
+#
+# 1200x630 is the size every platform crops from, and og-card-v1.png is the
+# extended logo centred on the site background (#0a0c11). The -v1 suffix is the
+# cache rule in section 3 of docs/SITE_CONVENTIONS.md: these URLs are cached
+# hard and for a long time by every chat service that has ever scraped them, so
+# a corrected card gets a new name rather than a new body.
+og_image: "/imgs/og-card-v1.png"
 
 markdown: kramdown
 kramdown:

@@ -31,6 +31,14 @@
 <meta property="og:description" content="{{ page_desc | strip_newlines | strip }}">
 <meta property="og:url" content="{{ canonical }}">
 <meta property="og:image" content="{{ share_image }}">
+{%- comment -%}
+  Dimensions and alt text alongside the image: a scraper that has not fetched
+  the file yet lays the card out from these, and without them some clients show
+  a small square thumbnail rather than the wide card.
+{%- endcomment -%}
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="GLOW: Gravitational Lensing of Waves">
 <meta property="og:locale" content="en_US">
 
 <meta name="twitter:card" content="summary_large_image">
