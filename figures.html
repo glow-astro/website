@@ -1,0 +1,149 @@
+---
+layout: page
+nav: figures
+title: "Figures and animations"
+eyebrow: "Media kit"
+search: true
+lede: >-
+  Every figure and animation on this site, in one place, free to reuse with
+  credit.
+description: >-
+  Downloadable figures and animations from the GLOW project on wave-optics
+  lensing of gravitational waves, released under CC BY 4.0.
+sections:
+  - id: reuse
+    label: "Reuse"
+  - id: gallery
+    label: "Figures and animations"
+  - id: logos
+    label: "Logos"
+    rule: true
+---
+
+{% include subnav.html %}
+
+<section class="section" id="reuse" aria-labelledby="reuse-heading">
+  <h2 id="reuse-heading">Reuse</h2>
+  <p>
+    Everything below is released under
+    <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener">Creative
+    Commons Attribution 4.0</a>. Use it in a talk, an article, a lecture or a
+    textbook, alter it if you need to, and credit it as
+    <b>GLOW / M.&nbsp;Zumalacárregui (CC&nbsp;BY&nbsp;4.0)</b>.
+  </p>
+  <p>
+    Animations are WebM, at the size they were rendered. Each one comes with the
+    frame the site uses as its poster, which is the frame to take when a still
+    image is what you need. Where a figure reproduces a published result, the
+    page it is explained on gives the
+    <a href="{{ '/publications.html' | relative_url }}">paper to cite</a>
+    alongside it, and that citation is the useful one.
+  </p>
+  {%- comment -%}
+    No file sizes on the links. Liquid cannot stat a file, so they would be
+    hand-written numbers that go stale silently on the next re-render, which is
+    worse than not stating them.
+  {%- endcomment -%}
+</section>
+
+{%- assign figures = site.data.figures -%}
+
+<section class="section" id="gallery" aria-labelledby="gallery-heading">
+  <h2 id="gallery-heading">Figures and animations</h2>
+  {%- comment -%}
+    The site's filter, the same one on Publications and on the GLoW page. It
+    searches whatever the card renders, so title, caption and page name are all
+    searchable without declaring anything.
+  {%- endcomment -%}
+  <div class="pub-index" data-search data-search-noun="figures">
+    <div class="filter" data-search-ui hidden>
+      <label class="skip-link" for="filter-figures">Filter figures</label>
+      <input type="search" id="filter-figures" data-search-input
+             placeholder="Filter by what the figure shows or the page it is on…"
+             autocomplete="off" spellcheck="false">
+      <p class="filter-count" data-search-count aria-live="polite" role="status"></p>
+    </div>
+
+    <div class="figure-grid" data-search-group>
+      {%- for f in figures %}
+      {%- assign target = site.pages | where: "url", f.page | first -%}
+      {%- if f.kind == "animation" -%}
+        {%- assign thumb = f.id | prepend: "/media/" | append: "_still.png" -%}
+      {%- else -%}
+        {%- assign thumb = f.id | prepend: "/media/" | append: ".png" -%}
+      {%- endif -%}
+      <figure class="figure-card" data-search-item>
+        <a href="{{ thumb | relative_url }}">
+          <img src="{{ thumb | relative_url }}" alt="{{ f.title }}"
+               width="{{ f.width }}" height="{{ f.height }}" loading="lazy">
+        </a>
+        <figcaption>
+          <p class="card-title">{{ f.title }}</p>
+          <p>{{ f.caption | strip_newlines | strip }}</p>
+          <p class="card-meta">
+            Seen on
+            {%- if f.page == "/" %}
+            the <a href="{{ '/' | relative_url }}">home page</a>
+            {%- else %}
+            <a href="{{ f.page | relative_url }}">{{ target.title | default: f.page }}</a>
+            {%- endif %}
+          </p>
+          <p class="figure-files">
+            {%- if f.kind == "animation" %}
+            <a href="{{ f.id | prepend: '/media/' | append: '.webm' | relative_url }}">Animation (WebM)</a>
+            &middot;
+            <a href="{{ thumb | relative_url }}">Still frame (PNG)</a>
+            {%- else %}
+            <a href="{{ thumb | relative_url }}">Figure (PNG)</a>
+            {%- endif %}
+            &middot; {{ f.width }}&times;{{ f.height }}
+          </p>
+        </figcaption>
+      </figure>
+      {%- endfor %}
+    </div>
+
+    <p class="filter-empty" data-search-empty hidden>No figure matches that search.</p>
+  </div>
+</section>
+
+<section class="section" id="logos" aria-labelledby="logos-heading">
+  <h2 id="logos-heading">Logos</h2>
+  {%- comment -%}
+    Deliberately outside _data/figures.yml and outside the CC BY statement. A
+    mark is not a figure: it identifies the project, so it may be used to refer
+    to the project and not altered, which is a different permission from the one
+    granted above.
+  {%- endcomment -%}
+  <p>
+    The two marks below identify the project and the code, and they are not
+    covered by the licence above: use them to refer to GLOW or to GLoW, and do
+    not alter them. Both were designed by Ana Carvalho.
+  </p>
+  <div class="figure-grid">
+    <figure class="figure-card">
+      <a href="{{ '/imgs/GLOW_Extended_Logo_Full_Color_for_Dark_Backgrounds_RGB.png' | relative_url }}">
+        <img src="{{ '/imgs/GLOW_Extended_Logo_Full_Color_for_Dark_Backgrounds_RGB.png' | relative_url }}"
+             alt="The GLOW project logo" width="6250" height="3064" loading="lazy">
+      </a>
+      <figcaption>
+        <p class="card-title">GLOW, the project</p>
+        <p>The extended lock-up, for dark backgrounds.</p>
+      </figcaption>
+    </figure>
+    <figure class="figure-card">
+      <a href="{{ '/imgs/GLoW_Code_Extended_Logo_Full_Color_for_Dark_Backgrounds_RBG.png' | relative_url }}">
+        <img src="{{ '/imgs/GLoW_Code_Extended_Logo_Full_Color_for_Dark_Backgrounds_RBG.png' | relative_url }}"
+             alt="The GLoW code logo" width="6250" height="3132" loading="lazy">
+      </a>
+      <figcaption>
+        <p class="card-title">GLoW, the code</p>
+        <p>
+          The mark of the
+          <a href="{{ '/glow-code.html' | relative_url }}">wave-optics code</a>,
+          which is a different thing from the project.
+        </p>
+      </figcaption>
+    </figure>
+  </div>
+</section>

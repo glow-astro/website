@@ -1,0 +1,220 @@
+# The figure and animation kit rendered by figures.html.
+#
+# One entry per media item the site publishes, in the order the kit shows them.
+# This file exists so that somebody can take a figure away and use it correctly:
+# it is a reuse catalogue, not a second copy of the pages.
+#
+#   id       the media stem. /media/<id>.webm plus /media/<id>_still.png for an
+#            animation, /media/<id>.png for a plot. The gallery builds every
+#            path from this and never stores one.
+#   title    a name for the figure, in the kit's own words. Not the caption of
+#            the page it appears on.
+#   kind     animation | plot. Decides which files exist and how the card links
+#            them. Nothing else branches on it.
+#   caption  ONE sentence, standing on its own. The page captions are longer and
+#            lean on the paragraphs around them, which is right there and wrong
+#            here. Deliberately not shared with the pages: two audiences, two
+#            texts, and a link for the reader who wants the full explanation.
+#   page     where the figure is explained, as a site path. Rendered as "Seen
+#            on ...", using the page's own <title> via site.pages lookup.
+#   width    the render's real pixel size, off the poster frame. Emitted on the
+#   height   thumbnail so the grid does not reflow while images load.
+#   source   optional. Which repository generated it, for the owner rather than
+#            for a reader: it is the only place on the site that records this,
+#            and ~/code/application_plots/FIGURES.md holds the full mapping.
+#            Not rendered.
+#
+# WHAT IS NOT HERE
+#
+# glow-word-loop-v3.webm, the second half of the hero animation. It is the same
+# figure continuing to move, it has no poster by design, and listing it would
+# offer a fragment as though it were a work.
+#
+# The people photographs (assets/img/people/) are portraits of individuals and
+# not the project's to license. The logos are in figures.html itself rather than
+# here, because their terms are different: see the page.
+#
+# LICENCE. Everything in this list is CC BY 4.0, stated once on the page rather
+# than repeated per entry. If an item ever needs different terms it gains a
+# `licence:` field and the page grows a condition, and that is the moment to
+# check whether the exception is worth the complication.
+
+- id: glow-word-v3
+  title: "The project's name as a diffraction pattern"
+  kind: animation
+  caption: >-
+    Simulated light passes through openings shaped like the letters GLOW and
+    falls on a screen 100 mm behind them, resolving as the wavelength drops.
+  page: /
+  width: 1560
+  height: 780
+  source: "application_plots"
+
+- id: diffraction
+  title: "Diffraction through a circular hole"
+  kind: animation
+  caption: >-
+    Visible light through a hole 200 micrometres across, one colour at a time:
+    the rings contract as the wavelength falls.
+  page: /science.html
+  width: 1560
+  height: 780
+  source: "application_plots"
+
+- id: diffraction-size
+  title: "What an opening's size does to its pattern"
+  kind: animation
+  caption: >-
+    The opening changes size and shape, and the pattern it casts changes with
+    it, which is how a diffraction pattern carries information about the object
+    that made it.
+  page: /wave-optics.html
+  width: 1560
+  height: 780
+  source: "application_plots"
+
+- id: diffraction-shape
+  title: "What an opening's shape does to its pattern"
+  kind: animation
+  caption: >-
+    A circle, triangle, square, pentagon and hexagon of equal area, each leaving
+    a different imprint on the wave.
+  page: /dark-matter.html
+  width: 1560
+  height: 780
+  source: "application_plots"
+
+- id: lensing-regimes
+  title: "One lens across the whole frequency range"
+  kind: animation
+  caption: >-
+    Nothing about the lens changes through the sweep: what changes is the ratio
+    between its time-delay scale and the period of the wave.
+  page: /wave-optics.html
+  width: 1560
+  height: 780
+  source: "application_plots"
+
+- id: wave-optics-gw
+  title: "Diffraction appearing as the alignment tightens"
+  kind: animation
+  caption: >-
+    The impact parameter falls from 2.0 to 0.1 Einstein radii, the source
+    crosses a caustic, and the amplification factor acquires the oscillations
+    that are the signature of diffraction.
+  page: /wave-optics.html
+  width: 1560
+  height: 520
+  source: "GW231123_independent_analysis"
+
+- id: wave-optics-feature
+  title: "Building the arrival-time response of a lens"
+  kind: animation
+  caption: >-
+    Isochrones of the Fermat potential sweep the lens plane for the
+    best-fitting lens of GW231123, coloured by what each stretch contributes to
+    the response.
+  page: /wave-optics.html
+  width: 1560
+  height: 520
+  source: "application_plots, family wolf"
+
+- id: wavefront-caustics
+  title: "How multiple images form"
+  kind: animation
+  caption: >-
+    A wavefront is bent by a lens and folds back on itself, and the cusp where
+    it intersects itself traces out a caustic.
+  page: /sources.html
+  width: 1560
+  height: 780
+  source: "application_plots"
+
+- id: lensed-population
+  title: "Lensed sources against the detectable population"
+  kind: plot
+  caption: >-
+    Where magnified sources sit relative to what current detectors can see, with
+    GW231123 marked both as it is usually analysed and as the lensed analysis
+    infers it.
+  page: /sources.html
+  width: 1800
+  height: 1125
+  source: "application_plots"
+
+- id: microlensing-chain
+  title: "From a galaxy to a distorted waveform"
+  kind: plot
+  caption: >-
+    A galaxy splits the source into macroimages, one of which lands on a field
+    of stars whose critical curves distort the signal.
+  page: /microlensing.html
+  width: 2000
+  height: 608
+  source: "application_plots"
+
+- id: microlensing
+  title: "A point mass inside an external potential"
+  kind: animation
+  caption: >-
+    The external potential grows, enlarging the caustic and strengthening the
+    wave-optics distortions that come with it.
+  page: /microlensing.html
+  width: 1560
+  height: 520
+  source: "GW231123_independent_analysis"
+
+- id: stochastic-diffraction
+  title: "Stochastic diffraction and the dark timbre"
+  kind: animation
+  caption: >-
+    A frequency sweep through one realization of 2502 cold-dark-matter halos
+    along the line of sight to a source at redshift 3.
+  page: /dark-matter.html
+  width: 1560
+  height: 520
+  source: "cdm_timbre"
+
+- id: dm-constraints
+  title: "Limits on compact objects as dark matter"
+  kind: plot
+  caption: >-
+    Existing bounds on the abundance of compact objects against their mass, with
+    bands showing the masses each wave-optics probe reaches.
+  page: /dark-matter.html
+  width: 1893
+  height: 761
+  source: "application_plots"
+
+- id: testing-gravity
+  title: "Gravitational-wave birefringence"
+  kind: animation
+  caption: >-
+    A signal crossing a Vainshtein-screened lens, where the two polarizations
+    travel differently and the waveform carries the difference.
+  page: /testing-gravity.html
+  width: 1560
+  height: 975
+  source: "gw_birefringence"
+
+- id: data-analysis
+  title: "Parameter estimation in two dimensions"
+  kind: animation
+  caption: >-
+    A sampler exploring a two-parameter lens model, with each point a candidate
+    and the posterior emerging from the ones that survive.
+  page: /data-analysis.html
+  width: 1560
+  height: 520
+  source: "GW231123_independent_analysis"
+
+- id: rosd-basis
+  title: "Ten thousand stellar fields, reduced to a basis"
+  kind: animation
+  caption: >-
+    Distortion curves from ten thousand simulated fields collapse into a mean
+    and a one-sigma band, and the first six modes carry most of the variance.
+  page: /data-analysis.html
+  width: 1560
+  height: 520
+  source: "application_plots, family microlensing_surrogate"

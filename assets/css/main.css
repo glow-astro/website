@@ -1851,3 +1851,48 @@ a.skymap-card:focus-visible {
 	.site-header, .site-footer, .btn-row { display: none; }
 	a { color: #000; }
 }
+
+/* ---------- Figure kit (figures.html) ---------------------------------------
+   Cards that lead with the picture, unlike .card which leads with a title. The
+   thumbnail is the poster frame at its natural aspect ratio, so the tracks are
+   wide (min 320px) and the images are boxed to a fixed height rather than a
+   fixed ratio: these renders run from 1560x520 to 1800x1125, and forcing one
+   ratio would either letterbox the wide ones or crop the tall ones. */
+.figure-grid {
+	display: grid;
+	gap: 1.2rem;
+	margin: 1.4rem 0 1.8rem;
+	grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+}
+
+.figure-card {
+	margin: 0;
+	background: var(--bg-card);
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+}
+
+.figure-card > a {
+	display: block;
+	background: #000;
+	line-height: 0;
+}
+
+.figure-card img {
+	width: 100%;
+	height: auto;
+	max-height: 240px;
+	object-fit: contain;
+}
+
+.figure-card figcaption { padding: 0.9rem 1.1rem 1rem; }
+.figure-card figcaption > :last-child { margin-bottom: 0; }
+.figure-card figcaption p { margin: 0 0 0.45rem; }
+
+.figure-files {
+	font-size: 0.87rem;
+	color: var(--text-mute);
+}
