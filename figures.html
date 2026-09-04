@@ -5,16 +5,17 @@ title: "Figures and animations"
 eyebrow: "Media kit"
 search: true
 lede: >-
-  Every figure and animation on this site, in one place, free to reuse with
-  credit.
+  Resources on this site, free to reuse with credit.
 description: >-
   Downloadable figures and animations from the GLOW project on wave-optics
   lensing of gravitational waves, released under CC BY 4.0.
 sections:
   - id: reuse
     label: "Reuse"
-  - id: gallery
-    label: "Figures and animations"
+  - id: animations
+    label: "Animations"
+  - id: figures
+    label: "Figures"
   - id: logos
     label: "Logos"
     rule: true
@@ -48,30 +49,35 @@ sections:
 
 {%- assign figures = site.data.figures -%}
 
-<section class="section" id="gallery" aria-labelledby="gallery-heading">
-  <h2 id="gallery-heading">Figures and animations</h2>
-  {%- comment -%}
-    The site's filter, the same one on Publications and on the GLoW page. It
-    searches whatever the card renders, so title, caption and page name are all
-    searchable without declaring anything.
-  {%- endcomment -%}
-  <div class="pub-index" data-search data-search-noun="figures">
-    <div class="filter" data-search-ui hidden>
-      <label class="skip-link" for="filter-figures">Filter figures</label>
-      <input type="search" id="filter-figures" data-search-input
-             placeholder="Filter by what the figure shows or the page it is on…"
-             autocomplete="off" spellcheck="false">
-      <p class="filter-count" data-search-count aria-live="polite" role="status"></p>
-    </div>
+{%- comment -%}
+  Animations and figures are separate sections but ONE filter. The two blocks
+  are `data-search-group`, the same mechanism the publications page uses for its
+  year blocks: a query runs across everything, the count stays a single "n of
+  16", and a section whose entries have all been filtered out hides itself,
+  heading included. Two filters, one per section, would have meant two boxes to
+  type in and two counts, for a page of sixteen items.
+{%- endcomment -%}
+<div class="pub-index" data-search data-search-noun="items">
+  <div class="filter" data-search-ui hidden>
+    <label class="skip-link" for="filter-figures">Filter figures</label>
+    <input type="search" id="filter-figures" data-search-input
+           placeholder="Filter by description or placement in the site…"
+           autocomplete="off" spellcheck="false">
+    <p class="filter-count" data-search-count aria-live="polite" role="status"></p>
+  </div>
 
-    <div class="figure-grid" data-search-group>
-      {%- for f in figures %}
-      {%- assign target = site.pages | where: "url", f.page | first -%}
+  <section class="section" id="animations" aria-labelledby="animations-heading"
+           data-search-group>
+    <h2 id="animations-heading">Animations</h2>
+    {%- assign items = site.data.figures | where: "kind", "animation" %}
+    <div class="figure-grid">
+      {%- for f in items %}
       {%- if f.kind == "animation" -%}
         {%- assign thumb = f.id | prepend: "/media/" | append: "_still.png" -%}
       {%- else -%}
         {%- assign thumb = f.id | prepend: "/media/" | append: ".png" -%}
       {%- endif -%}
+      {%- assign target = site.pages | where: "url", f.page | first -%}
       <figure class="figure-card" data-search-item>
         <a href="{{ thumb | relative_url }}">
           <img src="{{ thumb | relative_url }}" alt="{{ f.title }}"
@@ -103,10 +109,55 @@ sections:
       </figure>
       {%- endfor %}
     </div>
+  </section>
 
-    <p class="filter-empty" data-search-empty hidden>No figure matches that search.</p>
-  </div>
-</section>
+  <section class="section" id="figures" aria-labelledby="figures-heading"
+           data-search-group>
+    <h2 id="figures-heading">Figures</h2>
+    {%- assign items = site.data.figures | where: "kind", "plot" %}
+    <div class="figure-grid">
+      {%- for f in items %}
+      {%- if f.kind == "animation" -%}
+        {%- assign thumb = f.id | prepend: "/media/" | append: "_still.png" -%}
+      {%- else -%}
+        {%- assign thumb = f.id | prepend: "/media/" | append: ".png" -%}
+      {%- endif -%}
+      {%- assign target = site.pages | where: "url", f.page | first -%}
+      <figure class="figure-card" data-search-item>
+        <a href="{{ thumb | relative_url }}">
+          <img src="{{ thumb | relative_url }}" alt="{{ f.title }}"
+               width="{{ f.width }}" height="{{ f.height }}" loading="lazy">
+        </a>
+        <figcaption>
+          <p class="card-title">{{ f.title }}</p>
+          <p>{{ f.caption | strip_newlines | strip }}</p>
+          <p class="card-meta">
+            Seen on
+            {%- if f.page == "/" %}
+            the <a href="{{ '/' | relative_url }}">home page</a>
+            {%- else %}
+            <a href="{{ f.page | relative_url }}">{{ target.title | default: f.page }}</a>
+            {%- endif %}
+          </p>
+          <p class="figure-credit">{{ f.credit }} &middot; CC BY 4.0</p>
+          <p class="figure-files">
+            {%- if f.kind == "animation" %}
+            <a href="{{ f.id | prepend: '/media/' | append: '.webm' | relative_url }}">Animation (WebM)</a>
+            &middot;
+            <a href="{{ thumb | relative_url }}">Still frame (PNG)</a>
+            {%- else %}
+            <a href="{{ thumb | relative_url }}">Figure (PNG)</a>
+            {%- endif %}
+            &middot; {{ f.width }}&times;{{ f.height }}
+          </p>
+        </figcaption>
+      </figure>
+      {%- endfor %}
+    </div>
+  </section>
+
+  <p class="filter-empty" data-search-empty hidden>No figure matches that search.</p>
+</div>
 
 <section class="section" id="logos" aria-labelledby="logos-heading">
   <h2 id="logos-heading">Logos</h2>
@@ -115,11 +166,20 @@ sections:
     mark is not a figure: it identifies the project, so it may be used to refer
     to the project and not altered, which is a different permission from the one
     granted above.
+
+    Two variants each, added 2026-09-04. The site is dark, so it only ever
+    needed the dark-background files, but somebody putting the mark on a slide
+    or a poster is usually working on white, and the dark file has a white
+    wordmark that vanishes there. That is the same failure the share card had.
+    Both files carry transparent backgrounds, so what "light" and "dark" name is
+    the colour of the wordmark, not of a background baked into the file.
   {%- endcomment -%}
   <p>
     The two marks below identify the project and the code, and they are not
     covered by the licence above: use them to refer to GLOW or to GLoW, and do
-    not alter them. Both were designed by Ana Carvalho.
+    not alter them. Each comes in two versions, one for placing on a dark
+    background and one for a light background, both with transparency. Ana
+    Carvalho designed them.
   </p>
   <div class="figure-grid">
     <figure class="figure-card">
@@ -129,7 +189,13 @@ sections:
       </a>
       <figcaption>
         <p class="card-title">GLOW, the project</p>
-        <p>The extended lock-up, for dark backgrounds.</p>
+        <p>The extended lock-up: the mark, the acronym and the full name.</p>
+        <p class="figure-files">
+          <a href="{{ '/imgs/GLOW_Extended_Logo_Full_Color_for_Dark_Backgrounds_RGB.png' | relative_url }}">For dark backgrounds (PNG)</a>
+          &middot;
+          <a href="{{ '/imgs/GLOW_Extended_Logo_Full_Color_for_Light_Backgrounds_RGB.png' | relative_url }}">For light backgrounds (PNG)</a>
+          &middot; 6250&times;3064
+        </p>
       </figcaption>
     </figure>
     <figure class="figure-card">
@@ -143,6 +209,12 @@ sections:
           The mark of the
           <a href="{{ '/glow-code.html' | relative_url }}">wave-optics code</a>,
           which is a different thing from the project.
+        </p>
+        <p class="figure-files">
+          <a href="{{ '/imgs/GLoW_Code_Extended_Logo_Full_Color_for_Dark_Backgrounds_RBG.png' | relative_url }}">For dark backgrounds (PNG)</a>
+          &middot;
+          <a href="{{ '/imgs/GLoW_Code_Extended_Logo_Full_Color_for_Light_Backgrounds_RGB.png' | relative_url }}">For light backgrounds (PNG)</a>
+          &middot; 6250&times;3132
         </p>
       </figcaption>
     </figure>
