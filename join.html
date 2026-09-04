@@ -36,10 +36,19 @@ sections:
     {%- endfor %}
   </div>
   {%- else %}
+  {%- comment -%}
+    No mailing list and no offer to write when a call opens: the offer was here
+    until 2026-09-04 and the owner removed it, since answering dozens of
+    one-line notes costs more than it gives anyone. Naming where calls are
+    advertised does the same job and needs nobody to remember anything.
+  {%- endcomment -%}
   <p>
-    No call is open at the moment. Calls are posted on this page and announced
-    in the <a href="{{ '/' | relative_url }}#news-heading">news</a>. If you would
-    like to hear when one opens, write and say so.
+    No call is open at the moment. Positions are usually announced in the
+    autumn. Calls are posted on this page and in the
+    <a href="{{ '/' | relative_url }}#news-heading">news</a>, on the
+    <a href="https://www.ift.uam-csic.es/en/activities/job-offers/" rel="noopener">IFT
+    job offers page</a>, and on
+    <a href="https://inspirehep.net/jobs" rel="noopener">InspireHEP</a>.
   </p>
   {%- endif %}
 </section>
