@@ -60,6 +60,16 @@ what the browser shows.**
 
 ## 3. Verification, every time
 
+**Never pass a possibly-nil value to Liquid's `where`.** The local Jekyll and
+the one GitHub Pages runs disagree about it: locally `where: "id", nil` matches
+nothing, on GitHub it returns the whole list, so `| first` silently hands you
+the first entry. On 2026-09-04 that put GLoW's name and subtitle on the
+supporting-code card, and the title of the GW231123 paper on the grant group of
+the outreach page, on the live site only, while every local build looked right.
+Guard the lookup with `{% if x %}` instead. It also means **a page that renders
+correctly locally is not proof**: check the deployed page after a build that
+touches a `where`.
+
 After any structural change, rebuild and run this. It has caught duplicate ids
 and dead anchors repeatedly:
 

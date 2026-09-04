@@ -34,7 +34,16 @@ sections:
   {%- endcomment -%}
   {%- assign groups = site.data.media_coverage | sort: "date" | reverse %}
   {%- for g in groups %}
+  {%- comment -%}
+    Guarded, because `where: "id", nil` behaves differently on GitHub Pages than
+    locally: it returns the whole list there, so a group with no `paper` picked
+    up the first paper's title. That is how the ERC grant group was headed
+    "Across the Universe" on the live site while looking right locally.
+  {%- endcomment -%}
+  {%- assign paper = nil -%}
+  {%- if g.paper %}
   {%- assign paper = site.data.publications.papers | where: "arxiv", g.paper | first %}
+  {%- endif %}
   <div class="coverage-group">
     <h3>
       {%- if paper %}

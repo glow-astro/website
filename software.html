@@ -60,7 +60,17 @@ sections:
   <div class="grid grid-3">
     {%- for s in site.data.software.section %}
     {%- if s.map == false %}{% continue %}{% endif %}
+    {%- comment -%}
+      The `if s.tool` guard is load-bearing. `where: "id", nil` is not portable:
+      the local Jekyll returns nothing, GitHub Pages' Jekyll returns the whole
+      list, so `| first` handed the supporting-code card GLoW's name and
+      subtitle on the live site while the local build looked correct. Never pass
+      a possibly-nil value to `where`.
+    {%- endcomment -%}
+    {%- assign tool = nil -%}
+    {%- if s.tool -%}
     {%- assign tool = site.data.software.tools | where: "id", s.tool | first -%}
+    {%- endif -%}
     <a class="card card-link" href="{{ s.page | relative_url }}">
       <p class="card-title">{{ tool.name | default: s.short }}</p>
       {%- if tool %}
@@ -72,6 +82,11 @@ sections:
     </a>
     {%- endfor %}
   </div>
+  <p>
+    Beyond the code, every figure and animation on this site is collected, with
+    the files and the terms to reuse them, on
+    <a href="{{ '/figures.html' | relative_url }}">figures and animations</a>.
+  </p>
 </section>
 
 <section class="section" id="policy" aria-labelledby="policy-heading">
