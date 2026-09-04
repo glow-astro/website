@@ -12,10 +12,8 @@ description: >-
 sections:
   - id: reuse
     label: "Reuse"
-  - id: animations
-    label: "Animations"
-  - id: figures
-    label: "Figures"
+  - id: gallery
+    label: "Figures and animations"
   - id: logos
     label: "Logos"
     rule: true
@@ -50,114 +48,74 @@ sections:
 {%- assign figures = site.data.figures -%}
 
 {%- comment -%}
-  Animations and figures are separate sections but ONE filter. The two blocks
-  are `data-search-group`, the same mechanism the publications page uses for its
-  year blocks: a query runs across everything, the count stays a single "n of
-  16", and a section whose entries have all been filtered out hides itself,
-  heading included. Two filters, one per section, would have meant two boxes to
-  type in and two counts, for a page of sixteen items.
+  One section and one filter. Animations and figures were split into two
+  sections on 2026-09-04 and consolidated again the same day: sixteen items do
+  not need two headings, and the kind of each item is already legible from its
+  own links (Animation (WebM) or Figure (PNG)).
 {%- endcomment -%}
-<div class="pub-index" data-search data-search-noun="items">
-  <div class="filter" data-search-ui hidden>
-    <label class="skip-link" for="filter-figures">Filter figures</label>
-    <input type="search" id="filter-figures" data-search-input
-           placeholder="Filter by description or placement in the site…"
-           autocomplete="off" spellcheck="false">
-    <p class="filter-count" data-search-count aria-live="polite" role="status"></p>
+<section class="section" id="gallery" aria-labelledby="gallery-heading">
+  <h2 id="gallery-heading">Figures and animations</h2>
+  <div class="pub-index" data-search data-search-noun="items">
+    <div class="filter" data-search-ui hidden>
+      <label class="skip-link" for="filter-figures">Filter figures</label>
+      <input type="search" id="filter-figures" data-search-input
+             placeholder="Filter by description or placement in the site…"
+             autocomplete="off" spellcheck="false">
+      {%- comment -%}
+        Both ticked, so the default is everything and the boxes only ever
+        subtract. They work with the text query rather than instead of it.
+      {%- endcomment -%}
+      <p class="filter-kinds">
+        <label><input type="checkbox" data-search-facet value="animation" checked> Animations</label>
+        <label><input type="checkbox" data-search-facet value="plot" checked> Figures</label>
+      </p>
+      <p class="filter-count" data-search-count aria-live="polite" role="status"></p>
+    </div>
+
+    <div class="figure-grid" data-search-group>
+      {%- assign items = site.data.figures %}
+        {%- for f in items %}
+        {%- if f.kind == "animation" -%}
+          {%- assign thumb = f.id | prepend: "/media/" | append: "_still.png" -%}
+        {%- else -%}
+          {%- assign thumb = f.id | prepend: "/media/" | append: ".png" -%}
+        {%- endif -%}
+        {%- assign target = site.pages | where: "url", f.page | first -%}
+        <figure class="figure-card" data-search-item data-search-kind="{{ f.kind }}">
+          <a href="{{ thumb | relative_url }}">
+            <img src="{{ thumb | relative_url }}" alt="{{ f.title }}"
+                 width="{{ f.width }}" height="{{ f.height }}" loading="lazy">
+          </a>
+          <figcaption>
+            <p class="card-title">{{ f.title }}</p>
+            <p>{{ f.caption | strip_newlines | strip }}</p>
+            <p class="card-meta">
+              Seen on
+              {%- if f.page == "/" %}
+              the <a href="{{ '/' | relative_url }}">home page</a>
+              {%- else %}
+              <a href="{{ f.page | relative_url }}">{{ target.title | default: f.page }}</a>
+              {%- endif %}
+            </p>
+            <p class="figure-credit">{{ f.credit }} &middot; CC BY 4.0</p>
+            <p class="figure-files">
+              {%- if f.kind == "animation" %}
+              <a href="{{ f.id | prepend: '/media/' | append: '.webm' | relative_url }}">Animation (WebM)</a>
+              &middot;
+              <a href="{{ thumb | relative_url }}">Still frame (PNG)</a>
+              {%- else %}
+              <a href="{{ thumb | relative_url }}">Figure (PNG)</a>
+              {%- endif %}
+              &middot; {{ f.width }}&times;{{ f.height }}
+            </p>
+          </figcaption>
+        </figure>
+        {%- endfor %}
+    </div>
+
+    <p class="filter-empty" data-search-empty hidden>No figure matches that search.</p>
   </div>
-
-  <section class="section" id="animations" aria-labelledby="animations-heading"
-           data-search-group>
-    <h2 id="animations-heading">Animations</h2>
-    {%- assign items = site.data.figures | where: "kind", "animation" %}
-    <div class="figure-grid">
-      {%- for f in items %}
-      {%- if f.kind == "animation" -%}
-        {%- assign thumb = f.id | prepend: "/media/" | append: "_still.png" -%}
-      {%- else -%}
-        {%- assign thumb = f.id | prepend: "/media/" | append: ".png" -%}
-      {%- endif -%}
-      {%- assign target = site.pages | where: "url", f.page | first -%}
-      <figure class="figure-card" data-search-item>
-        <a href="{{ thumb | relative_url }}">
-          <img src="{{ thumb | relative_url }}" alt="{{ f.title }}"
-               width="{{ f.width }}" height="{{ f.height }}" loading="lazy">
-        </a>
-        <figcaption>
-          <p class="card-title">{{ f.title }}</p>
-          <p>{{ f.caption | strip_newlines | strip }}</p>
-          <p class="card-meta">
-            Seen on
-            {%- if f.page == "/" %}
-            the <a href="{{ '/' | relative_url }}">home page</a>
-            {%- else %}
-            <a href="{{ f.page | relative_url }}">{{ target.title | default: f.page }}</a>
-            {%- endif %}
-          </p>
-          <p class="figure-credit">{{ f.credit }} &middot; CC BY 4.0</p>
-          <p class="figure-files">
-            {%- if f.kind == "animation" %}
-            <a href="{{ f.id | prepend: '/media/' | append: '.webm' | relative_url }}">Animation (WebM)</a>
-            &middot;
-            <a href="{{ thumb | relative_url }}">Still frame (PNG)</a>
-            {%- else %}
-            <a href="{{ thumb | relative_url }}">Figure (PNG)</a>
-            {%- endif %}
-            &middot; {{ f.width }}&times;{{ f.height }}
-          </p>
-        </figcaption>
-      </figure>
-      {%- endfor %}
-    </div>
-  </section>
-
-  <section class="section" id="figures" aria-labelledby="figures-heading"
-           data-search-group>
-    <h2 id="figures-heading">Figures</h2>
-    {%- assign items = site.data.figures | where: "kind", "plot" %}
-    <div class="figure-grid">
-      {%- for f in items %}
-      {%- if f.kind == "animation" -%}
-        {%- assign thumb = f.id | prepend: "/media/" | append: "_still.png" -%}
-      {%- else -%}
-        {%- assign thumb = f.id | prepend: "/media/" | append: ".png" -%}
-      {%- endif -%}
-      {%- assign target = site.pages | where: "url", f.page | first -%}
-      <figure class="figure-card" data-search-item>
-        <a href="{{ thumb | relative_url }}">
-          <img src="{{ thumb | relative_url }}" alt="{{ f.title }}"
-               width="{{ f.width }}" height="{{ f.height }}" loading="lazy">
-        </a>
-        <figcaption>
-          <p class="card-title">{{ f.title }}</p>
-          <p>{{ f.caption | strip_newlines | strip }}</p>
-          <p class="card-meta">
-            Seen on
-            {%- if f.page == "/" %}
-            the <a href="{{ '/' | relative_url }}">home page</a>
-            {%- else %}
-            <a href="{{ f.page | relative_url }}">{{ target.title | default: f.page }}</a>
-            {%- endif %}
-          </p>
-          <p class="figure-credit">{{ f.credit }} &middot; CC BY 4.0</p>
-          <p class="figure-files">
-            {%- if f.kind == "animation" %}
-            <a href="{{ f.id | prepend: '/media/' | append: '.webm' | relative_url }}">Animation (WebM)</a>
-            &middot;
-            <a href="{{ thumb | relative_url }}">Still frame (PNG)</a>
-            {%- else %}
-            <a href="{{ thumb | relative_url }}">Figure (PNG)</a>
-            {%- endif %}
-            &middot; {{ f.width }}&times;{{ f.height }}
-          </p>
-        </figcaption>
-      </figure>
-      {%- endfor %}
-    </div>
-  </section>
-
-  <p class="filter-empty" data-search-empty hidden>No figure matches that search.</p>
-</div>
+</section>
 
 <section class="section" id="logos" aria-labelledby="logos-heading">
   <h2 id="logos-heading">Logos</h2>

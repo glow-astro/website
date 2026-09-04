@@ -1865,6 +1865,14 @@ a.skymap-card:focus-visible {
 	grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
 }
 
+/* `display: flex` below is an author rule, and it beats the browser's own
+   [hidden] { display: none }, so a card the filter hides stays on screen. That
+   is exactly what happened when animations and figures were split: the search
+   ran, the count changed, and nothing disappeared. Any element given a display
+   value here needs this line beside it. */
+.figure-card[hidden],
+.figure-grid[hidden] { display: none; }
+
 .figure-card {
 	margin: 0;
 	background: var(--bg-card);
@@ -1917,3 +1925,13 @@ a.skymap-card:focus-visible {
 	padding: 0.1rem 0 0.1rem 0.85rem;
 }
 .coverage-meta { display: block; font-size: 0.87rem; color: var(--text-mute); }
+
+/* The animation / figure tick boxes, beside the search input. */
+.filter-kinds {
+	display: flex;
+	gap: 1rem;
+	margin: 0.5rem 0 0;
+	font-size: 0.9rem;
+	color: var(--text-soft);
+}
+.filter-kinds label { display: inline-flex; align-items: center; gap: 0.35rem; }

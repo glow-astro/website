@@ -14,10 +14,18 @@
  *     [data-search-noun]          plural noun for the count ("articles")
  *     [data-search-ui]            the toolbar, `hidden` in the markup
  *       [data-search-input]       the input
+ *       [data-search-facet]       optional checkbox, value = a kind to show
  *       [data-search-count]       aria-live count
  *     [data-search-group]         a year block, hidden when it empties
  *       [data-search-item]        one entry
+ *         [data-search-kind]      optional, the value a facet checkbox matches
  *     [data-search-empty]         the empty state, `hidden` in the markup
+ *
+ * Facets are optional and additive: a list with no [data-search-facet] behaves
+ * exactly as it did before they existed. Where they are used, an entry has to
+ * pass both the text query and a ticked box, and unticking everything shows
+ * nothing rather than everything -- which is what the boxes say, and guessing
+ * otherwise would be a filter that ignores the reader.
  *
  * Two things are load-bearing rather than decorative:
  *
@@ -40,6 +48,7 @@
     if (!ui || !input || !count) { return; }
 
     var noun   = root.getAttribute('data-search-noun') || 'entries';
+    var facets = Array.prototype.slice.call(root.querySelectorAll('[data-search-facet]'));
     var groups = Array.prototype.slice.call(root.querySelectorAll('[data-search-group]'));
 
     // Cache the searchable text of every entry once, up front.
@@ -47,7 +56,11 @@
     groups.forEach(function (group) {
       var entries = Array.prototype.slice.call(group.querySelectorAll('[data-search-item]'));
       entries.forEach(function (el) {
-        items.push({ el: el, text: el.textContent.toLowerCase() });
+        items.push({
+          el: el,
+          text: el.textContent.toLowerCase(),
+          kind: el.getAttribute('data-search-kind') || ''
+        });
       });
       group._entries = entries;
     });
@@ -65,9 +78,14 @@
     function filter() {
       var q = input.value.trim().toLowerCase();
       var shown = 0;
+      var kinds = facets.length
+        ? facets.filter(function (f) { return f.checked; })
+                .map(function (f) { return f.value; })
+        : null;
 
       items.forEach(function (item) {
-        var hit = q === '' || item.text.indexOf(q) !== -1;
+        var hit = (q === '' || item.text.indexOf(q) !== -1) &&
+                  (kinds === null || kinds.indexOf(item.kind) !== -1);
         item.el.hidden = !hit;
         if (hit) { shown++; }
       });
@@ -81,6 +99,7 @@
     }
 
     input.addEventListener('input', filter);
+    facets.forEach(function (f) { f.addEventListener('change', filter); });
     ui.hidden = false;
     render(total);
   });
