@@ -20,6 +20,10 @@
   title: "Software & data"
   url: "/software.html"
 
+- id: outreach
+  title: "Outreach"
+  url: "/outreach.html"
+
 - id: join
   title: "Join"
   url: "/join.html"

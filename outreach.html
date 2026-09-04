@@ -1,0 +1,98 @@
+---
+layout: page
+nav: outreach
+title: "Outreach"
+eyebrow: "Beyond the field"
+lede: >-
+  Where the project's work has been written about, and what is being built for
+  readers outside the field.
+description: >-
+  Press coverage of the GLOW project, and public-facing material about
+  wave-optics lensing of gravitational waves.
+sections:
+  - id: media
+    label: "GLOW in the media"
+  - id: engagement
+    label: "Public engagement"
+  - id: explainers
+    label: "Explainers"
+  - id: kit
+    label: "For journalists"
+    rule: true
+---
+
+{% include subnav.html %}
+
+<section class="section" id="media" aria-labelledby="media-heading">
+  <h2 id="media-heading">GLOW in the media</h2>
+  {%- assign coverage = site.data.media_coverage | sort: "date" | reverse %}
+  {%- if coverage.size > 0 %}
+  <ul class="news">
+    {%- for c in coverage %}
+    <li>
+      <time class="news-date" datetime="{{ c.date }}">{{ c.date | date: "%b %Y" }}</time>
+      <div class="news-body">
+        <p>
+          <a href="{{ c.url }}" rel="noopener">{{ c.title }}</a>
+          <span class="coverage-meta">
+            {{ c.outlet }} &middot; {{ c.kind }}{% if c.lang %} &middot; in {{ c.lang }}{% endif %}
+          </span>
+        </p>
+        {%- comment -%}
+          The paper is looked up rather than restated: a title typed twice is a
+          title that will disagree with itself. An id with no match renders
+          nothing, which is visible on the page as a missing line.
+        {%- endcomment -%}
+        {%- if c.paper %}
+        {%- assign paper = site.data.publications.papers | where: "arxiv", c.paper | first %}
+        {%- if paper %}
+        <p class="coverage-paper">
+          On <a href="{{ paper.url }}" rel="noopener">{{ paper.title }}</a>
+        </p>
+        {%- endif %}
+        {%- endif %}
+      </div>
+    </li>
+    {%- endfor %}
+  </ul>
+  {%- else %}
+  <p>Nothing yet.</p>
+  {%- endif %}
+</section>
+
+{%- comment -%}
+  Two sections that hold a sentence each, on purpose. The owner wants the page
+  to grow into public engagement and explainers, and neither exists yet: he
+  writes the explainers himself, and the engagement activities have not
+  happened. A heading with an honest "not yet" is a commitment a reader can
+  check; an empty page invites nobody back, and inventing content to fill the
+  space would break §8 of docs/SITE_CONVENTIONS.md twice over.
+{%- endcomment -%}
+<section class="section" id="engagement" aria-labelledby="engagement-heading">
+  <h2 id="engagement-heading">Public engagement</h2>
+  <p>
+    Public lectures, school visits and festival appearances will be listed here
+    as they happen.
+  </p>
+</section>
+
+<section class="section" id="explainers" aria-labelledby="explainers-heading">
+  <h2 id="explainers-heading">Explainers</h2>
+  <p>
+    Short pieces on what wave optics does to a gravitational wave, written for
+    readers outside the field, are being prepared. In the meantime the
+    <a href="{{ '/science.html' | relative_url }}">science case</a> is the
+    non-technical way in.
+  </p>
+</section>
+
+<section class="section" id="kit" aria-labelledby="kit-heading">
+  <h2 id="kit-heading">For journalists</h2>
+  <p>
+    Every figure and animation on this site is collected on one page and
+    released under Creative Commons Attribution 4.0, free to reuse with credit:
+    see <a href="{{ '/figures.html' | relative_url }}">figures and
+    animations</a>. For anything else, including interview requests, write to
+    <a href="mailto:{{ site.pi.email }}">{{ site.pi.email }}</a>.
+  </p>
+</section>

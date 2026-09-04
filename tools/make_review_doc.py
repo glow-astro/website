@@ -51,6 +51,10 @@ PAGES = [
     ("glow-code.html",      "Software — GLoW"),
     ("dingo-lensing.html",  "Software — DINGO for lensed signals"),
     ("supporting-code.html", "Software — supporting code and data"),
+    ("outreach.html",       "Outreach"),
+    # The figure kit. Mostly captions written for reuse rather than for the
+    # page they came from, which is exactly the prose that drifts unreviewed.
+    ("figures.html",        "Figures and animations"),
     # Unlinked on the site (2026-09-02), so a reader will not stumble on it,
     # but it is prose the owner has to read before it goes anywhere. Listed
     # here for that reason and not because the site navigates to it.

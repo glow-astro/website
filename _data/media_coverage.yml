@@ -1,0 +1,43 @@
+# Press and media coverage of the project's work, newest first.
+#
+# What belongs here: something somebody else made about the work. A press
+# release from the host institute counts, an interview counts, a news article
+# counts. A talk the project gave does not, and neither does a paper: those are
+# on the publications page.
+#
+#   date    YYYY-MM-DD. Only the month is displayed. Orders the list.
+#   outlet  who published it, as a reader would name them.
+#   title   the piece's own title, not a description of it.
+#   url     absolute. Rendered with rel="noopener", like every external link.
+#   kind    article | video | press release | podcast. Rendered as a label, so
+#           keep the vocabulary small and add a new value only when an existing
+#           one would mislead.
+#   lang    optional ISO code, shown only when it is not English. A reader who
+#           follows a link into a language they do not read has been wasted.
+#   paper   optional arXiv id of the paper being covered. The page looks the
+#           paper up in publications.yml and links its title, so a change of
+#           title propagates and a wrong id shows up as a missing link.
+#
+# The list is short because the project started in 2026. Do not pad it: §8 of
+# docs/SITE_CONVENTIONS.md rules out anything written to impress, and three
+# honest entries say more than ten stretched ones.
+
+- date: 2026-08-26
+  outlet: "Albert Einstein Institute"
+  title: "Do black holes pretend to have large masses?"
+  url: "https://www.aei.mpg.de/1490509/do-black-holes-pretend-to-have-large-masses"
+  kind: "press release"
+  paper: "2512.17631"
+
+- date: 2026-08-25
+  outlet: "Cosmology Talks"
+  title: "GW231123: a magnified and diffracted black hole merger"
+  url: "https://youtu.be/ZGqOpDTL8k4"
+  kind: "video"
+  paper: "2512.17631"
+
+- date: 2025-11-01
+  outlet: "Albert Einstein Institute"
+  title: "ERC Consolidator Grant for Miguel Zumalacárregui"
+  url: "https://www.aei.mpg.de/1359867/erc-consolidator-grant-for-miguel-zumalac-rregui"
+  kind: "press release"
