@@ -69,7 +69,20 @@
 - label: "The ERC grant"
   date: 2025-11-01
   items:
+    # 9 December 2025, a month after the AEI piece: the Max Planck Society
+    # announces its six Consolidator grants together. It names him and describes
+    # the work but never says GLOW, so the AEI release is still the one that
+    # introduces the project. Items sort newest first, which puts this one on
+    # top; if that ever reads wrong, the fix is the sort in outreach.html.
+    # The group itself stays anchored to November, when the grant was announced.
+    - outlet: "Max Planck Society"
+      title: "Six ERC Consolidator Grants for Max Planck"
+      url: "https://www.mpg.de/25845263/erc-consolidator-grants-2025"
+      kind: "press release"
+      date: 2025-12-09
+
     - outlet: "Albert Einstein Institute"
       title: "ERC Consolidator Grant for Miguel Zumalacárregui"
       url: "https://www.aei.mpg.de/1359867/erc-consolidator-grant-for-miguel-zumalac-rregui"
       kind: "press release"
+      date: 2025-11-01
