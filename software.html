@@ -59,6 +59,7 @@ sections:
 
   <div class="grid grid-3">
     {%- for s in site.data.software.section %}
+    {%- if s.map == false %}{% continue %}{% endif %}
     {%- assign tool = site.data.software.tools | where: "id", s.tool | first -%}
     <a class="card card-link" href="{{ s.page | relative_url }}">
       <p class="card-title">{{ tool.name | default: s.short }}</p>

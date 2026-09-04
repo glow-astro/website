@@ -34,17 +34,6 @@
           {%- for s in site.data.software.section %}
           <li><a href="{{ s.page | relative_url }}">{{ s.short }}</a></li>
           {%- endfor %}
-          {%- comment -%}
-            Written out rather than added to the `section` list, at the owner's
-            word (2026-09-04). That list drives three things at once -- this
-            column, the section bar and the map of cards on software.html -- and
-            the figure kit belongs in the first two but not the third: it is
-            material to reuse, not a code or data release, and a fourth card
-            under "Codes & releases" would say otherwise. The cost is that this
-            one line is the exception someone has to notice, which is what this
-            comment is for.
-          {%- endcomment -%}
-          <li><a href="{{ '/figures.html' | relative_url }}">Figures &amp; animations</a></li>
         </ul>
       </div>
 

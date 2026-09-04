@@ -1,8 +1,9 @@
 ---
 layout: page
-nav: figures
+nav: software
+package_id: figures
 title: "Figures and animations"
-eyebrow: "Media kit"
+eyebrow: "Software & data"
 search: true
 lede: >-
   Resources on this site, free to reuse with credit.
@@ -16,9 +17,12 @@ sections:
     label: "Figures and animations"
   - id: logos
     label: "Logos"
+  - id: more
+    label: "Other packages"
     rule: true
 ---
 
+{% include packagenav.html %}
 {% include subnav.html %}
 
 <section class="section" id="reuse" aria-labelledby="reuse-heading">
@@ -177,4 +181,9 @@ sections:
       </figcaption>
     </figure>
   </div>
+</section>
+
+<section class="section" id="more" aria-labelledby="more-heading">
+  <h2 id="more-heading">Other packages</h2>
+  {% include package-links.html %}
 </section>

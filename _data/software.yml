@@ -78,6 +78,17 @@ section:
       Companion code and archived data that reproduce the results of individual
       papers.
 
+  # Added to the section list on 2026-09-04, at the owner's word: the kit is
+  # substantial enough to be part of Software & data rather than a stray page in
+  # the footer. `map: false` keeps it out of the card grid on the overview.
+  - id: figures
+    short: "Figures & animations"
+    page: "/figures.html"
+    map: false
+    card: >-
+      Every figure and animation on the site, with the files to download and the
+      terms to reuse them.
+
 tools:
   - id: "glow"
     name: "GLoW"
