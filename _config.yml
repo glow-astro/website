@@ -99,7 +99,7 @@ sass:
 #
 # The review host never counts, whatever this says. See the include.
 analytics:
-  goatcounter: ""
+  goatcounter: "glow-astro"
 
 plugins:
   - jekyll-sitemap
