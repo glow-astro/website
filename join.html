@@ -23,6 +23,16 @@ sections:
 
 <section class="section" id="open" aria-labelledby="open-heading">
   <h2 id="open-heading">Open calls</h2>
+  {%- comment -%}
+    The first use of "we" on the site, at the owner's request (2026-09-04) and
+    deliberately here: a call is the one place the project speaks to a person
+    rather than describing itself.
+  {%- endcomment -%}
+  <p>
+    GLOW is a multidisciplinary project: we look for people from diverse
+    backgrounds who are interested in wave-optics lensing and highly motivated
+    to join the team.
+  </p>
   {%- if open_positions.size > 0 %}
   <div class="grid grid-2">
     {%- for p in open_positions %}
@@ -78,9 +88,21 @@ sections:
     <a href="mailto:{{ site.pi.email }}">{{ site.pi.email }}</a> with a short
     description of what you have worked on.
   </p>
+  {%- comment -%}
+    Replaced on 2026-09-04. What stood here said that adjacent backgrounds are
+    read on the same terms, which is now the opening paragraph of the section
+    above and did not need saying twice. Hosting externally funded fellows is
+    the thing a reader cannot work out for themselves.
+  {%- endcomment -%}
   <p>
-    Enquiries from people whose background is adjacent rather than identical
-    (numerical methods, Bayesian inference, radio astronomy, scattering theory)
-    are read on the same terms as those from within gravitational-wave lensing.
+    The project can also host researchers who bring their own funding. If you
+    are applying to a scheme that pays for your position or for a research
+    visit, GLOW can act as host, and we are glad to shape the proposal with you
+    and to provide the supporting documents. Examples include Marie
+    Sk&#322;odowska-Curie postdoctoral fellowships, the Spanish Ram&oacute;n y
+    Cajal and Juan de la Cierva programmes, Atracci&oacute;n de Talento of the
+    Comunidad de Madrid, and visiting schemes such as Humboldt, JSPS or
+    Fulbright. Write well before the deadline: these applications are stronger
+    when the science has been discussed first.
   </p>
 </section>
