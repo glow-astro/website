@@ -26,6 +26,14 @@
 #            nothing in INSPIRE distinguishes them: not one of those 74 names
 #            GLoW in its abstract, which was checked rather than assumed. So
 #            the decision is a person's, made by reading the paper.
+#            Two things count as use, settled by the owner on 2026-09-06 and
+#            not obvious from the outside: running a DEVELOPMENT version counts
+#            (the code need not have been released when the work was done), and
+#            so does taking its ALGORITHMS across into other code, whether or
+#            not they were retyped. Both had been excluded on a narrower reading
+#            and both are now `true`, which is also what puts this list and the
+#            GLoW README at the same 18 papers. What is still excluded is the
+#            large majority: a citation for the physics, no code either way.
 #   note     optional, why the decision went the way it did. On a `true` it is
 #            the sentence in the paper that settles it, quoted; on a `false` it
 #            is there only where the paper is close enough to the line that a
@@ -100,9 +108,13 @@
   journal: null
   codes:
   - glow
-  include: false
-  note: 'Reimplemented rather than run: "we reimplement the GLoW point-mass lens computation in python
-    within the glworia package".'
+  include: true
+  note: >-
+    Reimplemented rather than run: "we reimplement the GLoW point-mass lens
+    computation in python within the glworia package". Held out until 2026-09-06
+    as not a use, which was the wrong test: taking the algorithms across into
+    another package is use, and the fact that the code was retyped on the way
+    does not make it someone else's.
 - arxiv: '2607.18441'
   title: Detection of cosmic strings by gravitational wave lensing. Predictions for Einstein Telescope
   authors: J. Szyndler, T. Bulik
@@ -806,8 +818,11 @@
   journal: Phys.Rev.D 108, 103532 (2023)
   codes:
   - glow
-  include: false
-  note: 'The work whose algorithms became GLoW: "our algorithms will be integrated in the Gravitational
-    Lensing of Waves (GLoW) code for public use", with a footnote promising release in December 2023.
-    The code did not exist yet, so by the rule used here it is not a user of it. The GLoW README lists
-    it anyway, which is a fair thing for the authors to do and a decision for you.'
+  include: true
+  note: >-
+    The work whose algorithms became GLoW: "our algorithms will be integrated in
+    the Gravitational Lensing of Waves (GLoW) code for public use", with a
+    footnote promising release in December 2023. Held out until 2026-09-06 on
+    the ground that the released code did not exist yet, which was the wrong
+    test: the work ran the development version, and a development version
+    counts as use.
