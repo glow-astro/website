@@ -44,6 +44,17 @@
 #
 # The 3 records without a preprint (two theses and a journal-only paper) stay
 # `include: null`. Nothing was read, so nothing is claimed.
+#
+# WHAT THE HARVEST CANNOT SEE
+#
+# INSPIRE citations are the only thing fetch_code_papers.py knows about, and
+# two kinds of paper are invisible to it: one that uses GLoW without citing the
+# method paper (Singh et al., 2502.10758), and one whose INSPIRE record has no
+# usable reference list, so it registers as citing nothing (Shan et al.,
+# 2512.19118, record 3094856, 2 references parsed). Both were found by diffing
+# against the list in the GLoW README, which is worth doing whenever it
+# changes. An entry added that way is added by hand and survives a re-run,
+# which never deletes.
 - arxiv: '2608.07667'
   title: Probability of gravitational-wave lensing by intermediate-mass black holes and globular clusters
   authors: L. Vujeva, J. M. Ezquiaga, R. K. Lo et al.
@@ -400,6 +411,24 @@
   codes:
   - glow
   include: null
+- arxiv: '2512.19118'
+  title: 'GW231123: A Case for Binary Microlensing in a Strong Lensing Field'
+  authors: X. Shan, H. Yang, S. Mao
+  url: https://inspirehep.net/literature/3094856
+  date: '2025-12-22'
+  journal: null
+  codes:
+  - glow
+  include: true
+  note: >-
+    Ran it for the comparison model: "For the isolated point-mass lens model, we
+    use GLoW (Villarrubia-Rojo et al. 2025) to generate the lensing
+    amplification, which is then also incorporated into Bilby." Added by hand on
+    2026-09-06, because the INSPIRE harvest cannot see it: record 3094856 has a
+    reference list of 2 entries, so it does not register as citing either seed
+    and no re-run of tools/fetch_code_papers.py will ever propose it. That is
+    the general failure mode of the harvest, not a one-off, so a paper known by
+    other means belongs here whether or not INSPIRE agrees.
 - arxiv: '2512.17550'
   title: 'GW231123: Overlapping Gravitational Wave Signals?'
   authors: Q. Hu, H. Narola, J. Heynen et al.
