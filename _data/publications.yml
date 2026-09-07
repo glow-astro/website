@@ -75,6 +75,21 @@
 #   page, not on the output list of this project.
 
 papers:
+  - title: "Supernova microlensing as a probe of ultracompact minihalos and primordial cosmology"
+    authors: ["Croon", "Sevillano Muñoz", "Zumalacárregui"]
+    arxiv: "2609.04308"
+    featured: true
+    url: "https://inspirehep.net/literature/3200122"
+    date: 2026-09-03
+    status: preprint
+    wps: ["WP3-A"]
+    summary: >-
+      Supernovae are sensitive to lenses whose physical size is comparable to
+      their Einstein radius, so they probe extended dark objects that
+      point-lens microlensing searches miss. The detection efficiency for
+      ultracompact minihalos is computed and mapped onto limits on the
+      primordial power spectrum, with projections for LSST.
+
   - title: "Across the Universe: GW231123 as a magnified and diffracted black hole merger"
     authors: ["Goyal", "Villarrubia-Rojo", "Zumalacárregui"]
     arxiv: "2512.17631"
