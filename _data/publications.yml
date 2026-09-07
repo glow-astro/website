@@ -78,7 +78,12 @@ papers:
   - title: "Supernova microlensing as a probe of ultracompact minihalos and primordial cosmology"
     authors: ["Croon", "Sevillano Muñoz", "Zumalacárregui"]
     arxiv: "2609.04308"
-    featured: true
+    # Not featured, and WP3-A alone, both by the owner (2026-09-07): it is
+    # here for completeness, it is not a headline result, and it is not
+    # especially about gravitational waves. Compare the stochastic-diffraction
+    # paper, which is WP3-A too but also runs through wave optics,
+    # microlensing and data analysis, and is linked from those pages.
+    featured: false
     url: "https://inspirehep.net/literature/3200122"
     date: 2026-09-03
     status: preprint
