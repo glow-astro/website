@@ -46,7 +46,13 @@
 #            sentences there are unreadable.
 #   blurb    one or two sentences; the topic's own summary, used in prose
 #   wps      work-package tasks this topic feeds
-#   papers   arXiv ids from publications.yml, for the "read more" line
+#   papers   arXiv ids from publications.yml, shown in the topic page's "See
+#            also". **The order is yours and it is the order they appear in**:
+#            most relevant to this topic first, not newest first. The block
+#            shows the first six and sends the rest to the publications page,
+#            so the order decides which ones a reader is given (owner,
+#            2026-09-16). A paper may sit in several topics, in a different
+#            place in each.
 #   media    OPTIONAL -- the page's OPENING figure, where it has one. Set
 #            `static: true` for a plot instead of an animation; the file is
 #            then media/<file>.png and there is no poster. `file` names the

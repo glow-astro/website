@@ -10,14 +10,19 @@
   never does. The two are now stacked bands of equal width, and the papers are
   a list, one per line, so the block grows downward instead of sideways.
 
-  The list is capped at six, newest first, with the remainder pointing at the
-  publications page. The cap is the point: a topic page should say what the
-  work rests on, not become a second copy of the publications list.
+  The list is capped at six, with the remainder pointing at the publications
+  page. The cap is the point: a topic page should say what the work rests on,
+  not become a second copy of the publications list.
 
-  Order comes from `date` in _data/publications.yml, not from the order of the
-  topic's own `papers` list, so a hand-written order cannot go stale. The ids
-  are still the topic's, and an id with no matching paper is caught by the
-  data-integrity check in docs/SITE_CONVENTIONS.md §3.
+  Order is the topic's own `papers` list, verbatim, and the cap takes the top
+  of it. The list was briefly sorted by date instead, which was wrong (owner,
+  2026-09-16): if six of twenty are going to be shown, they have to be the six
+  that matter most to the topic, and only the person who curates the list
+  knows which those are. A date sort silently discards that judgement and
+  keeps whatever is newest.
+
+  An id with no matching paper is caught by the data-integrity check in
+  docs/SITE_CONVENTIONS.md §3, and skipped here rather than rendered blank.
 
   This include carries the whole block, markup included, because the six topic
   pages held an identical copy of it until today and identical copies drift.
@@ -33,17 +38,13 @@
     <dt>Papers</dt>
     <dd>
       <ul class="paper-list">
-        {%- assign ordered = site.data.publications.papers | sort: "date" | reverse -%}
-        {%- assign shown = 0 -%}
-        {%- for p in ordered -%}
-        {%- if include.topic.papers contains p.arxiv -%}
-        {%- assign shown = shown | plus: 1 -%}
-        {%- if shown <= limit %}
+        {%- for id in include.topic.papers limit: limit -%}
+        {%- assign p = site.data.publications.papers | where: "arxiv", id | first -%}
+        {%- if p %}
         <li>
           <a href="{{ p.url }}" rel="noopener">{{ p.title }}</a>
           <span class="paper-list-year">{{ p.date | date: "%Y" }}</span>
         </li>
-        {%- endif -%}
         {%- endif -%}
         {%- endfor %}
         {%- if total > limit %}
