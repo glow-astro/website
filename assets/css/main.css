@@ -663,9 +663,27 @@ main { padding-bottom: 3rem; }
 	line-height: 1.45;
 }
 
+/* Topic pages stack their two bands rather than sitting them side by side.
+   The work-package cell holds at most three tasks and cannot grow; the paper
+   cell has no bound, so as a column beside the other it would stretch one cell
+   down the page while its neighbour stayed one line. Stacked, the block grows
+   downward and both bands keep the same width whatever is in them. */
+.roles-stack { grid-template-columns: 1fr; }
+
 .roles dt { font-weight: 640; }
 
 .roles dd { margin: 0; color: var(--text-mute); font-size: 0.87rem; }
+
+/* One paper per line, so the list stays readable as it lengthens. The year is
+   the only thing a reader needs beside the title here: the full reference,
+   the authors and the links are one click away on the publications page. */
+.paper-list { list-style: none; margin: 0.15rem 0 0; padding: 0; }
+
+.paper-list li { margin-top: 0.3rem; }
+
+.paper-list-year { opacity: 0.7; }
+
+.paper-list-more { font-style: italic; }
 
 /* ---- Figures --------------------------------------------------------- */
 

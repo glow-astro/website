@@ -1,0 +1,58 @@
+{%- comment -%}
+  The "See also" block at the foot of every topic page: the work-package tasks
+  the topic feeds, and the papers behind it.
+
+  Restructured 2026-09-07, at the owner's word. It used to be a two-column
+  grid, one cell for the work packages and one for the papers, each a run of
+  links separated by middots. That reads at two papers and fails at twenty:
+  the tasks are capped at three by the programme and will stay so, the papers
+  are not capped by anything, so one cell grows without bound beside one that
+  never does. The two are now stacked bands of equal width, and the papers are
+  a list, one per line, so the block grows downward instead of sideways.
+
+  The list is capped at six, newest first, with the remainder pointing at the
+  publications page. The cap is the point: a topic page should say what the
+  work rests on, not become a second copy of the publications list.
+
+  Order comes from `date` in _data/publications.yml, not from the order of the
+  topic's own `papers` list, so a hand-written order cannot go stale. The ids
+  are still the topic's, and an id with no matching paper is caught by the
+  data-integrity check in docs/SITE_CONVENTIONS.md §3.
+
+  This include carries the whole block, markup included, because the six topic
+  pages held an identical copy of it until today and identical copies drift.
+
+  Takes: include.topic (a _data/topics.yml entry).
+{%- endcomment -%}
+{%- assign total = include.topic.papers | size -%}
+{%- assign limit = 6 -%}
+<dl class="roles roles-stack">
+  {% include topic-tasks.html topic=include.topic %}
+  {%- if total > 0 %}
+  <div>
+    <dt>Papers</dt>
+    <dd>
+      <ul class="paper-list">
+        {%- assign ordered = site.data.publications.papers | sort: "date" | reverse -%}
+        {%- assign shown = 0 -%}
+        {%- for p in ordered -%}
+        {%- if include.topic.papers contains p.arxiv -%}
+        {%- assign shown = shown | plus: 1 -%}
+        {%- if shown <= limit %}
+        <li>
+          <a href="{{ p.url }}" rel="noopener">{{ p.title }}</a>
+          <span class="paper-list-year">{{ p.date | date: "%Y" }}</span>
+        </li>
+        {%- endif -%}
+        {%- endif -%}
+        {%- endfor %}
+        {%- if total > limit %}
+        <li class="paper-list-more">
+          <a href="{{ '/publications.html' | relative_url }}">{{ total | minus: limit }} more on the publications page</a>
+        </li>
+        {%- endif %}
+      </ul>
+    </dd>
+  </div>
+  {%- endif %}
+</dl>

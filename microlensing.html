@@ -29,7 +29,7 @@ sections:
   - id: references
     label: "References"
   - id: more
-    label: "Where this is done"
+    label: "See also"
 ---
 
 {%- assign t = site.data.topics | where: "id", page.topic_id | first %}
@@ -155,21 +155,8 @@ sections:
 </section>
 
 <section class="section" id="more" aria-labelledby="more-heading">
-  <h2 id="more-heading">Where this is done</h2>
-  <dl class="roles">
-    {% include topic-tasks.html topic=t %}
-    {%- if t.papers.size > 0 %}
-    <div>
-      <dt>Papers</dt>
-      <dd>
-        {%- for id in t.papers %}
-        {%- assign paper = site.data.publications.papers | where: "arxiv", id | first %}
-        <a href="{{ paper.url }}" rel="noopener">{{ paper.title }}</a>
-        {%- unless forloop.last %} &middot; {% endunless %}{% endfor %}
-      </dd>
-    </div>
-    {%- endif %}
-  </dl>
+  <h2 id="more-heading">See also</h2>
+  {% include topic-seealso.html topic=t %}
   <div class="btn-row">
       <a class="btn" href="{{ '/wave-optics.html' | relative_url }}">← Wave optics</a>
       <a class="btn" href="{{ '/data-analysis.html' | relative_url }}">Data analysis →</a>
