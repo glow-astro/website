@@ -442,6 +442,15 @@ These came from the site's owner. They matter more than the code.
   is for people never formally supervised — say what the connection *was*, not
   what it was not. Group people by what they did, never by whether they
   finished.
+- **A new paper is a reference, not a revision.** Adding one means an entry in
+  `_data/publications.yml` and, where it belongs, an id in that topic's
+  `papers` list in `_data/topics.yml`, which puts it in the topic page's
+  "See also". It does not mean a new paragraph of science prose. The owner
+  said so on 2026-09-16, of a paragraph written for exactly that reason: the
+  science description does not need revising every time a paper appears, and
+  prose written to accommodate one costs him more to repair than it was worth.
+  Where a paper genuinely changes what a page claims, say so and let him write
+  it.
 - **GLOW** in all caps is the ERC project. **GLoW**, lowercase "o", is the
   software. They are different things and the distinction is load-bearing.
 
