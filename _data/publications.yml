@@ -75,6 +75,22 @@
 #   page, not on the output list of this project.
 
 papers:
+  - title: "Gravitational lensing of gravitational waves by galaxy clusters"
+    authors: ["Shan", "Wang", "Mao", "Yang", "Zumalacárregui"]
+    arxiv: "2609.16891"
+    featured: false
+    url: "https://inspirehep.net/literature/3203932"
+    date: 2026-09-15
+    status: preprint
+    wps: ["WP1-A", "WP2-A"]
+    summary: >-
+      Time-delay and magnification-ratio distributions for binary black holes
+      lensed by galaxy clusters, together with the microlensing systematics
+      inside a cluster potential. Detected cluster pairs keep a long-delay tail
+      that priors calibrated on galaxy lenses suppress, while microlensing is
+      subdominant because the images form far from the brightest cluster
+      galaxy.
+
   - title: "Supernova microlensing as a probe of ultracompact minihalos and primordial cosmology"
     authors: ["Croon", "Sevillano Muñoz", "Zumalacárregui"]
     arxiv: "2609.04308"

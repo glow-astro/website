@@ -114,7 +114,7 @@
     what a signal carries is the statistics of the population rather than any
     single lens.
   wps: ["WP1-A", "WP2-A", "WP3-A"]
-  papers: ["2606.17765", "2512.17631"]
+  papers: ["2606.17765", "2512.17631", "2609.16891"]
   # The setup before any of its parts: the sweep further down varies a
   # parameter of a geometry the reader has not been shown yet.
   #
