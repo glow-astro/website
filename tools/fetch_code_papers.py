@@ -198,9 +198,37 @@ def main(argv: list[str]) -> int:
 
     papers = sorted(by_key.values(), key=lambda p: (p.get("date") or "", p["title"]),
                     reverse=True)
-    header = PAPERS.read_text().split("\n\n", 1)[0] + "\n\n" if PAPERS.exists() else ""
-    PAPERS.write_text(header + yaml.safe_dump(
-        papers, sort_keys=False, allow_unicode=True, width=100, default_flow_style=False))
+    # The header is the run of comment lines the file opens with, and it is
+    # kept verbatim: it is where the schema and every standing decision about
+    # this list are written. Read as "everything before the first blank line"
+    # until 2026-09-17, which worked only as long as the header happened to end
+    # in one. The last blank line in it went on 2026-09-03; the next run after
+    # that, today, took the WHOLE FILE as the header and wrote the papers out
+    # again underneath it, doubling all 77 entries. Nothing was lost and the
+    # duplicate half was discarded, but the file that reaches the site would
+    # have been nonsense. Leading comments are what a header is, so that is
+    # what this now reads.
+    header = ""
+    if PAPERS.exists():
+        head = []
+        for line in PAPERS.read_text().splitlines(keepends=True):
+            if line.startswith("#") or not line.strip():
+                head.append(line)
+            else:
+                break
+        header = "".join(head)
+    body = yaml.safe_dump(papers, sort_keys=False, allow_unicode=True,
+                          width=100, default_flow_style=False)
+    PAPERS.write_text(header + body)
+
+    # And a cheap guard against the same class of mistake: whatever is on disk
+    # now has to parse back to exactly the list just written.
+    written = yaml.safe_load(PAPERS.read_text()) or []
+    if len(written) != len(papers):
+        print(f"  ERROR: wrote {len(papers)} papers but the file parses as "
+              f"{len(written)}. The header handling is wrong; do not commit "
+              f"this file.")
+        return 1
 
     messy = [p["arxiv"] for p in papers
              if "\\" in p["title"] or "$" in p["title"] or "^" in p["title"]

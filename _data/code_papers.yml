@@ -63,6 +63,94 @@
 # against the list in the GLoW README, which is worth doing whenever it
 # changes. An entry added that way is added by hand and survives a re-run,
 # which never deletes.
+#
+# THE 2026-09-17 PASS
+#
+# Run because the owner named a paper that uses GLoW (Blinov & Kim,
+# 2609.13369). The harvest brought 5 new candidates, all read by the method
+# above. One ran it, and its footnote reporting where GLoW fell short for them
+# is as good a proof of use as a citation ever gets. Three cite the group's
+# work and never name the code. The fifth is the group's own cluster-lensing
+# paper, 2609.16891, where the only occurrence of the string is the grant in
+# the acknowledgements: it is `false` on that evidence alone and an author can
+# overturn it.
+#
+# That run also exposed a bug that had been latent in tools/fetch_code_papers.py
+# since 2026-09-03: it took the header to be everything before the first blank
+# line, this file stopped having one, and the whole file was written out again
+# underneath itself. Fixed there, with a guard that re-reads what it wrote.
+- arxiv: '2609.16990'
+  title: Impact of the Host Galaxy on the Search for Gravitational-Wave Microlensing by Compact Objects
+  authors: U. Deka, A. Ganguly, S. Bhattacharyya et al.
+  url: https://inspirehep.net/literature/3204033
+  date: '2026-09-15'
+  journal: null
+  codes:
+  - glow
+  include: false
+  note: >-
+    Cites the method paper as prior art and then uses something else: "recently
+    developed techniques have started addressing these challenges
+    (Villarrubia-Rojo et al. 2025; Ephremidze et al. 2026). In this work, we use
+    the numerical method developed in Deka et al. (2025a)". GLoW is not named
+    anywhere in the text.
+- arxiv: '2609.16891'
+  title: Gravitational lensing of gravitational waves by galaxy clusters
+  authors: X. Shan, Y. F. Wang, S. Mao et al.
+  url: https://inspirehep.net/literature/3203932
+  date: '2026-09-15'
+  journal: null
+  codes:
+  - glow
+  include: false
+  note: >-
+    **A guess, and the owner is an author, so he can settle it in one line.**
+    The text never names GLoW: the only occurrence of the string is "ERC grant
+    GLOW (101230608)" in the acknowledgements, which is the grant and not the
+    code. The microlensing mismatches the paper computes are the kind of thing
+    GLoW does, so if it was used and simply not named, flip this to true. Read
+    on 2026-09-17.
+- arxiv: '2609.13369'
+  title: Diffraction of gravitational waves by extended dark objects
+  authors: N. Blinov, J. L. Kim
+  url: https://inspirehep.net/literature/3203016
+  date: '2026-09-11'
+  journal: null
+  codes:
+  - glow
+  include: true
+  note: >-
+    Ran it for the point-mass limit of an extended lens: "The amplification factor
+    for the point lens was computed using GLoW", and the code is named as "an
+    efficient implementation" of the analytic point-lens amplification. A
+    footnote reports where it fell short for them, which is a use if anything
+    is: "although GLoW has a built-in class for the constant density sphere, we
+    found that it does not always find all of the images" for their parameters.
+- arxiv: '2609.06347'
+  title: Distinguishing lensing and precessional modulation in binary black-hole inspiral waveforms
+  authors: T. N. Nguyen-Vo, T. Singh, B. McKallip et al.
+  url: https://inspirehep.net/literature/3200822
+  date: '2026-09-06'
+  journal: null
+  codes:
+  - glow
+  include: false
+  note: >-
+    GLoW is not named anywhere in the text. The only connection is the GW231123
+    paper in the bibliography, cited for its result rather than for the code.
+- arxiv: '2609.03859'
+  title: A catalogue of insights from the fourth LIGO-Virgo-KAGRA observing run
+  authors: C. P. Berry, D. Williams
+  url: https://inspirehep.net/literature/3199621
+  date: '2026-09-03'
+  journal: null
+  codes:
+  - glow
+  include: false
+  note: >-
+    A review of what the fourth observing run has taught, not an analysis. GLoW
+    is not named anywhere in the text, and the GW231123 paper is cited for its
+    result.
 - arxiv: '2608.07667'
   title: Probability of gravitational-wave lensing by intermediate-mass black holes and globular clusters
   authors: L. Vujeva, J. M. Ezquiaga, R. K. Lo et al.
@@ -109,12 +197,10 @@
   codes:
   - glow
   include: true
-  note: >-
-    Reimplemented rather than run: "we reimplement the GLoW point-mass lens
-    computation in python within the glworia package". Held out until 2026-09-06
-    as not a use, which was the wrong test: taking the algorithms across into
-    another package is use, and the fact that the code was retyped on the way
-    does not make it someone else's.
+  note: 'Reimplemented rather than run: "we reimplement the GLoW point-mass lens computation in python
+    within the glworia package". Held out until 2026-09-06 as not a use, which was the wrong test: taking
+    the algorithms across into another package is use, and the fact that the code was retyped on the way
+    does not make it someone else''s.'
 - arxiv: '2607.18441'
   title: Detection of cosmic strings by gravitational wave lensing. Predictions for Einstein Telescope
   authors: J. Szyndler, T. Bulik
@@ -231,7 +317,7 @@
   authors: A. Garoffolo, G. Tasinato
   url: https://inspirehep.net/literature/3158591
   date: '2026-05-20'
-  journal: null
+  journal: Phys.Rev.D 114, 064059 (2026)
   codes:
   - glow
   include: false
@@ -245,11 +331,11 @@
   - glow
   include: false
 - arxiv: '2605.10333'
-  title: 'BB plot: A Tool for Accurate Model Selection Using Bayes factors'
+  title: Tool for accurate model selection using Bayes factors
   authors: A. Barsode
   url: https://inspirehep.net/literature/3154273
   date: '2026-05-11'
-  journal: null
+  journal: Phys.Rev.D 114, 064045 (2026)
   codes:
   - glow
   include: false
@@ -314,7 +400,7 @@
   authors: N. Ephremidze, M. Kamionkowski, C. Dvorkin
   url: https://inspirehep.net/literature/3129087
   date: '2026-03-12'
-  journal: Phys.Rev.D 114 (2026)
+  journal: Phys.Rev.D 114, 023546 (2026)
   codes:
   - glow
   include: true
@@ -345,7 +431,7 @@
   authors: J. Zosso, L. Magaña Zertuche, S. Gasparotto et al.
   url: https://inspirehep.net/literature/3113343
   date: '2026-01-30'
-  journal: Phys.Rev.D 113 (2026)
+  journal: Phys.Rev.D 113, 104033 (2026)
   codes:
   - glow
   include: false
@@ -354,7 +440,7 @@
   authors: C. Yin, Z. Lin, J. h. He
   url: https://inspirehep.net/literature/3109784
   date: '2026-01-15'
-  journal: Phys.Rev.D 113 (2026)
+  journal: Phys.Rev.D 113, 024045 (2026)
   codes:
   - glow
   include: false
@@ -363,7 +449,7 @@
   authors: E. Bruyère, C. Pitrou
   url: https://inspirehep.net/literature/3105717
   date: '2026-01-15'
-  journal: Class.Quant.Grav. 43 (2026)
+  journal: Class.Quant.Grav. 43, 085010 (2026)
   codes:
   - glow
   include: false
@@ -372,7 +458,7 @@
   authors: S. Bini, K. Król, K. Chatziioannou et al.
   url: https://inspirehep.net/literature/3105047
   date: '2026-01-14'
-  journal: Phys.Rev.D 113 (2026)
+  journal: Phys.Rev.D 113, 083036 (2026)
   codes:
   - glow
   include: false
@@ -410,7 +496,7 @@
   authors: A. Jan, S. Nicolella, D. Shoemaker et al.
   url: https://inspirehep.net/literature/3095364
   date: '2025-12-23'
-  journal: Phys.Rev.D 113 (2026)
+  journal: Phys.Rev.D 113, 084052 (2026)
   codes:
   - glow
   include: false
@@ -432,15 +518,12 @@
   codes:
   - glow
   include: true
-  note: >-
-    Ran it for the comparison model: "For the isolated point-mass lens model, we
-    use GLoW (Villarrubia-Rojo et al. 2025) to generate the lensing
-    amplification, which is then also incorporated into Bilby." Added by hand on
-    2026-09-06, because the INSPIRE harvest cannot see it: record 3094856 has a
-    reference list of 2 entries, so it does not register as citing either seed
-    and no re-run of tools/fetch_code_papers.py will ever propose it. That is
-    the general failure mode of the harvest, not a one-off, so a paper known by
-    other means belongs here whether or not INSPIRE agrees.
+  note: 'Ran it for the comparison model: "For the isolated point-mass lens model, we use GLoW (Villarrubia-Rojo
+    et al. 2025) to generate the lensing amplification, which is then also incorporated into Bilby." Added
+    by hand on 2026-09-06, because the INSPIRE harvest cannot see it: record 3094856 has a reference list
+    of 2 entries, so it does not register as citing either seed and no re-run of tools/fetch_code_papers.py
+    will ever propose it. That is the general failure mode of the harvest, not a one-off, so a paper known
+    by other means belongs here whether or not INSPIRE agrees.'
 - arxiv: '2512.17550'
   title: 'GW231123: Overlapping Gravitational Wave Signals?'
   authors: Q. Hu, H. Narola, J. Heynen et al.
@@ -466,7 +549,7 @@
   authors: J. C. Chan, J. M. Ezquiaga, R. K. Lo et al.
   url: https://inspirehep.net/literature/3094012
   date: '2025-12-18'
-  journal: Phys.Rev.D 114 (2026)
+  journal: Phys.Rev.D 114, L021502 (2026)
   codes:
   - glow
   include: false
@@ -494,7 +577,7 @@
   authors: M. Saketh, R. Ghosh, A. Mishra
   url: https://inspirehep.net/literature/3087544
   date: '2025-11-28'
-  journal: Phys.Rev.D 113 (2026)
+  journal: Phys.Rev.D 113, 084056 (2026)
   codes:
   - glow
   include: false
@@ -503,7 +586,7 @@
   authors: M. Carrillo Gonzalez, V. De Luca, A. Garoffolo et al.
   url: https://inspirehep.net/literature/3085088
   date: '2025-11-19'
-  journal: Phys.Rev.D 113 (2026)
+  journal: Phys.Rev.D 113, 024024 (2026)
   codes:
   - glow
   include: false
@@ -512,7 +595,7 @@
   authors: M. Sun, J. Wu, Q. Hu et al.
   url: https://inspirehep.net/literature/3082430
   date: '2025-11-12'
-  journal: Phys.Rev.D 113 (2026)
+  journal: Phys.Rev.D 113, 103004 (2026)
   codes:
   - glow
   include: true
@@ -523,7 +606,7 @@
   authors: M. Caldarola, S. Goyal, N. Gupte et al.
   url: https://inspirehep.net/literature/3081783
   date: '2025-11-11'
-  journal: Phys.Rev.D 113 (2026)
+  journal: Phys.Rev.D 113, 104073 (2026)
   codes:
   - glow
   include: true
@@ -533,7 +616,7 @@
   authors: O. Bulashenko, N. Villanueva, R. B. Nerin et al.
   url: https://inspirehep.net/literature/3072592
   date: '2025-10-23'
-  journal: Phys.Rev.D 113 (2026)
+  journal: Phys.Rev.D 113, 044063 (2026)
   codes:
   - glow
   include: false
@@ -594,7 +677,7 @@
   authors: S. Ali, M. Kesden, L. King
   url: https://inspirehep.net/literature/2937949
   date: '2025-06-23'
-  journal: Phys.Rev.D 113 (2026)
+  journal: Phys.Rev.D 113, 023046 (2026)
   codes:
   - glow
   include: false
@@ -603,7 +686,7 @@
   authors: K. T. Abe, S. Arai, R. Inui et al.
   url: https://inspirehep.net/literature/2931895
   date: '2025-06-09'
-  journal: Phys.Rev.D 113 (2026)
+  journal: Phys.Rev.D 113, 043552 (2026)
   codes:
   - glow
   include: true
@@ -615,7 +698,7 @@
   authors: T. Suyama, S. J. Kapadia
   url: https://inspirehep.net/literature/2928714
   date: '2025-06-03'
-  journal: Phys.Rev.D 112 (2025)
+  journal: Phys.Rev.D 112, 063529 (2025)
   codes:
   - glow
   include: false
@@ -625,7 +708,7 @@
   authors: W. L. Xu, Y. Z. Li, Y. G. Chen et al.
   url: https://inspirehep.net/literature/2920290
   date: '2025-05-11'
-  journal: Phys.Rev.D 113 (2026)
+  journal: Phys.Rev.D 113, 083003 (2026)
   codes:
   - glow
   include: false
@@ -634,7 +717,7 @@
   authors: A. M. Serra, O. Bulashenko
   url: https://inspirehep.net/literature/2911711
   date: '2025-04-14'
-  journal: Phys.Rev.D 112 (2025)
+  journal: Phys.Rev.D 112, 024041 (2025)
   codes:
   - glow
   include: false
@@ -643,7 +726,7 @@
   authors: J. M. Ezquiaga, R. K. Lo, L. Vujeva
   url: https://inspirehep.net/literature/2905763
   date: '2025-03-28'
-  journal: Phys.Rev.D 112 (2025)
+  journal: Phys.Rev.D 112, 043544 (2025)
   codes:
   - glow
   include: false
@@ -652,7 +735,7 @@
   authors: G. P. Smith, T. Baker, S. Birrer et al.
   url: https://inspirehep.net/literature/2904454
   date: '2025-03-25'
-  journal: Phil.Trans.Roy.Soc.Lond.A 383 (2025)
+  journal: Phil.Trans.Roy.Soc.Lond.A 383, 20240134 (2025)
   codes:
   - glow
   include: false
@@ -661,7 +744,7 @@
   authors: J. C. Chan, C. Dyson, M. Garcia et al.
   url: https://inspirehep.net/literature/2892293
   date: '2025-02-19'
-  journal: Phys.Rev.D 112 (2025)
+  journal: Phys.Rev.D 112, 064009 (2025)
   codes:
   - glow
   include: false
@@ -691,7 +774,7 @@
   authors: U. Deka, G. Prabhu, M. A. Shaikh et al.
   url: https://inspirehep.net/literature/2865372
   date: '2025-01-06'
-  journal: Phys.Rev.D 111 (2025)
+  journal: Phys.Rev.D 111, 104042 (2025)
   codes:
   - glow
   include: false
@@ -700,7 +783,7 @@
   authors: L. Vujeva, J. M. Ezquiaga, R. K. Lo et al.
   url: https://inspirehep.net/literature/2865375
   date: '2025-01-03'
-  journal: Phys.Rev.D 112 (2025)
+  journal: Phys.Rev.D 112, 063044 (2025)
   codes:
   - glow
   include: false
@@ -719,7 +802,7 @@
   authors: H. Yarimoto, M. Oguri
   url: https://inspirehep.net/literature/2857859
   date: '2024-12-10'
-  journal: Phys.Rev.D 111 (2025)
+  journal: Phys.Rev.D 111, 083541 (2025)
   codes:
   - glow
   include: false
@@ -728,7 +811,7 @@
   authors: R. Bada-Nerin, O. Bulashenko, O. Gramaxo Freitas et al.
   url: https://inspirehep.net/literature/2854665
   date: '2024-11-30'
-  journal: Phys.Rev.D 111 (2025)
+  journal: Phys.Rev.D 111, 084067 (2025)
   codes:
   - glow
   include: false
@@ -738,7 +821,7 @@
   authors: N. Menadeo, M. Zumalacárregui
   url: https://inspirehep.net/literature/2847089
   date: '2024-11-11'
-  journal: Phys.Rev.D 111 (2025)
+  journal: Phys.Rev.D 111, 104022 (2025)
   codes:
   - glow
   include: false
@@ -768,7 +851,7 @@
   authors: X. Shan, G. Li, X. Chen et al.
   url: https://inspirehep.net/literature/2827304
   date: '2024-09-10'
-  journal: Sci.China Phys.Mech.Astron. 68 (2025)
+  journal: Sci.China Phys.Mech.Astron. 68, 219512 (2025)
   codes:
   - glow
   include: false
@@ -777,7 +860,7 @@
   authors: A. K. Meena
   url: https://inspirehep.net/literature/2824179
   date: '2024-08-30'
-  journal: Phys.Rev.D 110 (2024)
+  journal: Phys.Rev.D 110, 103024 (2024)
   codes:
   - glow
   include: false
@@ -786,7 +869,7 @@
   authors: G. Brando, S. Goyal, S. Savastano et al.
   url: https://inspirehep.net/literature/2804868
   date: '2024-07-04'
-  journal: Phys.Rev.D 111 (2025)
+  journal: Phys.Rev.D 111, 024068 (2025)
   codes:
   - glow
   include: true
@@ -806,7 +889,7 @@
   authors: J. Streibert, H. O. Silva, M. Zumalacárregui
   url: https://inspirehep.net/literature/2776372
   date: '2024-04-11'
-  journal: Phys.Rev.D 112 (2025)
+  journal: Phys.Rev.D 112, 024073 (2025)
   codes:
   - glow
   include: false
@@ -819,10 +902,7 @@
   codes:
   - glow
   include: true
-  note: >-
-    The work whose algorithms became GLoW: "our algorithms will be integrated in
-    the Gravitational Lensing of Waves (GLoW) code for public use", with a
-    footnote promising release in December 2023. Held out until 2026-09-06 on
-    the ground that the released code did not exist yet, which was the wrong
-    test: the work ran the development version, and a development version
-    counts as use.
+  note: 'The work whose algorithms became GLoW: "our algorithms will be integrated in the Gravitational
+    Lensing of Waves (GLoW) code for public use", with a footnote promising release in December 2023.
+    Held out until 2026-09-06 on the ground that the released code did not exist yet, which was the wrong
+    test: the work ran the development version, and a development version counts as use.'
