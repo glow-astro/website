@@ -221,6 +221,13 @@ talks:
   # the kind of talk: "invited", "plenary" and "recorded webinar" were dropped
   # on 2026-08-28 as noise on a project page, the recording being evident from
   # the link. That information lives in the CV, which is where it counts.
+  - title: "Quasi-Periodic Lensing of Starlight: A Novel Signature for Supermassive Black Hole Binaries"
+    institution: "Max Planck Institute for Astrophysics"
+    city: "Garching"
+    country: "Germany"
+    speakers: ["Pablo Vega del Castillo"]
+    date: 2026-09-15
+
   - title: "Probing Low Mass Dark Matter Halos with LISA"
     event: "Cosmology Talks"
     online: true
