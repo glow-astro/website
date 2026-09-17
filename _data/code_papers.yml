@@ -71,9 +71,8 @@
 # above. One ran it, and its footnote reporting where GLoW fell short for them
 # is as good a proof of use as a citation ever gets. Three cite the group's
 # work and never name the code. The fifth is the group's own cluster-lensing
-# paper, 2609.16891, where the only occurrence of the string is the grant in
-# the acknowledgements: it is `false` on that evidence alone and an author can
-# overturn it.
+# paper, 2609.16891, which does not use the code: read that way from the text,
+# and confirmed the same day by the owner, who is an author.
 #
 # That run also exposed a bug that had been latent in tools/fetch_code_papers.py
 # since 2026-09-03: it took the header to be everything before the first blank
@@ -104,12 +103,12 @@
   - glow
   include: false
   note: >-
-    **A guess, and the owner is an author, so he can settle it in one line.**
-    The text never names GLoW: the only occurrence of the string is "ERC grant
-    GLOW (101230608)" in the acknowledgements, which is the grant and not the
-    code. The microlensing mismatches the paper computes are the kind of thing
-    GLoW does, so if it was used and simply not named, flip this to true. Read
-    on 2026-09-17.
+    Did not use GLoW, confirmed by the owner on 2026-09-17, who is an author.
+    That is also what reading it suggested: the only occurrence of the string is
+    "ERC grant GLOW (101230608)" in the acknowledgements, which is the grant and
+    not the code. Worth recording because the microlensing mismatches the paper
+    computes are the kind of thing GLoW does, so the next person to read it will
+    wonder the same.
 - arxiv: '2609.13369'
   title: Diffraction of gravitational waves by extended dark objects
   authors: N. Blinov, J. L. Kim
