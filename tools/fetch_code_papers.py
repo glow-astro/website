@@ -190,8 +190,16 @@ def main(argv: list[str]) -> int:
                     continue
                 # Refresh only what INSPIRE owns. `codes` and `include` are the
                 # human's, and a re-run must never touch them.
+                #
+                # A refresh may improve a field, never blank one. INSPIRE lags
+                # publication by weeks, so a paper can be out, with its journal
+                # reference filled in here from Crossref, while the record still
+                # says nothing: overwriting unconditionally erased that on the
+                # next run. Zumalacárregui & Shan, PRD 114, 063038 (2026), is
+                # the case that showed it.
                 for field in ("title", "authors", "url", "date", "journal"):
-                    cur[field] = new[field]
+                    if new[field] is not None or cur.get(field) is None:
+                        cur[field] = new[field]
                 if tool["id"] not in cur.get("codes", []):
                     cur.setdefault("codes", []).append(tool["id"])
             time.sleep(0.3)

@@ -136,8 +136,15 @@ papers:
     arxiv: "2606.17765"
     featured: true
     url: "https://inspirehep.net/arxiv/2606.17765"
-    date: 2026-06-01
-    status: preprint
+    # Published 18 September 2026 (Crossref, DOI 10.1103/d5fx-xgd2). INSPIRE
+    # record 3169257 still shows no publication_info, so the reference here
+    # comes from Crossref. `preprint_date` is INSPIRE's own preprint_date; the
+    # entry had carried 2026-06-01, a first-of-the-month placeholder.
+    date: 2026-09-18
+    preprint_date: 2026-06-16
+    status: published
+    journal: "Physical Review D 114, 063038 (2026)"
+    doi: "10.1103/d5fx-xgd2"
     wps: ["WP1-A", "WP2-A"]
     summary: >-
       Microlensing amplification curves from simulated stellar fields are
