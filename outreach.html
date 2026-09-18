@@ -83,6 +83,31 @@ sections:
 {%- endcomment -%}
 <section class="section" id="engagement" aria-labelledby="engagement-heading">
   <h2 id="engagement-heading">Public engagement</h2>
+  {%- comment -%}
+    From _data/engagement.yml, newest first. The section held a single sentence
+    promising this list until the first item existed, which it now does. The
+    sentence stays underneath, because the list is one row long and the kinds of
+    thing it will hold are not all represented yet.
+
+    Rendered with the same markup as the coverage list above, one class apart,
+    since a reader meets them as two lists of the same shape on one page.
+  {%- endcomment -%}
+  {%- assign engagements = site.data.engagement | sort: "date" | reverse %}
+  <ul class="coverage-list">
+    {%- for e in engagements %}
+    <li>
+      <a href="{{ e.url }}" rel="noopener">{{ e.title }}</a>
+      <span class="coverage-meta">
+        {%- if e.programme %}{{ e.programme }} &middot; {% endif -%}
+        {{ e.outlet }} &middot; {{ e.kind }} &middot; {{ e.date | date: "%B %Y" }}
+        &middot; {{ e.people | join: ", " }}
+      </span>
+      {%- if e.note %}
+      <p class="coverage-note">{{ e.note }}</p>
+      {%- endif %}
+    </li>
+    {%- endfor %}
+  </ul>
   <p>
     Public lectures, school visits and festival appearances will be listed here
     as they happen.

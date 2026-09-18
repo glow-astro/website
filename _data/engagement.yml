@@ -1,0 +1,35 @@
+# Public engagement: the project's people explaining the science to a general
+# audience. Radio and podcast interviews, public lectures, school visits,
+# festival appearances.
+#
+# NOT THE SAME AS media_coverage.yml, and the line between them is who is
+# speaking. Coverage is somebody else writing about a result of ours; this is
+# one of us doing the explaining, whatever the medium. A BBC interview is here
+# and a BBC article about a paper would be there.
+#
+# NOT TALKS EITHER. A seminar or a conference talk goes in the talks list in
+# _data/publications.yml, even when it was recorded and even when the audience
+# was broad. The test is the audience the thing was made for: colleagues, or
+# everybody.
+#
+#   title     the piece's own title, as it is published
+#   outlet    who broadcast or hosted it, as a listener would name them
+#   programme optional, the series the piece belongs to
+#   url       absolute, rendered with rel="noopener"
+#   kind      radio | podcast | lecture | school | festival. Small vocabulary
+#             on purpose; add a value only when an existing one would mislead
+#   date      YYYY-MM-DD. Sorts the list, newest first, and is displayed
+#   people    who took part, from the project
+#   note      optional, one sentence on what was covered. Not a review of it
+
+- title: "A distorted view"
+  outlet: "BBC World Service"
+  programme: "Unexpected Elements"
+  url: "https://www.bbc.co.uk/programmes/w3ct8kcz"
+  kind: "radio"
+  date: 2026-09-18
+  people: ["Miguel Zumalacárregui"]
+  note: >-
+    An interview on gravitational lensing for an episode about distortion, from
+    map projections to the cosmos: how the bending of light is used to study
+    distant galaxies, dark matter and black holes.

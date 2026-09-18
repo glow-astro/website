@@ -1946,6 +1946,11 @@ a.skymap-card:focus-visible {
 }
 .coverage-meta { display: block; font-size: 0.87rem; color: var(--text-mute); }
 
+/* Only the engagement list carries a note. Coverage rows do not: a headline
+   written by the outlet already says what the piece is, whereas "A distorted
+   view" says nothing about gravitational lensing on its own. */
+.coverage-note { margin: 0.25rem 0 0; font-size: 0.9rem; }
+
 /* The animation / figure tick boxes, beside the search input. */
 .filter-kinds {
 	display: flex;
