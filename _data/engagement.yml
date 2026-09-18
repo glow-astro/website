@@ -25,7 +25,10 @@
 - title: "A distorted view"
   outlet: "BBC World Service"
   programme: "Unexpected Elements"
-  url: "https://www.bbc.co.uk/programmes/w3ct8kcz"
+  # bbc.com/audio/play rather than bbc.co.uk/programmes, at the owner's word
+  # (2026-09-18): the same episode, but this is the page that plays it, and it
+  # is where his name appears in the description. Both resolve today.
+  url: "https://www.bbc.com/audio/play/w3ct8kcz"
   kind: "radio"
   date: 2026-09-18
   people: ["Miguel Zumalacárregui"]
