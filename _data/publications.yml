@@ -228,6 +228,18 @@ talks:
   # the kind of talk: "invited", "plenary" and "recorded webinar" were dropped
   # on 2026-08-28 as noise on a project page, the recording being evident from
   # the link. That information lives in the CV, which is where it counts.
+  - title: "Lensing stochastic diffraction in LISA: A New Window into Light Dark Matter Halos"
+    # An internal LISA meeting at the IFT, not a widely advertised one (owner,
+    # 2026-09-19), which is why it is not the 16th LISA Symposium and does not
+    # appear on the LISA Consortium's listing of events. "LISA Madrid" is what
+    # he calls it, and the host institution is what tells a reader where it was.
+    event: "LISA Madrid"
+    institution: "Instituto de Física Teórica IFT-UAM/CSIC"
+    city: "Madrid"
+    country: "Spain"
+    speakers: ["Miguel Zumalacárregui"]
+    date: 2026-09-18
+
   - title: "Quasi-Periodic Lensing of Starlight: A Novel Signature for Supermassive Black Hole Binaries"
     institution: "Max Planck Institute for Astrophysics"
     city: "Garching"
