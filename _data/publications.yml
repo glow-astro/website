@@ -151,11 +151,11 @@ papers:
     journal: "Physical Review D 114, 063038 (2026)"
     doi: "10.1103/d5fx-xgd2"
     # "Editors' Suggestion" with the plural possessive: APS's own wording on
-    # the abstract page. The AEI release writes it in the singular, and the
+    # the abstract page. The AEI highlight writes it in the singular, and the
     # journal is the authority on the name of its own mark.
     distinction: "Editors' Suggestion"
     links:
-      - text: "AEI press release"
+      - text: "AEI research highlight"
         url: "https://www.aei.mpg.de/1507473/listening-to-the-stars-beneath-the-waves"
     wps: ["WP1-A", "WP2-A"]
     summary: >-

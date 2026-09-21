@@ -40,12 +40,16 @@
       url: "https://youtu.be/ZGqOpDTL8k4"
 
 # Dated to publication, 18 September 2026 (Crossref, DOI 10.1103/d5fx-xgd2),
-# following the rule the GW231123 item set above. The AEI highlight went up on
-# 21 September; it is coverage of the paper, not a second event, so it is a
-# link here rather than an item of its own.
+# following the rule the GW231123 item set above. The AEI research highlight
+# went up on 21 September; it is coverage of the paper, not a second event, so
+# it is a link here rather than an item of its own.
+#
+# "research highlight", not "press release" as this first said: the AEI files it
+# under "Selected Research Highlights", a tier below the news release the
+# GW231123 item links, and the words should not claim otherwise.
 #
 # "Editors' Suggestion" with the plural possessive -- APS's own wording on the
-# abstract page. The AEI release writes it in the singular; the journal is the
+# abstract page. The AEI highlight writes it in the singular; the journal is the
 # authority on the name of its own mark.
 - date: 2026-09-18
   text: >-
@@ -54,5 +58,5 @@
   links:
     - text: "arXiv:2606.17765"
       url: "https://arxiv.org/abs/2606.17765"
-    - text: "AEI press release"
+    - text: "AEI research highlight"
       url: "https://www.aei.mpg.de/1507473/listening-to-the-stars-beneath-the-waves"

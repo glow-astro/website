@@ -24,8 +24,12 @@
 #   outlet  who published it, as a reader would name them.
 #   title   the piece's own title, not a description of it.
 #   url     absolute, rendered with rel="noopener".
-#   kind    article | press release | video | podcast. Small vocabulary on
-#           purpose; add a value only when an existing one would mislead.
+#   kind    article | press release | research highlight | video | podcast.
+#           Small vocabulary on purpose; add a value only when an existing one
+#           would mislead. "research highlight" earned its place that way: the
+#           AEI files its own pieces in two different sections, and calling a
+#           highlight a press release claims a tier it does not have -- which is
+#           the same distinction that decides whether the MPG picks it up.
 #   lang    optional. Shown only when it is not English, because sending a
 #           reader into a language they do not read wastes their click.
 #   date    optional, orders items inside a group. NOT rendered: the group
@@ -94,13 +98,19 @@
 # Anchored to journal publication, 18 September 2026: the paper had been on the
 # arXiv since June and picked up no coverage then -- the AEI wrote it up when
 # Physical Review D published it and made it an Editors' Suggestion.
+#
+# A research highlight, not a press release: the AEI files this one under
+# "Selected Research Highlights" and the GW231123 piece above under "News". The
+# owner does not expect a Max Planck Society version (2026-09-21) -- the MPG
+# carries press releases and a highlight sits below that line -- so unlike the
+# GW231123 group, this one is not waiting on a second institutional voice.
 - paper: "2606.17765"
   date: 2026-09-18
   items:
     - outlet: "Albert Einstein Institute"
       title: "Listening to the stars beneath the waves"
       url: "https://www.aei.mpg.de/1507473/listening-to-the-stars-beneath-the-waves"
-      kind: "press release"
+      kind: "research highlight"
       date: 2026-09-21
 
 - label: "The ERC grant"
