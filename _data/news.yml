@@ -38,3 +38,21 @@
       url: "https://www.aei.mpg.de/1490509/do-black-holes-pretend-to-have-large-masses"
     - text: "Cosmology Talk"
       url: "https://youtu.be/ZGqOpDTL8k4"
+
+# Dated to publication, 18 September 2026 (Crossref, DOI 10.1103/d5fx-xgd2),
+# following the rule the GW231123 item set above. The AEI highlight went up on
+# 21 September; it is coverage of the paper, not a second event, so it is a
+# link here rather than an item of its own.
+#
+# "Editors' Suggestion" with the plural possessive -- APS's own wording on the
+# abstract page. The AEI release writes it in the singular; the journal is the
+# authority on the name of its own mark.
+- date: 2026-09-18
+  text: >-
+    The reduced-order description of gravitational waves diffracted by stellar
+    fields was published in Physical Review D as an Editors' Suggestion.
+  links:
+    - text: "arXiv:2606.17765"
+      url: "https://arxiv.org/abs/2606.17765"
+    - text: "AEI press release"
+      url: "https://www.aei.mpg.de/1507473/listening-to-the-stars-beneath-the-waves"

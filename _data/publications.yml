@@ -31,6 +31,11 @@
 #   doi      optional, bare -- "10.3847/..." -- once the paper has one. The
 #            template links it beside the arXiv id; do not include the
 #            https://doi.org/ prefix, which the template adds
+#   distinction  optional, a mark the JOURNAL awarded the paper, in the
+#            journal's own wording -- "Editors' Suggestion" for APS. Rendered
+#            as a badge on the featured card. Only for a distinction conferred
+#            by the venue: a citation count, a press release or a talk about
+#            the paper is not one, and `links` is where those belong
 #   links    optional [{text, url}] for anything the paper picked up beyond the
 #            preprint and the journal: a press release, coverage. Not the talk
 #            about it -- talks have their own list below
@@ -145,6 +150,13 @@ papers:
     status: published
     journal: "Physical Review D 114, 063038 (2026)"
     doi: "10.1103/d5fx-xgd2"
+    # "Editors' Suggestion" with the plural possessive: APS's own wording on
+    # the abstract page. The AEI release writes it in the singular, and the
+    # journal is the authority on the name of its own mark.
+    distinction: "Editors' Suggestion"
+    links:
+      - text: "AEI press release"
+        url: "https://www.aei.mpg.de/1507473/listening-to-the-stars-beneath-the-waves"
     wps: ["WP1-A", "WP2-A"]
     summary: >-
       Microlensing amplification curves from simulated stellar fields are

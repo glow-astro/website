@@ -53,6 +53,13 @@ sections:
   <div class="card">
     <p class="card-title">
       <a href="{{ p.url }}" rel="noopener">{{ p.title }}</a>
+      {%- comment -%}
+        A distinction the journal itself gave the paper, so it sits with the
+        title rather than in the meta line: it qualifies the paper, not the
+        reference. Nothing shows when a paper has none, which is most of them --
+        a badge that appeared on every card would say nothing.
+      {%- endcomment -%}
+      {%- if p.distinction %} <span class="badge">{{ p.distinction }}</span>{% endif %}
     </p>
     <p class="card-meta">
       {{ p.authors | join: ", " }} &middot;
