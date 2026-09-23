@@ -60,3 +60,17 @@
       url: "https://arxiv.org/abs/2606.17765"
     - text: "AEI research highlight"
       url: "https://www.aei.mpg.de/1507473/listening-to-the-stars-beneath-the-waves"
+
+# Dated to publication, 21 September 2026 (Crossref, DOI
+# 10.1088/1475-7516/2026/09/092), by the same rule as the items above. The AEI
+# research highlight went up on 22 September and is a link, not a second item.
+- date: 2026-09-21
+  text: >-
+    The study of gravitational-wave dispersion by matter beyond Einstein's
+    gravity, where the Earth and the Moon can act as mirrors for gravitational
+    waves, was published in JCAP.
+  links:
+    - text: "arXiv:2511.08023"
+      url: "https://arxiv.org/abs/2511.08023"
+    - text: "AEI research highlight"
+      url: "https://www.aei.mpg.de/1508860/Prisms-and-mirrors-for-gravitational-waves"

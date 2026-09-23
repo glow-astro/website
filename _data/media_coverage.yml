@@ -113,6 +113,18 @@
       kind: "research highlight"
       date: 2026-09-21
 
+# Anchored to journal publication, 21 September 2026: the AEI wrote it up the
+# next day, in "Selected Research Highlights" like the stellar-field paper
+# above, so no Max Planck Society version is expected either.
+- paper: "2511.08023"
+  date: 2026-09-21
+  items:
+    - outlet: "Albert Einstein Institute"
+      title: "Prisms and mirrors for gravitational waves"
+      url: "https://www.aei.mpg.de/1508860/Prisms-and-mirrors-for-gravitational-waves"
+      kind: "research highlight"
+      date: 2026-09-22
+
 - label: "The ERC grant"
   date: 2025-11-01
   items:

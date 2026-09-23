@@ -196,32 +196,34 @@ papers:
       of concept that lensed events can be identified rapidly enough to keep up
       with large catalogs.
 
-  # Accepted in JCAP in 2026; the full reference is still owed by the owner
-  # (2026-08-28), and `journal` carries the bare journal name until it arrives,
-  # which is what the template expects while a paper is "accepted".
-  #
-  # `date` is A GUESS: the owner asked to assume publication in September 2026,
-  # so this is the first of that month, and `date_provisional` says so. It is
-  # not a fact about the world and nothing may be inferred from the day. The
-  # verification prints every provisional date, so this cannot be quietly
-  # forgotten -- replace both lines when the reference arrives.
+  # Published 21 September 2026 (Crossref, DOI 10.1088/1475-7516/2026/09/092,
+  # published-online; the issue date is 1 September). This replaces the
+  # provisional September date the owner had asked to assume. Featured at the
+  # owner's word (2026-09-23), when the AEI wrote it up. The summary borrows
+  # the highlight's language, also at the owner's word.
   - title: "Gravitational-wave dispersion over inhomogeneous space-times: General relativity, screened theories of gravity and non-minimal dark energy"
     authors: ["Menadeo", "Giardino", "Zumalacárregui"]
     arxiv: "2511.08023"
     url: "https://inspirehep.net/literature/3081772"
-    date: 2026-09-01
-    date_provisional: true
+    date: 2026-09-21
     preprint_date: 2025-11-11
-    featured: false
-    status: accepted
-    journal: "JCAP"
+    featured: true
+    status: published
+    journal: "Journal of Cosmology and Astroparticle Physics 09 (2026) 092"
+    doi: "10.1088/1475-7516/2026/09/092"
+    links:
+      - text: "AEI research highlight"
+        url: "https://www.aei.mpg.de/1508860/Prisms-and-mirrors-for-gravitational-waves"
     wps: ["WP3-B"]
     summary: >-
-      A massive object breaks homogeneity and lets different gravitational-wave
-      polarizations interact, generalizing lensing beyond deflection. Every
-      non-minimal theory gives the wave an effective mass, producing a
-      frequency-dependent phase shift the paper calls lens-induced dispersion,
-      computed first in general relativity and then in scalar-tensor theories.
+      Going beyond the usual approximations, the paper explores lens-induced
+      dispersion, by which the matter distribution splits a gravitational wave
+      by its frequency components, like a prism forming a rainbow out of white
+      light. The effect arises generically in theories beyond Einstein gravity.
+      In some simple scalar-tensor theories there is a critical frequency below
+      which gravitational waves cannot propagate through matter, so that
+      objects such as the Earth and the Moon can block and reflect distant
+      signals, yielding competitive constraints on those theories.
 
 talks:
   # Titles and dates come from the PI's CV, where they live as
