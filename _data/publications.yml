@@ -216,14 +216,9 @@ papers:
         url: "https://www.aei.mpg.de/1508860/Prisms-and-mirrors-for-gravitational-waves"
     wps: ["WP3-B"]
     summary: >-
-      Going beyond the usual approximations, the paper explores lens-induced
-      dispersion, by which the matter distribution splits a gravitational wave
-      by its frequency components, like a prism forming a rainbow out of white
-      light. The effect arises generically in theories beyond Einstein gravity.
-      In some simple scalar-tensor theories there is a critical frequency below
-      which gravitational waves cannot propagate through matter, so that
-      objects such as the Earth and the Moon can block and reflect distant
-      signals, yielding competitive constraints on those theories.
+      Beyond Einstein gravity, matter can split a gravitational wave by
+      frequency, like a prism forming a rainbow. In some theories, low-frequency
+      waves may be entirely blocked and reflected by certain objects.
 
 talks:
   # Titles and dates come from the PI's CV, where they live as
