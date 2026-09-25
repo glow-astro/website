@@ -237,6 +237,13 @@ talks:
   # the kind of talk: "invited", "plenary" and "recorded webinar" were dropped
   # on 2026-08-28 as noise on a project page, the recording being evident from
   # the link. That information lives in the CV, which is where it counts.
+  - title: "Multi-messenger sources through a new lens: frontiers at high magnification"
+    institution: "DESY"
+    city: "Zeuthen"
+    country: "Germany"
+    speakers: ["Miguel Zumalacárregui"]
+    date: 2026-09-25
+
   - title: "Lensing stochastic diffraction in LISA: A New Window into Light Dark Matter Halos"
     # An internal LISA meeting at the IFT, not a widely advertised one (owner,
     # 2026-09-19), which is why it is not the 16th LISA Symposium and does not
