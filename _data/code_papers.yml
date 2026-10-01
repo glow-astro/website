@@ -78,6 +78,27 @@
 # since 2026-09-03: it took the header to be everything before the first blank
 # line, this file stopped having one, and the whole file was written out again
 # underneath itself. Fixed there, with a guard that re-reads what it wrote.
+#
+# THE 2026-10-01 ADDITION
+#
+# Thakore & Ando, 2609.28626, named by the owner and added by hand: the harvest
+# was not re-run, so other candidates since 2026-09-17 have not been looked at.
+# Read by the method above; one occurrence of the string, in the text, and it is
+# a use.
+- arxiv: '2609.28626'
+  title: Wave-Optics Imprints of Warm Dark Matter Subhalos with Prompt Cusps on Strongly Lensed Gravitational Waves
+  authors: B. A. Thakore, S. Ando
+  url: https://inspirehep.net/literature/3207143
+  date: '2026-09-23'
+  journal: null
+  codes:
+  - glow
+  include: true
+  note: >-
+    Ran it for the macrolens, with their own wave-optics integration for the
+    subhalos on top: "While the macro-image positions and the macrolens Jacobian
+    A_min are computed using the GLoW framework, the WO subhalo lens potential
+    is integrated numerically on a customised 2D grid."
 - arxiv: '2609.16990'
   title: Impact of the Host Galaxy on the Search for Gravitational-Wave Microlensing by Compact Objects
   authors: U. Deka, A. Ganguly, S. Bhattacharyya et al.
