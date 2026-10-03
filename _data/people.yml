@@ -53,25 +53,35 @@ pi:
 
 current:
   # Postdocs the grant pays for, first.
-  - name: "Han-Gil Choi"
-    photo: "han-gil-choi.jpg"
-    url: "https://inspirehep.net/authors/1852430"
-    stage: postdoc
-    role: "Postdoctoral researcher"
-    years: "2026–"
-    topic: "Wave-optics theory and algorithms, tests of dark matter, primordial cosmology."
-
   - name: "Héctor Villarrubia-Rojo"
     url: "https://inspirehep.net/authors/1897475"
     stage: postdoc
     role: "Postdoctoral researcher"
     years: "2026–"
-    incoming: true
-    starts: "October 2026"
     topic: "Wave-optics lensing methods, cosmology & dark energy, GLoW code lead."
 
   # Then those on the project but paid by another grant. See the note on
   # `role` in the schema above: the ordering is the point, not decoration.
+  - name: "Han-Gil Choi"
+    photo: "han-gil-choi.jpg"
+    url: "https://inspirehep.net/authors/1852430"
+    stage: postdoc
+    role: "Affiliated postdoctoral researcher"
+    location: "based at the AEI, Potsdam"
+    years: "2026–"
+    topic: "Wave-optics theory and algorithms, tests of dark matter, primordial cosmology."
+
+  - name: "Xikai Shan"
+    # Faculty page at Tsinghua. Note the URL ends .htm, not .html: the
+    # .html form 404s.
+    url: "https://astro.tsinghua.edu.cn/en/info/1012/2483.htm"
+    photo: "xikai-shan.jpg"
+    stage: postdoc
+    role: "Affiliated postdoctoral researcher"
+    location: "based at the AEI, Potsdam"
+    years: "2026–"
+    topic: "Microlensing by stellar fields, data analysis, GW lensing astrophysics."
+
   - name: "Daniel Ballard"
     # INSPIRE rather than his own site (dan-ballard.com), at the owner's
     # instruction: the group links to INSPIRE records, and the exception here
@@ -85,17 +95,6 @@ current:
     starts: "November 2026"
     topic: "Strong-lens modelling, dark-matter substructure, multi-plane lensing and cosmography."
 
-  - name: "Xikai Shan"
-    # Faculty page at Tsinghua. Note the URL ends .htm, not .html: the
-    # .html form 404s.
-    url: "https://astro.tsinghua.edu.cn/en/info/1012/2483.htm"
-    photo: "xikai-shan.jpg"
-    stage: postdoc
-    role: "Affiliated postdoctoral researcher"
-    location: "based at the AEI, Potsdam"
-    years: "2026–"
-    topic: "Microlensing by stellar fields, data analysis, GW lensing astrophysics."
-
   - name: "Juan Urrutia"
     photo: "juan-urrutia.jpg"
     url: "https://inspirehep.net/authors/2049477"
@@ -106,22 +105,25 @@ current:
     starts: "November 2026"
     topic: "Dark matter, lensing, supermassive black hole astrophysics, low-frequency GWs."
 
+  # Students: those who have started first, then those still to arrive
+  # (owner, 2026-10-03).
+  - name: "Emanuela Alberici"
+    # Author record behind her first paper, the LVK sub-solar-mass search
+    # (INSPIRE literature 3152831, arXiv:2605.05444).
+    url: "https://inspirehep.net/authors/3201328"
+    stage: phd
+    role: "PhD student"
+    years: "2026–"
+    topic: "Searches for lensed gravitational waves, and data analysis."
+
   - name: "Manon van Zyl"
     photo: "manon-van-zyl.jpg"
     stage: phd
     role: "PhD student"
     years: "2026–"
     incoming: true
-    starts: "October 2026"
+    starts: "November 2026"
     topic: "Tests of gravitational-wave propagation."
-
-  - name: "Emanuela Alberici"
-    stage: phd
-    role: "PhD student"
-    years: "2026–"
-    incoming: true
-    starts: "October 2026"
-    topic: "Searches for lensed gravitational waves, and the data analysis behind them."
 
   - name: "Pablo Vega del Castillo"
     # The default rule takes the first and last words of the name and would
@@ -129,6 +131,11 @@ current:
     # Kept although he now has a photograph: it costs nothing and stays right
     # if the photograph is ever removed.
     initials: "PV"
+    # ORCID rather than INSPIRE: his three papers (the GW-MMADS kilonova
+    # follow-ups, 2025) are filed on INSPIRE under a merged "Vega-Lara"
+    # profile that mixes in other people. The ORCID is his own, under his full
+    # name and LMU, and it lists the papers.
+    url: "https://orcid.org/0009-0008-0928-7884"
     photo: "pablo-vega-del-castillo.jpg"
     stage: masters
     role: "Master's student, LMU"
@@ -152,24 +159,54 @@ current:
 # section while the list is empty, and its front-matter `sections` list needs a
 # `former` entry adding the first time someone is listed here.
 #
+
 # Extra fields beyond `current`: `next` (where the person went), `end` (year
 # they left, for sorting newest first). Group people by what they did, never by
 # whether they finished.
 former: []
 
 collaborators:
+  # Links are each person's institutional page where one exists. Goyal's
+  # entry on the IUCAA list has no page of its own, so the list is linked;
+  # Menadeo has no institutional page that could be found (2026-10-03), so
+  # his INSPIRE profile stands in.
   - name: "Srashti Goyal"
+    url: "https://www.iucaa.in/en/people/people-post-doctoral-fellows"
     role: "Postdoc, IUCAA"
     wps: ["WP1-A", "WP2-A", "WP2-B"]
   - name: "Nicola Menadeo"
+    url: "https://inspirehep.net/authors/2661950"
     role: "Postdoc, Humboldt University"
     wps: ["WP3-B"]
   - name: "Serena Giardino"
+    url: "https://profiles.imperial.ac.uk/s.giardino"
     role: "Postdoc, Imperial College"
     wps: ["WP3-B"]
   - name: "Dylan Jow"
+    url: "https://kipac.stanford.edu/people/dylan-jow"
     role: "Postdoc, Stanford University"
     wps: ["WP1-B"]
   - name: "Ue-Li Pen"
-    role: "CITA and Academia Sinica; PI of BURSTT"
+    url: "https://www.asiaa.sinica.edu.tw/people/cv.php?i=pen"
+    role: "Professor, CITA and Academia Sinica"
     wps: ["WP1-B"]
+  # Co-authors of the quasi-periodic lensing of starlight paper
+  # (arXiv:2506.16544, PRL 2026). Filed under WP2-A, the task the "sources"
+  # topic (lensing near supermassive black holes) points to (owner,
+  # 2026-10-03: "astrophysics"). Wang finished his DPhil at Oxford in 2026;
+  # the institution of his postdoc is not public yet, so Oxford stays until
+  # the owner says otherwise.
+  - name: "Hanxi Wang"
+    url: "https://www.physics.ox.ac.uk/our-people/hanxiwang"
+    role: "Postdoc, University of Oxford"
+    wps: ["WP2-A"]
+  - name: "Bence Kocsis"
+    url: "https://www.physics.ox.ac.uk/our-people/kocsis"
+    role: "Professor, University of Oxford"
+    wps: ["WP2-A"]
+  # Visited the group in 2025 and 2026 (listed as a visitor on the PI's
+  # personal site, which is where the link and the role come from).
+  - name: "Manish Tamta"
+    url: "https://inspirehep.net/authors/2797698"
+    role: "PhD student, IISc Bangalore"
+    wps: ["WP3-A"]
