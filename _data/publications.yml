@@ -244,6 +244,34 @@ talks:
     speakers: ["Miguel Zumalacárregui"]
     date: 2026-09-25
 
+  # Cosmology from Home 2026 ran 21 September - 2 October, online, and the
+  # recordings (all posted on 2 October) do not say which day each talk fell
+  # on, so the three sit at the start of the meeting, as the Dark Energy from
+  # Home pair below does. Titles as given on the recordings, less the
+  # "<speaker> - " the channel prefixes to them.
+  - title: "Discovering Supermassive Binaries with Quasi-Periodic Lensed Starlight"
+    event: "Cosmology from Home 2026"
+    online: true
+    # Not on the team page: first author of the quasi-periodic lensing paper
+    # with Zumalacárregui and Kocsis (arXiv:2506.16544), presenting it here.
+    speakers: ["Hanxi Wang"]
+    date: 2026-09-21
+    url: "https://youtu.be/-O1kRxPAMro"
+
+  - title: "The Dark Timbre of Gravitational Waves"
+    event: "Cosmology from Home 2026"
+    online: true
+    speakers: ["Juan Urrutia"]
+    date: 2026-09-21
+    url: "https://youtu.be/v-pFFS31lOM"
+
+  - title: "Testing Modified Gravity with Gravitational-Wave Lensing"
+    event: "Cosmology from Home 2026"
+    online: true
+    speakers: ["Serena Giardino"]
+    date: 2026-09-21
+    url: "https://youtu.be/34WZUCKRlH4"
+
   - title: "Lensing stochastic diffraction in LISA: A New Window into Light Dark Matter Halos"
     # An internal LISA meeting at the IFT, not a widely advertised one (owner,
     # 2026-09-19), which is why it is not the 16th LISA Symposium and does not
