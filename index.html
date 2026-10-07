@@ -95,15 +95,26 @@ description: >-
       <div class="btn-row">
         <a class="btn btn-primary" href="{{ '/science.html' | relative_url }}">The science case</a>
         <a class="btn" href="{{ '/programme.html' | relative_url }}">Research programme</a>
-        {%- comment -%}
-          Same condition as the menu item in _includes/header.html: this button
-          appears only while a call is open. Two buttons is a fine row.
-        {%- endcomment -%}
-        {%- assign open_positions = site.data.positions | default: empty -%}
-        {%- if open_positions.size > 0 %}
-        <a class="btn" href="{{ '/join.html' | relative_url }}">Join the project</a>
-        {%- endif %}
       </div>
+      {%- comment -%}
+        An open call gets its own line under the buttons rather than a third
+        button beside them: a third button of the same weight would rank it as
+        one more section of the site, where it is the one thing here with a
+        deadline. It reuses the News flag, pulse and reduced-motion handling
+        included, so "new and time-limited" looks the same wherever it appears.
+
+        Driven by `button` in _data/positions.yml, so the line disappears when
+        the entry is deleted after the call closes. The menu's Join item
+        follows the same file -- see _includes/header.html.
+      {%- endcomment -%}
+      {%- assign open_positions = site.data.positions | default: empty -%}
+      {%- for p in open_positions %}
+      {%- if p.button %}
+      <p class="hero-call">
+        <a href="{{ '/join.html#' | append: p.id | relative_url }}"><span class="news-flag">Open call</span>{{ p.button }}</a>{% if p.deadline %}<span class="hero-call-date"> · until {{ p.deadline | split: ' (' | first }}</span>{% endif %}
+      </p>
+      {%- endif %}
+      {%- endfor %}
     </div>
     <div class="hero-media">
       <img class="hero-logo" src="{{ '/imgs/GLOW_Extended_Logo_Full_Color_for_Dark_Backgrounds_RGB.png' | relative_url }}"

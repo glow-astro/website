@@ -350,6 +350,18 @@ main { padding-bottom: 3rem; }
 	color: #14101f;
 }
 
+/* An open call, under the hero buttons (index.html). A link in the prose
+   family -- amber, underlined -- led by the pulsing News flag, so it stands
+   out from the buttons without competing with them for weight. */
+.hero-call {
+	margin: -0.4rem 0 1.4rem;
+	font-size: 0.95rem;
+}
+
+.hero-call a { font-weight: 550; }
+
+.hero-call-date { color: var(--text-mute); }
+
 /* ---- Cards ----------------------------------------------------------- */
 
 .card {

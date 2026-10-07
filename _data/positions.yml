@@ -9,12 +9,74 @@
 # Schema
 #   id        anchor
 #   title     what the position is about, in three or four words
-#   kind      "Postdoctoral researcher" | "PhD student"
+#   kind      "Postdoctoral researcher" | "PhD student" | "Predoctoral fellowship"
+#             -- the last for an externally funded call the project supports
+#             rather than a GLOW-funded position
 #   term      contract length
 #   focus     optional work-package task code, when the call names one
 #   profile   what the person will work on and the background it calls for
 #   deadline  application deadline
+#   details   optional, HTML: anything longer than a profile -- how to
+#             express interest, what to send. Output as written. HTML rather
+#             than Markdown because markdownify under `input: GFM` needs the
+#             kramdown-parser-gfm gem, which the local build does not load
+#             and nothing else on the site requires. The official call can be
+#             linked here instead of through apply_url
 #   apply_url where to apply
+#   button    optional, a short label. When present the home page carries a
+#             highlighted link to the call under the hero buttons
 #
 # Empty is the normal state. The Join page says so rather than showing an
 # empty section.
+
+# Not a GLOW position: an individual FPU fellowship (Spanish Ministry) that the
+# PI supports one candidate for. Listed here because it is the call a reader of
+# the site can act on. The deadline is the expression-of-interest date, not the
+# Ministry's. Delete this entry after 18 October 2026.
+- id: fpu-2026
+  title: "FPU 2026 PhD opportunity"
+  kind: "Predoctoral fellowship"
+  term: "four years"
+  deadline: "18 October 2026 (expressions of interest)"
+  button: "FPU 2026 PhD opportunity"
+  profile: >-
+    Miguel Zumalacárregui is looking for an excellent candidate interested in
+    applying for an FPU 2026 predoctoral fellowship at IFT UAM/CSIC in Madrid.
+  details: |-
+    <p>
+      The FPU is an individual four-year fellowship and is not a GLOW-funded
+      position or tied to a predefined GLOW project. The successful candidate
+      would develop their PhD programme together with Miguel, with substantial
+      freedom to pursue their own interests and ideas within areas broadly
+      connected to gravitational lensing, gravitational waves, dark matter,
+      cosmology, gravity, and related theoretical, computational and
+      data-analysis problems.
+    </p>
+    <p>
+      The candidate would join Miguel's group at IFT and interact closely with
+      the GLOW team.
+    </p>
+    <p>
+      Miguel can support at most one candidate in this call. To express
+      interest, email
+      <a href="mailto:miguel.zumalacarregui@csic.es">miguel.zumalacarregui@csic.es</a>
+      by 18 October 2026 with subject <code>[FPU26-EOI] Firstname Lastname</code>,
+      including:
+    </p>
+    <ul>
+      <li>a CV;</li>
+      <li>academic transcripts, including grades;</li>
+      <li>a brief summary of grades and grading scale in the email, as academic
+        performance is a major evaluation criterion;</li>
+      <li>for degrees obtained abroad, please note that the FPU application
+        requires an official Spanish equivalence of the average grade;</li>
+      <li>a short paragraph describing your research interests and fit.</li>
+    </ul>
+    <p>
+      Questions are very welcome. For general enquiries, use the subject
+      <code>[FPU26-QUESTION] Firstname Lastname</code>.
+    </p>
+    <p>
+      Official call:
+      <a href="https://www.aei.gob.es/en/ayudas-fpu-2026" rel="noopener">aei.gob.es/en/ayudas-fpu-2026</a>
+    </p>

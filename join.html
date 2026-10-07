@@ -34,13 +34,21 @@ sections:
     to join the team.
   </p>
   {%- if open_positions.size > 0 %}
-  <div class="grid grid-2">
+  {%- comment -%}
+    Two columns only when there are two calls to set side by side: a single
+    call in a two-column grid sits at half width beside a gap, and a call with
+    `details` runs long enough that half width makes it a narrow column.
+  {%- endcomment -%}
+  <div class="grid{% if open_positions.size > 1 %} grid-2{% endif %}">
     {%- for p in open_positions %}
     <div class="card" id="{{ p.id }}">
       {%- if p.focus %}<p class="eyebrow">{{ p.focus }}</p>{% endif %}
       <p class="card-title">{{ p.title }}</p>
       <p class="card-meta">{{ p.kind }} · {{ p.term }}{% if p.deadline %} · deadline {{ p.deadline }}{% endif %}</p>
       <p>{{ p.profile }}</p>
+      {%- if p.details %}
+      {{ p.details }}
+      {%- endif %}
       {%- if p.apply_url %}<p><a href="{{ p.apply_url }}" rel="noopener">Application details</a></p>{% endif %}
     </div>
     {%- endfor %}
