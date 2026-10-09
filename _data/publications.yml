@@ -237,6 +237,16 @@ talks:
   # the kind of talk: "invited", "plenary" and "recorded webinar" were dropped
   # on 2026-08-28 as noise on a project page, the recording being evident from
   # the link. That information lives in the CV, which is where it counts.
+  # Meeting, venue and dates (7-9 October 2026, Aula Magna) from the agenda,
+  # https://agenda.irmp.ucl.ac.be/event/5782/; title as the owner gave it.
+  - title: "Discovering distant black-hole mergers and low-mass dark-matter halos with wave-optics lensing"
+    event: "Belgian-Dutch Gravitational Wave Meeting"
+    institution: "UCLouvain"
+    city: "Louvain-la-Neuve"
+    country: "Belgium"
+    speakers: ["Miguel Zumalacárregui"]
+    date: 2026-10-09
+
   - title: "Multi-messenger sources through a new lens: frontiers at high magnification"
     institution: "DESY"
     city: "Zeuthen"
