@@ -195,7 +195,7 @@
     enabling the observation of even the most distant sources. It can also
     reveal the association of a signal with a supermassive black hole.
   wps: ["WP2-A"]
-  papers: ["2512.17631"]
+  papers: ["2512.17631", "2610.20557"]
   # No animation exists for a magnified high-redshift source, but this plot
   # makes the page's whole argument at once, so the page opens on it.
   media:

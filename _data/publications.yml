@@ -80,6 +80,25 @@
 #   page, not on the output list of this project.
 
 papers:
+  - title: "Binary-lens amplification of starlight: from magnification flares to quasi-periodic tracking of orbital evolution"
+    authors: ["Wang", "Kocsis", "Zumalacárregui"]
+    arxiv: "2610.20557"
+    # The follow-up to the quasi-periodic lensing of starlight paper
+    # (arXiv:2506.16544), which predates the grant and so is not listed.
+    # WP2-A, like its authors in people.yml and the "sources" topic it is
+    # listed on. Not featured until the owner says otherwise.
+    featured: false
+    url: "https://inspirehep.net/literature/3215228"
+    date: 2026-10-14
+    status: preprint
+    wps: ["WP2-A"]
+    summary: >-
+      A supermassive black-hole binary lensing a background star produces
+      caustics that rotate with the orbit. Depending on the star's proper
+      motion, this gives single- or double-peaked flares, or quasi-periodic
+      lensed starlight whose repeated peaks track the binary's orbital
+      evolution, including eccentricity, precession and inclination.
+
   - title: "Gravitational lensing of gravitational waves by galaxy clusters"
     authors: ["Shan", "Wang", "Mao", "Yang", "Zumalacárregui"]
     arxiv: "2609.16891"
