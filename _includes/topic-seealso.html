@@ -38,8 +38,13 @@
     <dt>Papers</dt>
     <dd>
       <ul class="paper-list">
+        {%- comment -%}
+          where_exp, not `where: "arxiv", id`: Jekyll 4's `where` turns a
+          value that looks like a number into one before comparing, so
+          "2610.26080" became 2610.2608 and an id ending in 0 never matched.
+        {%- endcomment -%}
         {%- for id in include.topic.papers limit: limit -%}
-        {%- assign p = site.data.publications.papers | where: "arxiv", id | first -%}
+        {%- assign p = site.data.publications.papers | where_exp: "x", "x.arxiv == id" | first -%}
         {%- if p %}
         <li>
           <a href="{{ p.url }}" rel="noopener">{{ p.title }}</a>

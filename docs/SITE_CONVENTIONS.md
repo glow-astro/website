@@ -70,6 +70,12 @@ Guard the lookup with `{% if x %}` instead. It also means **a page that renders
 correctly locally is not proof**: check the deployed page after a build that
 touches a `where`.
 
+**Never look up an arXiv id with `where` either.** Jekyll 4 converts a value
+that looks like a number before comparing it, so `"2610.26080"` is compared as
+`2610.2608` and an id ending in 0 silently matches nothing: on 2026-10-21 a
+paper was missing from a topic page's list for that reason alone. Use
+`where_exp: "x", "x.arxiv == id"`, which compares the strings as written.
+
 After any structural change, rebuild and run this. It has caught duplicate ids
 and dead anchors repeatedly:
 

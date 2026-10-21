@@ -42,7 +42,8 @@ sections:
   {%- endcomment -%}
   {%- assign paper = nil -%}
   {%- if g.paper %}
-  {%- assign paper = site.data.publications.papers | where: "arxiv", g.paper | first %}
+  {%- comment -%} where_exp for the reason given in _includes/topic-seealso.html {%- endcomment -%}
+  {%- assign paper = site.data.publications.papers | where_exp: "x", "x.arxiv == g.paper" | first %}
   {%- endif %}
   <div class="coverage-group">
     <h3>
