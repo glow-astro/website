@@ -80,6 +80,25 @@
 #   page, not on the output list of this project.
 
 papers:
+  - title: "Searching for lensed gravitational waves with unlensed templates"
+    authors: ["Wadekar", "Zackay", "Cheung", "Islam", "Roulet", "Mehta", "Venumadhav", "Mushkin", "Zumalacárregui", "Zaldarriaga"]
+    arxiv: "2610.26080"
+    # Also on the list of papers using GLoW (_data/code_papers.yml): its
+    # wave-optics injections were computed with it. WP2-A, the search for
+    # lensed signals, and on the data-analysis topic. Not featured.
+    featured: false
+    url: "https://inspirehep.net/literature/3216664"
+    date: 2026-10-19
+    status: preprint
+    wps: ["WP2-A"]
+    summary: >-
+      The matched-filter output of every two-image lensed template is built
+      from the signal-to-noise time series that searches already compute with
+      unlensed templates. The resulting detection statistic recovers signals
+      that unlensed templates miss or down-rank, at a fraction of the cost of
+      an explicit lensed template bank, for both overlapping and separated
+      images.
+
   - title: "Binary-lens amplification of starlight: from magnification flares to quasi-periodic tracking of orbital evolution"
     authors: ["Wang", "Kocsis", "Zumalacárregui"]
     arxiv: "2610.20557"

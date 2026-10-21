@@ -85,6 +85,26 @@
 # was not re-run, so other candidates since 2026-09-17 have not been looked at.
 # Read by the method above; one occurrence of the string, in the text, and it is
 # a use.
+#
+# THE 2026-10-21 ADDITION
+#
+# Wadekar et al., 2610.26080, named by the owner, who is an author, and added
+# by hand on the same terms: the harvest was still not re-run. Read by the
+# method above; three occurrences of the string in the text, all uses.
+- arxiv: '2610.26080'
+  title: Searching for lensed gravitational waves with unlensed templates
+  authors: D. Wadekar, B. Zackay, M. H. Y. Cheung et al.
+  url: https://inspirehep.net/literature/3216664
+  date: '2026-10-19'
+  journal: null
+  codes:
+  - glow
+  include: true
+  note: >-
+    Computed its wave-optics injections with it: "We compute the wave-optics
+    amplification factor of the point mass analytically, and those of the
+    other lenses with GLoW [84] (https://github.com/glow-astro/GLoW), which
+    also reproduces our point-mass amplification factor."
 - arxiv: '2609.28626'
   title: Wave-Optics Imprints of Warm Dark Matter Subhalos with Prompt Cusps on Strongly Lensed Gravitational Waves
   authors: B. A. Thakore, S. Ando

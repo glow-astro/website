@@ -161,7 +161,7 @@
     models for stochastic lenses, population analyses, and inference fast enough
     to keep up with the detectors.
   wps: ["WP2-A", "WP2-B"]
-  papers: ["2512.17631", "2606.17765"]
+  papers: ["2512.17631", "2606.17765", "2610.26080"]
   media:
     width: 1560
     height: 520
