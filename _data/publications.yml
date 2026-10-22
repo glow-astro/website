@@ -275,6 +275,17 @@ talks:
   # the kind of talk: "invited", "plenary" and "recorded webinar" were dropped
   # on 2026-08-28 as noise on a project page, the recording being evident from
   # the link. That information lives in the CV, which is where it counts.
+  # Workshop name, as the page heads it, and dates (19-23 October 2026) from
+  # https://www.lorentzcenter.nl/multi-messenger-lensing-program.html; title
+  # as the owner gave it.
+  - title: "Don't kill the messenger! New phenomena, new challenges, new opportunities"
+    event: "Multi-Messenger Lensing Program"
+    institution: "Lorentz Center"
+    city: "Leiden"
+    country: "The Netherlands"
+    speakers: ["Miguel Zumalacárregui"]
+    date: 2026-10-22
+
   # Meeting, venue and dates (7-9 October 2026, Aula Magna) from the agenda,
   # https://agenda.irmp.ucl.ac.be/event/5782/; title as the owner gave it.
   - title: "Discovering distant black-hole mergers and low-mass dark-matter halos with wave-optics lensing"
