@@ -80,6 +80,27 @@
 #   page, not on the output list of this project.
 
 papers:
+  - title: "Gravitational Wave Diffractive Images Reveal the Structure of Astrophysical Objects"
+    authors: ["Choi", "Jung", "Takhistov"]
+    arxiv: "2610.31441"
+    # By Han-Gil Choi, affiliated with the project (people.yml), with outside
+    # coauthors. Listed at the owner's word (2026-11-02): it is project work,
+    # and lacks the grant acknowledgment only because Choi is not yet paid by
+    # the grant. WP3-A and the
+    # dark-matter topic: diffraction as a probe of extended lenses. It does not
+    # use GLoW, so it is not in code_papers.yml. Not featured.
+    featured: false
+    url: "https://inspirehep.net/literature/3218217"
+    date: 2026-10-22
+    status: preprint
+    wps: ["WP3-A"]
+    summary: >-
+      At linear order in the lens potential, the central diffractive image is
+      a point-mass amplitude times a form factor of the projected lens density,
+      as in nuclear scattering. Next-generation detectors could distinguish
+      extended dark-matter objects, halo-dressed primordial black holes and
+      superradiance clouds from point lenses.
+
   - title: "Searching for lensed gravitational waves with unlensed templates"
     authors: ["Wadekar", "Zackay", "Cheung", "Islam", "Roulet", "Mehta", "Venumadhav", "Mushkin", "Zumalacárregui", "Zaldarriaga"]
     arxiv: "2610.26080"
