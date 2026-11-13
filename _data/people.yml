@@ -155,6 +155,16 @@ current:
     years: "2026"
     topic: "Gravitational-wave propagation beyond general relativity."
 
+  - name: "Luis Rodríguez de la Iglesia"
+    # The default rule would give "LI", from the last word of a two-part
+    # surname, as with Pablo Vega del Castillo above.
+    initials: "LR"
+    # No photo, at his request (owner, 2026-11-13): do not add one.
+    stage: masters
+    role: "Master's student, UAM"
+    years: "2026"
+    topic: "Diffraction of gravitational waves by dark-matter ultracompact minihalos."
+
 # People who worked on the project and have left. The Team page hides this
 # section while the list is empty, and its front-matter `sections` list needs a
 # `former` entry adding the first time someone is listed here.
