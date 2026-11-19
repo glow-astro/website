@@ -230,7 +230,7 @@
     where baryons are neither a contaminant nor a window, which makes coherent
     sources an excellent probe of dark matter.
   wps: ["WP3-A"]
-  papers: ["2607.11887", "2610.31441"]
+  papers: ["2607.11887", "2611.23580", "2610.31441"]
   # Deliberately the simplest statement on the page, not the project's own
   # result: what a diffraction pattern can tell you about the thing that made
   # it. The LISA realization follows further down, once that is established.

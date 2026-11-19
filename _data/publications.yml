@@ -80,6 +80,24 @@
 #   page, not on the output list of this project.
 
 papers:
+  - title: "Fuzzy Dark Matter as a diffractive barrier: Wave-optics Signatures of Ultralight Fields on Lensed Gravitational Waves"
+    authors: ["Tamta", "Choi", "Blas", "Zumalacárregui"]
+    arxiv: "2611.23580"
+    # Also on the list of papers using GLoW (_data/code_papers.yml): it is
+    # validated against GLoW's contour integration. WP3-A and the dark-matter
+    # topic, like Tamta in people.yml. Not featured.
+    featured: false
+    url: "https://inspirehep.net/literature/3230791"
+    date: 2026-11-17
+    status: preprint
+    wps: ["WP3-A"]
+    summary: >-
+      The interference granules of ultralight dark-matter halos act as a
+      diffraction grating, imprinting percent-level stochastic modulations on
+      gravitational waves lensed by the host, and more near the critical curve
+      or for saddle-point images. For massive black-hole binaries seen by LISA
+      this could be detectable for boson masses around 10⁻²¹ eV.
+
   - title: "Gravitational Wave Diffractive Images Reveal the Structure of Astrophysical Objects"
     authors: ["Choi", "Jung", "Takhistov"]
     arxiv: "2610.31441"

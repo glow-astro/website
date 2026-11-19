@@ -91,6 +91,25 @@
 # Wadekar et al., 2610.26080, named by the owner, who is an author, and added
 # by hand on the same terms: the harvest was still not re-run. Read by the
 # method above; three occurrences of the string in the text, all uses.
+#
+# THE 2026-11-19 ADDITION
+#
+# Tamta et al., 2611.23580, named by the owner, who is an author, and added by
+# hand on the same terms. Read by the method above: every occurrence of the
+# string in the text is the validation against GLoW in its Appendix B.
+- arxiv: '2611.23580'
+  title: 'Fuzzy Dark Matter as a diffractive barrier: Wave-optics Signatures of Ultralight Fields on Lensed Gravitational Waves'
+  authors: M. Tamta, H. G. Choi, D. Blas et al.
+  url: https://inspirehep.net/literature/3230791
+  date: '2026-11-17'
+  journal: null
+  codes:
+  - glow
+  include: true
+  note: >-
+    Validated its own diffraction integral against GLoW, which it extended to
+    lenses given as a tabulated density field: "For the comparison we run
+    GLoW's contour integration on the same lens map".
 - arxiv: '2610.26080'
   title: Searching for lensed gravitational waves with unlensed templates
   authors: D. Wadekar, B. Zackay, M. H. Y. Cheung et al.
